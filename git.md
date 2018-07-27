@@ -60,21 +60,21 @@ git remote -v
 
 **2. 增加新的remote**
 
-    `git remote add gitlab git_url`
+    git remote add gitlab git_url`
 
-    `git push gitlab master`
+    git push gitlab master`
 
 `3. 修改remote的url`
 
-    `git remote set-url gitlab git_url
-
-\`
+```
+git remote set-url gitlab git_url
+```
 
 ## 5. 验证修改后的ssh连接
 
-    `ssh -T git_url
-
-\`
+```
+ssh -T git_url
+```
 
 ## 6. git config --list 查看配置
 
@@ -96,17 +96,16 @@ git config user.email xxx@xxx.xxx
 
 \#\# 解决每次git pull/push都要输入密码的问题
 
-    git config --global credential.helper store
+```
+git config --global credential.helper store
 
 
+git config --global user.name maxiaoteng
 
-    \`\`\`
+git config --global user.email maxiaoteng@yunfutech.com
 
-    git config --global user.name maxiaoteng
+git config --global credential.helper store
+```
 
-    git config --global user.email maxiaoteng@yunfutech.com
 
-    git config --global credential.helper store
-
-\`\`\`
 
