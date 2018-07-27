@@ -24,6 +24,10 @@ tar cvzpf - eclipse | split -d -b 50m
 说明:
 1. 将eclipse文件夹分卷压缩
 2. 每卷50m
-3. 压缩完以后会命名尾x01, x02
+3. 压缩完以后会命名尾x00, x01, x02
 
 ## 4. 分卷解压
+```
+cat x*>eclipse.tar.gz  //先合并
+tar -xzvf eclipse.tar.gz  //解压
+```
