@@ -9,11 +9,9 @@
 
 ## 2. 撤销已加入追踪的文件
 
-1. `git rm  XX.file  -r`
-
-2. `XX.file添加到 .gitignore`
-
-3. `git commit/ git push`
+    1. `git rm  XX.file  -r`
+    2. `XX.file添加到 .gitignore`
+    3. `git commit/ git push`
 
 ## 3. 撤销修改
 
