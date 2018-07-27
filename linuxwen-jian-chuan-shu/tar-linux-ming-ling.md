@@ -37,6 +37,5 @@ tar -xzvf eclipse.tar.gz  //解压
 ```
 
 ```
-cat baike.tar.gz.* | tar -xzvf
-
+cat baike.tar.gz.* | tar -xzvf   // 一步解决
 ```
