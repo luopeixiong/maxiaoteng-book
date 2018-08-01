@@ -8,4 +8,6 @@
   * [rsync  传输同步文件](linuxwen-jian-chuan-shu/rsync-chuan-shu-tong-bu-wen-jian.md)
   * [chmod  修改文件权限](chmod-xiu-gai-wen-jian-quan-xian.md)
 * [Gitbook配置](gitbookpei-zhi.md)
+* Scrapy
+  * [Scrapy setting](scrapy-setting.md)
 
