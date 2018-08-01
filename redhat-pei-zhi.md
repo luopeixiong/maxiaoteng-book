@@ -16,8 +16,8 @@ sudo yum install –y https://dl.fedoraproject.org/pub/epel/epel-release-latest-
 sudo yum list| grep python3
 ```
 
-- python36   
-发现可以安装的最新版本是python36, 使用python3 启动
+- python34   
+发现可以安装的最新版本是python36, 但是没有python36-pip, 不便于管理, 安装python34
 
 ```
 $ sudo yum install python36
@@ -34,7 +34,8 @@ python3 is /usr/bin/python3
 ```
 $ yum install python36-setuptools
 $ easy_install-3.6 pip
-$ sudo python3 -m pip install requests lxml bs4 
+
+$ ~~sudo python3 -m pip install requests lxml bs4~~  //要想使用这种, 需要安装python36-pip, 而yum暂时只有python34-pip, 没有python36-pip
 $ sudo pip3 install requests lxml bs4
 ```
 
