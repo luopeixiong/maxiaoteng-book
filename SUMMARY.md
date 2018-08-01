@@ -10,4 +10,5 @@
 * [Gitbook配置](gitbookpei-zhi.md)
 * Scrapy
   * [Scrapy setting](scrapy-setting.md)
+* [REDHAT 配置](redhat-pei-zhi.md)
 
