@@ -32,5 +32,7 @@ python3 is /usr/bin/python3
 安装 requests, lxml, bs4, pip
 
 ```
+$ yum install python36-setuptools
+$ easy_install-3.6 pip
 ```
 
