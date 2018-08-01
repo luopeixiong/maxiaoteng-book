@@ -11,31 +11,37 @@ sudo yum install –y https://dl.fedoraproject.org/pub/epel/epel-release-latest-
 
 
 ## 2. 基本软件
-- 先查看可安装包, 比如:
+
+### - 先查看可安装包, 比如:
 ```
 sudo yum list| grep python3
 ```
 
-- python34   
+### - python34   
 发现可以安装的最新版本是python36, 但是没有python36-pip, 不便于管理, 安装python34
 
 ```
-$ sudo yum install python36
-$ type -a python36    //type 命令查看命令的路径
-python36 is /usr/bin/python36
-$ sudo ln /usr/bin/python36 /usr/bin/python3    //建立软连接, 更便于访问
+$ sudo yum install python34
+$ type -a python34    //type 命令查看命令的路径
+python34 is /usr/bin/python34
+$ sudo ln /usr/bin/python34 /usr/bin/python3    //建立软连接, 更便于访问
 $ type -a python3
 python3 is /usr/bin/python3
 
 ```
 
-安装 requests, lxml, bs4, pip
+### - 安装 pip, requests, lxml, bs4
 
 ```
+$ sudo yum install python34-pip
+$ sudo python3 -m pip install requests lxml bs4  //要想使用这种, 需要安装
+
+```
+  第二种方法:
+```
+// 如果想安装setuptools, 使用一下方法:
 $ yum install python36-setuptools
 $ easy_install-3.6 pip
-
-$ ~~sudo python3 -m pip install requests lxml bs4~~  //要想使用这种, 需要安装python36-pip, 而yum暂时只有python34-pip, 没有python36-pip
 $ sudo pip3 install requests lxml bs4
 ```
 
