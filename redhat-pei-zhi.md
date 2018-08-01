@@ -23,7 +23,7 @@ sudo yum list| grep python3
 $ sudo yum install python36
 $ type -a python36    //type 命令查看命令的路径
 python36 is /usr/bin/python36
-$ sudo ln /usr/bin/python36 /usr/bin/python3
+$ sudo ln /usr/bin/python36 /usr/bin/python3    //建立软连接, 更便于访问
 $ type -a python3
 python3 is /usr/bin/python3
 
