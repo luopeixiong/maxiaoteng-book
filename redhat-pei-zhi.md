@@ -18,11 +18,13 @@ sudo yum list| grep python3
 
 - python3   
 目前yum能装的是python34, pip, 并且需要启用epel扩展仓库
+
 ```
-    sudo yum install python34
-    
+sudo yum install python34
 ```
+
 安装 requests, lxml, bs4, pip
+
 ```
 ```
 
