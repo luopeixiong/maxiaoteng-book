@@ -34,5 +34,7 @@ python3 is /usr/bin/python3
 ```
 $ yum install python36-setuptools
 $ easy_install-3.6 pip
+$ sudo python3 -m pip install requests lxml bs4 
+$ sudo pip3 install requests lxml bs4
 ```
 
