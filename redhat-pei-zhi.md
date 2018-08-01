@@ -40,8 +40,8 @@ $ sudo python3 -m pip install requests lxml bs4  //要想使用这种, 需要安
   第二种方法:
 ```
 // 如果想安装setuptools, 使用以下方法:
-$ yum install python36-setuptools
-$ easy_install-3.6 pip
+$ sudo yum install python36-setuptools
+$ sudo easy_install-3.6 pip
 $ sudo pip3 install requests lxml bs4
 ```
 
