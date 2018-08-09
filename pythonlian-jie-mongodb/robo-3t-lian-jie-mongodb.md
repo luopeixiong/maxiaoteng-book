@@ -18,6 +18,15 @@ $ mongo  # 进入mongodb shell
 
 > exit
 
+  Successfully added user: {
+	"user" : "maxiaoteng",
+	"roles" : [
+		{
+			"role" : "root",
+			"db" : "admin"
+		}
+	]
+  }
 
 ```
 
