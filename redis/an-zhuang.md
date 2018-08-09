@@ -15,7 +15,7 @@ $ cd redis-4.0.11
 $ sudo make distclean 
 $ sudo make
 
-# 安装ctl和test
+# 安装tcl和test
 $ sudo yum install -y tcl 
 $ sudo make test
 
@@ -31,8 +31,10 @@ $ sudo cp redis.conf /etc/redis/6379.conf
 ```
 $ sudo nano /etc/redis/6379.conf
 
-bind 127.0.0.1  # 绑定本地ip                           
-daemonize yes                             
-logfile "/var/log/redis_6379.log"             
-dir /var/redis/6379 
+    bind 127.0.0.1  # 绑定本地ip                           
+    daemonize yes  # 后台运行                             
+    logfile "/var/log/redis_6379.log"             
+    dir /var/redis/6379 
 ```
+
+
