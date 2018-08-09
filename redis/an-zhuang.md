@@ -45,4 +45,18 @@ sudo chmod 755 /etc/init.d/redis-server
 ```
 **/etc/init/ 和 /etc/init.d 两个文件里的脚本, 是可以使用service mmm start 来启动某项服务的**
 
+## 修改redis_server的配置文件
+```
+sudo nano /etc/init.d/redis-server
+    # 编辑文件以匹配配置文件
+    REDIS_CONF_FILE =“/etc/redis/6379.conf”
+```
+
+```
+sudo chkconfig --add redis-server 
+sudo chkconfig --level 345 redis-server on 
+sudo service redis-server start
+
+```
+
 
