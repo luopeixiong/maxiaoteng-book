@@ -1,8 +1,10 @@
 # 安装
-参考: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-amazon/
+
+参考: [https://docs.mongodb.com/manual/tutorial/install-mongodb-on-amazon/](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-amazon/)  
 可以选择多平台的安装, 本次安装环境: Amazon linux
 
 ## yum安装
+
 ```
 $ sudo nano /etc/yum.repos.d/mongodb-org-4.0.repo
     paste:
@@ -17,8 +19,8 @@ $ sudo yum install -y mongodb-org
 ```
 
 ## 运行
-```
 
+```
 $ sudo service mongod start  # 启动服务
 $ sudo tail /var/log/mongodb/mongod.log   # 验证是否运行
 $ sudo chkconfig mongod on  # 将在系统重启后自启
@@ -29,12 +31,23 @@ $ sudo service mongod restart  # 重启服务
 
 ## 配置
 
-yum安装后的mongd
-mongod.conf 的位置: /etc
-```
-$ nano /etc/mongod.conf
-
-> 默认存储位置: /var/lib/mongod
-> 默认log位置:  /var/log/mongodb/mongod.log
+yum安装后的mongdb  
+mongod.conf 的位置: /etc/
 
 ```
+$ sudo nano /etc/mongod.conf
+
+/var/lib/mongod  # 默认存储位置
+/var/log/mongodb/mongod.log  # 默认log位置
+port: 27017
+bindIp: 127.0.0.1  →  0.0.0.0  # 默认只允许本地访问, 修改后对互联网开放
+```
+
+## 添加密码
+
+
+
+
+
+
+

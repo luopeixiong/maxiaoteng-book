@@ -15,5 +15,6 @@
 * [logging模块](loggingmo-kuai.md)
 * [Mongodb](mongodb.md)
   * [安装](mongodb/an-zhuang.md)
+  * [Robo 3T 连接mongodb](pythonlian-jie-mongodb/robo-3t-lian-jie-mongodb.md)
   * [python连接mongodb](pythonlian-jie-mongodb.md)
 
