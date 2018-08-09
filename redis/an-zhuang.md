@@ -1,3 +1,6 @@
+[**参考地址**:](https://medium.com/@andrewcbass/install-redis-v3-2-on-aws-ec2-instance-93259d40a3ce)
+
+
 ## 安装
 
 ```
@@ -52,11 +55,24 @@ sudo nano /etc/init.d/redis-server
     REDIS_CONF_FILE =“/etc/redis/6379.conf”
 ```
 
+## 设置redis服务器自启动
 ```
 sudo chkconfig --add redis-server 
 sudo chkconfig --level 345 redis-server on 
 sudo service redis-server start
 
 ```
+## 打开系统配置文件, 修复redis内存低的问题
+```
+sudo nano /etc/sysctl.conf
+      #confure redis background save issue 
+      vm.overcommit_memory = 1
+      systctl vm.overcommit_memory = 1
+```
 
+## 测试redis服务器是否启动正常
+```
+redis-cli ping
+    # 响应为 PONG
+```
 
