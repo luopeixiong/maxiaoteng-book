@@ -25,3 +25,14 @@ $ sudo cp src/redis-server src/redis-cli /usr/local/bin
 $ sudo cp redis.conf /etc/redis/6379.conf
 
 ```
+
+## 配置Redis
+打开conf文件
+```
+$ sudo nano /etc/redis/6379.conf
+
+bind 127.0.0.1  # 绑定本地ip                           
+daemonize yes                             
+logfile "/var/log/redis_6379.log"             
+dir /var/redis/6379 
+```
