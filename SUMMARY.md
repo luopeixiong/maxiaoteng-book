@@ -17,4 +17,6 @@
   * [安装](mongodb/an-zhuang.md)
   * [安全设置](pythonlian-jie-mongodb/robo-3t-lian-jie-mongodb.md)
   * [python连接mongodb](pythonlian-jie-mongodb.md)
+* [Redis](redis.md)
+  * [安装](redis/an-zhuang.md)
 
