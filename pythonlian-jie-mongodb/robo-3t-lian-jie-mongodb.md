@@ -1,7 +1,26 @@
-# 使用Robo 3T 通过ssh连接mongodb
+## 安全设置
 
-1. AWS安全组设置, 添加入站端口 27017
-2. Robo 3T添加链接, 使用ssh验证
+1. 创建管理员用户
 
+```
+$ mongo  # 进入mongodb shell
+
+> use admin # 进入admin 数据库
+
+> db.createUser(
+     {
+       user:"maxiaoteng",
+       pwd:"******",
+       roles:[{role:"root",db:"admin"}]
+     }
+  )
+  # admin是用户的身份验证数据库, 用户在当前数据库进行验证, 但也可以在其他数据库有角色
+
+> exit
+
+
+```
+
+2. 添加数据库用户
 
 
