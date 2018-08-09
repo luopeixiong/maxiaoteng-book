@@ -27,4 +27,14 @@ $ sudo service mongod stop  # 停止服务
 $ sudo service mongod restart  # 重启服务
 ```
 
-## 
+## 配置
+
+yum安装后的mongd
+mongod.conf 的位置: /etc
+```
+$ nano /etc/mongod.conf
+
+> 默认存储位置: /var/lib/mongod
+> 默认log位置:  /var/log/mongodb/mongod.log
+
+```

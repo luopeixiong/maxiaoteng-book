@@ -15,4 +15,5 @@
 * [logging模块](loggingmo-kuai.md)
 * [Mongodb](mongodb.md)
   * [安装](mongodb/an-zhuang.md)
+  * [python连接mongodb](pythonlian-jie-mongodb.md)
 
