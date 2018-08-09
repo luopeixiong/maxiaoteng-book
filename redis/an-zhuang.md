@@ -37,4 +37,12 @@ $ sudo nano /etc/redis/6379.conf
     dir /var/redis/6379 
 ```
 
+## 下载init脚本
+```
+sudo wget https://raw.githubusercontent.com/saxenap/install-redis-amazon-linux-centos/master/redis-server
+sudo mv redis-server /etc/init.d
+sudo chmod 755 /etc/init.d/redis-server
+```
+**/etc/init/ 和 /etc/init.d 两个文件里的脚本, 是可以使用service mmm start 来启动某项服务的**
+
 
