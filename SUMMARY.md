@@ -21,4 +21,5 @@
   * [安全设置](pythonlian-jie-mongodb/robo-3t-lian-jie-mongodb.md)
   * [python连接mongodb](pythonlian-jie-mongodb.md)
   * [MongoDB 和 pymongo](mongodb/mongodb-he-pymongo.md)
+* [BeautifulSoup](beautifulsoup.md)
 
