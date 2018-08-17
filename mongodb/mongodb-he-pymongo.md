@@ -54,6 +54,29 @@ collection = db[name]
 collection.drop()  # 成功返回true
 ```
 
+--- 
+
+## 修改
+
+**修改符合条件的第一条**
+
+```
+query = {
+    "name": "xxx"
+}
+
+newvalue = {
+    "$set": {
+        "name": "sss"
+    }
+}
+collection.update_one(query, newvalue)  # 修改单条
+result = collection.update_many(query, newvalue)  # 修改多条
+result.modified_count()   # 返回修改内容的数量
+```
+
+
+--- 
 
 ## 统计
 ```
