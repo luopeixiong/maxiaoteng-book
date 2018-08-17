@@ -32,7 +32,7 @@ db.collection_names(include_system_collections=False)
 ```
 ---
 
-## 集合
+## 集合操作
 
 **获取集合**
 
@@ -48,7 +48,7 @@ def get_collection(self, name):
 ```
 name = 'test'
 db.drop_collection(name)
-或者
+// 或者 
 
 collection = db[name]
 collection.drop()  # 成功返回true
