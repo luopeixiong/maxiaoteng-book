@@ -1,5 +1,7 @@
 
-## 连接
+## 数据库
+
+### 连接
 
 ```
 dbconfig = {
@@ -24,17 +26,19 @@ class Mongodb(object):
         self._client.close()
 ```
 
-## 查看数据库信息
+### 查看数据库信息
 
 **查看数据库的文档**
 ```
 db.collection_names(include_system_collections=False)
 ```
+
 ---
+
 
 ## 集合操作
 
-**获取集合**
+### 获取集合
 
 ```
 def get_collection(self, name):
@@ -44,7 +48,7 @@ def get_collection(self, name):
     # 也可写成: collection = self.db.test
 ```
 
-**删除集合**
+### 删除集合
 ```
 name = 'test'
 db.drop_collection(name)
@@ -54,40 +58,16 @@ collection = db[name]
 collection.drop()  # 成功返回true
 ```
 
-## 统计
+### 统计
 ```
 num = collection.count()   # 集合的count() 方法返回集合中文档的个数
 
 ```
 
 --- 
+## 文档操作
 
-
-### 修改
-
-**修改符合条件的第一条**
-
-```
-query = {
-    "name": "xxx"
-}
-
-newvalue = {
-    "$set": {
-        "name": "sss"
-    }
-}
-collection.update_one(query, newvalue)  # 修改单条
-result = collection.update_many(query, newvalue)  # 修改多条
-result.modified_count()   # 返回修改内容的数量
-```
-
-
---- 
-
----
-
-## 插入文档
+### 插入文档
 
 **插入一条**
 ```
@@ -111,9 +91,26 @@ result = collection.insert_many(items)
 // result 是一个InsertManyResult实例
 ```
 
----
+### 修改
 
-## 查询文档
+**修改符合条件的第一条**
+
+```
+query = {
+    "name": "xxx"
+}
+
+newvalue = {
+    "$set": {
+        "name": "sss"
+    }
+}
+collection.update_one(query, newvalue)  # 修改单条
+result = collection.update_many(query, newvalue)  # 修改多条
+result.modified_count()   # 返回修改内容的数量
+```
+
+### 查询文档
 
 **查询第一条**
 ```
@@ -144,9 +141,7 @@ query = {
 result = collection.find(query).sort('name')  # 查询结果按照'name'的值排序
 ```
 
----
-
-## 删除
+### 删除
 
 **删除一条**
 ```
@@ -171,7 +166,6 @@ query = {}  # 即可
 ---
 
 ## 索引
-
 
 添加索引可以加快速度
 ```
