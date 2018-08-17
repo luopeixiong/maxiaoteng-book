@@ -57,6 +57,16 @@ insert_id = collection.insert_one(item).inserted_id
 // 返回InsertOneResult实例, 就是item增加了inserted_id, 最终返回: ObjectId('...')
 ```
 
+**批量插入**
+```
+items = [
+    {...}, 
+    {...},
+    ...
+]
+result = collection.insert_many(items)
+```
+
 ## 查询文档
 
 **查询第一条**
