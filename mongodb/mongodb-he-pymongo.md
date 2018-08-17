@@ -138,7 +138,10 @@ query = {
         "$lt": d,   # 表示查询 d日期之后的文档
     }
 }
-result = collection.find(query).sort('name')  # 查询结果按照'name'的值排序
+result = collection.find(query)  # 查询结果
+result.sort('name')  # 升序排序
+result.sort('name', -1)  # 降序排序
+
 ```
 
 ### 4. 删除
