@@ -60,7 +60,7 @@ collection.drop()  # 成功返回true
 
 ### 统计
 ```
-num = collection.count()   # 集合的count() 方法返回集合中文档的个数
+num = collection.count_documents()   # 集合的count() 方法返回集合中文档的个数
 
 ```
 
@@ -176,6 +176,13 @@ result = collection.create_index([('user_id', pymongo.ASCENDING)], unique=True)
 
 // user_id的值为递增, 且唯一, 之后再插入, 则抛出错误
 ```
+---
+## 同步操作
+
+find_one_and_update
+find_one_and_replace
+find_one_and_delete
+
 ---
 
 ## mongodb中的正则表达式
