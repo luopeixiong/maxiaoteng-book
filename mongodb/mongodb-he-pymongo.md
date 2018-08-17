@@ -54,9 +54,16 @@ collection = db[name]
 collection.drop()  # 成功返回true
 ```
 
+## 统计
+```
+num = collection.count()   # 集合的count() 方法返回集合中文档的个数
+
+```
+
 --- 
 
-## 修改
+
+### 修改
 
 **修改符合条件的第一条**
 
@@ -77,12 +84,6 @@ result.modified_count()   # 返回修改内容的数量
 
 
 --- 
-
-## 统计
-```
-num = collection.count()   # 集合的count() 方法返回集合中文档的个数
-
-```
 
 ---
 
