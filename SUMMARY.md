@@ -19,7 +19,7 @@
 * [Mongodb](mongodb.md)
   * [安装](mongodb/an-zhuang.md)
   * [安全设置](pythonlian-jie-mongodb/robo-3t-lian-jie-mongodb.md)
-  * [python连接mongodb](pythonlian-jie-mongodb.md)
+  * [MongoDB 和 pymongo 值的比较](mongodb/mongodb-he-pymongo/mongodb-he-pymongo-zhi-de-bi-jiao.md)
   * [MongoDB 和 pymongo](mongodb/mongodb-he-pymongo.md)
 * [BeautifulSoup](beautifulsoup.md)
 
