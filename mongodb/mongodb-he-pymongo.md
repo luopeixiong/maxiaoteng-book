@@ -206,6 +206,9 @@ query = {
 ```
 ---
 ## 心得
-- 请使用最新的, 且规范的方法来操作. 比如: 统计使用collection.find().count(), 增删改查使用xx_one 和xx_many, 模糊的update, insert等已经被弃用. 
+请使用最新的, 且规范的方法来操作. 比如: 
+- 统计使用collection.find().count(), 
+- 增删改查使用xx_one 和 xx_many, 模糊的update, insert等已经被弃用. 
+- 查询并更新使用find_one_and_update(), delete, replace... 还可以根据参数, 选择返回的是修改前还是修改后的内容
 - 避免重复插入的方法: 还在探索
 - 
