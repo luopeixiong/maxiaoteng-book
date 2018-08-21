@@ -90,6 +90,18 @@ result = collection.insert_many(items)
 // result 是一个InsertManyResult实例
 ```
 
+**批量不重复插入**
+```
+for r in rs:
+    query = {
+        "unique_colum": r.get('unique_colum'), 
+    }
+    update = {
+        "$set": r,
+    }
+    rs = collection.find_one_and_update(query, update, upsert=True)
+```
+
 ### 2. 修改
 
 **修改符合条件的第一条**
