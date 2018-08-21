@@ -61,6 +61,14 @@ collection.drop()  # 成功返回true
 ```
 num = collection.count_documents()   # 集合的count() 方法返回集合中文档的个数
 
+num = collection.find(query),count()  # 和上面的速度是一样快的
+
+num = collection.update_many(...).modified_count()  # 查看更新操作修改了多少行
+
+num = collection.deleted_many(...).deleted_count()  # 查看操作删除了多少行
+
+num = collection.insert_many(...).inserted_count()  # 查看插入了多少行
+
 ```
 
 --- 
