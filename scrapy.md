@@ -35,12 +35,24 @@ class RestaurantItem(scrapy.Item):
 ---
 ## item pipelines
 
+### 基本用法
+
 pipeline用来处理Item对象, 需要实现的方法:
 - process_item(self, item, spider)  **必须**
-- __init__  **可选**
+- ```__init__```  **可选**
 - from_crawler(cls, crawler)  **可选**
 - open_spider(self, spider)  **可选**
 - close_spider(self, spider)  **可选**
+
+启用编写好的pipelines
+```
+# Configure item pipelines
+# See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
+ITEM_PIPELINES = {
+   'talabat_scrapy.pipelines.TalabatScrapyPipeline': 300,
+}
+
+```
 
 以官网的MongoPipeline为例:
 
@@ -75,6 +87,15 @@ class MongoPipeline(object):
         return item
 
 ```
+
+### 文件管道 和 图片管道
+
+另外两个管道的优点:
+- 避免下载重复的文件
+- 可以指定下载文件位置
+
+
+
 ---
 ## download middlewares
 
