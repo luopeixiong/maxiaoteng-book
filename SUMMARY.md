@@ -10,7 +10,7 @@
 * [Gitbook配置](gitbookpei-zhi.md)
 * [Scrapy](scrapy.md)
   * [Scrapy setting](scrapy-setting.md)
-  * [基本组件](ji-ben-zu-jian.md)
+* [基本组件](Scrapy/ji-ben-zu-jian.md)
 * [REDHAT 配置](redhat-pei-zhi.md)
   * [AWS 知识](redhat-pei-zhi/aws-zhi-shi.md)
 * [logging模块](loggingmo-kuai.md)
