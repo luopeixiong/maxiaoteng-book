@@ -23,5 +23,5 @@ user=ec2-user  # 进程运行的用户名
     
 - 启动相应进程
     supervisorctl start app
-- 停止进程
+- 停止进程  
     supervisorctl start app
