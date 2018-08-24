@@ -5,17 +5,16 @@
 ## 安装
 ```
 sudo yum install supervisor
-
 ```
 
 ## 启动
 ```
 supervisord  # 启动supervisor服务
 
-$ supervisord -c /etc/supervisord.conf
-$ supervisorctl -c /etc/supervisord.conf status
-
-> mongodb       RUNNING   pid 2366, uptime 0:01:00
+supervisord -c /etc/supervisord.conf
+supervisorctl -c /etc/supervisord.conf status
+    > mongodb       RUNNING   pid 2366, uptime 0:01:00
+    ...
 ```
 
 ## 配置
