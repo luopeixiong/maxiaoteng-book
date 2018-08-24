@@ -73,7 +73,6 @@ password=xxxxxxx             ; (default is no password (open server))
 /usr/bin/supervisord -c /etc/supervisord.conf
 ```
 
-查看两个文件的绝对位置: ```
 - 查看两个文件的绝对位置: 
 ```
 find / -name supervisord
