@@ -21,7 +21,15 @@ files = /etc/supervisor/conf.d/*.conf
 ```
 - conf文件demo
 ```
-
+[program:scrapyd]
+command=scrapyd              ; the program (relative uses PATH, can take args)
+process_name=%(program_name)s ; process_name expr (default %(program_name)s)
+;directory=~                ; directory to cwd to before exec (def no cwd)
+autostart=true                ; start at supervisord start (default: true)
+startsecs=1                   ; # of secs prog must stay up to be running (def. 1)
+startretries=3                ; max # of serial start failures when starting (default 3)
+autorestart=True        ; when to restart if exited after running (def: unexpected)
+stopsignal=KILL               ; signal used to kill process (default TERM)
 
 ```
 
