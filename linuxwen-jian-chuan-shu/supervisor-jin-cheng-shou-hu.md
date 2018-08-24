@@ -6,7 +6,16 @@
 ```
 sudo yum install supervisor
 
+```
+
+## 启动
+```
 supervisord  # 启动supervisor服务
+
+$ supervisord -c /etc/supervisord.conf
+$ supervisorctl -c /etc/supervisord.conf status
+
+> mongodb       RUNNING   pid 2366, uptime 0:01:00
 ```
 
 ## 配置
@@ -14,10 +23,12 @@ supervisord  # 启动supervisor服务
 > 每个进程设一个配置文件, 以conf结尾
 > 内容:
 ```
-[program:app]  # 进程名
-command=/usr/bin/gunicorn -w 1 wsgiapp:application  # 进程命令 
-directory=/srv/www  # 进程当前目录
-user=ec2-user  # 进程运行的用户名
+[program:mongodb]
+command =  /usr/bin/mongod -port 27017 --dbpath /vr/lib/mongo
+autostart = true     ; 在 supervisord 启动的时候也自动启动
+startsecs = 5        ; 启动 5 秒后没有异常退出，就当作已经正常启动了
+autorestart = true   ; 程序异常退出后自动重启
+startretries = 3     ; 启动失败自动重试次数，默认是 3
 ```
 
 - 重启supervisor
