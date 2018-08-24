@@ -1,10 +1,12 @@
-# scrapy组件
+# scrapy基本组件
+
+## scrapy体系流程图
 
 ![](/assets/2816666215-5a25a21f9f37d.png)
 
 ## spiders
 
-### 基本用法
+**基本用法**  
 作为爬虫的开始  
 - 开始:
 ```
@@ -13,10 +15,9 @@ scrapy genspider my_spider baidu.com
 - 需要实现start_request方法 或存在 start_urls
 - request和response中携带meta属性
 
-### 模拟表单请求的FormRequest
-
-
-### 异常请求的处理
+**其他** 
+- 模拟表单请求的FormRequest
+- 异常请求的处理
 
 ---
 
@@ -35,9 +36,9 @@ class RestaurantItem(scrapy.Item):
 ---
 ## item pipelines
 
-### 基本用法
+__基本用法__
 
-pipeline用来处理Item对象, 需要实现的方法:
+_pipeline用来处理Item对象_, 需要实现的方法:
 - process_item(self, item, spider)  **必须**
 - ```__init__```  **可选**
 - from_crawler(cls, crawler)  **可选**
@@ -88,7 +89,7 @@ class MongoPipeline(object):
 
 ```
 
-### 文件管道 和 图片管道
+__文件管道 和 图片管道__
 
 另外两个管道的优点:
 - 避免下载重复的文件
