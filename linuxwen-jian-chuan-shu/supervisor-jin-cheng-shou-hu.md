@@ -5,6 +5,24 @@ supervisor使用python编写的进程守护应用, 可以在进程意外中断�
 ## 安装
 ```
 sudo yum install supervisor
+# 或者
+sudo pip install supervisor
+```
+
+## 生成配置文件
+
+```
+sudo echo_supervisord_conf > /etc/supervisord.conf  
+# 如果提醒没有权限, 可以先echo_supervisord_conf 获取内容, 创建配置文件后复制进去
+
+# 修改conf文件的配置, supervisor将加载文件夹下的所有conf文件:
+[include]
+files = /etc/supervisor/conf.d/*.conf
+```
+- conf文件demo
+```
+
+
 ```
 
 ## 启动
@@ -54,6 +72,8 @@ autorestart = true   ; 程序异常退出后自动重启
 startretries = 3     ; 启动失败自动重试次数，默认是 3
 stopsignal= KILL
 ```
+
+>> 错误, 返回127是命令行错误
 
     
 ## web界面管理 可视化进程管理
