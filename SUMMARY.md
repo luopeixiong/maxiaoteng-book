@@ -19,6 +19,7 @@
   * [Gerapy](gerapy.md)
 * [REDHAT 配置](redhat-pei-zhi.md)
   * [AWS 知识](redhat-pei-zhi/aws-zhi-shi.md)
+  * [服务器备忘](redhat-pei-zhi/aws-zhi-shi/fu-wu-qi-bei-wang.md)
 * [logging模块](loggingmo-kuai.md)
 * [Redis](redis.md)
   * [安装](redis/an-zhuang.md)
