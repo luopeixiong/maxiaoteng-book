@@ -9,5 +9,5 @@ scrapy genspider -t basic first_spider xx.com
 
 scrapy list
 
-scrapy crawler first_spider  
+scrapy crawl first_spider  
 ```
