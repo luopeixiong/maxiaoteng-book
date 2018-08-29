@@ -12,7 +12,8 @@ __服务器部署__
 
 ## 安装
 ```
-sudo pip install scrapyd
+sudo python3 -m pip install scrapyd  # 必须指定scrapyd的python版本, 因为之后默认按这个版本运行爬虫
+sudo pip3 install scrapyd
 ```
 
 ## 配置
