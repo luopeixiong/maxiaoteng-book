@@ -16,6 +16,7 @@
   * [中间件](ji-ben-zu-jian/zhong-jian-jian.md)
   * [Scrapy优化](scrapyyou-hua.md)
   * [部署爬虫scrapyd](bu-shu-pa-chong-scrapyd.md)
+  * [Gerapy](gerapy.md)
 * [REDHAT 配置](redhat-pei-zhi.md)
   * [AWS 知识](redhat-pei-zhi/aws-zhi-shi.md)
 * [logging模块](loggingmo-kuai.md)
