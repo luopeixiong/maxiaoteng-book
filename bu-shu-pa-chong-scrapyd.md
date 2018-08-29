@@ -4,6 +4,8 @@
 - 开源方案 Scrapyd
 - Scrapy的付费方案: Scrapy Cloud
 
+scrapyd运行在服务器, 作为一个服务, 接收特定接口的包部署, 运行爬虫的每个服务器都需要
+
 # Scrapyd 的使用
 
 __服务器部署__
