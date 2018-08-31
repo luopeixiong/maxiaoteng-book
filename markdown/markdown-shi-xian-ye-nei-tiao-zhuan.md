@@ -29,13 +29,15 @@ ___
 
 ## 方法二: html 语法实现
 
+支持github和gitbook等.
+
 - **写法**:  
 ```
 定义锚点
-<div id="target">跳转回这里</a>
-![照片占位](http://placeimg.com/640/480/any)
-![照片占位](http://placeimg.com/640/480/any)
-定义跳转点
+<div id="target">跳转回这里</a>  
+![照片占位](http://placeimg.com/640/480/any)  
+![照片占位](http://placeimg.com/640/480/any)  
+定义跳转点  
 <a href="#target">点击这里跳转回去</a>
 ```
 
