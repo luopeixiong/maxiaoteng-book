@@ -1,7 +1,6 @@
 # Summary
 
 * [Introduction](README.md)
-* [First Chapter](chapter1.md)
 * [Git](git.md)
 * [linux常用知识](linuxwen-jian-chuan-shu.md)
   * [tar/split 解压缩操作](linuxwen-jian-chuan-shu/tar-linux-ming-ling.md)
@@ -27,7 +26,7 @@
 * [Mongodb](mongodb.md)
   * [安装](mongodb/an-zhuang.md)
   * [安全设置](pythonlian-jie-mongodb/robo-3t-lian-jie-mongodb.md)
-  * [MongoDB 和 pymongo 值的比较](mongodb/mongodb-he-pymongo/mongodb-he-pymongo-zhi-de-bi-jiao.md)
+  * [值的比较](mongodb/mongodb-he-pymongo/mongodb-he-pymongo-zhi-de-bi-jiao.md)
   * [MongoDB 和 pymongo](mongodb/mongodb-he-pymongo.md)
 * [BeautifulSoup](beautifulsoup.md)
 
