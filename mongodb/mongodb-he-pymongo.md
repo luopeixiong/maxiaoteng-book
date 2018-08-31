@@ -163,6 +163,16 @@ result.sort('name', -1)  # 降序排序
 
 ```
 
+**过滤显示**
+
+```
+filter = {
+    'id': 0,  # 0表示不显示, 1表示显示, 0和1只能存在一种
+    'url': 0,
+}
+result = collection.find({}, filter)
+```
+
 ### 4. 删除
 
 **删除一条**
