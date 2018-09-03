@@ -9,6 +9,7 @@
   * [rsync  传输同步文件](linuxwen-jian-chuan-shu/rsync-chuan-shu-tong-bu-wen-jian.md)
   * [chmod  修改文件权限](chmod-xiu-gai-wen-jian-quan-xian.md)
   * [supervisor 进程守护](linuxwen-jian-chuan-shu/supervisor-jin-cheng-shou-hu.md)
+  * [Crontab](linuxwen-jian-chuan-shu/crontab.md)
 * [Gitbook配置](gitbookpei-zhi.md)
 * [Scrapy](scrapy.md)
   * [Scrapy setting](scrapy-setting.md)
