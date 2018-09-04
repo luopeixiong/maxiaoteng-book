@@ -37,3 +37,7 @@
 ## 查看日志排除问题
 
 位置: ```/var/log/cron```
+
+## crontab设置scrapy脚本的定时任务
+
+编写shell脚本

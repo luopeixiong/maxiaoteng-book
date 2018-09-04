@@ -10,6 +10,7 @@
   * [chmod  修改文件权限](chmod-xiu-gai-wen-jian-quan-xian.md)
   * [supervisor 进程守护](linuxwen-jian-chuan-shu/supervisor-jin-cheng-shou-hu.md)
   * [Crontab](linuxwen-jian-chuan-shu/crontab.md)
+  * [shell command](linuxwen-jian-chuan-shu/shell-command.md)
 * [Gitbook配置](gitbookpei-zhi.md)
 * [Scrapy](scrapy.md)
   * [Scrapy setting](scrapy-setting.md)
