@@ -41,3 +41,18 @@
 ## crontab设置scrapy脚本的定时任务
 
 编写shell脚本
+
+```
+#!/bin/sh
+. ~/.bash_profile
+# 切换到scrpay命令下
+cd /home/ec2-user/crawler/mangoplate_scrapy/
+
+# 依次启动爬虫
+/usr/local/bin/scrapy list
+/usr/local/bin/scrapy crawl codetable
+/usr/local/bin/scrapy crawl mangoplate
+
+# 去重
+/usr/bin/python3 deduplicate.py
+```
