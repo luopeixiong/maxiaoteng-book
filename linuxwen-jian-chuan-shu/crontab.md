@@ -32,7 +32,7 @@
 
 ## 不发送电子邮件
 
-如果输出结果来自crontab, 那么cron守护进程会使用电子邮件发送给用户, 位置```/var/spool/mail/ec2-user```, 需要将命令重定向到 ```>dev/null```
+如果输出结果来自crontab, 那么cron守护进程会使用电子邮件发送给用户, 位置```/var/spool/mail/ec2-user```, 需要将命令重定向到 ```>dev/null 2>&1```
 
 ## 查看日志排除问题
 
