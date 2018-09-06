@@ -1,4 +1,11 @@
 # My Awesome Book
 
-This file file serves as your book's preface, a great place to describe your book's content and ideas.
 
+## 爬虫笔记待完善
+[ ] 打通scrapy_redis
+[ ] 网页解析添加 xpath, lxml, scrapy_selector
+> xpath
+> lxml
+> scrapy_selector
+
+[] git 自动同步代码 
