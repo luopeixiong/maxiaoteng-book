@@ -81,5 +81,9 @@ ssh -T git_url
     git config --global user.email maxiaoteng@yunfutech.com
     git config --global credential.helper store
 
+## git push 和 git pull 的默认设置
 
+```
+git push -u github master  # 将会修改设置默认的推送流
+```
 
