@@ -66,5 +66,21 @@ db.auth("username","password")
 
 ## 添加数据库用户
 
+```
+# mongo shell下
+use ifood
+db.createUser({user: "testdb1u1", pwd: "xyz123", roles: [{ role: "dbOwner", db: "testdb1" }]})
 
+###显示:
+Successfully added user: {
+	"user" : "yunfutech",
+	"roles" : [
+		{
+			"role" : "dbOwner",
+			"db" : "ifood"
+		}
+	]
+}
+
+```
 
