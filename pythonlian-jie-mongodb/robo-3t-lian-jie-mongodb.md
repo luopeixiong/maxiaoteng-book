@@ -68,8 +68,8 @@ db.auth("username","password")
 
 ```
 # mongo shell下
-use ifood
-db.createUser({user: "testdb1u1", pwd: "xyz123", roles: [{ role: "dbOwner", db: "testdb1" }]})
+> use ifood
+> db.createUser({user: "testdb1u1", pwd: "xyz123", roles: [{ role: "dbOwner", db: "testdb1" }]})
 
 ###显示:
 Successfully added user: {
