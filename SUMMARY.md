@@ -35,7 +35,8 @@
 * [BeautifulSoup](beautifulsoup.md)
 * [paramiko模块](paramikomo-kuai.md)
 * [selenium](selenium.md)
-  * [selenium安装和基本操作](selenium/seleniuman-zhuang-he-ji-ben-cao-zuo.md)
+  * [安装和基本操作](selenium/seleniuman-zhuang-he-ji-ben-cao-zuo.md)
+  * [页面交互](selenium/ye-mian-jiao-hu.md)
   * [selenium查找元素](selenium/seleniumcha-zhao-yuan-su.md)
 
 ## MarkDown
