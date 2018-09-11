@@ -1,8 +1,8 @@
-## 数据库 pymongo
+# 数据库 pymongo
 
 ### 连接
 
-- 默认连接  
+- **默认连接**  
 
 ```
 dbconfig = {
@@ -27,18 +27,28 @@ class Mongodb(object):
         self._client.close()
 ```
 
- - 用户名密码连接
+ - **用户名密码连接**
+ 
+> 方法1  
 
 ```
-
 client = pymongo.MongoClient(host, port)
 db = client.mydb
 db.authenticate(user, password)
 
 ```
-     
- - 密钥连接  
+> 方法2  
 
+```
+uri = "mongodb://{username}:{password}@{host}:{port}/{db_name}?authMechanism=MONGODB-CR".format(username=user_name,password=user_pwd,host=host,port=port,db_name=db_name)
+mongo_client = pymongo.MongoClient(uri)
+mongo_db = mongo_client[db_name]
+mongo_coll = mongo_db[coll_name]
+```
+     
+ - **密钥连接 **
+ 
+ 
 
 ### 查看数据库信息
 
@@ -50,7 +60,7 @@ db.collection_names(include_system_collections=False)
 ---
 
 
-## 集合操作
+# 集合操作
 
 ### 获取集合
 

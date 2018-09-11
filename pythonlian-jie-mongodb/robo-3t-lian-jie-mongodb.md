@@ -8,13 +8,7 @@ $ mongo  # 进入mongodb shell
 
 > use admin # 进入admin 数据库
 
-> db.createUser(
-     {
-       user:"maxiaoteng",
-       pwd:"******",
-       roles:[{role:"root",db:"admin"}]
-     }
-  )
+> db.createUser({user:"maxiaoteng",pwd:"******",roles:[{role:"root",db:"admin"}]})
   # admin是用户的身份验证数据库, 用户在当前数据库进行验证, 但也可以在其他数据库有角色
 
 > exit
@@ -37,7 +31,7 @@ $ mongo  # 进入mongodb shell
 sudo nano /etc/mongod.conf
 
 # 更改默认端口为27010
-
+port : 27010
 
 # 生效认证
 # 2.6 3.2 3.6 以上版本用法
