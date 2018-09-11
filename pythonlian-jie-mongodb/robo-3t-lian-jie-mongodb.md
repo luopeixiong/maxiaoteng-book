@@ -1,4 +1,5 @@
 # 安全设置
+对于mongodb的安全部署, 可以参考一篇文章: [安全部署MongoDB最佳实践](http://www.mongoing.com/archives/631)
 
 ## 创建管理员用户
 
@@ -34,6 +35,9 @@ $ mongo  # 进入mongodb shell
 
 ```
 sudo nano /etc/mongod.conf
+
+# 更改默认端口为27010
+
 
 # 生效认证
 # 2.6 3.2 3.6 以上版本用法
@@ -87,4 +91,4 @@ Successfully added user: {
 ```
 
 ## pymongo连接
-
+见pymongo

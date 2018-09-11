@@ -31,7 +31,7 @@
   * [安装](mongodb/an-zhuang.md)
   * [安全设置](pythonlian-jie-mongodb/robo-3t-lian-jie-mongodb.md)
   * [值的比较](mongodb/mongodb-he-pymongo/mongodb-he-pymongo-zhi-de-bi-jiao.md)
-  * [MongoDB 和 pymongo](mongodb/mongodb-he-pymongo.md)
+  * [pymongo连接](mongodb/mongodb-he-pymongo.md)
 * [BeautifulSoup](beautifulsoup.md)
 * [paramiko模块](paramikomo-kuai.md)
 * [selenium](selenium.md)
