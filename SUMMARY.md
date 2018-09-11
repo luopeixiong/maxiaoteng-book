@@ -36,6 +36,7 @@
 * [paramiko模块](paramikomo-kuai.md)
 * [selenium](selenium.md)
   * [selenium安装和基本操作](selenium/seleniuman-zhuang-he-ji-ben-cao-zuo.md)
+  * [selenium查找元素](selenium/seleniumcha-zhao-yuan-su.md)
 
 ## MarkDown
 

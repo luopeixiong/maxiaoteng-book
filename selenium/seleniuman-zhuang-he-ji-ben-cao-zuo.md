@@ -42,3 +42,9 @@ def launch_driver():
     driver.get(url)
 ```
 
+- driver的一些属性
+
+```
+    driver.title  # 页面标题
+    driver.page_source  # 页面源代码
+```
