@@ -2,6 +2,8 @@
 
 ### 连接
 
+- 默认连接  
+
 ```
 dbconfig = {
     'host': MONGODB_SERVER,
@@ -24,6 +26,19 @@ class Mongodb(object):
     def __exit__(self):
         self._client.close()
 ```
+
+ - 用户名密码连接
+
+```
+
+client = pymongo.MongoClient(host, port)
+db = client.mydb
+db.authenticate(user, password)
+
+```
+     
+ - 密钥连接  
+
 
 ### 查看数据库信息
 
