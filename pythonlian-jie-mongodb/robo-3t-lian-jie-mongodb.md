@@ -66,6 +66,8 @@ db.auth("username","password")
 
 ## 添加数据库用户
 
+用户可以访问特定数据库
+
 ```
 # mongo shell下
 > use ifood
@@ -83,4 +85,5 @@ Successfully added user: {
 }
 
 ```
+
 
