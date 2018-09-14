@@ -53,7 +53,6 @@ show collections
 db.yourCollection.help()
 # 比如
 db.readme.help()
-
 ```
 
 - 显示当前所用的数据库
@@ -61,12 +60,10 @@ db.readme.help()
 > db
 ```
 
-- 其他操作...
+- 其他操作
 ```
 db.collection.find()
 db.collection.find().count
-...
-
 ```
 
 
