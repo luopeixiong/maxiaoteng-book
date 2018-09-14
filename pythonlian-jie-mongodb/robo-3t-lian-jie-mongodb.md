@@ -58,6 +58,11 @@ show dbs
 
 db.auth("username","password")
 # 返回1 说明登陆成功
+
+**注意: 登陆认证某个数据库时, 要先`use db`, 然后再执行auth**
+use admin
+db.auth("username","password")
+
 ```
 
 
