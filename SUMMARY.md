@@ -3,7 +3,6 @@
 ## 第一部分
 
 * [Introduction](README.md)
-* [Git](git.md)
 * [linux常用知识](linuxwen-jian-chuan-shu.md)
   * [tar/split 解压缩操作](linuxwen-jian-chuan-shu/tar-linux-ming-ling.md)
   * [rsync  传输同步文件](linuxwen-jian-chuan-shu/rsync-chuan-shu-tong-bu-wen-jian.md)
@@ -39,6 +38,8 @@
   * [安装和基本操作](selenium/seleniuman-zhuang-he-ji-ben-cao-zuo.md)
   * [页面交互](selenium/ye-mian-jiao-hu.md)
   * [selenium查找元素](selenium/seleniumcha-zhao-yuan-su.md)
+* [版本控制](ban-ben-kong-zhi.md)
+* [Git](git.md)
 
 ## MarkDown
 
