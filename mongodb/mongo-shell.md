@@ -14,7 +14,7 @@ mongo --port=27010  # 指定端口的数据库
 
 - 查看版本
 ```
-db.bersion()
+db.version()
 ```
 
 - 登陆
@@ -62,6 +62,13 @@ db.readme.help()
 ```
 
 - 其他操作...
+```
+db.collection.find()
+db.collection.find().count
+...
+
+```
+
 
 ## 退出
 
