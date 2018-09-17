@@ -68,14 +68,6 @@ from selenium.webdriver.common.by import By
 
 driver.find_element(By.XPATH, '//button[text()="Some text"]')
 driver.find_elements(By.XPATH, '//button')
-
-```
-
-## 用法距离
-
-```
-login_form = driver.find_element_by_id('loginForm')
-
 ```
 
 
