@@ -39,16 +39,17 @@
   * [页面交互](selenium/ye-mian-jiao-hu.md)
   * [selenium查找元素](selenium/seleniumcha-zhao-yuan-su.md)
 * [版本控制](ban-ben-kong-zhi.md)
-* [Git](git.md)
+  * [svn - git 基本操作](svn-git-ji-ben-cao-zuo.md)
+  * [Git其他操作](git.md)
 
 ## MarkDown
 
 * [基本语法](markdown/markdown-shi-xian-ye-nei-tiao-zhuan/ji-ben-yu-fa.md)
 * [Markdown 实现页内跳转](markdown/markdown-shi-xian-ye-nei-tiao-zhuan.md)
 
-## 第二部分
+## 开发环境配置 软件设置
 
-* [demo](demo.md)
+* [pycharm 设置](demo.md)
 * [第一章](diyizhang.md)
   * [第一节](diyizhang/diyijie.md)
 * [第二章](dierzhang.md)
