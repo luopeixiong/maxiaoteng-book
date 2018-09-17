@@ -30,6 +30,21 @@ for file in 'ls /etc'
 echo "a is ${a}"
 ```
 
+## 注释
+
+以#开头的行就是注释
+
+## 字符串
+
+单引号的变量和转义字符是无效的, 只会原样输出
+
+双引号可以有变量和转义字符, 比如:   
+```
+your_name='qinjx'
+str="Hello, I know your are \"$your_name\"! \n"
+```
+
+
 ## 环境变量
 
 使用export导入环境变量, 命令可以直接使用
