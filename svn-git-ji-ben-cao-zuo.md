@@ -132,20 +132,28 @@ git rm --cached file_name
 
 - 撤销工作区的修改, 还没有add到版本库
 
-git checkout XX.file
+```
+git checkout .  # 撤销全部更改
+git checkout XX.file  # 撤销特定文件
 
+# svn
+svn revert -r path_name  # 丢弃未提交的代码 
+
+```
 * 撤销暂存区的修改, add到了暂存区,还没有commit
 
+```
 git reset --hard
 git reset HEAD //撤销add的所有更改
 git reset HEAD XX.file //撤销XX.file的添加
-
+```
 * 撤销版本库里面的修改
 
+```
 git revert HEAD //撤销之前的commit
 git revert HEAD^ //撤销前前一次的commit
 git revert commit-id //撤销指定版本, 也会作为一次提交commit
-
+```
 **注意: git revert是恢复指定版本的修改, 作为一次新提交上传,版本会递增**
 
 

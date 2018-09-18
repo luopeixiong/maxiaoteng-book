@@ -16,6 +16,7 @@ python标准库: html.parser
 ## 获取 
 
 ### 1. 查找标签
+
 得到的是类: <class 'bs4.element.Tag'>的实例
 - soup.a  soup.li  soup.head  # 查到的第一个标签
 - soup.find("div", {"class": "cities-rests"})  # 查到指定条件的第一个标签
