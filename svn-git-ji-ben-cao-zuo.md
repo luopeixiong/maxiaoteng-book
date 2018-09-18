@@ -138,7 +138,7 @@ git checkout XX.file  # 撤销特定文件
 
 # svn
 svn revert -r path_name  # 丢弃未提交的代码 
-
+svn revert file_name
 ```
 * 撤销暂存区的修改, add到了暂存区,还没有commit
 
