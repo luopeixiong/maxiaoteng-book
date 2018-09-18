@@ -37,22 +37,7 @@
 
 **注意: git revert是恢复指定版本的修改, 作为一次新提交上传,版本会递增**
 
-## 4. remote 管理
 
-**1. 查看remote**
-
-    git remote -v
-
-**2. 增加新的remote**
-    
-    git remote add gitlab git_url
-    git push gitlab master
-
-**3. 修改remote的url**
-
-```
-git remote set-url gitlab git_url
-```
 
 ## 5. 验证修改后的ssh连接
 
