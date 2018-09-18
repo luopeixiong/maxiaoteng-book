@@ -38,6 +38,7 @@
   * [安装和基本操作](selenium/seleniuman-zhuang-he-ji-ben-cao-zuo.md)
   * [页面交互](selenium/ye-mian-jiao-hu.md)
   * [selenium查找元素](selenium/seleniumcha-zhao-yuan-su.md)
+  * [显式等待\(explicit wait\)和隐式等待 \(implicit wait\)](selenium/xian-shi-deng-5f8528-explicit-wait-he-yin-shi-deng-dai-implicit-wait.md)
 * [版本控制](ban-ben-kong-zhi.md)
   * [svn - git 基本操作](svn-git-ji-ben-cao-zuo.md)
 
