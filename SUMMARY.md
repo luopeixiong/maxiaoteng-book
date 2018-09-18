@@ -40,8 +40,6 @@
   * [selenium查找元素](selenium/seleniumcha-zhao-yuan-su.md)
 * [版本控制](ban-ben-kong-zhi.md)
   * [svn - git 基本操作](svn-git-ji-ben-cao-zuo.md)
-  * [Git其他操作](git.md)
-  * [git 命令](git-ming-ling.md)
 
 ## MarkDown
 
