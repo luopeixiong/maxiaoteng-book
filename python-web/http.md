@@ -40,7 +40,7 @@
 - 3XX  
 301 Moved Permanently 永久性重定向  
 302 Found 临时性重定向  
-304 Not Modified  
+304 Not Modified  使用本地资源(比如缓存)
 
 - 4XX
 400 Bad Request 请求的内容有问题  
@@ -56,6 +56,54 @@
 
 
 ## 请求头
+
+- **通用头部字段**  
+Cache 控制缓存的行为  
+Connection 逐条首部,连接的管理  
+Date 创建报文的日期  
+Pragma 报文指令  
+Trailer 报文末端的首部一览  
+Upgrade 升级为其他协议
+Via 代理服务器的相关信息  
+Warning  错误通知
+
+- **常用字段Cache-Control**  
+减少网络延迟和提升性能
+```
+# 禁止缓存  
+Cache-Control: no-store
+Cache-Control: no-store, no-cache, must-revalidate
+# 强制确认缓存
+Cache-Control: no-cache
+# 私有缓存和公共缓存
+Cache-Control: private
+Cache-Control: public
+# 缓存过期机制
+Cache-Control: max-age=31536000  # 表示资源能够被缓存的最大时间(s)
+# 缓存验证确认
+Cache-Control: must-revalidate
+```
+
+- **常用字段Connection**  
+可以保持连接, 减少关闭网络连接的开销
+```
+Connection: keep-alive
+Connection: close
+```
+
+- **常用字段Via**  
+可以保持连接, 减少关闭网络连接的开销
+```
+Connection: keep-alive
+Connection: close
+```
+
+
+
+
+
+
+
 
 
 ## Cookie/Session
