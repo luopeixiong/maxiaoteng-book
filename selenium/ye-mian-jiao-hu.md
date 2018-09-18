@@ -6,13 +6,19 @@
 
 - 模拟按键 send_keys()
 ```
-    element.send_keys('some text', keys.ARROW_DOWN)  # 发送内容, 模拟按键
+element.send_keys('some text', keys.ARROW_DOWN)  # 发送内容, 模拟按键
 ```
 
 - 清理`input`或`textarea`的内容
 ```
-    element.clear()    
+element.clear()    
 ```
+
+- 点击
+```
+element.click()
+```
+
 
 ## 填写表格
 

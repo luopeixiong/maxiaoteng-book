@@ -42,6 +42,8 @@
 * [版本控制](ban-ben-kong-zhi.md)
   * [svn - git 基本操作](svn-git-ji-ben-cao-zuo.md)
 
+## Python基础
+
 ## MarkDown
 
 * [基本语法](markdown/markdown-shi-xian-ye-nei-tiao-zhuan/ji-ben-yu-fa.md)
