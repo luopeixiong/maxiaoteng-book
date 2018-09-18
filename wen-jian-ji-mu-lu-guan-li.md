@@ -84,6 +84,7 @@ tail -f file_name
 
 ## 改变文件和目录权限
 - chmod 改变文件读写执行属性
+
 ```
 chmod a+x myscript
 
@@ -110,6 +111,7 @@ if ls /etc; then echo suss; else echo fail; fi
 ```
 
 重定向
+
 ```
 ls /etc > list 2> &1  # 将标准输出和标准错误输出重定向到同一文件
 
@@ -119,7 +121,8 @@ ls /etc &> list
 echo aa >> a.txt
 ```
 
-清空文件:
+清空文件:  
+
 ```
 : > a.txt
 ```
