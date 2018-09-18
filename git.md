@@ -25,6 +25,7 @@
 
 * 撤销暂存区的修改, add到了暂存区,还没有commit
 
+    git reset --hard
     git reset HEAD           //撤销add的所有更改
     git reset HEAD  XX.file        //撤销XX.file的添加
 

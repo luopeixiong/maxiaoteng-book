@@ -2,7 +2,13 @@
 
 ## 功能
 
-- 检出代码到本地
+- **初始化仓库**
+
+```
+git init
+```
+
+- **检出代码到本地**
 
 ```
 # git
@@ -12,7 +18,7 @@ git clone git_url
 svn checkout svn_url
 ```
 
-- 将文件添加到版本库
+- **将文件添加到版本库**
 
 ```
 # git
@@ -23,7 +29,7 @@ git add file_name  # 添加指定文件到版本库
 svn add new_file
 ```
 
-- 提交更改
+- **提交更改**
 
 ```
 # git
@@ -35,7 +41,13 @@ git push gitlab master  # 推送代码到指定的线上仓库
 svn commit -m '更改说明'  # 提交更改到版本库, 并推送到线上
 ```
 
-- 更新本地代码
+- **重置暂存区**
+
+```
+git reset --hard
+```
+
+- **更新本地代码**
 
 ```
 # git
@@ -46,7 +58,7 @@ svn update
 svn update -r m svn_path  # 更新指定版本的代码
 ```
 
-- 查看当前状态
+- **查看当前状态**
 
 ```
 # git
@@ -56,7 +68,7 @@ git status
 svn status
 ```
 
-- 比较工作区和代码库的差异
+- **比较工作区和代码库的差异**
 
 ```
 # git
