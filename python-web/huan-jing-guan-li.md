@@ -57,6 +57,7 @@ source venv/bin/activate  # 生效一个虚拟环境
 1. 维护更新不及时
 2. 积累issue太多,解决不及时
 
+官网下载安装即可  
 
 
 ## 使用vim
