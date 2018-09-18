@@ -153,20 +153,27 @@ git revert commit-id //撤销指定版本, 也会作为一次提交commit
 
 - **git config --list 查看配置**
 
-- 全局修改，建议将最常用的账号配置到globle中
+- **全局修改，建议将最常用的账号配置到globle中**
 
+```
 git config --globle user.name xxx
 git config --globle user.email xxx@xxx.xxx
+```
+- **当前项目**
 
-- 当前项目
-
+```
 git config user.name xxx
 git config user.email xxx@xxx.xxx
+```
 
 ## 解决每次git pull/push都要输入密码的问题
 
-git config --global credential.helper store
+    git config --global credential.helper store
+
 **基本每次都要配置如下:**
+
+```
 git config --global user.name maxiaoteng
 git config --global user.email maxiaoteng@yunfutech.com
 git config --global credential.helper store
+```
