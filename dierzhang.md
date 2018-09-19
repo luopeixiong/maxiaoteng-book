@@ -25,10 +25,10 @@
 安装目录: `C:\Program Files (x86)\vagrant`
   
 2. 安装vagrant box
- 在官网上搜索合适的box, 我选择了官方的[centos/7](https://app.vagrantup.com/centos/boxes/7)  
- cd到要创建虚拟机的位置(我的位于: ~/vagrant/centos7)  
- 命令行下: ```vagrant init centos/7  # 下载vagrant配置文件```  
- 启动: ```vagrant up  # 将会下载镜像, 配置文件```
+在官网上搜索合适的box, 我选择了官方的[centos/7](https://app.vagrantup.com/centos/boxes/7)  
+cd到要创建虚拟机的位置(我的位于: ~/vagrant/centos7)  
+命令行下: ```vagrant init centos/7  # 下载vagrant配置文件```  
+启动: ```vagrant up  # 将会下载镜像, 配置文件```
    
 
 
