@@ -44,6 +44,15 @@ vagrant up --provide hyperv  # 默认virtualbox
 所以docker需要开启hyperv
 3. 
 
+## [虚拟机的一个解释](https://superuser.com/questions/1208850/why-vitualbox-or-vmware-can-not-run-with-hyper-v-enabled-windows-10)
+hypervisor虚拟层
+
+VirtualBox and VMware Workstation (or VMware Player) 被称为虚拟管理程序2级. Hyper-V or VMware ESXi 是虚拟管理程序1级. 虚拟二级是运行在一个OS中的应用, 而虚拟1级就是这个系统. 
+
+当windows10开启了hyperv, 就变成了一台虚拟机.
+那么为什么VirtualBox和VMware不能运行在Hyper-V虚拟机里面呢,因为作为一个VM，Intel VT-X指令不再从你的虚拟机中访问，只有主机才能拥有它.
+
+
 
 
 
