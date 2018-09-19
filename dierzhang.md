@@ -100,6 +100,11 @@ vagrant halt
 vagrant destroy
 ```
 
+## 虚拟机ssh连接
+
+- 启动时会显示虚拟机的ip地址
+- 默认是密钥登陆, 默认位置: `C:\Users\jizhu\vagrant\centos7\.vagrant\machines\default\hyperv\private_key`
+
 ## 不推荐的自动创建虚拟机
 - cd到要创建虚拟机的位置(我的位于: ~/vagrant/centos7)  
 命令行下: 
@@ -116,6 +121,7 @@ vagrant up  # 将会下载镜像, 配置文件
 vagrant up --provide hyperv  # 默认virtualbox
 # 会自动配置好
 ```
+
 
 
 
