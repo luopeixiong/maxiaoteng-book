@@ -21,7 +21,8 @@
 ## 安装并开始
 
 1. 软件安装
-官网下载, 正常安装即可
+官网下载, 正常安装即可  
+安装目录: `C:\Program Files (x86)\vagrant`
   
 2. 安装vagrant box
  在官网上搜索合适的box, 我选择了官方的[centos/7](https://app.vagrantup.com/centos/boxes/7)  
