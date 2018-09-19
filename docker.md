@@ -25,18 +25,22 @@
 ## 基本操作  
 
 - 查看docker版本  
-```docker --version```  
-
+```
+docker --version
+```
+  
 - 运行实例hello-world  
 ```
-# 自动下载image并运行, 展示一个基本工作流程
-docker run hello-world  
+# 自动下载image并运行, 展示一个基本工作流程  
+docker run hello-world   
 ```
 
 - 查看本地有哪些镜像  
-```docker image ls```
+```
+docker image ls
+```
 
-- 查看本地有哪些容器  
+- 查看本地有哪些容器   
 ```
 # 容器对应本地针对镜像运行起来的实例
 docker container ls  # 只列出正在运行的
@@ -46,9 +50,9 @@ docker container ls --all  # 列出所有, 包括运行结束的
 - 搜索docker镜像  
 ```docker search ubuntu```
 
-# 下载需要的docker镜像
+- 下载需要的docker镜像  
+```
 docker pull ubuntu:rolling
-# The centos:`latest tag` is always the most recent version currently available.
+# The centos: **latest** tag is always the most recent version currently available.
 docker pull centos:latest
-
 ```
