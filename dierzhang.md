@@ -29,8 +29,20 @@
 cd到要创建虚拟机的位置(我的位于: ~/vagrant/centos7)  
 命令行下: ```vagrant init centos/7  # 下载vagrant配置文件```  
 启动: ```vagrant up  # 将会下载镜像, 配置文件```
+
+设置vagrant启动时,虚拟机的类型: 
+```
+vagrant up --provide hyperv
+```
    
 
+## 冲突
+
+1. hyper-v是windows自带的虚拟化技术，hypver-v管理器是它的控制程序，可以对hyper-v进行设置和操作。你可以把hyper-v和hyper-v管理器理解成windows自带的virtualbox
+
+2. docker确实是在MobyLinuxVM的hyper-v虚拟机中运行的
+所以docker需要开启hyperv
+3. 
 
 
 
