@@ -20,25 +20,102 @@
 
 ## 安装并开始
 
-1. 软件安装
+软件安装
 官网下载, 正常安装即可  
 安装目录: `C:\Program Files (x86)\vagrant`
   
-2. 安装vagrant box
-在官网上搜索合适的box, 我选择了官方的[centos/7](https://app.vagrantup.com/centos/boxes/7)  
-cd到要创建虚拟机的位置(我的位于: ~/vagrant/centos7)  
-命令行下: ```vagrant init centos/7  # 下载vagrant配置文件```  
-启动: ```vagrant up  # 将会下载镜像, 配置文件```
 
+## vagrant box管理
+
+- 选择box  
+ - 选择网站: https://app.vagrantup.com/boxes/search
+ - 在官网上搜索合适的box, 我选择了官方的[centos/7](https://app.vagrantup.com/centos/boxes/7)  
+
+
+- 列出box
+```
+vagrant box list
+```
+
+- 新增box
+```
+vagrant box add box_name # 系统将会自动搜索并拉取下来 
+vagrant box add name box_path  # 添加本地的box
+```
+
+- 删除box
+```
+vagrant box rm box_name
+```
+注意: 创建虚拟机时, vagrant会复制一份到特定目录, 删除box不会影响虚拟机
+
+
+**手动下载box, 然后添加**
+1. 使用下面命令尝试下载, 可以得到box的url
+ ```
+vagrant up --provide hyperv  # 默认virtualbox
+```
+2. 下载之后放在任何文件夹下执行
+ ```
+ vagrant box add centos/7 box_path
+ # 执行完之后就可以删除原始box
+ ```
+
+## 创建虚拟机
+
+添加好box之后, 就能在本机基于box去创建虚拟机. 创建一个目录, 为项目目录
+- 初始化
+```
+vagrant init box-name  # box-name可以通过vagrant box list来查看
+```
+
+- 启动虚拟机
+```
+vagrant up
+```
+
+- 查看虚拟机状态
+```
+vagrant status
+```
+
+- 暂停虚拟机
+```
+vagrant suspend
+```
+
+- 恢复虚拟机
+```
+vagrant resume
+```
+
+- 彻底关闭虚拟机
+```
+vagrant halt
+```
+
+- 删除虚拟机
+```
+vagrant destroy
+```
+
+## 不推荐的自动创建虚拟机
+- cd到要创建虚拟机的位置(我的位于: ~/vagrant/centos7)  
+命令行下: 
+```
+vagrant init centos/7  # 下载vagrant配置文件
+```  
+- 启动: 
+```
+vagrant up  # 将会下载镜像, 配置文件
+```
+ 因为windows10安装docker必须开启Hyper-V, 所以虚拟机要以hyperv类型运行
 设置vagrant启动时,虚拟机的类型: 
 ```
 vagrant up --provide hyperv  # 默认virtualbox
+# 会自动配置好
 ```
-   
 
-## 冲突
-
-1. ，hypver-v管理器是它的控制程序，可以对hyper-v进行设置和操作。你可以把hyper-v和hyper-v管理器理解成windows自带的virtualbox
 
 
 
