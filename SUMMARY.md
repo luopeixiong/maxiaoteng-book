@@ -59,7 +59,7 @@
 ## 开发环境配置 软件设置
 
 * [pycharm 设置](demo.md)
+* [Vagrant](dierzhang.md)
 * [第一章](diyizhang.md)
   * [第一节](diyizhang/diyijie.md)
-* [第二章](dierzhang.md)
 
