@@ -99,3 +99,13 @@ docker attach container_name/container_id  # 重新登陆指定容器
 ```
 docker rm container_id/container_name  # 删除容器
 ```
+
+
+## 说明
+
+windows10安装了docker,要求启用hyper-v来运行运行docker的虚拟机, 所以需要重启
+
+启用关闭Hyper-V的方法:
+- 管理员身份打开PowerShell
+- bcdedit  # 查看Hyper-V是否启用
+- bcdedit /set hypervisorlaunchtype auto  # 设置为启动
