@@ -47,7 +47,7 @@ vagrant box add name box_path  # 添加本地的box
 ```
 vagrant box rm box_name
 ```
-注意: 创建虚拟机时, vagrant会复制一份到特定目录, 删除box不会影响虚拟机
+注意: 创建虚拟机时, vagrant会复制并解压一份到特定目录(C:\Users\jizhu\.vagrant.d\boxes\centos-VAGRANTSLASH-7\0\hyperv), 删除box不会影响虚拟机
 
 
 **手动下载box, 然后添加**
@@ -71,7 +71,8 @@ vagrant init box-name  # box-name可以通过vagrant box list来查看
 
 - 启动虚拟机
 ```
-vagrant up
+vagrant up  # 默认virtualbox
+vagrant up --provide hyperv  # 指定hyperv类型
 ```
 
 - 查看虚拟机状态
