@@ -32,7 +32,7 @@ cd到要创建虚拟机的位置(我的位于: ~/vagrant/centos7)
 
 设置vagrant启动时,虚拟机的类型: 
 ```
-vagrant up --provide hyperv
+vagrant up --provide hyperv  # 默认virtualbox
 ```
    
 
