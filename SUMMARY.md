@@ -49,6 +49,7 @@
 ## Python Web
 
 * [Http](python-web/http.md)
+* [Ajax](python-web/http/ajax.md)
 * [环境管理](python-web/huan-jing-guan-li.md)
 
 ## MarkDown
