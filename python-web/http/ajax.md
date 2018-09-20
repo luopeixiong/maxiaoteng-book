@@ -13,7 +13,7 @@ Asynchronous JavaScript + XML
 
 ## Ajax的实现
 
-只做局部更新
+**只做局部更新**
 
 一个demo
 
