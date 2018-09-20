@@ -82,9 +82,10 @@ print(p)  # <_sre.SRE_Pattern object at 0xb76e1a70>
 > 如果没有匹配, march和search返回None, 成功的话,返回MatchObject实例  
 
 - 取回结果   
-**MatchObject**有几个方法:  
-group() 返回被RE匹配的字符串  
-start() 返回匹配开始的位置  
-end()  返回匹配结束的位置  
-span()  安徽一个元组,包含匹配(开始,结束)的位置    
+**MatchObject** 有几个方法:
+
+ - group() 返回被RE匹配的字符串  
+ - start() 返回匹配开始的位置  
+ - end()  返回匹配结束的位置  
+ - span()  返回一个元组,包含匹配(开始,结束)的位置    
 
