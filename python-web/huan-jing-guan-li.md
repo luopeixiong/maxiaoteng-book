@@ -31,6 +31,19 @@ source venv/bin/activate  # 生效一个虚拟环境
 
 ## 学习Emacs
 
+- 安装
+
+- 两种模式
+ - GUI模式
+ ```
+ emacs  # 默认启动GUI
+ emacd -nw FILE  # 终端中启动
+ ```
+ - Daemon模式
+
+- 学习lisp
+
+
 ## Pycharm安装和使用
 
 ## 使用IPython

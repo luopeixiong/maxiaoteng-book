@@ -46,11 +46,15 @@
 
 ## Python基础
 
+* [正则表达式](pythonji-chu/zheng-ze-biao-da-shi.md)
+
 ## Python Web
 
-* [Http](python-web/http.md)
+* [HTTP](python-web/http.md)
 * [Ajax](python-web/http/ajax.md)
+* [Proxy 代理](python-web/proxy-dai-li.md)
 * [环境管理](python-web/huan-jing-guan-li.md)
+* [WEB应用安全](python-web/webying-yong-an-quan.md)
 
 ## MarkDown
 

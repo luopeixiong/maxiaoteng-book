@@ -18,4 +18,4 @@
 
 > ` File -> Other Setting -> Default Setting -> Editor -> File and Code Templates -> Includes -> File Header `
 
-- 
+- 快捷键设置
