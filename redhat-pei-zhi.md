@@ -3,12 +3,18 @@
 **Red Hat Enterprise Linux (RHEL) 7**
 
 
-## 1. 更新源
+## 1. yum说明
+Yum（全称为 Yellow dog Updater, Modified）是一个在Fedora和RedHat以及CentOS中的Shell前端软件包管理器。基于RPM包管理，能够从指定的服务器自动下载RPM包并且安装，可以自动处理依赖性关系，并且一次安装所有依赖的软件包，无须繁琐地一次次下载、安装
 
 - 安装并启用EPEL rpm软件包
 ELEP: Extra Packages for Enterprise Linux的简称，是为企业级Linux提供的一组高质量的额外软件包
 ```
 sudo yum install –y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+```
+
+- 安装软件包
+```
+sudo yum install -y python36  # -y为自动应答
 ```
 
 - 升级软件包
@@ -17,9 +23,15 @@ sudo yum check-update  # 检查更新
 sudo yum update  # 升级所有
 sudo yum update tomcat  # 升级特定软件包
 ```
-- 查看以安装软件
+
+- 查看已安装软件
 ```
 yum list installed
+```
+
+- 查看软件包的描述信息
+```
+yum info tomcat
 ```
 
 - 卸载软件包
@@ -34,7 +46,7 @@ sudo yum remove tomcat
 sudo yum list| grep python3
 ```
 
-## 安装python36
+## 安装python36 和 pip
 ```
 sudo yum install python36
 # 虽然3.4之后默认包含pip, 但我的版本太纯净没有pip

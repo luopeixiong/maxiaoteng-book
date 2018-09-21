@@ -9,6 +9,7 @@
 
 - virtualenv安装  
 虚拟环境的包是对真实环境包的一个复制  
+virtualenv默认有python可执行文件, 常用标准库等.
 ```
 sudo pip install virtualenv  # 安装virtualenv
 virtualenv venv  # 启动一个虚拟环境
