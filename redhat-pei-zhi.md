@@ -40,6 +40,8 @@ python3 is /usr/bin/python3
 
 ```
 $ sudo yum install python34-pip
+$ sudo pip install pip -U -q  # 静默安装, 升级
+$ pip --version
 $ sudo python3 -m pip install requests lxml bs4  //要想使用这种, 需要安装
 
 ```
