@@ -18,7 +18,7 @@ django-admin startproject mysite
 
 cd mysit
 
-# 可以指定应用访问的web和端口
+# 可以指定应用访问的web ip和端口
 python36 manage.py runserver 0:8000 
 
 
@@ -26,3 +26,10 @@ python36 manage.py runserver 0:8000
 开发服务器自动重载代码的修改, 但是文件的添加需要重启.
 
 django提供了自动生成一个app的目录结构的功能.
+
+## 创建一个app
+
+```
+python manage.py startapp polls
+# 将会创建出一个目录
+```
