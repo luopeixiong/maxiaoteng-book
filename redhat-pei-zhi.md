@@ -11,9 +11,11 @@ ELEP: Extra Packages for Enterprise Linux的简称，是为企业级Linux提供�
 sudo yum install –y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 ```
 
-- 更新yum源内容
+- 升级软件包
 ```
-sudo yum update
+sudo yum check-update  # 检查更新
+sudo yum update  # 升级所有
+sudo yum update tomcat  # 升级特定软件包
 ```
 - 查看以安装软件
 ```
@@ -31,6 +33,19 @@ sudo yum remove tomcat
 ```
 sudo yum list| grep python3
 ```
+
+## 安装python36
+```
+sudo yum install python36
+# 虽然3.4之后默认包含pip, 但我的版本太纯净没有pip
+python36 -m pip --version
+> /usr/bin/python36: No module named pip
+# 安装pip
+sudo wget https://bootstrap.pypa.io/get-pip.py
+sudo python3.6 get-pip.py
+
+```
+
 
 ### - python34   
 发现可以安装的最新版本是python36, 但是没有python36-pip, 不便于管理, 安装python34
