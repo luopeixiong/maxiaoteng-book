@@ -12,6 +12,10 @@
 virtualenv默认有python可执行文件, 常用标准库等.
 ```
 sudo pip install virtualenv  # 安装virtualenv
+
+# 创建一个project
+mkdir project
+cd project
 virtualenv venv  # 启动一个虚拟环境, 默认复制系统所有的第三方包
 virtualenv --no-site-packages venv  # 启动一个虚拟环境
 ,不包含任何第三方包
@@ -25,7 +29,7 @@ source venv/bin/activate  # 生效一个虚拟环境
 ```
 # 使用pip 管理包
 pip install requests  # 安装包
-pip list
+pip list  # 列出所有的第三方包
 pip freeze > requirement.txt  # 导出当前环境下的所有第三方包
 pip install -r requirement.txt  # 根据配置文件生成相同的环境
 ```
@@ -55,7 +59,6 @@ touch .env
 echo 'source /home/xx/venv/bin/activate' > .env
 cd
 cd test  # 就会自动激活虚拟环境
-
 
 ```
 
