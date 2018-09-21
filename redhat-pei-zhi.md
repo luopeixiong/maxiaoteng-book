@@ -3,12 +3,18 @@
 **Red Hat Enterprise Linux (RHEL) 7**
 
 
-## 1. 安装并启用EPEL rpm软件包
+## 1. 更新源
+
+- 安装并启用EPEL rpm软件包
 ELEP: Extra Packages for Enterprise Linux的简称，是为企业级Linux提供的一组高质量的额外软件包
 ```
 sudo yum install –y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 ```
 
+- 更新yum源内容
+```
+sudo yum update
+```
 
 ## 2. 基本软件
 
