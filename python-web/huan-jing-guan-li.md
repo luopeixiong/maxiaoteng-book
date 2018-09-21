@@ -6,13 +6,9 @@
 使用系统本身自带的包管理器(yum, apt-get)      
 通过源码安装     
 
-- pip 安装
-```
-sudo yum install python-pip -yq
-sudo pip install pip -U -q  # -q表示静默安装  
-pip --version  # 查看版本
-```
-- virtualenv安装    
+
+- virtualenv安装  
+虚拟环境的包是对真实环境包的一个复制  
 ```
 sudo pip install virtualenv  # 安装virtualenv
 virtualenv venv  # 启动一个虚拟环境

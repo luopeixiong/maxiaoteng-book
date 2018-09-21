@@ -15,6 +15,15 @@ sudo yum install –y https://dl.fedoraproject.org/pub/epel/epel-release-latest-
 ```
 sudo yum update
 ```
+- 查看以安装软件
+```
+yum list installed
+```
+
+- 卸载软件包
+```
+sudo yum remove tomcat
+```
 
 ## 2. 基本软件
 
@@ -52,4 +61,3 @@ $ sudo yum install python36-setuptools
 $ sudo easy_install-3.6 pip
 $ sudo pip3 install requests lxml bs4
 ```
-
