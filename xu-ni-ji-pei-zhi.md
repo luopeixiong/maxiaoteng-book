@@ -9,3 +9,5 @@ centos7
 - python36 
 - pip 
 - virtualenv
+- nano
+- git
