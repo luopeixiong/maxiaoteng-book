@@ -1,5 +1,5 @@
 
-## 包管理和虚拟环境
+# 包管理和虚拟环境
 
 - 包安装方法    
 通过Python社区开发的pip, easy_install等工具   
@@ -7,7 +7,7 @@
 通过源码安装     
 
 
-- virtualenv安装  
+## virtualenv安装  
 虚拟环境的包是对真实环境包的一个复制  
 virtualenv默认有python可执行文件, 常用标准库等.
 ```
@@ -19,8 +19,33 @@ source venv/bin/activate  # 生效一个虚拟环境
 (venv)>deactivate  # 退出虚拟环境
 ```
 
-- 使用pipenv管理一个项目
+## pipenv
+是python项目的依赖管理器
+- 根据pipfile自动寻找项目根目录
+- 如果不存在,自动生成pipfile和pipfile.lock
+- 自动在项目目录的.venv目录创建虚拟环境. 
+- 自动管理pipfile新安装和删除的包
+- 自动更新pip
 
+使用pipenv代替pip安装包
+
+## pipenv 和autoenv的组合
+
+autoenv可以在切换文件目录的同时, 自动完成激活虚拟环境
+**用法**
+```
+sudo pip install autoenv
+source /usr/local/bin/activate.sh
+
+mkdir test
+cd test
+touch .env
+echo 'source /home/xx/venv/bin/activate' > .env
+cd
+cd test  # 就会自动激活虚拟环境
+
+
+```
 
 
 
