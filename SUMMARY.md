@@ -55,7 +55,7 @@
 * [Proxy 代理](python-web/proxy-dai-li.md)
 * [环境管理](python-web/huan-jing-guan-li.md)
 * [Django](python-web/django.md)
-  * Django入门
+  * [Django入门](python-web/django/djangoru-men.md)
 * [WEB应用安全](python-web/webying-yong-an-quan.md)
 
 ## MarkDown
