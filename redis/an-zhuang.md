@@ -34,13 +34,18 @@ $ sudo cp redis.conf /etc/redis/6379.conf
 ```
 $ sudo nano /etc/redis/6379.conf
 
-    bind 127.0.0.1  # 绑定本地ip                           
+    bind 127.0.0.1  # 绑定本地ip, 要想公网访问,注释掉
+    requirepass xxx  # 添加链接密码, 在允许公网访问之前, 必须设置密码
+    protected-mode  no  # 禁用保护模式, 这个是在无密码时禁止公网访问使用的                           
     daemonize yes  # 后台运行                             
     logfile "/var/log/redis_6379.log"             
     dir /var/redis/6379 
+    
 ```
 
-## 下载init脚本
+## 使用service来管理redis-server
+
+1. 下载init脚本
 ```
 sudo wget https://raw.githubusercontent.com/saxenap/install-redis-amazon-linux-centos/master/redis-server
 sudo mv redis-server /etc/init.d
@@ -48,20 +53,20 @@ sudo chmod 755 /etc/init.d/redis-server
 ```
 **/etc/init/ 和 /etc/init.d 两个文件里的脚本, 是可以使用service mmm start 来启动某项服务的**
 
-## 修改redis_server的配置文件
+2.  修改redis_server的配置文件
 ```
 sudo nano /etc/init.d/redis-server
     # 编辑文件以匹配配置文件
     REDIS_CONF_FILE =“/etc/redis/6379.conf”
 ```
 
-## 设置redis服务器自启动
+3. 设置redis服务器自启动
 ```
 sudo chkconfig --add redis-server 
 sudo chkconfig --level 345 redis-server on 
 sudo service redis-server start
-
 ```
+
 ## 打开系统配置文件, 修复redis内存低的问题
 ```
 sudo nano /etc/sysctl.conf
