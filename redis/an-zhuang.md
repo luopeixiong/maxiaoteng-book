@@ -25,14 +25,14 @@ $ sudo make test
 # 设置软连接和配置文件
 $ sudo mkdir -p /etc/redis /var/lib/redis /var/redis/6379
 $ sudo cp src/redis-server src/redis-cli /usr/local/bin
-$ sudo cp redis.conf /etc/redis/6379.conf
+$ sudo cp redis.conf /etc/redis/redis.conf
 
 ```
 
 ## 配置Redis
 打开conf文件
 ```
-$ sudo nano /etc/redis/6379.conf
+$ sudo nano /etc/redis/redis.conf
 
     bind 127.0.0.1  # 绑定本地ip, 要想公网访问,注释掉
     requirepass xxx  # 添加链接密码, 在允许公网访问之前, 必须设置密码
