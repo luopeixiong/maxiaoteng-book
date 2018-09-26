@@ -81,3 +81,8 @@ redis-cli ping
     # 响应为 PONG
 ```
 
+## 可视化RedisDesktopManager
+使用ssh连接
+
+
+

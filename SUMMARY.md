@@ -27,7 +27,7 @@
 * [logging模块](loggingmo-kuai.md)
 * [Redis](redis.md)
   * [安装](redis/an-zhuang.md)
-  * [常用命令](redis/chang-yong-ming-ling.md)
+  * [Python连接Redis](redis/chang-yong-ming-ling.md)
 * [Mongodb](mongodb.md)
   * [安装](mongodb/an-zhuang.md)
   * [安全设置](pythonlian-jie-mongodb/robo-3t-lian-jie-mongodb.md)

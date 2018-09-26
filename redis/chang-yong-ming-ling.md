@@ -1,3 +1,4 @@
+## 客户端连接Redis
 1. redis-cli  # 启动redis客户端
 2. 连接到本地redis 服务器
 ```
@@ -12,3 +13,5 @@ redis 127.0.0.1:6379> PING
 
 PONG
 ```
+
+# Python连接Redis
