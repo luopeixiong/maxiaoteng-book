@@ -21,6 +21,7 @@
   * [Scrapy优化](scrapyyou-hua.md)
   * [部署爬虫scrapyd](bu-shu-pa-chong-scrapyd.md)
   * [Gerapy](gerapy.md)
+  * [Request and Response](request-and-response.md)
 * [REDHAT 配置](redhat-pei-zhi.md)
   * [AWS 知识](redhat-pei-zhi/aws-zhi-shi.md)
   * [服务器备忘](redhat-pei-zhi/aws-zhi-shi/fu-wu-qi-bei-wang.md)
