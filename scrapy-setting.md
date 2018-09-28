@@ -44,3 +44,17 @@ AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0  # 开启时的并发
 # Enable showing throttling stats for every response received:
 AUTOTHROTTLE_DEBUG = False  # debug模式, true将会展示每个接收到的response, 可以查看限速参数是如何调整的.
 ```
+
+## log配置
+```
+cur_dir = os.path.dirname(os.path.realpath(__file__))
+logFilename = os.path.join(cur_dir, '../../crawlerOutput/{}/log/roundmenu.log'.format(VERSION))
+logging.basicConfig(
+  level=logging.ERROR,  # 定义输出到文件的log级别，
+  format='%(asctime)s  %(filename)s : %(levelname)s  %(message)s',  # 定义输出log的格式
+  datefmt='%Y-%m-%d %A %H:%M:%S',  # 时间
+  filename=logFilename,  # log文件名
+  filemode='a')
+
+FEED_EXPORT_ENCODING = 'UTF-8'
+```
