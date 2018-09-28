@@ -22,7 +22,8 @@
  > ErrorType有HttpError, DNSLookupError,TimeoutError, TCPTimeOutError…
 
 - dont_filter(默认false, 过滤重复请求)
-## 字类FormRequest（发送post请求, 可选）
+
+## 子类FormRequest（发送post请求, 可选）
 - url
 - formdata
 iii. call_back
@@ -34,3 +35,8 @@ v. FromRequest.from_response(response, formdata, call_back)
 	formdata={'name'='xx', 'password'='xx'},
 	callback=self.after_login
 	)
+
+## 注意事项
+- get请求的querystring, 需要使用: ``` url + "?" + urllib.parse.urlencode(dict) ``` 来自动拼接
+
+
