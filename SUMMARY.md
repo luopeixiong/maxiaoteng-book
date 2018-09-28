@@ -48,6 +48,7 @@
 ## Python基础
 
 * [正则表达式](pythonji-chu/zheng-ze-biao-da-shi.md)
+* [os Model](pythonji-chu/os-model.md)
 
 ## Python Web
 
