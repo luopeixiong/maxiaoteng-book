@@ -37,6 +37,7 @@ v. FromRequest.from_response(response, formdata, call_back)
 	)
 
 ## 注意事项
+
 - get请求的querystring, 需要使用: ``` url + "?" + urllib.parse.urlencode(dict) ``` 来自动拼接
 
 
