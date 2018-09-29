@@ -88,6 +88,25 @@ do
 done
 ```
 
+## 并行运行多个命令
+
+& 
+```
+#!/bin/sh
+# 启动爬虫
+/usr/bin/python3 /home/ec2-user/crawler/baemin/baeminApp3.0.py 0 >/dev/null 2>&1 &
+/usr/bin/python3 /home/ec2-user/crawler/baemin/baeminApp3.0.py 1 >/dev/null 2>&1 &
+```
+**解释**:
+- 最后的 `&`符号可以使命令并行运行
+- `>`重定向符号
+- `/dev/null`  # 代表空设备文件
+- `2>`  # 代表stderr标准错误
+- `&1` # 中的&表示等同,就是2的输出等同于标准输出
+- `1`  # 表示系统标准输出  `>/dev/null`等同于`1>/dev/null`
+
+
+
 
 ## sh样本
 
