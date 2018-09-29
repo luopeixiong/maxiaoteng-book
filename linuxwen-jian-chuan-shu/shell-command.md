@@ -106,8 +106,6 @@ done
 - `1`  # 表示系统标准输出  `>/dev/null`等同于`1>/dev/null`
 
 
-
-
 ## sh样本
 
 ```
@@ -116,5 +114,13 @@ done
 cd /home/ec2-user/uber/crawler/python/zomato/
 # 启动爬虫
 /usr/bin/python3 zomato_apac.py
+```
+
+```
+#!/bin/sh
+# 启动爬虫
+/usr/bin/python3 /home/ec2-user/crawler/baemin/baeminApp3.0.py 0 >/dev/null 2>&1 &
+/usr/bin/python3 /home/ec2-user/crawler/baemin/baeminApp3.0.py 1 >/dev/null 2>&1 &
+
 ```
 
