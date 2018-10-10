@@ -37,6 +37,7 @@ $ sudo yum install docker-ce
 # 使用脚本安装
 $ curl -fsSL https://get.docker.com -o get-docker.sh
 $ sudo sh get-docker.sh
+$ sudo systemctl start docker  # 启动docker
 ```
 
 ## 基本操作  
@@ -126,3 +127,10 @@ windows10安装了docker,要求启用hyper-v来运行运行docker的虚拟机Mob
 - 管理员身份打开PowerShell
 - bcdedit  # 查看Hyper-V是否启用
 - bcdedit /set hypervisorlaunchtype auto  # 设置为启动
+
+## 其他
+
+docker容器中使用nano
+```
+apt install nano
+```
