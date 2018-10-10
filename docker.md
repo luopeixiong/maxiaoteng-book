@@ -28,6 +28,17 @@ docker pull下载后的文件位置: `C:\Users\Public\Documents\Hyper-V\Virtual 
 因此你打开hyper-v管理器，可以找到docker创建的虚拟机，点击左侧的虚拟机名称，然后再点击右边的移动选项，按照向导将虚拟机移动到其他目录即可。
 另外还可以在菜单栏点击:操作->Hyper-v设置，来调整你所有虚拟机的虚拟硬盘文件的默认存储位置
 
+- centos 安装docker
+```
+# 使用仓库安装
+$ sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+$ sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+$ sudo yum install docker-ce
+# 使用脚本安装
+$ curl -fsSL https://get.docker.com -o get-docker.sh
+$ sudo sh get-docker.sh
+```
+
 ## 基本操作  
 
 - 查看docker版本  
