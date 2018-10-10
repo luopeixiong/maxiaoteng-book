@@ -95,6 +95,11 @@ docker start 858fd7c6a9d5(container_id)  # 启动一个容器
 docker attach container_name/container_id  # 重新登陆指定容器
 ```
 
+- 退出容器
+```
+exit  # 即可退出
+```
+
 - 删除容器操作
 ```
 docker rm container_id/container_name  # 删除容器
