@@ -98,6 +98,7 @@ docker attach container_name/container_id  # 重新登陆指定容器
 - 退出容器
 ```
 exit  # 即可退出
+或使用 ctrl + D
 ```
 
 - 删除容器操作
