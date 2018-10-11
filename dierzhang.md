@@ -100,10 +100,24 @@ vagrant halt
 vagrant destroy
 ```
 
+- 打包虚拟机
+```
+vagrant package
+vagrant package --output xx.box  # 指定box的名称
+```
+
 ## 虚拟机ssh连接
 
 - 启动时会显示虚拟机的ip地址
 - 默认是密钥登陆, 默认位置: `C:\Users\jizhu\vagrant\centos7\.vagrant\machines\default\hyperv\private_key`
+
+## 虚拟机网络配置
+- 虚拟机默认NAT网络, 虚拟机通过宿主机上网
+- 配置公开路由, 可以由局域网内其他设备访问:
+```
+  config.vm.network "public_network", ip: "192.168.2.222"
+  # 其他设备便可通过22端口访问
+```
 
 ## 不推荐的自动创建虚拟机
 - cd到要创建虚拟机的位置(我的位于: ~/vagrant/centos7)  
