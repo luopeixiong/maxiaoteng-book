@@ -12,6 +12,7 @@
   * [Crontab](linuxwen-jian-chuan-shu/crontab.md)
   * [shell command](linuxwen-jian-chuan-shu/shell-command.md)
   * [文件及目录管理](wen-jian-ji-mu-lu-guan-li.md)
+  * [nano editor](nano-editor.md)
 * [Gitbook配置](gitbookpei-zhi.md)
 * [Scrapy](scrapy.md)
   * [Scrapy setting](scrapy-setting.md)
