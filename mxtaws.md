@@ -1,5 +1,5 @@
 - epel-release
 - python36 
 - python -m pip
-- nano
+- nano tmux
 - shadowsocks
