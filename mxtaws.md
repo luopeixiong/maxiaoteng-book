@@ -1,0 +1,5 @@
+- epel-release
+- python36 
+- python -m pip
+- nano
+- shadowsocks
