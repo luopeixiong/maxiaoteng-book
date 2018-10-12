@@ -50,6 +50,10 @@
 
 * [正则表达式](pythonji-chu/zheng-ze-biao-da-shi.md)
 * [os Model](pythonji-chu/os-model.md)
+* [数据结构](pythonji-chu/shu-ju-jie-gou.md)
+  * [列表 List](pythonji-chu/shu-ju-jie-gou/lie-biao-list.md)
+  * [集合 Set](pythonji-chu/shu-ju-jie-gou/ji-heset.md)
+  * [字典 Dict](pythonji-chu/shu-ju-jie-gou/zi-dian-dict.md)
 * [others](pythonji-chu/others.md)
 
 ## Python Web
