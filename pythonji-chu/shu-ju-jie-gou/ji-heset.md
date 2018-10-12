@@ -30,13 +30,15 @@ fs = frozenset('hello')
 # 执行更改操作将抛出异常
 ```
 
-# 转换
+## 转换
+-  list to set
 ```
-# list to set
 l = [1, 2, 3, 1]
 s = set(l)
 > {1, 2, 3}
-# set to list
+```
+- set to list
+```
 list({1, 2, 3})
 > [1, 2, 3]
 ```
