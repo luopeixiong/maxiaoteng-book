@@ -67,7 +67,7 @@ $ sudo yum install python34
 $ type -a python34    //type 命令查看命令的路径
 python34 is /usr/bin/python34
 $ sudo ln /usr/bin/python34 /usr/bin/python3    //建立软连接, 更便于访问
-$ type -a python3
+$ type -a python3    
 python3 is /usr/bin/python3
 
 ```
