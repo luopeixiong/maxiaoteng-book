@@ -68,6 +68,7 @@
 * Flask
   * 理解Context
 * [WEB服务器Nginx](python-web/webfu-wu-qi-nginx.md)
+* [Python应用服务器](python-web/pythonying-yong-fu-wu-qi.md)
 
 ## MarkDown
 
