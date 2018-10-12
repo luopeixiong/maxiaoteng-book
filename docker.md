@@ -31,13 +31,15 @@ docker pull下载后的文件位置: `C:\Users\Public\Documents\Hyper-V\Virtual 
 - centos 安装docker
 ```
 # 使用仓库安装
-$ sudo yum install -y yum-utils device-mapper-persistent-data lvm2
-$ sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-$ sudo yum install docker-ce
+sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+sudo yum install docker-ce
 # 使用脚本安装
-$ curl -fsSL https://get.docker.com -o get-docker.sh
-$ sudo sh get-docker.sh
-$ sudo systemctl start docker  # 启动docker
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+
+# 查看启动
+sudo systemctl start docker  # 启动docker
 ```
 
 ## 基本操作  

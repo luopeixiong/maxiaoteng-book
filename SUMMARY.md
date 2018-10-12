@@ -80,7 +80,5 @@
 * [pycharm 设置](demo.md)
 * [Vagrant](dierzhang.md)
 * [Docker](docker.md)
-* [第一章](diyizhang.md)
-  * [第一节](diyizhang/diyijie.md)
 * [虚拟机配置](xu-ni-ji-pei-zhi.md)
 
