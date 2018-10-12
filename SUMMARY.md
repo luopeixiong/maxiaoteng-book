@@ -67,6 +67,7 @@
 * [WEB应用安全](python-web/webying-yong-an-quan.md)
 * Flask
   * 理解Context
+* [WEB服务器Nginx](python-web/webfu-wu-qi-nginx.md)
 
 ## MarkDown
 
