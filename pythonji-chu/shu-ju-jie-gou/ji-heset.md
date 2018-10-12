@@ -34,5 +34,5 @@ s.discard(4)  # 不抛出异常
 ```
 fs = frozenset('hello')
 > frozenset({'h', 'e', 'l', 'o'})
-# 执行操作将抛出异常
+# 执行更改操作将抛出异常
 ```
