@@ -2,15 +2,8 @@
 
 特点: 无序不重复
 
-
+## 初始化
 ```
-# list to set
-l = [1, 2, 3, 1]
-s = set(l)
-> {1, 2, 3}
-# set to list
-list({1, 2, 3})
-> [1, 2, 3]
 # 初始化一个集合
 a = set()  # {}是空字典
 ```
@@ -35,4 +28,15 @@ s.discard(4)  # 不抛出异常
 fs = frozenset('hello')
 > frozenset({'h', 'e', 'l', 'o'})
 # 执行更改操作将抛出异常
+```
+
+# 转换
+```
+# list to set
+l = [1, 2, 3, 1]
+s = set(l)
+> {1, 2, 3}
+# set to list
+list({1, 2, 3})
+> [1, 2, 3]
 ```
