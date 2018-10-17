@@ -37,7 +37,6 @@ sudo yum install docker-ce
 # 使用脚本安装
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
-
 # 查看启动
 sudo systemctl start docker  # 启动docker
 ```
