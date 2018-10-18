@@ -49,7 +49,6 @@ vagrant box rm box_name
 ```
 注意: 创建虚拟机时, vagrant会复制并解压一份到特定目录(C:\Users\jizhu\.vagrant.d\boxes\centos-VAGRANTSLASH-7\0\hyperv), 删除box不会影响虚拟机
 
-
 **手动下载box, 然后添加**
 1. 使用下面命令尝试下载, 可以得到box的url
  ```
