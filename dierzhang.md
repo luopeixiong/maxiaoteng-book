@@ -112,13 +112,20 @@ vagrant package --output xx.box  # 指定box的名称
 
 ## 配置
 
-虚拟机网络配置
+- 虚拟机网络配置
 
-- 虚拟机默认NAT网络, 虚拟机通过宿主机上网
-- 配置公开路由, 可以由局域网内其他设备访问:
+ - 虚拟机默认NAT网络, 虚拟机通过宿主机上网
+ - 配置公开路由, 可以由局域网内其他设备访问:
 ```
   config.vm.network "public_network", ip: "192.168.2.222"
   # 其他设备便可通过22端口访问
+```
+- 内存和cpu配置
+```
+config.vm.provider "virtualbox" do |v|
+  v.memory = 1024
+  v.cpus = 2
+end
 ```
 
 ## 不推荐的自动创建虚拟机
