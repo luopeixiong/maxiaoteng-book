@@ -106,11 +106,14 @@ vagrant package --output xx.box  # 指定box的名称
 ```
 
 ## 虚拟机ssh连接
-
-- 启动时会显示虚拟机的ip地址
+1. 虚拟机网络配置  
+-- 启动时会显示虚拟机的ip地址
 - 默认是密钥登陆, 默认位置: `C:\Users\jizhu\vagrant\centos7\.vagrant\machines\default\hyperv\private_key`
 
-## 虚拟机网络配置
+## 配置
+
+虚拟机网络配置
+
 - 虚拟机默认NAT网络, 虚拟机通过宿主机上网
 - 配置公开路由, 可以由局域网内其他设备访问:
 ```
