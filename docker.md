@@ -122,6 +122,18 @@ ctrl + P + Q
 docker rm container_id/container_name  # 删除容器
 ```
 
+## 容器持久化与导出
+- 容器持久化
+```
+docker export contain_id > ./new_contain.tar
+```
+
+- 容器制作镜像, 镜像可以生成多个容器哦
+```
+docker commit contain_id ./new_image.tar
+```
+
+
 
 ## 说明
 
