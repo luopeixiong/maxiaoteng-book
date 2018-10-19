@@ -125,8 +125,12 @@ docker rm container_id/container_name  # 删除容器
 ## 容器持久化与导出
 - 容器持久化
 ```
+# 不保存历史的导入导出
 docker export contain_id > ./new_contain.tar
+# 保存历史的导入导出
+docker save contain_id > ./new_contain.tar
 ```
+
 
 - 容器制作镜像, 镜像可以生成多个容器哦
 ```
