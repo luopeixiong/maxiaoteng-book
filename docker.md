@@ -134,7 +134,8 @@ windows10安装了docker,要求启用hyper-v来运行运行docker的虚拟机Mob
 
 ## 其他
 
-docker容器中使用nano
+- docker容器中使用nano
 ```
 apt install nano
 ```
+
