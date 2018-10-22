@@ -83,7 +83,8 @@ docker rmi image_name -f # 强制删除映像
 
 - 启动使用  
 ```
-docker run -it centos  # 即可进入虚拟机
+docker run -it centos  # 即可进入虚拟机(centos为镜像名)
+# 可以添加-p参数实现端口转发
 cat /etc/issue
 uname 
 uname -a
