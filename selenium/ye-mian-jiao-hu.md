@@ -49,7 +49,8 @@ element.submit()
 
 ## 一些js脚本
 - 执行js脚本的方法
-``` driver.execute_script("script.js")
+``` 
+driver.execute_script("script.js")
 ```
 
 - 比如: 
