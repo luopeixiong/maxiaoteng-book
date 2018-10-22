@@ -128,6 +128,10 @@ docker rm container_id/container_name  # 删除容器
 ```
 # 不保存历史的导入导出
 docker export contain_id > ./new_contain.tar
+```
+
+
+```
 # 保存历史的导入导出
 docker save contain_id > ./new_contain.tar
 ```
