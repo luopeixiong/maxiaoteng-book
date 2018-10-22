@@ -51,6 +51,7 @@ element.submit()
 - 执行js脚本的方法
 ``` 
 driver.execute_script("script.js")
+driver.execute_script("arguments[0].value = '你猜一下';", search_button)  #带参数
 ```
 
 - 比如: 
