@@ -45,3 +45,8 @@ cat baike.tar.gz.* | tar -xzvf   // 一步解决
 ls *.tar.gz | xargs -n1 tar xzvf
 # tar命令支持批量解压, 如 tar *, 所以要用脚本
 ```
+
+## gzip 与 tar
+```
+# .tar文件
+```
