@@ -62,3 +62,10 @@ driver.execute_script("$('#menuContent').remove()")
 # 下拉到底部
 driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 ```
+
+## 判断是否可见, 最好用attribute判断, 而不是is_displayed()
+```
+if element.get_attribute('style') == 'display: none;':
+    print('那么该元素在页面上看不到')
+result = element.is_displayed()
+```
