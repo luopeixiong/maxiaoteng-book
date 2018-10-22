@@ -130,6 +130,11 @@ docker export contain_id > ./new_contain.tar
 # 保存历史的导入导出
 docker save contain_id > ./new_contain.tar
 ```
+- 容器的导入
+```
+docker import dtp_container.tar dtp  # 容器的名称将是dtp
+```
+
 
 
 - 容器制作镜像, 镜像可以生成多个容器哦
