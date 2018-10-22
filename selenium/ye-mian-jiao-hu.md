@@ -65,7 +65,9 @@ driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
 ## 判断是否可见, 最好用attribute判断, 而不是is_displayed()
 ```
+# 习惯做法
 if element.get_attribute('style') == 'display: none;':
     print('那么该元素在页面上看不到')
+# 之前的做法
 result = element.is_displayed()
 ```
