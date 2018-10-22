@@ -142,8 +142,9 @@ docker import dtp_container.tar dtp  # 容器的名称将是dtp
 
 
 
-- 容器制作镜像, 镜像可以生成多个容器哦
+- 容器制作镜像
 ```
+# 根据容器的改变生成一个新的镜像
 docker commit contain_id ./new_image.tar
 ```
 
