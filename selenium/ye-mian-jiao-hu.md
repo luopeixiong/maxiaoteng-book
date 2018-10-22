@@ -64,6 +64,13 @@ driver.execute_script("$('#menuContent').remove()")
 driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 ```
 
+- 修改element的属性, 一般使用js就可以
+```
+new_class_name = 'new_class'
+driver.execute_script("$('.ratingcontent').class=argument[0]", new_class_name)
+driver.execute_script("$('.ratingcontent').class='new_class'")
+```
+
 ## 判断是否可见, 最好用attribute判断, 而不是is_displayed()
 ```
 # 习惯做法
