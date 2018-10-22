@@ -46,3 +46,18 @@ element.click()
 element.submit()
 
 ```
+
+## 一些js脚本
+- 执行js脚本的方法
+``` driver.execute_script("script.js")
+```
+
+- 比如: 
+```
+# 移除某个标签class的hide部分
+driver.execute_script("$('.button.load-more.hide').removeClass('hide')")
+# 移除整个dom标签
+driver.execute_script("$('#menuContent').remove()")
+# 下拉到底部
+driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+```
