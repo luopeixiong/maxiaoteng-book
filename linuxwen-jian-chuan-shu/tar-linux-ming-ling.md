@@ -46,7 +46,7 @@ ls *.tar.gz | xargs -n1 tar xzvf
 # tar命令支持批量解压, 如 tar *, 所以要用脚本
 ```
 
-## gzip 与 tar
+## 6. gzip 与 tar
 ```
 # .tar文件相当于一个文件夹
 # 压缩
