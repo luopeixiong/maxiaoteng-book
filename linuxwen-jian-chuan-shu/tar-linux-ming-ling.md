@@ -48,5 +48,9 @@ ls *.tar.gz | xargs -n1 tar xzvf
 
 ## gzip 与 tar
 ```
-# .tar文件
+# .tar文件相当于一个文件夹
+# 压缩
+gzip xx.tar  # 将自动生成xx.tar.gz的压缩文件, 并替换掉之前的xx.tar
+# 解压
+gzip -d xx.tar.gz  # 将解压文件为xx.tar并替换掉原来的xx.tar.gz
 ```
