@@ -30,7 +30,6 @@ startsecs=1                   ; # of secs prog must stay up to be running (def. 
 startretries=3                ; max # of serial start failures when starting (default 3)
 autorestart=True        ; when to restart if exited after running (def: unexpected)
 stopsignal=KILL               ; signal used to kill process (default TERM)
-
 ```
 
 ## 启动
