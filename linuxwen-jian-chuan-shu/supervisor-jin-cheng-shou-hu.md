@@ -14,7 +14,6 @@ sudo pip install supervisor
 ```
 sudo echo_supervisord_conf > /etc/supervisord.conf  
 # 如果提醒没有权限, 可以先echo_supervisord_conf 获取内容, 创建配置文件后复制进去
-
 # 修改conf文件的配置, supervisor将加载文件夹下的所有conf文件:
 [include]
 files = /etc/supervisor/conf.d/*.conf
