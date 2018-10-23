@@ -4,5 +4,7 @@
 - nano tmux wget
 - shadowsocks(逗比根据地的一键安装教程)
 - lnmp
+- git
+- nginx, supervisor
 
 
