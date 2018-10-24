@@ -114,6 +114,8 @@ t.name = 'new_name'
 t.save
 ```
 - 删
+
 ```
-c = 
+t = Tag.objects.get(name='test')
+t.delete()
 ```
