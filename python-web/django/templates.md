@@ -40,7 +40,7 @@ TEMPLATES = [
   <article class="post post-{{ post.pk }}">
     ...
   </article>
-{% empty %}
+{% empty %}  # 如果post_list为空, 则执行下面的
   <div class="no-post">暂时还没有发布的文章！</div>
 {% endfor %}
 ```
