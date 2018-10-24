@@ -69,6 +69,7 @@
   * [Model](python-web/django/model.md)
   * [HTTP](python-web/django/HTTP.md)
   * [Templates](python-web/django/templates.md)
+  * [Admin](python-web/django/admin.md)
 * [WEB应用安全](python-web/webying-yong-an-quan.md)
 * Flask
   * 理解Context
