@@ -16,6 +16,8 @@ urlpatterns = [
 ```
 # blog/views.py
 from django.http import HttpResponse
+# render根据返回的内容构造httpResponse
+from django.shortcuts import render  
 # Create your views here.
 def index(request):
     return HttpResponse("欢迎访问我的博客首页！")
