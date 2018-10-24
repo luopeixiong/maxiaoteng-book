@@ -26,5 +26,7 @@ TEMPLATES = [
 # django模板变量
 {{ title }}
 # 模板标签, 用来加载静态文件
-{% static %}
+{% load staticfiles %}
+{% static '/blog/css/first.css' %}
+> /static/blog/css/first.css  # 最终结果
 ```
