@@ -45,3 +45,17 @@ blog\
     views.py
 ```
 - 配置文件中注册应用
+```
+blogproject/blogproject/settings.py
+## 其他配置项...
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'blog', # 注册 blog 应用
+]
+## 其他配置项..
+```
