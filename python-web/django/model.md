@@ -9,9 +9,10 @@
 - 数据库内容类型
 
 ```
-- CharField
-- TextField
-- DateTimeField
+- CharField  # 字符串
+- TextField  # 很长的字符串
+- DateTimeField  # 时间日期
+- DateField  # 日期
 - ForeignKey
 - ManyToManyField
 ```
