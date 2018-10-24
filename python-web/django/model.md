@@ -15,7 +15,6 @@
 ```
 
 - 内容参数
-
 ```
 - max_length=100  
 - blank=True # 默认False
@@ -31,4 +30,9 @@ class Post(models.Model):
     modified_time = models.DateTimeField()
     category = models.ForeignKey(Category)
     tags = models.ManyToManyField(Tag, blank=True)
+```
+- 内置Model
+```    
+# django.contrib.auth 是 Django 内置的应用，专门用于处理网站用户的注册、登录等流程，User 是 Django 为我们已经写好的用户模型。
+from django.contrib.auth.models import User
 ```
