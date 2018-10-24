@@ -44,3 +44,4 @@ blog\
     tests.py
     views.py
 ```
+- 配置文件中注册应用
