@@ -2,9 +2,8 @@
 - 数据库关系
 
 ```
-- 一对多
-- 多对多
-- 
+- ForeignKey  # 外键, 设置一对多, 例如: models.ForeignKey(User)
+- ManyToManyField  # 多对多关系,tags = models.ManyToManyField(Tag, blank=True)
 ```
 - 数据库内容类型
 
@@ -13,8 +12,6 @@
 - TextField  # 很长的字符串
 - DateTimeField  # 时间日期
 - DateField  # 日期
-- ForeignKey  # 外键, 设置一对多
-- ManyToManyField  # 多对多关系
 ```
 
 - 内容参数
@@ -22,7 +19,7 @@
 ```
 - max_length=100  
 - blank=True # 默认False
-- Model类名  # models.ForeignKey(User)
+- Model类名  # 
 ```
 
 - 例子
