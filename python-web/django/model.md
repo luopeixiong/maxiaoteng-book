@@ -37,3 +37,4 @@ class Post(models.Model):
 # django.contrib.auth 是 Django 内置的应用，专门用于处理网站用户的注册、登录等流程，User 是 Django 为我们已经写好的用户模型。
 from django.contrib.auth.models import User
 ```
+
