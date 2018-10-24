@@ -7,9 +7,21 @@
 - 
 ```
 - 数据库内容类型
+
 ```
-- 
-- 
+- CharField
+- TextField
+- DateTimeField
+- ForeignKey
+- ManyToManyField
+```
+
+- 内容参数
+
+```
+- max_length=100  
+- blank=True # 默认False
+- Model类名  # models.ForeignKey(User)
 ```
 
 - 例子
