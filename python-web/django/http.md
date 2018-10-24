@@ -1,6 +1,6 @@
 ## url
 
-子路径
+app中修改
 - urls
 
 ```
@@ -19,4 +19,14 @@ from django.http import HttpResponse
 # Create your views here.
 def index(request):
     return HttpResponse("欢迎访问我的博客首页！")
+```
+
+注册到project中
+```
+from django.urls import path, include
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    # 此处的path, url添加后, 可以是二级目录
+    path('', include('blog.urls')),
+]
 ```
