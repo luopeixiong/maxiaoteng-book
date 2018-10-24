@@ -13,8 +13,8 @@
 - TextField  # 很长的字符串
 - DateTimeField  # 时间日期
 - DateField  # 日期
-- ForeignKey
-- ManyToManyField
+- ForeignKey  # 外键, 设置一对多
+- ManyToManyField  # 多对多关系
 ```
 
 - 内容参数
