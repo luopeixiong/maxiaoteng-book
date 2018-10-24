@@ -29,7 +29,7 @@ class Post(models.Model):
     tille = models.CharField(max_length=70)
     body = models.TextField()
     modified_time = models.DateTimeField()
-    category = models.ForeignKey(Category)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     tags = models.ManyToManyField(Tag, blank=True)
 ```
 - 内置Model
