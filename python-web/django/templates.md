@@ -32,7 +32,7 @@ TEMPLATES = [
 ```
 {% load staticfiles %}
 {% static '/blog/css/first.css' %}
-> /static/blog/css/first.css  # 最终结果
+> /static/blog/css/first.css  # 最终结果, static定义在setting中
 ```
 - for 模板标签
 ```
