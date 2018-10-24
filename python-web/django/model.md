@@ -103,9 +103,16 @@ t.save
 ```
 Tag.objects.all()
 > <QuerySet [<Tag: Tag object>]>  # 返回类型
-Tag.objects.get(title='test')  # 返回一条数据, 当有多条或没有错误, 抛出异常
+t = Tag.objects.get(title='test')  # 返回一条数据, 当有多条或没有错误, 抛出异常
 ```
 
+- 改
+
+```
+t = Tag.objects.get(name='test')
+t.name = 'new_name'
+t.save
+```
 - 删
 ```
 c = 
