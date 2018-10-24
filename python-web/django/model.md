@@ -38,3 +38,17 @@ class Post(models.Model):
 from django.contrib.auth.models import User
 ```
 
+## 迁移数据库
+```
+# django判断做了哪些改变
+python manage.py makemigrations
+# 操作数据库, 建表
+python manage.py migrate
+```
+
+```
+python manage.py sqlmigrate blog 0001
+# 将显示经django翻译后的SQL语句
+```
+
+## 
