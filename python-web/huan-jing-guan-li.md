@@ -16,7 +16,7 @@ sudo pip install virtualenv  # 安装virtualenv
 # 创建一个project
 mkdir project
 cd project
-virtualenv venv  # 启动一个虚拟环境(名为:venv, 也可以带一些路径), 默认复制系统所有的第三方包
+virtualenv venv  # 启动一个虚拟环境(名为:venv, 也可以带一些路径, 默认当前文件夹), 默认复制系统所有的第三方包
 virtualenv --no-site-packages venv  # 启动一个虚拟环境
 ,不包含任何第三方包
 source venv/bin/activate  # 生效一个虚拟环境
