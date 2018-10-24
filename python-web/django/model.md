@@ -53,35 +53,7 @@ python manage.py sqlmigrate blog 0001
 ```
 
 ## 选择数据库版本
-- 查看默认设置
-```
-# blogproject/settings.py
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-```
-- 修改MySql数据库
-```
-DEFAULT_CHARSET = 'utf8'
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'labelme',
-        'USER': 'root',
-        'PASSWORD': 'XXX',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
-        'OPTIONS': {
-            'sql_mode': 'traditional',
-            # "init_command": "SET sql_mode='STRICT_TRANS_TABLES'",
-            'charset': 'utf8'
-        },
-    }
-}
-```
+见设置文件
 
 ## 创建超级用户
 ```
