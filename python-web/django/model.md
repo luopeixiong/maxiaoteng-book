@@ -19,7 +19,6 @@
 ```
 - max_length=100  
 - blank=True # 默认False
-- Model类名  # 
 ```
 
 - 例子
