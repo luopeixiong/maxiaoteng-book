@@ -25,4 +25,6 @@ TEMPLATES = [
 ```
 # django模板变量
 {{ title }}
+# 模板标签, 用来加载静态文件
+{% static %}
 ```
