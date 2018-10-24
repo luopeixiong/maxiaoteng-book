@@ -53,6 +53,7 @@ python manage.py sqlmigrate blog 0001
 ```
 
 ## 选择数据库版本
+- 查看默认设置
 ```
 # blogproject/settings.py
 DATABASES = {
@@ -62,3 +63,5 @@ DATABASES = {
     }
 }
 ```
+- 修改MySql数据库
+
