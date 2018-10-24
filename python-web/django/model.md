@@ -54,7 +54,7 @@ python manage.py sqlmigrate blog 0001
 
 ## 选择数据库版本
 ```
-blogproject/settings.py
+# blogproject/settings.py
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
