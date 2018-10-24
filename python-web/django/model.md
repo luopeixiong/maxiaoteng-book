@@ -87,3 +87,25 @@ DATABASES = {
 ```
 python manage.py createsuperuser
 ```
+
+## Django操作数据库
+
+- 增
+
+```
+from blog.models import Tag
+t = Tag(name='test')
+t.save
+```
+
+- 查
+
+```
+Tag.objects.all()
+> <QuerySet [<Tag: Tag object>]>  # 返回类型
+Tag.objects.get()  # 返回一条数据, 当有多条或没有错误, 抛出异常
+```
+- 删
+```
+c = 
+```
