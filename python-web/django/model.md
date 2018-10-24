@@ -41,6 +41,7 @@ from django.contrib.auth.models import User
 ## 迁移数据库
 ```
 # django判断做了哪些改变
+# migrations\ 目录下生成了一个 0001_initial.py 文件
 python manage.py makemigrations
 # 操作数据库, 建表
 python manage.py migrate
