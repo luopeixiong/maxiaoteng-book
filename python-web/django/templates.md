@@ -21,12 +21,27 @@ TEMPLATES = [
 ]
 ```
 
-## 详情
+## 模板标签
+- 模板变量
 ```
 # django模板变量
 {{ title }}
-# 模板标签, 用来加载静态文件
+```
+
+- 模板标签, 用来加载静态文件
+```
 {% load staticfiles %}
 {% static '/blog/css/first.css' %}
 > /static/blog/css/first.css  # 最终结果
 ```
+- for 模板标签
+```
+{% for post in post_list %}
+  <article class="post post-{{ post.pk }}">
+    ...
+  </article>
+{% empty %}
+  <div class="no-post">暂时还没有发布的文章！</div>
+{% endfor %}
+```
+
