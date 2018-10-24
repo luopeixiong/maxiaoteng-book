@@ -2,7 +2,7 @@
 - 数据库关系
 
 ```
-- ForeignKey  # 外键, 设置一对多, 例如: models.ForeignKey(User)
+- ForeignKey  # 外键, 设置一对多, 例如: models.ForeignKey(User, on_delete=models.CASCADE)  # on_delete在1.10版本上不需要
 - ManyToManyField  # 多对多关系,tags = models.ManyToManyField(Tag, blank=True)
 ```
 - 数据库内容类型
