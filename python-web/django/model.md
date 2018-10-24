@@ -64,4 +64,21 @@ DATABASES = {
 }
 ```
 - 修改MySql数据库
-
+```
+DEFAULT_CHARSET = 'utf8'
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'labelme',
+        'USER': 'root',
+        'PASSWORD': 'XXX',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+        'OPTIONS': {
+            'sql_mode': 'traditional',
+            # "init_command": "SET sql_mode='STRICT_TRANS_TABLES'",
+            'charset': 'utf8'
+        },
+    }
+}
+```
