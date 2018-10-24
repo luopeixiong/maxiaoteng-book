@@ -26,7 +26,7 @@ def index(request):
 from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # 此处的path, url添加后, 可以是二级目录
+    # 此处的path, url添加后, 可以和后面的urls组合
     path('', include('blog.urls')),
 ]
 ```
