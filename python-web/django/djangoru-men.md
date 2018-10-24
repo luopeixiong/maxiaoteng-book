@@ -32,3 +32,15 @@ django提供了自动生成一个app的目录结构的功能.
 python manage.py startapp polls
 # 将会创建出一个目录
 ```
+- app文件夹结构
+```
+blog\
+    __init__.py
+    admin.py
+    apps.py
+    migrations\
+        __init__.py
+    models.py
+    tests.py
+    views.py
+```
