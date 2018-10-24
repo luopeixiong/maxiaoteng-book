@@ -1,7 +1,7 @@
 ## url
 
-app中修改
-- urls
+### app中修改
+- 添加urls
 
 ```
 # blog/urls.py
@@ -11,7 +11,7 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
 ]
 ```
-- views
+- 添加views
 
 ```
 # blog/views.py
@@ -21,7 +21,7 @@ def index(request):
     return HttpResponse("欢迎访问我的博客首页！")
 ```
 
-注册到project中
+### 注册到project中
 ```
 from django.urls import path, include
 urlpatterns = [
@@ -30,3 +30,4 @@ urlpatterns = [
     path('', include('blog.urls')),
 ]
 ```
+

@@ -68,6 +68,7 @@
   * [项目设置](python-web/django/xiang-mu-she-zhi.md)
   * [Model](python-web/django/model.md)
   * [http](python-web/django/http.md)
+  * [Templates](python-web/django/templates.md)
 * [WEB应用安全](python-web/webying-yong-an-quan.md)
 * Flask
   * 理解Context
