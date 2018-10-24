@@ -1,6 +1,8 @@
 ## url
 
 子路径
+- urls
+
 ```
 # blog/urls.py
 # url: 正则表达式匹配空字符, index: views的内容, name是index的别名
@@ -9,6 +11,8 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
 ]
 ```
+- views
+
 ```
 # blog/views.py
 from django.http import HttpResponse
