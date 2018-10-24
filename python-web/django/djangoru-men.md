@@ -8,20 +8,18 @@ cd mysite
 
 ## 创建虚拟环境
 ```
-virtualenv venv
+virtualenv --no-site-packages venv
 source venv/bin/activate
+# 安装包
+pip -r requirement.txt
 ```
 
 ## 创建django项目
 ```
 django-admin startproject mysite
-
 cd mysit
-
 # 可以指定应用访问的web ip和端口
 python36 manage.py runserver 0:8000 
-
-
 ```
 开发服务器自动重载代码的修改, 但是文件的添加需要重启.
 
