@@ -37,7 +37,7 @@ TEMPLATES = [
 - for 模板标签
 ```
 {% for post in post_list %}
-  <article class="post post-{{ post.pk }}">
+  <article class="post post-{{ post.pk }}">  # pk是primary key的缩写
     ...
   </article>
 {% empty %}  # 如果post_list为空, 则执行下面的
