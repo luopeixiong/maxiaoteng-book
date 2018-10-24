@@ -24,6 +24,12 @@ source venv/bin/activate  # 生效一个虚拟环境
 > /home.../bin/python
 (venv)>deactivate  # 退出虚拟环境
 ```
+- windows启动虚拟环境
+```
+# 直接命令行运行active文件执行
+C:\Users\jizhu>task\mxt_blogs\Scripts\activate
+(mxt_blogs) C:\Users\jizhu>
+```
 
 ## pip 包管理
 ```
