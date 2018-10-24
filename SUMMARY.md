@@ -65,6 +65,7 @@
 * [环境管理](python-web/huan-jing-guan-li.md)
 * [Django](python-web/django.md)
   * [Django入门](python-web/django/djangoru-men.md)
+  * [项目设置](python-web/django/xiang-mu-she-zhi.md)
 * [WEB应用安全](python-web/webying-yong-an-quan.md)
 * Flask
   * 理解Context

@@ -25,6 +25,7 @@ python36 manage.py runserver 0:8000
 
 django提供了自动生成一个app的目录结构的功能.
 
+
 ## 创建一个app
 
 ```
