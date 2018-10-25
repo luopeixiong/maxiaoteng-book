@@ -53,3 +53,9 @@ TEMPLATES = [
 {% block main %}
 {% endblock main %}
 ```
+
+- safe标签
+```
+# djange出于安全的考虑, 任何html代码在Django模板中都会被转义, 直接显示代码内容. 为了解除转义, 在模板标签使用safe过滤器即可
+{{ post.body|safe }}
+```
