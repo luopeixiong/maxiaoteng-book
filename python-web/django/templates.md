@@ -45,3 +45,7 @@ TEMPLATES = [
 {% endfor %}
 ```
 
+- extends 模板继承
+```
+{% extends 'base.html' %}
+```
