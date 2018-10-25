@@ -87,4 +87,18 @@ print(p)  # <_sre.SRE_Pattern object at 0xb76e1a70>
  - start() 返回匹配开始的位置  
  - end()  返回匹配结束的位置  
  - span()  返回一个元组,包含匹配(开始,结束)的位置    
+ 
+ 
+ ## 示例
+ 1. 替换字符串中的换行符
+ ```
+import re
+# 构造pattern, 使用sub替换, 参数(pattern, '', str, count, flag)
+# ''用来替换的内容, str是操作的字符串, count数量
+pattern = re.compile(r'[\r\n]')
+new_s = re.sub(pattern, ' ', '22222 \r    33333 \n   44444 \r\n  55555')
+#  或者直接使用
+new_s = re.sub(r'[\r\n]', ' ', '22222 \r    33333 \n   44444 \r\n  55555')
+print(new_s)
+ ```
 
