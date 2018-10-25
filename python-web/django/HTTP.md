@@ -33,3 +33,11 @@ urlpatterns = [
 ]
 ```
 
+## 编辑视图函数
+```
+from django.urls import get_object_or_404
+# 返回数据库的对象, 不存在返回404
+- ...
+    post = get_object_or_404(Post, pk=pk)
+  ... 
+```
