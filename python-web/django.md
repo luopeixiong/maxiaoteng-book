@@ -21,3 +21,10 @@ from xx.xx import ss
 - 设计app需要的urls, 添加到工程的urls中
 - 设计url对应的视图函数views, 编辑需要的模板
 
+## 部署流程
+- clone代码
+- 启动虚拟环境, 安装依赖
+- 收集静态文件
+```
+py
+```
