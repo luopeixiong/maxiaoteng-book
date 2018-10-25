@@ -6,5 +6,7 @@
 - lnmp
 - git
 - nginx, supervisor
+- virtualenv
+
 
 
