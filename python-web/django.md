@@ -19,3 +19,5 @@ from xx.xx import ss
 - 建立应用app, 并注册到setting
 - 创建数据库模型models, 迁移数据库
 - 设计app需要的urls, 添加到工程的urls中
+- 设计url对应的视图函数views
+
