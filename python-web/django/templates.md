@@ -86,4 +86,22 @@ def archives():
     # dates 返回一个列表, 列表元素为每一篇文章的创建时间
     return Post.objects.dates('created_time', 'month', order='DESC')
 ```
+- 使用方法
+```
+# 目录: ./template/base.html
+# 加载模板标签
+{% load blog_tags %}
+...
+#使用, 直接使用其中的函数 返回结果使用as
+{% get_recent_posts as recent_post_list %}
+    <ul>
+    {% for post in recent_post_list %}
+        <li>
+            <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+        </li>
+    {% empty %}
+        <p>暂无文章</p>
+    {% endfor %}
+</ul>
+```
 
