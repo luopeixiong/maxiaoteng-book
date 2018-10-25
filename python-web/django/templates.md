@@ -47,5 +47,9 @@ TEMPLATES = [
 
 - extends 模板继承
 ```
+# 继承语句
 {% extends 'base.html' %}
+# 继承版块
+{% block main %}
+{% endblock main %}
 ```
