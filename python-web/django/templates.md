@@ -68,3 +68,22 @@ pip install pygments
 重启
 ```
 
+## 自定义模板标签
+
+```
+目录结构: ./blog/templatetags/blog_tags.py
+from django import template
+from ..models import Post, Category
+
+register = template.Library()
+
+@register.simple_tag
+def get_recent_posts(num=5):
+    return Post.objects.all().order_by('-created_time')[:num]
+
+@register.simple_tag
+def archives():
+    # dates 返回一个列表, 列表元素为每一篇文章的创建时间
+    return Post.objects.dates('created_time', 'month', order='DESC')
+```
+
