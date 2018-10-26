@@ -166,3 +166,7 @@ windows10安装了docker,要求启用hyper-v来运行运行docker的虚拟机Mob
 apt install nano
 ```
 
+## 容器和外界文件传输
+```
+sudo docker cp contain_id:/root/DTP/output.xlsx ~/new_dir/
+```
