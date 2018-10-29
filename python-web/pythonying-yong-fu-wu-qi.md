@@ -16,5 +16,10 @@
 2. 异步Worker: 通过Eventlet, Gevent实现异步模式
 3. 异步IO Worker: 目前支持gthread和gaiohttp两种模式
 ``` 
-
+```
+# 启动命令
+# > gunicorn [OPTIONS] MODULE_NAME: VARIABLE_NAME
+> gunicorn --workers=3 section19.app:app -b 0.0.0.0:9000
+# worker 个数: 推荐cpu个数*2 +1
+```
 
