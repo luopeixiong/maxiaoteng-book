@@ -13,6 +13,7 @@
   * [shell command](linuxwen-jian-chuan-shu/shell-command.md)
   * [文件及目录管理](wen-jian-ji-mu-lu-guan-li.md)
   * [nano editor](nano-editor.md)
+  * [other](other.md)
 * [Gitbook配置](gitbookpei-zhi.md)
 * [Scrapy](scrapy.md)
   * [Scrapy setting](scrapy-setting.md)
@@ -90,4 +91,5 @@
 * [虚拟机配置](xu-ni-ji-pei-zhi.md)
 * [mxt\_aws](mxtaws.md)
 * [VScode](vscode.md)
+* [00](00.md)
 
