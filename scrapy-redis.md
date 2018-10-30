@@ -74,3 +74,49 @@ redis_key = 'douban_spider_redis:start_urls'
 # 可以改写process_item方法来将item输出成多个格式, 也可以爬完之后再从redis获取
 ```
 
+## 可以指定redis数据库到其他位置
+[参考位置:https://blog.csdn.net/Bone_ACE/article/details/54139500](https://blog.csdn.net/Bone_ACE/article/details/54139500)
+原理: 重写scrapy_redis的调度器: scheduler.py下的from_settings()方法调用
+
+在settings.py同级目录下新建一个文件schedulerOverwrite.py，填入下面的代码。然后在settings.py设置SCHEDULER=schedulerOverwrite.SchedulerSon，之后在settings.py中设置REDIS_DB=XXX即可指定db。
+```
+import redis
+from scrapy_redis.scheduler import Scheduler
+from scrapy.utils.misc import load_object
+# default values
+SCHEDULER_PERSIST = False
+QUEUE_KEY = '%(spider)s:requests'
+QUEUE_CLASS = 'scrapy_redis.queue.SpiderPriorityQueue'
+DUPEFILTER_KEY = '%(spider)s:dupefilter'
+IDLE_BEFORE_CLOSE = 0
+ 
+REDIS_URL = None
+REDIS_HOST = 'localhost'
+REDIS_PORT = 6379
+REDIS_DB = 0
+ 
+ 
+def from_settings(settings):
+    url = settings.get('REDIS_URL', REDIS_URL)
+    host = settings.get('REDIS_HOST', REDIS_HOST)
+    port = settings.get('REDIS_PORT', REDIS_PORT)
+    db = settings.get('REDIS_DB', REDIS_DB)
+
+    # REDIS_URL takes precedence over host/port specification.
+    if url:
+        return redis.from_url(url)
+    else:
+        return redis.Redis(host=host, port=port, db=db)
+ 
+ 
+class SchedulerSon(Scheduler):
+    @classmethod
+    def from_settings(cls, settings):
+        persist = settings.get('SCHEDULER_PERSIST', SCHEDULER_PERSIST)
+        queue_key = settings.get('SCHEDULER_QUEUE_KEY', QUEUE_KEY)
+        queue_cls = load_object(settings.get('SCHEDULER_QUEUE_CLASS', QUEUE_CLASS))
+        dupefilter_key = settings.get('DUPEFILTER_KEY', DUPEFILTER_KEY)
+        idle_before_close = settings.get('SCHEDULER_IDLE_BEFORE_CLOSE', IDLE_BEFORE_CLOSE)
+        server = from_settings(settings)
+        return cls(server, persist, queue_key, queue_cls, dupefilter_key, idle_before_close)
+```
