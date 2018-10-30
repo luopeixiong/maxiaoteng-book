@@ -60,3 +60,20 @@ sudo nginx -t  # 验证Nginx配置是否正确
 
 
 ## 通过Gunicorn启动Flask应用
+
+## nginx代理出现502 
+```
+# log文件显示
+15 connect() to 127.0.0.1:2018 failed (13: Permission denied) while connecting to upstream
+```
+解决办法: 
+- 关闭selinux
+```
+sudo vim /etc/selinux/config
+# 将SELINUX=enforcing改为SELINUX=disabled
+重启即可
+```
+- 临时解决: 
+```
+setenforce 0
+```
