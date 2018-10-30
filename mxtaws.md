@@ -7,6 +7,10 @@
 - git
 - nginx, supervisor
 - virtualenv
+- 安装python开发版本
+```
+sudo yum install python-devel
+```
 
 
 
