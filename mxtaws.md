@@ -10,6 +10,7 @@
 - 安装python开发版本
 ```
 sudo yum install python-devel
+sudo yum install python36-devel
 ```
 
 
