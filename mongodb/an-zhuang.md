@@ -27,6 +27,7 @@ $ sudo chkconfig mongod on  # 将在系统重启后自启
 
 $ sudo service mongod stop  # 停止服务
 $ sudo service mongod restart  # 重启服务
+$ kill -15 mongo_id  # 使用-15杀mongod进程避免锁死
 ```
 
 ## 配置
