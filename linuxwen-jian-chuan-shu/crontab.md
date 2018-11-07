@@ -2,17 +2,26 @@
 
 ## 命令的使用
 
-1. 列出当前任务	
-    crontab -l 
+1. 列出当前任务
+```
+crontab -l 
+```
 2. 备份当前任务列表	
-    crontab -l > my_cron   
+```
+crontab -l > my_cron   
+```
 3. 编辑一个命令文件      
-    nano my_crontab
+```
+nano my_crontab
+```
 4. 将编辑好的命令生效  
-    crontab my_crontab 
+```
+crontab my_crontab 
+```
 5. 重启crond
-    service crond restart
-
+```
+service crond restart
+```
 
 ## 命令格式
 	
