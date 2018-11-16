@@ -32,6 +32,8 @@
     "plugins": [],
     "title": "GitBook",
     "variables": {},
-
+    "theme-default": {
+            "showLevel": true
+        },
     "plugins": ["toggle-chapters", "sectionx", "splitter"]
 }
