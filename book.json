@@ -32,7 +32,6 @@
     "plugins": [],
     "title": "GitBook",
     "variables": {},
-    // 安装插件
-    // 1. 折叠目录， 2. 分块显示 3. 自由移动目录侧
+
     "plugins": ["toggle-chapters", "sectionx", "splitter"]
 }
