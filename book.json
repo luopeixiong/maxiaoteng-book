@@ -1,5 +1,5 @@
 {
-    "author": "Ma Xiaoteng<jizhuwo00@hotmail.cn>",
+    "author": "马晓腾<jizhuwo00@hotmail.cn>",
     "description": "我的笔记本",
     "extension": null,
     "generator": "site",
@@ -12,7 +12,7 @@
             "weibo": null
         },
         "sidebar": {
-            "Chengwei's Blog": "http://blog.maxiaoteng.xyz"
+            "我的博客": "http://blog.maxiaoteng.xyz"
         }
     },
     "output": null,
@@ -29,7 +29,6 @@
         "pageNumbers": false,
         "paperSize": "a4"
     },
-    "plugins": [],
     "title": "GitBook",
     "variables": {},
     "theme-default": {
