@@ -1,9 +1,8 @@
 {
-    "author": "Chengwei Yang <me@chengweiyang.cn>",
-    "description": "This is a sample book created by gitbook",
+    "author": "Ma Xiaoteng<jizhuwo00@hotmail.cn>",
+    "description": "我的笔记本",
     "extension": null,
     "generator": "site",
-    "isbn": null,
     "links": {
         "sharing": {
             "all": null,
@@ -13,7 +12,7 @@
             "weibo": null
         },
         "sidebar": {
-            "Chengwei's Blog": "http://www.chengweiyang.cn"
+            "Chengwei's Blog": "http://blog.maxiaoteng.xyz"
         }
     },
     "output": null,
@@ -31,6 +30,9 @@
         "paperSize": "a4"
     },
     "plugins": [],
-    "title": "Sample GitBook",
-    "variables": {}
+    "title": "GitBook",
+    "variables": {},
+    // 安装插件
+    // 1. 折叠目录， 2. 分块显示 3. 自由移动目录侧
+    "plugins": ["toggle-chapters", "sectionx", "splitter"]
 }
