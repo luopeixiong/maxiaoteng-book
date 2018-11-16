@@ -60,7 +60,8 @@
 
 ## Python爬虫
 
-* [summary](pythonpa-chong/summary.md)
+* [summary](crawler/summary.md)
+* [设置代理服务器](crawler/proxy_server.md)
 
 ## Python Web
 
