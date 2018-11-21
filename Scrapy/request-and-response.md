@@ -1,4 +1,5 @@
 # Request and Response
+[中文文档](https://scrapy-chs.readthedocs.io/zh_CN/latest/topics/request-response.html)
 
 **cookie : scrapy 对cookie管理有很强的支持, 不需要可以去管理**
 
@@ -43,3 +44,14 @@ v. FromRequest.from_response(response, formdata, call_back)
 
 ## dont_filter机制
 
+# Response
+
+## 基本属性
+- url(string)
+- headers(dict)
+- status(integer)
+- body(str), text
+- meta(dict)
+- flags(list)
+- request  
+  产生这个response的request对象，重定向后的request是原始的，所以`response.url == response.request.url` 不总是成立
