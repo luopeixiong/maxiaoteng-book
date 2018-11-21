@@ -17,12 +17,12 @@
 * [Scrapy](kai-shi.md)
   * [Scrapy setting](scrapy-setting.md)
   * [基本组件](ji-ben-zu-jian.md)
-  * [中间件](ji-ben-zu-jian/zhong-jian-jian.md)
-  * [Scrapy优化](scrapyyou-hua.md)
-  * [部署爬虫scrapyd](bu-shu-pa-chong-scrapyd.md)
-  * [Gerapy](gerapy.md)
+  * [中间件](Scrapy/middlewares.md)
+  * [Scrapy优化](Scrapy/scrapy-optimization.md)
+  * [部署爬虫scrapyd](Scrapy/deploying-scrapy-crawlers.md)
+  * [Gerapy](Scrapy/gerapy.md)
   * [Request and Response](request-and-response.md)
-  * [Scrapy-redis](scrapy-redis.md)
+  * [Scrapy-redis](Scrapy/scrapy-redis.md)
 * [REDHAT 配置](redhat-pei-zhi.md)
   * [AWS 知识](redhat-pei-zhi/aws-zhi-shi.md)
   * [服务器备忘](redhat-pei-zhi/aws-zhi-shi/fu-wu-qi-bei-wang.md)
@@ -31,21 +31,21 @@
   * [安装](redis/an-zhuang.md)
   * [Python连接Redis](redis/chang-yong-ming-ling.md)
 * [Mongodb](mongodb.md)
-  * [安装](mongodb/an-zhuang.md)
+  * [安装](mongodb/install.md)
   * [安全设置](pythonlian-jie-mongodb/robo-3t-lian-jie-mongodb.md)
   * [值的比较](mongodb/mongodb-he-pymongo/mongodb-he-pymongo-zhi-de-bi-jiao.md)
-  * [pymongo连接](mongodb/mongodb-he-pymongo.md)
+  * [pymongo连接](mongodb/mongodb-pymongo.md)
   * [mongo shell](mongodb/mongo-shell.md)
 * [BeautifulSoup](beautifulsoup.md)
 * [paramiko模块](paramikomo-kuai.md)
-* [selenium](selenium.md)
+* [selenium](crawler/selenium.md)
   * [安装和基本操作](selenium/seleniuman-zhuang-he-ji-ben-cao-zuo.md)
   * [页面交互](selenium/ye-mian-jiao-hu.md)
   * [selenium查找元素](selenium/seleniumcha-zhao-yuan-su.md)
   * [显式等待\(explicit wait\)和隐式等待 \(implicit wait\)](selenium/xian-shi-deng-5f8528-explicit-wait-he-yin-shi-deng-dai-implicit-wait.md)
 * [版本控制]
-  * [svn - git 基本操作](svn-git-ji-ben-cao-zuo.md)
-  * [git 进阶](git-advanced.md)
+  * [svn - git 基本操作](version_control/svn-git-commands.md)
+  * [git 进阶](version_control/git-advanced.md)
 
 ## Python基础
 
@@ -85,18 +85,20 @@
 
 ## MarkDown
 
-* [基本语法](markdown/markdown-shi-xian-ye-nei-tiao-zhuan/ji-ben-yu-fa.md)
-* [Markdown 实现页内跳转](markdown/markdown-shi-xian-ye-nei-tiao-zhuan.md)
-* [Python Markdown](markdown/markdown-shi-xian-ye-nei-tiao-zhuan/python-markdown.md)
+* [基本语法](markdown/ji-ben-yu-fa.md)
+* [Markdown 实现页内跳转](markdown/Page_internal_jump.md)
+* [Python Markdown](markdown/python-markdown.md)
 
 ## 开发环境配置 软件设置
 
-* [pycharm 设置](demo.md)
-* [Gitbook配置](gitbookpei-zhi.md)
-* [Vagrant](dierzhang.md)
-* [Docker](docker.md)
-* [虚拟机配置](xu-ni-ji-pei-zhi.md)
-* [mxt\_aws](mxtaws.md)
-* [VScode](vscode.md)
+* [pycharm 设置](Configurations/pycharm.md)
+* [Gitbook配置](Configurations/gitbook.md)
+* [Vagrant](Configurations/vagrant.md)
+* [Docker](Configurations/docker.md)
+* [虚拟机配置](Configurations/virtual_machine.md)
+* [mxt\_aws](Configurations/mxtaws.md)
+* [VScode](Configurations/vscode.md)
+
+## 邮件常用语
 * [00](00.md)
 

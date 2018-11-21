@@ -266,4 +266,13 @@ query = {
 - 增删改查使用xx_one 和 xx_many, 模糊的update, insert等已经被弃用. 
 - 查询并更新使用find_one_and_update(), delete, replace... 还可以根据参数, 选择返回的是修改前还是修改后的内容
 - 避免重复插入的方法: 一个一个插入, 每次插入时使用find_one_and_update(query, update, upsert=True).(即不存在则插入, 存在则更新)
-- 
+
+
+## 值的比较
+比较
+
+|  | MongoDB | pymongo |
+| -- | -- | -- |
+| 1 | true | True |
+| 2 | false | False |
+| 3 | null/不存在 | None |
