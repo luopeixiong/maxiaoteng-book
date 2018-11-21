@@ -14,7 +14,6 @@
   * [文件及目录管理](wen-jian-ji-mu-lu-guan-li.md)
   * [nano editor](nano-editor.md)
   * [other](other.md)
-* [Gitbook配置](gitbookpei-zhi.md)
 * [Scrapy](kai-shi.md)
   * [Scrapy setting](scrapy-setting.md)
   * [基本组件](ji-ben-zu-jian.md)
@@ -62,6 +61,8 @@
 
 * [summary](crawler/summary.md)
 * [设置代理服务器](crawler/proxy_server.md)
+* [others](crawler/others.md)
+
 
 ## Python Web
 
@@ -91,6 +92,7 @@
 ## 开发环境配置 软件设置
 
 * [pycharm 设置](demo.md)
+* [Gitbook配置](gitbookpei-zhi.md)
 * [Vagrant](dierzhang.md)
 * [Docker](docker.md)
 * [虚拟机配置](xu-ni-ji-pei-zhi.md)

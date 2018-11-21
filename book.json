@@ -34,5 +34,64 @@
     "theme-default": {
             "showLevel": true
         },
-    "plugins": ["toggle-chapters", "sectionx", "splitter"]
+    "plugins": [
+        "-sharing",
+        "splitter",
+        "expandable-chapters-small",
+        "anchors",
+
+        "github",
+        "github-buttons",
+        "sharing-plus",
+        "anchor-navigation-ex",
+        "favicon"
+    ],
+    "pluginsConfig": {
+        "github": {
+            "url": "https://github.com/maxiaoteng001"
+        },
+        "github-buttons": {
+            "buttons": [
+                {
+                    "user": "maxiaoteng001",
+                    "repo": "glory",
+                    "type": "star",
+                    "size": "small",
+                    "count": true
+                }
+            ]
+        },
+        "sharing": {
+            "douban": false,
+            "facebook": false,
+            "google": false,
+            "hatenaBookmark": false,
+            "instapaper": false,
+            "line": false,
+            "linkedin": false,
+            "messenger": false,
+            "pocket": false,
+            "qq": false,
+            "qzone": false,
+            "stumbleupon": false,
+            "twitter": false,
+            "viber": false,
+            "vk": false,
+            "weibo": false,
+            "whatsapp": false,
+            "all": [
+                "google",
+                "facebook",
+                "weibo",
+                "twitter",
+                "qq",
+                "qzone",
+                "linkedin",
+                "pocket"
+            ]
+        },
+        "anchor-navigation-ex": {
+            "showLevel": false
+        }
+    }
 }
