@@ -31,8 +31,8 @@
 * [BeautifulSoup](beautifulsoup.md)
 * [paramiko模块](paramikomo-kuai.md)
 * [版本控制](version_control/svn-git-commands.md)
-  * [svn - git 基本操作](version_control/svn-git-commands.md)
-  * [git 进阶](version_control/git-advanced.md)
+  * [svn - git 基本操作](version-control/svn-git-commands.md)
+  * [git 进阶](version-control/git-advanced.md)
 
 ## Python基础
 
