@@ -80,17 +80,22 @@
     ```
 
 11. log配置
-```
-cur_dir = os.path.dirname(os.path.realpath(__file__))
-logFilename = os.path.join(cur_dir, '../../crawlerOutput/{}/log/roundmenu.log'.format(VERSION))
-logging.basicConfig(
-  level=logging.ERROR,  # 定义输出到文件的log级别，
-  format='%(asctime)s  %(filename)s : %(levelname)s  %(message)s',  # 定义输出log的格式
-  datefmt='%Y-%m-%d %A %H:%M:%S',  # 时间
-  filename=logFilename,  # log文件名
-  filemode='a')
+    ```
+    cur_dir = os.path.dirname(os.path.realpath(__file__))
+    logFilename = os.path.join(cur_dir, '../../crawlerOutput/{}/log/roundmenu.log'.format(VERSION))
+    logging.basicConfig(
+      level=logging.ERROR,  # 定义输出到文件的log级别，
+      format='%(asctime)s  %(filename)s : %(levelname)s  %(message)s',  # 定义输出log的格式
+      datefmt='%Y-%m-%d %A %H:%M:%S',  # 时间
+      filename=logFilename,  # log文件名
+      filemode='a')
+    
+    FEED_EXPORT_ENCODING = 'UTF-8'
+    ```
 
-FEED_EXPORT_ENCODING = 'UTF-8'
-```
-
+12. 请求超时
+    ```python
+    # 设置超时，默认180秒
+    DOWNLOAD_TIMEOUT = 10
+    ```
 

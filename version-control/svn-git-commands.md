@@ -121,6 +121,9 @@ git rm -r directory/
 
 # 只删除仓库, 保留本地文件
 git rm --cached file_name
+
+# svn
+svn rm --keep-local my_important_file  # 将只删除版本库的文件，而不删除本地
 ```
 
 

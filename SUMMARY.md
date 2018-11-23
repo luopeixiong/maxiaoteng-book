@@ -3,17 +3,18 @@
 ## 第一部分
 
 * [Introduction](README.md)
-* [linux常用知识](linuxwen-jian-chuan-shu.md)
-  * [查看命令使用文档](cha-kan-ming-ling-bang-zhu.md)
-  * [tar/split 解压缩操作](linuxwen-jian-chuan-shu/tar-linux-ming-ling.md)
-  * [rsync  传输同步文件](linuxwen-jian-chuan-shu/rsync-chuan-shu-tong-bu-wen-jian.md)
-  * [chmod  修改文件权限](chmod-xiu-gai-wen-jian-quan-xian.md)
-  * [supervisor 进程守护](linuxwen-jian-chuan-shu/supervisor-jin-cheng-shou-hu.md)
-  * [Crontab](linuxwen-jian-chuan-shu/crontab.md)
-  * [shell command](linuxwen-jian-chuan-shu/shell-command.md)
-  * [文件及目录管理](wen-jian-ji-mu-lu-guan-li.md)
-  * [nano editor](nano-editor.md)
-  * [other](other.md)
+* [linux常用知识](linux-common-knowledge/cha-kan-ming-ling-bang-zhu.md)
+  * [查看命令使用文档](linux-common-knowledge/cha-kan-ming-ling-bang-zhu.md)
+  * [tar/split 解压缩操作](linux-common-knowledge/tar.md)
+  * [rsync  传输同步文件](linux-common-knowledge/rsync-chuan-shu-tong-bu-wen-jian.md)
+  * [chmod  修改文件权限](linux-common-knowledge/chmod-xiu-gai-wen-jian-quan-xian.md)
+  * [supervisor 进程守护](linux-common-knowledge/supervisor-jin-cheng-shou-hu.md)
+  * [Crontab](linux-common-knowledge/crontab.md)
+  * [shell command](linux-common-knowledge/shell-command.md)
+  * [文件及目录管理](linux-common-knowledge/wen-jian-ji-mu-lu-guan-li.md)
+  * [nano editor](linux-common-knowledge/nano-editor.md)
+  * [tmux](linux-common-knowledge/tmux.md)
+  * [other](linux-common-knowledge/other.md)
 * [REDHAT 配置](redhat-pei-zhi.md)
   * [AWS 知识](redhat-pei-zhi/aws-zhi-shi.md)
   * [服务器备忘](redhat-pei-zhi/aws-zhi-shi/fu-wu-qi-bei-wang.md)
@@ -46,6 +47,7 @@
 ## Python爬虫
 
 * [summary](crawler/summary.md)
+* [Requests](crawler/requests.md)
 * [selenium](crawler/selenium.md)
   * [安装和基本操作](selenium/seleniuman-zhuang-he-ji-ben-cao-zuo.md)
   * [页面交互](selenium/ye-mian-jiao-hu.md)
@@ -67,8 +69,10 @@
 
 ## Python Web
 
-* [HTTP](python-web/http.md)
-* [Ajax](python-web/http/ajax.md)
+* [HTTP](python-web/http/http.md)
+  * [HTTP](python-web/http/http.md)
+  * [POST](python-web/http/post.md)
+* [Ajax](python-web/ajax.md)
 * [Proxy 代理](python-web/proxy-dai-li.md)
 * [环境管理](python-web/huan-jing-guan-li.md)
 * [Django](python-web/django.md)
@@ -81,7 +85,7 @@
 * [WEB应用安全](python-web/webying-yong-an-quan.md)
 * Flask
   * 理解Context
-* [WEB服务器Nginx](python-web/webfu-wu-qi-nginx.md)
+* [WEB服务器Nginx](python-web/web-server-nginx.md)
 * [Python应用服务器](python-web/pythonying-yong-fu-wu-qi.md)
 
 ## MarkDown

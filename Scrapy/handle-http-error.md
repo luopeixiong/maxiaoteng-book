@@ -12,5 +12,9 @@
     ```python
     HTTPERROR_ALLOWED_CODES = [403]  # 默认为[]
     ```
+3. 在setting中增加HTTPERROR_ALLOW_ALL
+    ```python
+    HTTPERROR_ALLOW_ALL = True  # 默认为False
+    ```
 
 设置完之后，就可以根据`response.status == 403`来确认网站封锁ip。

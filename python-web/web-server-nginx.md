@@ -26,8 +26,21 @@ sudo systemctl restart nginx  # 重启nginx
 
 ## 配置
 ```
-sudo nginx -t  # 验证Nginx配置是否正确
 # 好的习惯是先检查配置文件,再重启服务器
+sudo nginx -t  # 验证Nginx配置是否正确
+
+# 修改配置文件后的重载
+sudo nginx -s reload
+```
+
+## 配置文件位置
+```bash
+/etc/nginx/conf.d/*.conf
+```
+
+## 日志位置
+```bash
+/var/log/nginx
 ```
 
 ## 什么时候选择源码安装
@@ -36,7 +49,6 @@ sudo nginx -t  # 验证Nginx配置是否正确
 - 源码安装自由度高
 - 对软件打过补丁
 - 源码安装提供了统一的安装方式,可以跨平台应用
-
 
 
 ## 反向代理和正向代理
