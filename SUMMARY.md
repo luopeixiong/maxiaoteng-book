@@ -18,7 +18,6 @@
 * [REDHAT 配置](redhat-pei-zhi.md)
   * [AWS 知识](redhat-pei-zhi/aws-zhi-shi.md)
   * [服务器备忘](redhat-pei-zhi/aws-zhi-shi/fu-wu-qi-bei-wang.md)
-* [logging模块](loggingmo-kuai.md)
 * [Redis](redis.md)
   * [安装](redis/an-zhuang.md)
   * [Python连接Redis](redis/chang-yong-ming-ling.md)
@@ -36,13 +35,15 @@
 
 ## Python基础
 
-* [正则表达式](pythonji-chu/zheng-ze-biao-da-shi.md)
-* [os Model](pythonji-chu/os-model.md)
-* [数据结构](pythonji-chu/shu-ju-jie-gou.md)
-  * [列表 List](pythonji-chu/shu-ju-jie-gou/lie-biao-list.md)
-  * [集合 Set](pythonji-chu/shu-ju-jie-gou/ji-heset.md)
-  * [字典 Dict](pythonji-chu/shu-ju-jie-gou/zi-dian-dict.md)
-* [others](pythonji-chu/others.md)
+* [正则表达式](python-basics/zheng-ze-biao-da-shi.md)
+* [os Model](python-basics/os-model.md)
+* [logging模块](python-basics/logging-model.md)
+* [CSV模块](python-basics/csv-model.md)
+* [数据结构](python-basics/shu-ju-jie-gou.md)
+  * [列表 List](python-basics/shu-ju-jie-gou/lie-biao-list.md)
+  * [集合 Set](python-basics/shu-ju-jie-gou/ji-heset.md)
+  * [字典 Dict](python-basics/shu-ju-jie-gou/zi-dian-dict.md)
+* [others](python-basics/others.md)
 
 ## Python爬虫
 
