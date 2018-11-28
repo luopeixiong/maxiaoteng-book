@@ -101,4 +101,11 @@ new_s = re.sub(pattern, ' ', '22222 \r    33333 \n   44444 \r\n  55555')
 new_s = re.sub(r'[\r\n]', ' ', '22222 \r    33333 \n   44444 \r\n  55555')
 print(new_s)
  ```
+2. 分隔字符串
+```
+import re
+re.split('[_#|]','this_is#a|test')
+>> ['this', 'is', 'a', 'test']
+```
+
 

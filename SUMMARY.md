@@ -35,7 +35,7 @@
 
 ## Python基础
 
-* [正则表达式](python-basics/zheng-ze-biao-da-shi.md)
+* [正则表达式](python-basics/re-model.md)
 * [os Model](python-basics/os-model.md)
 * [logging模块](python-basics/logging-model.md)
 * [CSV模块](python-basics/csv-model.md)
