@@ -19,3 +19,8 @@ _files/baike/20180725baike.tar.gz /data/ftp/public/crawler_data/baike/
     **maxiaoteng@59.110.160.185:~/crawler/baike_scrapy/data2/baike/20180725baike.tar.gz**
 - target_path
     **/data/ftp/public/crawler_data/baike/**
+
+
+```
+rsync -rvptgo --password-file=/root/crawler/news/rsync.ps  maxiaoteng@59.110.160.185:/home/maxiaoteng/crawler/news/data/ /root/crawler/news/data
+```
