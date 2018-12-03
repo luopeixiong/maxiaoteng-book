@@ -30,6 +30,15 @@ for file in 'ls /etc'
 echo "a is ${a}"
 ```
 
+## 等待sleep
+```
+sleep 5  # 默认为秒
+sleep 5s
+sleep 5m
+sleep 5h
+sleep 5d
+```
+
 ## 字符串
 
 单引号的变量和转义字符是无效的, 只会原样输出
@@ -121,6 +130,6 @@ cd /home/ec2-user/uber/crawler/python/zomato/
 # 启动爬虫
 /usr/bin/python3 /home/ec2-user/crawler/baemin/baeminApp3.0.py 0 >/dev/null 2>&1 &
 /usr/bin/python3 /home/ec2-user/crawler/baemin/baeminApp3.0.py 1 >/dev/null 2>&1 &
-
 ```
+
 

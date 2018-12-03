@@ -11,6 +11,7 @@
   * [supervisor 进程守护](linux-common-knowledge/supervisor-jin-cheng-shou-hu.md)
   * [Crontab](linux-common-knowledge/crontab.md)
   * [shell command](linux-common-knowledge/shell-command.md)
+  * [expect command](linux-common-knowledge/expect.md)
   * [文件及目录管理](linux-common-knowledge/wen-jian-ji-mu-lu-guan-li.md)
   * [nano editor](linux-common-knowledge/nano-editor.md)
   * [tmux](linux-common-knowledge/tmux.md)
