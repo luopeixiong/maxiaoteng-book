@@ -53,7 +53,6 @@ git reset --hard
 
 ```
 git log  # 显示commit记录
-
 git log --graph --oneline firstbranch_name secondbranch_name  # 按图形显示
 ```
 
@@ -65,7 +64,6 @@ git checkout branch_name  # 检出指定分支的代码
 ```
 
 - **更新本地代码**
-
 ```
 # git
 git pull
@@ -77,7 +75,6 @@ svn update -r m svn_path  # 更新指定版本的代码
 ```
 
 - **查看当前状态**
-
 ```
 # git
 git status
@@ -86,8 +83,18 @@ git status
 svn status
 ```
 
-- **比较工作区和代码库的差异**
+- **查看代码库的信息**
+```
+# git
+git remote -v  # 显示远程仓库的链接
 
+# svn
+svn info  # 显示仓库所有信息
+svn info |grep URL/http  
+cat .svn/entries |grep http  
+```
+
+- **比较工作区和代码库的差异**
 ```
 # git
 git diff  # 比较工作区和暂存区的差异
@@ -99,7 +106,6 @@ svn diff
 ```
 
 - **remote 管理**
-
 ```
 # 1. 查看remote
 git remote -v
@@ -113,7 +119,6 @@ git remote set-url gitlab git_url
 ```
 
 - **rm 撤销已加入追踪的文件**
-
 ```
 # 删除本地和仓库
 git rm file_name
@@ -206,3 +211,7 @@ git push origin :the_branch //删除远程 the_branch
 git push origin the_branch //用回滚后的本地分支重新建立远程分支
 git push origin :the_branch_backup
 ```
+
+## svn 命令行工具
+
+svn默认不安装命令行工具, 需要在重新安装时选择增加
