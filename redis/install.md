@@ -8,40 +8,80 @@ $ sudo yum -y update
 $ sudo yum -y install gcc make  # 安装gcc make用来编译
 
 # 下载文件
-$ cd /usr/local/src 
-$ sudo wget http://download.redis.io/releases/redis-4.0.11.tar.gz
-$ sudo tar -xvzf redis-4.0.11.tar.gz 
-$ sudo rm redis-4.0.11.tar.gz
+cd /usr/local/src 
+sudo wget http://download.redis.io/releases/redis-4.0.11.tar.gz
+sudo tar -xvzf redis-4.0.11.tar.gz 
+cd redis-stable
+make test  # 可选
+# 编译安装
+make  
 
-# 重新编译redis
-$ cd redis-4.0.11 
-$ sudo make distclean 
-$ sudo make
+# 安装到环境变量
+sudo make install
+# 等价于: 
+sudo cp src/redis-server /usr/local/bin/
+sudo cp src/redis-cli /usr/local/bin/
 
-# 安装tcl和test
-$ sudo yum install -y tcl 
-$ sudo make test
 
-# 设置软连接和配置文件
-$ sudo mkdir -p /etc/redis /var/lib/redis /var/redis/6379
-$ sudo cp src/redis-server src/redis-cli /usr/local/bin
-$ sudo cp redis.conf /etc/redis/redis.conf
+# 安装tcl
+sudo yum install -y tcl 
 
 ```
 
 ## 配置Redis
-打开conf文件
+
+初始配置文件位于解压目录 `.../redis-stable/redis.conf`
 ```
-$ sudo nano /etc/redis/redis.conf
+cd ./redis-stable/redis.conf  
+sudo nano redis.conf
 
     bind 127.0.0.1  # 绑定本地ip, 要想公网访问,注释掉
     requirepass xxx  # 添加链接密码, 在允许公网访问之前, 必须设置密码
     protected-mode  no  # 禁用保护模式, 这个是在无密码时禁止公网访问使用的                           
     daemonize yes  # 后台运行                             
     logfile "/var/log/redis_6379.log"             
-    dir /var/redis/6379 
-    
+    pidfile  /var/run/redis.pid 
+    dir /var/redis/6379
 ```
+移动配置文件:
+```
+cp redis.conf /etc
+```
+
+## 使用服务方式运行redis
+- 编辑配置脚本
+```
+vim /etc/systemd/system/redis.service
+# 注意执行命令和配置文件的路径
+
+    [unit]
+    Description=The redis-server Process Manager
+    After=syslog.target network.target remote-fs.target nss-lookup.target
+    
+    [Service]
+    Type=forking
+    PIDFile=/var/run/redis.pid
+    ExecStart=/usr/local/bin/redis-server /etc/redis.conf
+    ExecReload=/bin/kill -s HUP $MAINPID
+    ExecStop=/bin/kill -s QUIT $MAINPID
+    PrivateTmp=true
+    
+    [Install]
+    WantedBy=multi-user.target
+```
+- 重载systemctl
+```
+systemctl daemon-reload 
+```
+- 启动重启等操作
+```
+systemctl start/stop/restart/status redis
+```
+- redis.server修改后重启
+```
+systemctl enable redis.service
+```
+
 
 ## 使用service来管理redis-server
 
