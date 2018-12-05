@@ -21,13 +21,19 @@ $ sudo yum install -y mongodb-org
 ## 运行
 
 ```
-$ sudo service mongod start  # 启动服务
-$ sudo tail /var/log/mongodb/mongod.log   # 验证是否运行
-$ sudo chkconfig mongod on  # 将在系统重启后自启
+# 启动服务
+sudo service mongod start  
+systemctl start mongod
 
-$ sudo service mongod stop  # 停止服务
-$ sudo service mongod restart  # 重启服务
-$ kill -15 mongo_id  # 使用-15杀mongod进程避免锁死
+sudo tail /var/log/mongodb/mongod.log   # 验证是否运行
+
+# 将在系统重启后自启
+sudo chkconfig mongod on
+sudo systemctl ennable mongod
+
+sudo service mongod stop  # 停止服务
+sudo service mongod restart  # 重启服务
+kill -15 mongo_id  # 使用-15杀mongod进程避免锁死
 ```
 
 ## 配置
@@ -42,6 +48,21 @@ $ sudo nano /etc/mongod.conf
 /var/log/mongodb/mongod.log  # 默认log位置
 port: 27017
 bindIp: 127.0.0.1  →  0.0.0.0  # 默认只允许本地访问, 修改后对互联网开放
+```
+
+## 卸载
+1. 关闭mongod
+```
+sudo service mongod stop
+```
+2. 删除安装包
+```
+sudo yum erase $(rpm -qa | grep mongodb-org)
+```
+3. 删除数据文件
+```
+sudo rm -r /var/log/mongodb
+sudo rm -r /var/lib/mongo
 ```
 
 # 使用Robo 3T 通过ssh连接mongodb
