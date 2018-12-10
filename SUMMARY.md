@@ -15,6 +15,7 @@
   * [文件及目录管理](linux-common-knowledge/wen-jian-ji-mu-lu-guan-li.md)
   * [nano editor](linux-common-knowledge/nano-editor.md)
   * [tmux](linux-common-knowledge/tmux.md)
+  * [vim使用](linux-common-knowledge/vim.md)
   * [other](linux-common-knowledge/other.md)
 * [REDHAT 配置](redhat-pei-zhi.md)
   * [AWS 知识](redhat-pei-zhi/aws-zhi-shi.md)
