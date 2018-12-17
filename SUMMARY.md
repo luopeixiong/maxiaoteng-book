@@ -20,7 +20,7 @@
 * [REDHAT 配置](redhat-pei-zhi.md)
   * [AWS 知识](redhat-pei-zhi/aws-zhi-shi.md)
   * [服务器备忘](redhat-pei-zhi/aws-zhi-shi/fu-wu-qi-bei-wang.md)
-* [Redis](redis.md)
+* [Redis](redis/install.md)
   * [安装](redis/install.md)
   * [Python连接Redis](redis/python-redis.md)
 * [Mongodb](mongodb/install.md)
