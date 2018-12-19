@@ -118,11 +118,28 @@ done
 ## sh样本
 
 ```
-#!/bin/sh
+#!/bin/sh  # 指定脚本解释器
+
+# 生效当前用户的配置, 通常用在crontab中
+source ~/.bash_profile
+source /etc/profile
+
+# 添加环境变量, 比如scrapy创建在了/usr/local/bin
+SCRAPY_HOME=/usr/local/bin
+export SCRAPY_HOME
+
+PATH=$PATH:$SCRAPY_HOME
+export PATH
+
+
+# 生效虚拟环境
+source /data2/home/maxiaoteng/miniconda3/bin/activate /data2/home/maxiaoteng/miniconda3/envs/sjy_conda
+
 # 切换到目录下
 cd /home/ec2-user/uber/crawler/python/zomato/
 # 启动爬虫
 /usr/bin/python3 zomato_apac.py
+
 ```
 
 ```

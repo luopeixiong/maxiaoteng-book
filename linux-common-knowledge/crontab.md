@@ -23,6 +23,12 @@ crontab my_crontab
 service crond restart
 ```
 
+### 直接编辑
+```
+crontab -e  # 任何用户都可以用
+vim /etc/crontab  # 仅限root用户, 通常用于给其他用户指定定时任务, 或者需要root来运行任务
+```
+
 ## 命令格式
 	
 ```
@@ -54,6 +60,7 @@ service crond restart
 ```
 #!/bin/sh
 . ~/.bash_profile
+source /etc/profile
 # 切换到scrpay命令下
 cd /home/ec2-user/crawler/mangoplate_scrapy/
 
@@ -64,4 +71,13 @@ cd /home/ec2-user/crawler/mangoplate_scrapy/
 
 # 去重
 /usr/bin/python3 deduplicate.py
+```
+
+
+## 环境变量的问题
+由于crontab只加载/ect/environment，并不加载/etc/profile和~/.bash_profile，所以需要在脚本里手动添加环境变量
+```
+. /etc/profile
+. ~/.bash_profile
+export xx/xx/xx.conf  # 可以导入需要的配置文件
 ```

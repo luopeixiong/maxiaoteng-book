@@ -11,3 +11,11 @@ scrapy list
 
 scrapy crawl first_spider  
 ```
+
+## scrapy
+```
+scrapy
+#等价于
+/usr/bin/python36 /usr/local/bin/scrapy
+# 所以可以使用这种方法来制定python版本
+```

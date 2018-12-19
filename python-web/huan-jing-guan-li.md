@@ -69,6 +69,18 @@ cd test  # 就会自动激活虚拟环境
 ```
 
 
+## conda
+1. 安装
+```
+# miniconda
+wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh
+
+# conda
+wget https://repo.continuum.io/miniconda/Anaconda-latest-Linux-x86_64.sh
+bash Anaconda-latest-Linux-x86_64.sh
+```
+
 
 ## 使用vim
 
