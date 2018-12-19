@@ -116,6 +116,7 @@ done
 
 
 ## sh样本
+兼容crontab的运行, 设置全面的环境变量和路径
 
 ```
 #!/bin/sh  # 指定脚本解释器
@@ -125,12 +126,12 @@ source ~/.bash_profile
 source /etc/profile
 
 # 添加环境变量, 比如scrapy创建在了/usr/local/bin
+# 可以通过echo $PATH来测试是否添加成功
 SCRAPY_HOME=/usr/local/bin
 export SCRAPY_HOME
 
 PATH=$PATH:$SCRAPY_HOME
 export PATH
-
 
 # 生效虚拟环境
 source /data2/home/maxiaoteng/miniconda3/bin/activate /data2/home/maxiaoteng/miniconda3/envs/sjy_conda
@@ -139,7 +140,6 @@ source /data2/home/maxiaoteng/miniconda3/bin/activate /data2/home/maxiaoteng/min
 cd /home/ec2-user/uber/crawler/python/zomato/
 # 启动爬虫
 /usr/bin/python3 zomato_apac.py
-
 ```
 
 ```
