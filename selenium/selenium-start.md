@@ -48,3 +48,13 @@ def launch_driver():
     driver.title  # 页面标题
     driver.page_source  # 页面源代码
 ```
+
+## 调试
+有的时候页面出现未知标签, 本地又不方便复现, 就需要保留代码调试
+```
+# 截图
+driver.save_screenshot("codingpy.png")
+
+# 保留源代码
+print(driver.page_source)
+```
