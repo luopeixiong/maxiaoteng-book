@@ -149,4 +149,33 @@ cd /home/ec2-user/uber/crawler/python/zomato/
 /usr/bin/python3 /home/ec2-user/crawler/baemin/baeminApp3.0.py 1 >/dev/null 2>&1 &
 ```
 
+## 对目录和文件的操作
+```
+判断操作
+#!/bin/bash
+# 如果数据文件存在,先删除
+data_path=/home/maxiaoteng/ss.txt
+if [ ! -f $data_path ];then
+  echo 不存在
+else
+  echo 存在, 我删掉了
+  rm -f $data_path
+fi
+```
+
+说明
+```
+-d # 判断目录是否存在
+-f # 判断文件是否存在
+-x # 判断路径是否存在并有可执行权限
+-n # 判断变量是否为空
+    if [ ! -n $var ] ; then
+        echo var 变量为空
+    fi
+=  # 判断变量是否相等
+    if [ $var1 = $var2 ]; then
+        echo var1和var2相等
+    fi
+```
+
 
