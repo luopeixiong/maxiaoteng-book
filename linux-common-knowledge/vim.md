@@ -9,3 +9,5 @@
 - q     # 退出
 - wq    # 保存退出
 - q!    # 强制退出
+- set number    # 显示行号
+- set nonumber    # 隐藏行号
