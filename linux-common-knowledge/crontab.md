@@ -82,4 +82,4 @@ cd /home/ec2-user/crawler/mangoplate_scrapy/
 export xx/xx/xx.conf  # 可以导入需要的配置文件
 ```
 - 考虑到crontab中设置复杂不一, 应该规范shell命令的格式, 确保每次使用绝对路径, 适用于crontab的运行
-- crontab的任务只有一行命令即可
+- crontab的任务只有一行运行shell脚本的命令即可

@@ -31,7 +31,7 @@
   * [mongo shell](mongodb/mongo-shell.md)
 * [BeautifulSoup](beautifulsoup.md)
 * [paramiko模块](paramikomo-kuai.md)
-* [版本控制](version_control/svn-git-commands.md)
+* [版本控制](version-control/svn-git-commands.md)
   * [svn - git 基本操作](version-control/svn-git-commands.md)
   * [git 进阶](version-control/git-advanced.md)
 
