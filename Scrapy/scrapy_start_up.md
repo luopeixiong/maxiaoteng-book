@@ -17,5 +17,11 @@ scrapy crawl first_spider
 scrapy
 #等价于
 /usr/bin/python36 /usr/local/bin/scrapy
-# 所以可以使用这种方法来制定python版本
+# 所以可以使用这种方法来指定python版本
+```
+
+
+## spider传入参数
+```
+scrapy crawl spider1 -a params
 ```
