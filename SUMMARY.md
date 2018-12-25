@@ -106,6 +106,7 @@
 * [虚拟机配置](Configurations/virtual_machine.md)
 * [mxt\_aws](Configurations/mxtaws.md)
 * [VScode](Configurations/vscode.md)
+* [Mysql](Configurations/mysql.md)
 
 ## 邮件常用语
 * [00](00.md)
