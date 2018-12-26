@@ -50,7 +50,8 @@ v. FromRequest.from_response(response, formdata, call_back)
 - url(string)
 - headers(dict)
 - status(integer)
-- body(str), text
+- body(bytes), 
+- text   # body.decode('utf-8') = text  utf-8可以是其他类型, <meta charset="UTF-8">
 - meta(dict)
 - flags(list)
 - request  
