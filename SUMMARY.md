@@ -41,6 +41,7 @@
 * [os Model](python-basics/os-model.md)
 * [logging模块](python-basics/logging-model.md)
 * [CSV模块](python-basics/csv-model.md)
+* [编码](python-basics/encode.md)
 * [数据结构](python-basics/shu-ju-jie-gou.md)
   * [列表 List](python-basics/shu-ju-jie-gou/lie-biao-list.md)
   * [集合 Set](python-basics/shu-ju-jie-gou/ji-heset.md)
