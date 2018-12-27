@@ -153,17 +153,15 @@ docker rm container_id/container_name  # 删除容器
 docker export contain_id > ./new_contain.tar
 ```
 
-
 ```
 # 保存历史的导入导出
 docker save contain_id > ./new_contain.tar
 ```
+
 - 容器的导入
 ```
 docker import dtp_container.tar dtp  # 容器的名称将是dtp
 ```
-
-
 
 - 容器制作镜像
 ```
@@ -207,7 +205,6 @@ sudo cat /etc/group | grep docker
 - 创建分组, 添加用户
 ```
 sudo groupadd -g 999 docker   # 999是分组id, 可不指定
-
 # 添加用户
 sudo usermod -aG dockerroot ec2-user
 sudo usermod -aG docker ec2-user
