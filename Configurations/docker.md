@@ -41,6 +41,29 @@ sudo sh get-docker.sh
 sudo systemctl start docker  # 启动docker
 ```
 
+- RHEL 安装
+踩坑参考(https://stackoverflow.com/questions/45415524/installing-docker-ce-in-redhat/47903707#47903707)
+
+    - 安装
+    ```
+    sudo yum install -y docker
+    ```
+    - 错误 (报错: `No package docker available.` 或 `Package: docker-ce-17.06.0.ce-1.el7.centos.x86_64 (docker-ce-stable) Requires: container-selinux >= 2.9`)
+        - 对于RHEL 7.x以上的系统, docker在 `rhel-7-server-extras-rpms`仓库中, 可以使用如下命令生效:
+            `subscription-manager repos --enable=rhel-7-server-extras-rpms`
+        - 如果系统(如: aws上的RHEL)没有任何subscription, 可以使用centos的扩充yum源, 方法如下: 
+            ```
+            sudo vim /etc/yum.repos.d/centos.repo
+            
+            [CentOS-extras]
+            name=CentOS-7-Extras
+            mirrorlist=http://mirrorlist.centos.org/?release=7&arch=$basearch&repo=extras&infra=$infra
+            #baseurl=http://mirror.centos.org/centos/$releasever/extras/$basearch/
+            gpgcheck=0
+            gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+            ```
+    
+
 ## 基本操作  
 
 - 查看docker版本  

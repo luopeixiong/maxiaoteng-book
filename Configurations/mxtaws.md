@@ -7,6 +7,9 @@
 - git
 - nginx, supervisor
 - virtualenv
+- mongodb
+- minicanda
+- docker
 - 安装python开发版本
 ```
 sudo yum install python-devel
