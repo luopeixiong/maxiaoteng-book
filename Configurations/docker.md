@@ -193,3 +193,39 @@ apt install nano
 ```
 sudo docker cp contain_id:/root/DTP/output.xlsx ~/new_dir/
 ```
+
+## 用户管理
+Docker守候进程绑定的是一个unix  socket，而不是TCP端口。这个套接字默认的属主是root，其他是用户可以使用sudo命令来访问这个套接字文件。因为这个原因，docker服务进程都是以root帐号的身份运行的。
+
+为了避免每次运行docker命令的时候都需要输入sudo，可以创建一个docker用户组，并把相应的用户添加到这个分组里面。当docker进程启动的时候，会设置该套接字可以被docker这个分组的用户读写。这样只要是在docker这个组里面的用户就可以直接执行docker命令了。
+
+- 查看docker相关的分组
+```
+sudo cat /etc/group | grep docker
+```
+
+- 创建分组, 添加用户
+```
+sudo groupadd -g 999 docker   # 999是分组id, 可不指定
+
+# 添加用户
+sudo usermod -aG dockerroot ec2-user
+sudo usermod -aG docker ec2-user
+```
+
+- 确认创建成功
+```
+cat /etc/group
+```
+
+- 重启
+```
+sudo systemctl restart docker
+```
+
+- 确认能否直接运行
+```
+docker info
+# 如果提示权限不足
+sudo chmod a+rw /var/run/docker.sock
+```
