@@ -16,5 +16,7 @@ sudo yum install python-devel
 sudo yum install python36-devel
 ```
 
+## 通过利用swap file实现虚拟内存
 
+http://www.cnblogs.com/owenyang/p/4282283.html
 
