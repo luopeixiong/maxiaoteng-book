@@ -20,3 +20,12 @@ sudo yum install python36-devel
 
 http://www.cnblogs.com/owenyang/p/4282283.html
 
+
+## 项目
+
+- gitbook   nginx代理:4000
+
+- gerapy    nginx代理:8000   
+- scrapyd   nginx代理:6800
+- portia    nginx代理:9001
+

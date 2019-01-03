@@ -64,10 +64,11 @@
   * [中间件](Scrapy/middlewares.md)
   * [Scrapy优化](Scrapy/scrapy-optimization.md)
   * [部署爬虫scrapyd](Scrapy/deploying-scrapy-crawlers.md)
-  * [Gerapy](Scrapy/gerapy.md)
   * [Request and Response](Scrapy/request-and-response.md)
   * [Scrapy-redis](Scrapy/scrapy-redis.md)
   * [http错误处理](Scrapy/handle-http-error.md)
+  * [Scrapyd](Scrapy/scrapyd.md)
+  * [Gerapy](Scrapy/gerapy.md)
 * [设置代理服务器](crawler/proxy_server.md)
 * [others](crawler/others.md)
 
