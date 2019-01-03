@@ -169,7 +169,7 @@ collection.find_one(query)
 **查询多条**
 ```
 result = collection.find(query)
-// result 是一个可迭代的Cursor对象, 可用for遍历
+#　**注意:** 此处返回result类型`<pymongo.cursor.Cursor object at 0x0000000002C6DBE0>`是可迭代对象,可以使用list(result)转换, 也可以使用for循环迭代
 
 num = result.count()   # Cursor有一个count方法, 返回查询结果的个数
 ```
@@ -185,7 +185,6 @@ query = {
 result = collection.find(query)  # 查询结果
 result.sort('name')  # 升序排序
 result.sort('name', -1)  # 降序排序
-
 ```
 
 **过滤显示**

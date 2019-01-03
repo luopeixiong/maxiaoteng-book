@@ -25,7 +25,7 @@
   * [Python连接Redis](redis/python-redis.md)
 * [Mongodb](mongodb/install.md)
   * [安装](mongodb/install.md)
-  * [安全设置](pythonlian-jie-mongodb/robo-3t-lian-jie-mongodb.md)
+  * [安全部署](mongodb/security-deployment.md)
   * [值的比较](mongodb/mongodb-he-pymongo/mongodb-he-pymongo-zhi-de-bi-jiao.md)
   * [pymongo连接](mongodb/mongodb-pymongo.md)
   * [mongo shell](mongodb/mongo-shell.md)
