@@ -30,3 +30,11 @@
     如果重启还是不行, 需要安装中文包, 扩展搜索: chinese / language
 - 设置tab 默认缩进4个空格
     - 文件 → 首选项 → 设置 → 用户设置 → 打开setting.json → tabsize
+
+- 设置启动的终端
+setting.json中  
+```
+// "terminal.integrated.shell.windows":"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+// "terminal.integrated.shell.windows": "C:\\Windows\\System32\\cmd.exe",
+"terminal.integrated.shell.windows": "D:\\soft\\git\\bin\\bash.exe"
+```
