@@ -44,3 +44,28 @@ with open(origin_path,'r',encoding='utf-8') as fr:
 用在csv的read和writer方法, 
 - delimiter=','  # 分隔符
 - quotechar='"'  # 引用符, 将内容用引号包含,避免歧义
+
+## 读写超大文件时
+
+[参考stackoverflow](https://stackoverflow.com/questions/15063936/csv-error-field-larger-than-field-limit-131072)
+
+- 报错: _csv.Error: field larger than field limit (131072)
+      - 原因: csv文件包含特别大的field, 需要修改最大显示
+      - 解决代码
+      ```
+            import sys
+            import csv
+            maxInt = sys.maxsize
+            decrement = True
+
+            while decrement:
+            # decrease the maxInt value by factor 10 
+            # as long as the OverflowError occurs.
+
+            decrement = False
+            try:
+                  csv.field_size_limit(maxInt)
+            except OverflowError:
+                  maxInt = int(maxInt/10)
+                  decrement = True
+      ```
