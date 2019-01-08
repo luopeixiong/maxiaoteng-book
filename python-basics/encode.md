@@ -27,3 +27,15 @@ print(encode_info, encode_str)
     >> {'encoding': 'ascii', 'confidence': 1.0, 'language': ''}
 item['body'] = body.decode(encode_str)  # 正确解码为str
 ```
+
+## 判断文件的编码
+```
+import chardet
+ 
+# 获取文件编码类型
+def get_encoding(file):
+    # 二进制方式读取，获取字节数据，检测类型
+    with open(file, 'rb') as f:
+        # 对于大文件,最好使用readline
+        return chardet.detect(f.readline())['encoding']
+```
