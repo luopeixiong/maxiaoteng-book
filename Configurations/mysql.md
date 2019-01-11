@@ -15,3 +15,32 @@
         - > 500 text
         - > 20000  mediumtext
 - blob
+
+
+## pymysql查询
+
+```
+# 建立数据库, 数据来自三江源在阿里云的服务器
+    connect = pymysql.connect(
+        host='39.107.95.132',
+        db='sanjiangyuan',
+        user='root',
+        passwd='jAqFum_sMusIE6E8',
+        charset='utf8',
+        use_unicode=True
+    )
+    # 如果不使用Dict, 返回的是list, 每个元素都是元祖
+    cursor = connect.cursor(cursor=pymysql.cursors.DictCursor)
+    try:
+        cursor.execute(
+            "select * from yunfu_crawler_news where created_at >= '{}'".format(yesterday)
+        )
+        data = cursor.fetchall()
+        connect.commit()
+        return data
+    except Exception as e:
+        print(str(e))
+        logging.info(str(e))
+    finally:
+        connect.close()
+```
