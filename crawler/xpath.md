@@ -32,6 +32,8 @@ print(result.decode('utf-8'))
     - //li[contains(@class, "li")]  # 选择所有包含li的标签
     - //li[contains(@class, "li") and contains(@class, "tag")]  # 能选择上面那个标签
     - //li[contains(@class, "li") and @name="item"] # 可以同时选择多个属性条件
+- | 或操作
+    - //li[contains(@class, "li")] | //li[@name="item"]  # 用法和and类似
 
 - 按序选择  # xpath的list选择是从1开始, last()表示最后一个
 - 节点轴
