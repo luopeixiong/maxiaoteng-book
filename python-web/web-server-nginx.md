@@ -37,9 +37,7 @@ sudo nginx -s reload
 ```
 # 查找主配置文件, 里面包含日志文件路径和子配置文件路径
 find / -name nginx.conf
-```
-
-```bash
+# 子路径配置文件
 /etc/nginx/conf.d/*.conf
 ```
 
