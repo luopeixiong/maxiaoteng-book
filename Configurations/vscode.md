@@ -38,3 +38,7 @@ setting.json中
 // "terminal.integrated.shell.windows": "C:\\Windows\\System32\\cmd.exe",
 "terminal.integrated.shell.windows": "D:\\soft\\git\\bin\\bash.exe"
 ```
+
+
+- 导入导出配置文件
+位于：/yonghu/Appdata/Roaming/code/user/setting.json
