@@ -68,7 +68,6 @@ git checkout branch_name  # 检出指定分支的代码
 # git
 git pull
 git pull remote_name branch_name 
-
 # svn
 svn update
 svn update -r m svn_path  # 更新指定版本的代码
@@ -78,7 +77,6 @@ svn update -r m svn_path  # 更新指定版本的代码
 ```
 # git
 git status
-
 # svn
 svn status
 ```
@@ -87,7 +85,6 @@ svn status
 ```
 # git
 git remote -v  # 显示远程仓库的链接
-
 # svn
 svn info  # 显示仓库所有信息
 svn info |grep URL/http  
@@ -100,7 +97,6 @@ cat .svn/entries |grep http
 git diff  # 比较工作区和暂存区的差异
 git diff commit_1 commit_2  # 比较两次提交的差异
 git diff --staged  # 比较暂存区和代码库的差异
-
 # svn
 svn diff
 ```
@@ -109,11 +105,9 @@ svn diff
 ```
 # 1. 查看remote
 git remote -v
-
 # 2. 增加新的remote** 
 git remote add gitlab git_url
 git push gitlab master
-
 # 3. 修改remote的url**
 git remote set-url gitlab git_url
 ```
@@ -123,10 +117,8 @@ git remote set-url gitlab git_url
 # 删除本地和仓库
 git rm file_name
 git rm -r directory/
-
 # 只删除仓库, 保留本地文件
 git rm --cached file_name
-
 # svn
 svn rm --keep-local my_important_file  # 将只删除版本库的文件，而不删除本地
 ```
@@ -141,9 +133,9 @@ svn rm --keep-local my_important_file  # 将只删除版本库的文件，而不
 - 撤销工作区的修改, 还没有add到版本库
 
 ```
+# git
 git checkout .  # 撤销全部更改
 git checkout XX.file  # 撤销特定文件
-
 # svn
 svn revert -r path_name  # 丢弃未提交的代码 
 svn revert file_name
