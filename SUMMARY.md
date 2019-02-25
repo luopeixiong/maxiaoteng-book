@@ -39,6 +39,7 @@
 ## Python基础
 
 * [正则表达式](python-basics/re-model.md)
+* [进程（process）和线程（Thread）](python-basics/process_thread.md)
 * [os Model](python-basics/os-model.md)
 * [logging模块](python-basics/logging-model.md)
 * [CSV模块](python-basics/csv-model.md)
@@ -51,7 +52,10 @@
 
 ## Python爬虫
 
-* [summary](crawler/summary.md)
+* [概述](crawler/summary.md)
+* [前端基础](crawler/)
+  * [DOM编程](crawler/front_end/dom.md)
+* [工具一栏](crawler/tools.md)
 * [Requests](crawler/requests.md)
 * [XPATH](crawler/xpath.md)
 * [selenium](crawler/selenium.md)
