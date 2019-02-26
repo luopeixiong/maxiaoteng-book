@@ -13,8 +13,6 @@ scrapyd
 
 
 ## API说明
-
-## API说明
 以下是postman导出的一个collection，可以重命名为：`scrapyd.postman_collection.json` 导入到postman查看
 ```
 {

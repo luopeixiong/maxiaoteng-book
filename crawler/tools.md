@@ -20,3 +20,11 @@
 4. html5lib(不常用)
 
 
+## 4. 动态网站加载
+1. chromedrier + Chrome + selenium (使用无界面模式降低资源占用)
+2. Phantomjs(已被无界面的Chrome替代)
+
+## 5. 爬虫代理
+防止被ban的技巧
+    1. 并发逐步增加，参考scrapy，大致了解对方网站对并发的限制情况
+    2. 使用代理ip

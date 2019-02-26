@@ -74,7 +74,7 @@
   * [http错误处理](Scrapy/handle-http-error.md)
   * [Scrapyd](Scrapy/scrapyd.md)
   * [Gerapy](Scrapy/gerapy.md)
-* [设置代理服务器](crawler/proxy_server.md)
+* [使用代理服务](crawler/proxy_server.md)
 * [others](crawler/others.md)
 
 
@@ -84,7 +84,7 @@
   * [HTTP](python-web/http/http.md)
   * [POST](python-web/http/post.md)
 * [Ajax](python-web/ajax.md)
-* [Proxy 代理](python-web/proxy-dai-li.md)
+* [Proxy 代理]()
 * [环境管理](python-web/huan-jing-guan-li.md)
 * [Django](python-web/django.md)
   * [Django入门](python-web/django/djangoru-men.md)
