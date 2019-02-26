@@ -1,7 +1,24 @@
+
+## 1. Redis简介
+1. Redis是一个基于内存的键值对存储系统，常用作数据库、缓存和消息代理 。它支持字符串、字典、列表、集合、有序集合、位图（Bitmaps）、地理位置等多种数据结构，所以常常被称为**数据结构服务器**。Redis支持事务、分片、主从复制，**支持RDB**（将内存中的数据保存在文件中）和AOF（类似于MySQL的binlog）两种持久化方式，还支持订阅分发、Lua 脚本、集群等特性。
+
+2. 相对于Memcached的优势
+    1. Web应用中常需要将一些重要数据持久化到硬盘，避免宕机等原因导致数据丢失。Redis会周期性把更新的数据写入磁盘或者追加到命令日志中，并且在此基础上实现了主从同步。而Memcached在进程关闭之后数据就会丢失
+    2. 一些业务为了简化工作，需要使用列表、集合这样只有Redis才支持的数据结构。相对于Memcahced，Redis有更多的应用场景
+    3. Redis提供了丰富的命令
+
+3. Redis应用场景
+    1. 取Top N 操作
+    2. 实时统计
+    3. 计数器
+    4. 显示最新的项目列表
+    5. 秒杀活动
+
+## 2. 安装
+1. ubuntu安装可以使用`apt install redis-server`一键安装
+
+2. 以下方法用于在aws ec2 上安装
 [**参考教程**:](https://medium.com/@andrewcbass/install-redis-v3-2-on-aws-ec2-instance-93259d40a3ce)
-
-
-## 安装
 
 ```
 $ sudo yum -y update 
@@ -22,13 +39,11 @@ sudo make install
 sudo cp src/redis-server /usr/local/bin/
 sudo cp src/redis-cli /usr/local/bin/
 
-
 # 安装tcl
 sudo yum install -y tcl 
-
 ```
 
-## 配置Redis
+## 3. 配置Redis
 
 初始配置文件位于解压目录 `.../redis-stable/redis.conf`
 ```
@@ -48,8 +63,8 @@ sudo nano redis.conf
 cp redis.conf /etc
 ```
 
-## 使用服务方式运行redis
-- 编辑配置脚本
+## 4. 使用服务方式运行redis
+1. 编辑配置脚本
 ```
 vim /etc/systemd/system/redis.service
 # 注意执行命令和配置文件的路径
@@ -69,21 +84,21 @@ vim /etc/systemd/system/redis.service
     [Install]
     WantedBy=multi-user.target
 ```
-- 重载systemctl
+2. 重载systemctl
 ```
 systemctl daemon-reload 
 ```
-- 启动重启等操作
+3. 启动重启等操作
 ```
 systemctl start/stop/restart/status redis
 ```
-- redis.server修改后重启
+4. redis.server修改后重启
 ```
 systemctl enable redis.service
 ```
 
 
-## 使用service来管理redis-server
+## 5. 使用service来管理redis-server
 
 1. 下载init脚本
 ```
@@ -107,7 +122,7 @@ sudo chkconfig --level 345 redis-server on
 sudo service redis-server start
 ```
 
-## 打开系统配置文件, 修复redis内存低的问题
+## 6. 打开系统配置文件, 修复redis内存低的问题
 ```
 sudo nano /etc/sysctl.conf
       #confure redis background save issue 
@@ -115,13 +130,13 @@ sudo nano /etc/sysctl.conf
       systctl vm.overcommit_memory = 1
 ```
 
-## 测试redis服务器是否启动正常
+## 7. 测试redis服务器是否启动正常
 ```
 redis-cli ping
     # 响应为 PONG
 ```
 
-## 客户端连接Redis
+## 8. 客户端连接Redis
 1. redis-cli  # 启动redis客户端
 2. 连接到本地redis 服务器
 ```
@@ -138,7 +153,7 @@ PONG
 ```
 
 
-## 可视化RedisDesktopManager
+## 9. 可视化RedisDesktopManager
 使用ssh连接
 
 

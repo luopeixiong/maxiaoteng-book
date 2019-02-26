@@ -1,7 +1,12 @@
-# Python连接Redis
+## 1. Redis命令参考
+1. [官网提供的可搜索的命令](https://redis.io/commands)
+2. [翻译中文文档](https://wizardforcel.gitbooks.io/redis-doc/)
 
-## redis连接
-redis提供两个类Redis和StrictRedis, StrictRedis用来实现大部分官方的命令,并使用官方的语法和命令,Redis是StrictRedis的字类,用于向后兼容旧版本的redis-py.
+# Python连接Redis
+[源代码](https://github.com/andymccurdy/redis-py)
+
+## 1. redis连接
+redis提供两个类Redis和StrictRedis, StrictRedis用来实现大部分官方的命令,并使用官方的语法和命令,Redis是StrictRedis的子类,用于向后兼容旧版本的redis-py.
 
 redis连接实例是线程安全的,可以直接将redis设置为全局变量,直接使用.
 
