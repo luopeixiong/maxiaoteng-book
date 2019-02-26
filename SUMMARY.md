@@ -1,6 +1,6 @@
 # Summary
 
-## 第一部分
+## 1. 基础
 
 * [Introduction](README.md)
 * [linux常用知识](linux-common-knowledge/cha-kan-ming-ling-bang-zhu.md)
@@ -21,22 +21,17 @@
 * [REDHAT 配置](redhat-pei-zhi.md)
   * [AWS 知识](redhat-pei-zhi/aws-zhi-shi.md)
   * [服务器备忘](redhat-pei-zhi/aws-zhi-shi/fu-wu-qi-bei-wang.md)
-* [Redis](redis/install.md)
-  * [安装](redis/install.md)
-  * [Python连接Redis](redis/python-redis.md)
-* [Mongodb](mongodb/install.md)
-  * [安装](mongodb/install.md)
-  * [安全部署](mongodb/security-deployment.md)
-  * [值的比较](mongodb/mongodb-he-pymongo/mongodb-he-pymongo-zhi-de-bi-jiao.md)
-  * [pymongo连接](mongodb/mongodb-pymongo.md)
-  * [mongo shell](mongodb/mongo-shell.md)
 * [BeautifulSoup](beautifulsoup.md)
 * [paramiko模块](paramikomo-kuai.md)
 * [版本控制](version-control/svn-git-commands.md)
   * [svn - git 基本操作](version-control/svn-git-commands.md)
   * [git 进阶](version-control/git-advanced.md)
+* [Markdown]
+  * [基本语法](markdown/ji-ben-yu-fa.md)
+  * [Markdown 实现页内跳转](markdown/Page_internal_jump.md)
+  * [Python Markdown](markdown/python-markdown.md)
 
-## Python基础
+## 2. Python基础
 
 * [正则表达式](python-basics/re-model.md)
 * [进程（process）和线程（Thread）](python-basics/process_thread.md)
@@ -50,7 +45,7 @@
   * [字典 Dict](python-basics/shu-ju-jie-gou/zi-dian-dict.md)
 * [others](python-basics/others.md)
 
-## Python爬虫
+## 3. Python爬虫
 
 * [概述](crawler/summary.md)
 * [前端基础](crawler/summary.md)
@@ -78,13 +73,12 @@
 * [others](crawler/others.md)
 
 
-## Python Web
+## 4. Python Web
 
 * [HTTP](python-web/http/http.md)
   * [HTTP](python-web/http/http.md)
   * [POST](python-web/http/post.md)
 * [Ajax](python-web/ajax.md)
-* [Proxy 代理]()
 * [环境管理](python-web/huan-jing-guan-li.md)
 * [Django](python-web/django.md)
   * [Django入门](python-web/django/djangoru-men.md)
@@ -99,11 +93,19 @@
 * [WEB服务器Nginx](python-web/web-server-nginx.md)
 * [Python应用服务器](python-web/pythonying-yong-fu-wu-qi.md)
 
-## MarkDown
 
-* [基本语法](markdown/ji-ben-yu-fa.md)
-* [Markdown 实现页内跳转](markdown/Page_internal_jump.md)
-* [Python Markdown](markdown/python-markdown.md)
+## 5. 数据库
+
+* [Mongodb](Database/mongodb/install.md)
+  * [安装](Database/mongodb/install.md)
+  * [安全部署](Database/mongodb/security_deployment.md)
+  * [pymongo](Database/mongodb/mongodb_pymongo.md)
+  * [mongo shell](Database/mongodb/mongo_shell.md)
+  * [值的比较](Database/mongodb/mongodb-he-pymongo/mongodb-he-pymongo-zhi-de-bi-jiao.md)
+* [Redis](Database/Redis/install.md)
+  * [安装](Database/Redis/install.md)
+  * [Python连接Redis](Database/Redis/python_redis.md)
+
 
 ## 开发环境配置 软件设置
 
@@ -115,6 +117,8 @@
 * [mxt\_aws](Configurations/mxtaws.md)
 * [VScode](Configurations/vscode.md)
 * [Mysql](Configurations/mysql.md)
+
+
 
 ## 邮件常用语
 * [00](00.md)
