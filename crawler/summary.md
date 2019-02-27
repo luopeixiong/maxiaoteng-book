@@ -42,4 +42,4 @@
 ## 5. 爬虫代理
 防止被ban的技巧  
 1. [并发逐步增加，参考scrapy，大致了解对方网站对并发的限制情况](/crawler/Scrapy/scrapy_optimization.md)
-2. [使用代理ip](/crawler/proxy_server.md)
+2. 伪装不同的请求，包括[使用代理ip](/crawler/proxy_server.md)和[user-agent随机](/crawler/random_user_agent.md)
