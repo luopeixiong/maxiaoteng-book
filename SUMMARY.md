@@ -71,6 +71,7 @@
 * [使用代理服务](crawler/proxy_server.md)
 * [随机user-agent](crawler/random_user_agent.md)
 * [验证码破解](crawler/verification_code.md)
+* [反爬虫策略](crawler/anti_spider_strategy.md)
 * [others](crawler/others.md)
 
 
