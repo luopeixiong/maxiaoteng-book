@@ -1,28 +1,28 @@
 # 页面交互
 
-## 基本操作
+## 1. 基本操作
 
 选中元素后, 可以对元素操作如下:
 
-- 模拟按键 send_keys()
+1. 模拟按键 send_keys()
 ```
 element.send_keys('some text', keys.ARROW_DOWN)  # 发送内容, 模拟按键
 ```
 
-- 清理`input`或`textarea`的内容
+2. 清理`input`或`textarea`的内容
 ```
 element.clear()    
 ```
 
-- 点击
+3. 点击
 ```
 element.click()
 ```
 
 
-## 填写表格
+## 2. 填写表格
 
-- 选择下拉列表
+1. 选择下拉列表
 
 ```
 from selenium.webdriver.support.ui import Select
@@ -34,10 +34,9 @@ select.select_by_value(value)  # 按value选择
 
 # 取消选择
 select.deselect_all()
-
 ```
 
-- 提交表单
+2. 提交表单
 
 ```
 element.click()
@@ -47,14 +46,14 @@ element.submit()
 
 ```
 
-## 一些js脚本
-- 执行js脚本的方法
+## 3. 一些js脚本
+1. 执行js脚本的方法
 ``` 
 driver.execute_script("script.js")
 driver.execute_script("arguments[0].value = '你猜一下';", search_button)  #带参数
 ```
 
-- 比如: 
+2. 比如: 
 ```
 # 移除某个标签class的hide部分
 driver.execute_script("$('.button.load-more.hide').removeClass('hide')")
@@ -64,14 +63,14 @@ driver.execute_script("$('#menuContent').remove()")
 driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 ```
 
-- 修改element的属性, 一般使用js就可以
+3. 修改element的属性, 一般使用js就可以
 ```
 new_class_name = 'new_class'
 driver.execute_script("$('.ratingcontent').class=argument[0]", new_class_name)
 driver.execute_script("$('.ratingcontent').class='new_class'")
 ```
 
-## 判断是否可见, 最好用attribute判断, 而不是is_displayed()
+## 4. 判断是否可见, 最好用attribute判断, 而不是is_displayed()
 ```
 # 习惯做法
 if element.get_attribute('style') == 'display: none;':

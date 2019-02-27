@@ -1,13 +1,13 @@
 # 安装和基本操作
 
-## 安装selenium
+## 1. 安装selenium
 ```
 sudo pip install selenium
 
 sudo python3 -m pip install selenium
 ```
 
-## 安装浏览器驱动
+## 2. 安装浏览器驱动
 
 当你使用PhantomJS时, selenium会提醒PhantomJS已经被弃用,并且 PhantomJS 不再更新. 同时为了便于调试, windows上用的chrome, 所以选择chrome
 
@@ -17,9 +17,9 @@ sudo python3 -m pip install selenium
 - chromedriver安装: [安装说明](https://devopsqa.wordpress.com/2018/03/08/install-google-chrome-and-chromedriver-in-amazon-linux-machine/)
 
 
-## 快速入门
+## 3. 快速入门
 
-- 启动浏览器
+1. 启动浏览器
 
 ```
 def launch_driver():
@@ -36,20 +36,20 @@ def launch_driver():
     
 ```
 
-- 加载页面
+2. 加载页面
 ```
     driver = launch_driver()
     driver.get(url)
 ```
 
-- driver的一些属性
+3. driver的一些属性
 
 ```
     driver.title  # 页面标题
     driver.page_source  # 页面源代码
 ```
 
-## 调试
+## 4. 调试
 有的时候页面出现未知标签, 本地又不方便复现, 就需要保留代码调试
 ```
 # 截图
