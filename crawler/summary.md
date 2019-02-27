@@ -38,7 +38,7 @@
 
 ## 4. 动态网站加载
 1. [Splash(支持异步)](/crawler/splash.md)(**首选**)
-2. [chromedrier + Chrome + selenium (使用无界面模式降低资源占用)](/crawler/selenium.md)
+2. [chromedrier + Chrome + selenium (使用无界面模式降低资源占用)](/crawler/selenium/selenium.md)
 3. Phantomjs(已被无界面的Chrome替代)
 
 ## 5. 反爬技巧
