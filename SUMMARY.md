@@ -57,6 +57,7 @@
   * [页面交互](crawler/selenium/ye-mian-jiao-hu.md)
   * [selenium查找元素](crawler/selenium/seleniumcha-zhao-yuan-su.md)
   * [显式等待\(explicit wait\)和隐式等待 \(implicit wait\)](crawler/selenium/selenium-explicit-wait.md)
+* [Splash](crawler/splash.md)
 * [Scrapy](crawler/Scrapy/scrapy_start_up.md)
   * [Scrapy setting](crawler/Scrapy/scrapy-setting.md)
   * [中间件](crawler/Scrapy/middlewares.md)
