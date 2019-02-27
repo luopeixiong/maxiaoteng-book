@@ -20,6 +20,7 @@
     1. Charles抓包分析http和https请求(**首选**)
     2. Fiddler抓包(优先使用上一个)
     3. Mitmproxy(使用python编写，是命令行程序)
+    4. Wireshark和Tcpdump(不使用http协议的app)
 
 ## 2. HTTP请求库
 1. [requests(可以代替python原生的请求库)](/crawler/requests.md)(**首选**)
@@ -40,7 +41,9 @@
 2. [chromedrier + Chrome + selenium (使用无界面模式降低资源占用)](/crawler/selenium.md)
 3. Phantomjs(已被无界面的Chrome替代)
 
-## 5. 爬虫代理
+## 5. 反爬技巧
 防止被ban的技巧  
 1. [并发逐步增加，参考scrapy，大致了解对方网站对并发的限制情况](/crawler/Scrapy/scrapy_optimization.md)
 2. 伪装不同的请求，包括[使用代理ip](/crawler/proxy_server.md)和[user-agent随机](/crawler/random_user_agent.md)
+3. [验证码破解](/crawler/verification_code.md)
+
