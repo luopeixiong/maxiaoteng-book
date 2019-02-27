@@ -6,27 +6,29 @@
 
 # Request
 
-## 基本参数
-- headers
-- url(转义之后的，修改需用replace)
-- method
-- body (str，经过转义的)
-- cookie
-- callback
-- meta 
+## 1. 基本参数
+1. headers
+2. url(转义之后的，修改需用replace)
+3. method
+4. body (str，经过转义的)
+	1. 当method为post时使用
+	2. 如果是get方法,get请求的querystring, 需要使用: ``` url + "?" + urllib.parse.urlencode(dict) ``` 来自动拼接,不能在此处传入。
+5. cookie
+6. callback
+7. meta 
  + 上一个请求 request.meta['item'] = item
  + 下一个响应中response.meta['item'] 便是item
-- errback
+8. errback
  + 返回non-200时调用
  + 比如：def errback_httpbin(self, failure): … ，
  + failure.check(ErrorType),    
  > ErrorType有HttpError, DNSLookupError,TimeoutError, TCPTimeOutError…
 
-- dont_filter(默认false, 过滤重复请求)
+9. dont_filter(默认false, 过滤重复请求)
 
-## 子类FormRequest（发送post请求, 可选）
+## 2. 子类FormRequest（发送post请求, 可选）
 - url
-- formdata
+- formdata(此处传入dict即可)
 iii. call_back
 iv. …
 v. FromRequest.from_response(response, formdata, call_back)
@@ -37,22 +39,17 @@ v. FromRequest.from_response(response, formdata, call_back)
 	callback=self.after_login
 	)
 
-## 注意事项
-
-- get请求的querystring, 需要使用: ``` url + "?" + urllib.parse.urlencode(dict) ``` 来自动拼接
-
-
-## dont_filter机制
+## 3. dont_filter机制
 
 # Response
 
-## 基本属性
-- url(string)
-- headers(dict)
-- status(integer)
-- body(bytes), 
-- text   # body.decode('utf-8') = text  utf-8可以是其他类型, <meta charset="UTF-8">
-- meta(dict)
-- flags(list)
-- request  
+## 1. 基本属性
+1. url(string)
+2. headers(dict)
+3. status(integer)
+4. body(bytes), 
+5. text   # body.decode('utf-8') = text  utf-8可以是其他类型, <meta charset="UTF-8">
+6. meta(dict)
+7. flags(list)
+8. request  
   产生这个response的request对象，重定向后的request是原始的，所以`response.url == response.request.url` 不总是成立

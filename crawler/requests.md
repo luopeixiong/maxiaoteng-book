@@ -1,16 +1,16 @@
 # Requests
 
 ## 1. 请求参数
-- headers
-- proxies
+1. headers
+2. proxies
 
-- get请求的参数dict
+3. get请求的参数dict
 ```
 params = {}
 res = requests.get(params=params)
 ```
 
-- cookies 参数,dict
+4. cookies 参数,dict
 ```
 cookies = {
     XX
@@ -19,7 +19,7 @@ cookies = {
 res = requests.get(cookies=cookies)
 ```
 
-- post请求的data参数, dict
+5. post请求的data参数, dict
 ```
 body = {}
 res = requests.post(data=body)  #如果是json,则使用json.dumps()
