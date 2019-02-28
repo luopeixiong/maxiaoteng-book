@@ -27,6 +27,7 @@
 [官方参考文档](https://kafka.apache.org/quickstart)
 1. 下载并解压数据
 2. 由于kafka依赖zookeeper服务来运行，可以根据教程启动单一的zookeeper来启动kafka服务
+    zookeeper是一个分布式的，开放源码的分布式应用程序协调服务，它包含一个简单的原语集，分布式应用程序可以基于它实现同步服务，配置维护和命名服务等。
 3. 由于需要使用Java，我使用了`sudo yum install java` 来安装解决
 4. 服务启动在了tmux里面
 
