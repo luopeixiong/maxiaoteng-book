@@ -49,3 +49,6 @@
 
 ## 6. 反爬策略
 1. [反爬策略](/crawler/anti_spider_strategy.md)
+
+## 7. 爬虫优化
+* [爬虫优化](/crawler/crawler_optimization.md)
