@@ -107,6 +107,7 @@
 * [Redis](Database/Redis/install.md)
   * [安装](Database/Redis/install.md)
   * [Python连接Redis](Database/Redis/python_redis.md)
+* [消息队列Kafka](Database/kafka.md)
 
 
 ## 开发环境配置 软件设置
