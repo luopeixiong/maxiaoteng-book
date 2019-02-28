@@ -91,3 +91,4 @@
 
 ## 4. 参考资料
 - [kafka介绍和教程](https://lotabout.me/2018/kafka-introduction/)，讲了kafka的一些概念，消息保存关系，如何扩展，消费组关系，组内消费关系，何时删除消息等
+- [详细介绍kafka和zookeeper](https://hackernoon.com/thorough-introduction-to-apache-kafka-6fbf2989bbc1)
