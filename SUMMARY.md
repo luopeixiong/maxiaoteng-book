@@ -15,6 +15,7 @@
   * [文件及目录管理](linux-common-knowledge/wen-jian-ji-mu-lu-guan-li.md)
   * [nano editor](linux-common-knowledge/nano-editor.md)
   * [tmux](linux-common-knowledge/tmux.md)
+  * [history](linux-common-knowledge/history.md)
   * [vim使用](linux-common-knowledge/vim.md)
   * [系统设置](linux-common-knowledge/system-setting.md)
   * [other](linux-common-knowledge/other.md)
