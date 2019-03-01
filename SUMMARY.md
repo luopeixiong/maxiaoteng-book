@@ -122,6 +122,7 @@
 * [mxt\_aws](Configurations/mxtaws.md)
 * [VScode](Configurations/vscode.md)
 * [Mysql](Configurations/mysql.md)
+* [Shadowsocks](Configurations/shadowsocks.md)
 
 
 
