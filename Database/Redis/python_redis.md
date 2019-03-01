@@ -2,7 +2,7 @@
 1. [官网提供的可搜索的命令](https://redis.io/commands)
 2. [翻译中文文档](https://wizardforcel.gitbooks.io/redis-doc/)
 
-# Python连接Redis
+# 1. Python连接Redis
 [源代码](https://github.com/andymccurdy/redis-py)
 
 ## 1. redis连接
@@ -250,7 +250,6 @@ print(r.get('gender'))      # gender 取出键male对应的值
 
 ## 5. redis Sorted Set 操作
 
-1. 所有操作
 ## 6. redis Hash(dict) 操作
 
 1. 所有操作
@@ -284,3 +283,4 @@ print(r.get('gender'))      # gender 取出键male对应的值
     
     # 9. 获取整个dict
     r.hgetall('hash')
+    ```
