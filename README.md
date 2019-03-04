@@ -1,6 +1,6 @@
 # My Awesome Book
 
-[我的简历](/Myself/resume.md)
+[我的简历](/Interview/resume.md)
 
 ## gitbook的插件
 book.json中不能有注释， 注释在这里

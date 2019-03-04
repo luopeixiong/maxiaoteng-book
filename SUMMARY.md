@@ -2,7 +2,7 @@
 
 ## 1. 基础
 
-* [Introduction](Readme.md)
+* [Introduction](README.md)
 * [linux常用知识](linux-common-knowledge/cha-kan-ming-ling-bang-zhu.md)
   * [查看命令使用文档](linux-common-knowledge/cha-kan-ming-ling-bang-zhu.md)
   * [tar/split 解压缩操作](linux-common-knowledge/tar.md)
@@ -129,6 +129,7 @@
 
 
 ## 面试汇总
+* [我的简历](Interview/resume.md)
 * [面试汇总](Interview/summary.md)
 
 
