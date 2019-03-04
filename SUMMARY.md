@@ -125,6 +125,7 @@
 * [VScode](Configurations/vscode.md)
 * [Mysql](Configurations/mysql.md)
 * [Shadowsocks](Configurations/shadowsocks.md)
+* [域名绑定](Configurations/domain.md)
 
 
 ## 面试汇总
