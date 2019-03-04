@@ -1,12 +1,12 @@
 # 面试知识点
 
 1. 常用库
-- requests
-- hashlib
-- demjson | json
-- bs4
-- lxml
-- selenium
+    - requests
+    - hashlib
+    - demjson | json
+    - bs4
+    - lxml
+    - selenium
 
 
 2. Python堆和栈
