@@ -2,7 +2,7 @@
 
 ## 1. 基础
 
-* [Introduction](/assets/马晓腾-Python开发工程师.pdf)
+* [Introduction](Readme.md)
 * [linux常用知识](linux-common-knowledge/cha-kan-ming-ling-bang-zhu.md)
   * [查看命令使用文档](linux-common-knowledge/cha-kan-ming-ling-bang-zhu.md)
   * [tar/split 解压缩操作](linux-common-knowledge/tar.md)
