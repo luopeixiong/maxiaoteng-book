@@ -1,11 +1,17 @@
 
 ## 1. Redis简介
 1. Redis是一个基于内存的键值对存储系统，常用作数据库、缓存和消息代理 。它支持字符串、字典、列表、集合、有序集合、位图（Bitmaps）、地理位置等多种数据结构，所以常常被称为**数据结构服务器**。Redis支持事务、分片、主从复制，**支持RDB**（将内存中的数据保存在文件中）和AOF（类似于MySQL的binlog）两种持久化方式，还支持订阅分发、Lua 脚本、集群等特性。
+    1. 数据存放在内存中，访问速度快
+    2. 支持丰富的数据结构：string,list, set, map...
+    3. 原子性操作，单线程，安全，支持事务(session)
+    4. 可以设置过期时间
 
 2. 相对于Memcached的优势
-    1. Web应用中常需要将一些重要数据持久化到硬盘，避免宕机等原因导致数据丢失。Redis会周期性把更新的数据写入磁盘或者追加到命令日志中，并且在此基础上实现了主从同步。而Memcached在进程关闭之后数据就会丢失
-    2. 一些业务为了简化工作，需要使用列表、集合这样只有Redis才支持的数据结构。相对于Memcahced，Redis有更多的应用场景
-    3. Redis提供了丰富的命令
+    1. redis可以持久化数据
+        Web应用中常需要将一些重要数据持久化到硬盘，避免宕机等原因导致数据丢失。Redis会周期性把更新的数据写入磁盘或者追加到命令日志中，并且在此基础上实现了主从同步。而Memcached在进程关闭之后数据就会丢失
+    2. memcached支持数据类型简单
+        一些业务为了简化工作，需要使用列表、集合这样只有Redis才支持的数据结构。相对于Memcahced，Redis有更多的应用场景
+    3. Redis速度快，并提供了丰富的命令
 
 3. Redis应用场景
     1. 取Top N 操作
@@ -20,28 +26,28 @@
 2. 以下方法用于在aws ec2 上安装
 [**参考教程**:](https://medium.com/@andrewcbass/install-redis-v3-2-on-aws-ec2-instance-93259d40a3ce)
 
-```
-$ sudo yum -y update 
-$ sudo yum -y install gcc make  # 安装gcc make用来编译
+    ```
+    $ sudo yum -y update 
+    $ sudo yum -y install gcc make  # 安装gcc make用来编译
 
-# 下载文件
-cd /usr/local/src 
-sudo wget http://download.redis.io/releases/redis-4.0.11.tar.gz
-sudo tar -xvzf redis-4.0.11.tar.gz 
-cd redis-stable
-make test  # 可选
-# 编译安装
-make  
+    # 下载文件
+    cd /usr/local/src 
+    sudo wget http://download.redis.io/releases/redis-4.0.11.tar.gz
+    sudo tar -xvzf redis-4.0.11.tar.gz 
+    cd redis-stable
+    make test  # 可选
+    # 编译安装
+    make  
 
-# 安装到环境变量
-sudo make install
-# 等价于: 
-sudo cp src/redis-server /usr/local/bin/
-sudo cp src/redis-cli /usr/local/bin/
+    # 安装到环境变量
+    sudo make install
+    # 等价于: 
+    sudo cp src/redis-server /usr/local/bin/
+    sudo cp src/redis-cli /usr/local/bin/
 
-# 安装tcl
-sudo yum install -y tcl 
-```
+    # 安装tcl
+    sudo yum install -y tcl 
+    ```
 
 ## 3. 配置Redis
 
