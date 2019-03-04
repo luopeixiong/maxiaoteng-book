@@ -1,0 +1,2029 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Python连接Redis · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="马晓腾<jizhuwo00@hotmail.cn>">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../kafka.html" />
+    
+    
+    <link rel="prev" href="install.html" />
+    
+
+    
+    
+    
+    
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"buttons":[{"user":"maxiaoteng001","repo":"glory","type":"star","size":"small","count":true}]};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="http://blog.maxiaoteng.xyz" target="_blank" class="custom-link">我的博客</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        <li class="header">1. 基础</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../linux-common-knowledge/cha-kan-ming-ling-bang-zhu.html">
+            
+                <a href="../../linux-common-knowledge/cha-kan-ming-ling-bang-zhu.html">
+            
+                    
+                    linux常用知识
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../../linux-common-knowledge/cha-kan-ming-ling-bang-zhu.html">
+            
+                <a href="../../linux-common-knowledge/cha-kan-ming-ling-bang-zhu.html">
+            
+                    
+                    查看命令使用文档
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../../linux-common-knowledge/tar.html">
+            
+                <a href="../../linux-common-knowledge/tar.html">
+            
+                    
+                    tar/split 解压缩操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../../linux-common-knowledge/rsync-chuan-shu-tong-bu-wen-jian.html">
+            
+                <a href="../../linux-common-knowledge/rsync-chuan-shu-tong-bu-wen-jian.html">
+            
+                    
+                    rsync  传输同步文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../../linux-common-knowledge/chmod-xiu-gai-wen-jian-quan-xian.html">
+            
+                <a href="../../linux-common-knowledge/chmod-xiu-gai-wen-jian-quan-xian.html">
+            
+                    
+                    chmod  修改文件权限
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../../linux-common-knowledge/supervisor-jin-cheng-shou-hu.html">
+            
+                <a href="../../linux-common-knowledge/supervisor-jin-cheng-shou-hu.html">
+            
+                    
+                    supervisor 进程守护
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../../linux-common-knowledge/crontab.html">
+            
+                <a href="../../linux-common-knowledge/crontab.html">
+            
+                    
+                    Crontab
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="../../linux-common-knowledge/shell-command.html">
+            
+                <a href="../../linux-common-knowledge/shell-command.html">
+            
+                    
+                    shell command
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="../../linux-common-knowledge/expect.html">
+            
+                <a href="../../linux-common-knowledge/expect.html">
+            
+                    
+                    expect command
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="../../linux-common-knowledge/wen-jian-ji-mu-lu-guan-li.html">
+            
+                <a href="../../linux-common-knowledge/wen-jian-ji-mu-lu-guan-li.html">
+            
+                    
+                    文件及目录管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="../../linux-common-knowledge/nano-editor.html">
+            
+                <a href="../../linux-common-knowledge/nano-editor.html">
+            
+                    
+                    nano editor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.11" data-path="../../linux-common-knowledge/tmux.html">
+            
+                <a href="../../linux-common-knowledge/tmux.html">
+            
+                    
+                    tmux
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.12" data-path="../../linux-common-knowledge/history.html">
+            
+                <a href="../../linux-common-knowledge/history.html">
+            
+                    
+                    history
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.13" data-path="../../linux-common-knowledge/vim.html">
+            
+                <a href="../../linux-common-knowledge/vim.html">
+            
+                    
+                    vim使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.14" data-path="../../linux-common-knowledge/system-setting.html">
+            
+                <a href="../../linux-common-knowledge/system-setting.html">
+            
+                    
+                    系统设置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.15" data-path="../../linux-common-knowledge/other.html">
+            
+                <a href="../../linux-common-knowledge/other.html">
+            
+                    
+                    other
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../redhat-pei-zhi.html">
+            
+                <a href="../../redhat-pei-zhi.html">
+            
+                    
+                    REDHAT 配置
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../../redhat-pei-zhi/aws-zhi-shi.html">
+            
+                <a href="../../redhat-pei-zhi/aws-zhi-shi.html">
+            
+                    
+                    AWS 知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../../redhat-pei-zhi/aws-zhi-shi/fu-wu-qi-bei-wang.html">
+            
+                <a href="../../redhat-pei-zhi/aws-zhi-shi/fu-wu-qi-bei-wang.html">
+            
+                    
+                    服务器备忘
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../../beautifulsoup.md">
+            
+                <span>
+            
+                    
+                    BeautifulSoup
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../../paramikomo-kuai.html">
+            
+                <a href="../../paramikomo-kuai.html">
+            
+                    
+                    paramiko模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../../version-control/svn-git-commands.html">
+            
+                <a href="../../version-control/svn-git-commands.html">
+            
+                    
+                    版本控制
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../../version-control/svn-git-commands.html">
+            
+                <a href="../../version-control/svn-git-commands.html">
+            
+                    
+                    svn - git 基本操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../../version-control/git-advanced.html">
+            
+                <a href="../../version-control/git-advanced.html">
+            
+                    
+                    git 进阶
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../../markdown/ji-ben-yu-fa.html">
+            
+                <a href="../../markdown/ji-ben-yu-fa.html">
+            
+                    
+                    Markdown
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../../markdown/ji-ben-yu-fa.html">
+            
+                <a href="../../markdown/ji-ben-yu-fa.html">
+            
+                    
+                    基本语法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../../markdown/Page_internal_jump.html">
+            
+                <a href="../../markdown/Page_internal_jump.html">
+            
+                    
+                    Markdown 实现页内跳转
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../../markdown/python-markdown.html">
+            
+                <a href="../../markdown/python-markdown.html">
+            
+                    
+                    Python Markdown
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">2. Python基础</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../../python-basics/re-model.html">
+            
+                <a href="../../python-basics/re-model.html">
+            
+                    
+                    正则表达式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../../python-basics/process_thread.md">
+            
+                <span>
+            
+                    
+                    进程（process）和线程（Thread）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../../python-basics/os-model.html">
+            
+                <a href="../../python-basics/os-model.html">
+            
+                    
+                    os Model
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="../../python-basics/logging-model.html">
+            
+                <a href="../../python-basics/logging-model.html">
+            
+                    
+                    logging模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="../../python-basics/csv-model.html">
+            
+                <a href="../../python-basics/csv-model.html">
+            
+                    
+                    CSV模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="../../python-basics/encode.html">
+            
+                <a href="../../python-basics/encode.html">
+            
+                    
+                    编码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" data-path="../../python-basics/iteration_generator_iterable.html">
+            
+                <a href="../../python-basics/iteration_generator_iterable.html">
+            
+                    
+                    迭代器 生成器 可迭代对象
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" data-path="../../python-basics/shu-ju-jie-gou.html">
+            
+                <a href="../../python-basics/shu-ju-jie-gou.html">
+            
+                    
+                    数据结构
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.8.1" data-path="../../python-basics/shu-ju-jie-gou/lie-biao-list.html">
+            
+                <a href="../../python-basics/shu-ju-jie-gou/lie-biao-list.html">
+            
+                    
+                    列表 List
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8.2" data-path="../../python-basics/shu-ju-jie-gou/ji-heset.html">
+            
+                <a href="../../python-basics/shu-ju-jie-gou/ji-heset.html">
+            
+                    
+                    集合 Set
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8.3" data-path="../../python-basics/shu-ju-jie-gou/zi-dian-dict.html">
+            
+                <a href="../../python-basics/shu-ju-jie-gou/zi-dian-dict.html">
+            
+                    
+                    字典 Dict
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9" data-path="../../python-basics/process_thread_coroutine.html">
+            
+                <a href="../../python-basics/process_thread_coroutine.html">
+            
+                    
+                    进程 线程 和协程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.10" data-path="../../python-basics/others.html">
+            
+                <a href="../../python-basics/others.html">
+            
+                    
+                    others
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">3. Python爬虫</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../../crawler/summary.html">
+            
+                <a href="../../crawler/summary.html">
+            
+                    
+                    概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../../crawler/summary.html">
+            
+                <a href="../../crawler/summary.html">
+            
+                    
+                    前端基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.1" data-path="../../crawler/front_end/dom.md">
+            
+                <span>
+            
+                    
+                    DOM编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="../../crawler/requests.html">
+            
+                <a href="../../crawler/requests.html">
+            
+                    
+                    Requests
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="../../crawler/xpath.html">
+            
+                <a href="../../crawler/xpath.html">
+            
+                    
+                    XPATH
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="../../crawler/selenium/selenium.html">
+            
+                <a href="../../crawler/selenium/selenium.html">
+            
+                    
+                    selenium
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.5.1" data-path="../../crawler/selenium/selenium-start.html">
+            
+                <a href="../../crawler/selenium/selenium-start.html">
+            
+                    
+                    安装和基本操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.2" data-path="../../crawler/selenium/ye-mian-jiao-hu.html">
+            
+                <a href="../../crawler/selenium/ye-mian-jiao-hu.html">
+            
+                    
+                    页面交互
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.3" data-path="../../crawler/selenium/seleniumcha-zhao-yuan-su.html">
+            
+                <a href="../../crawler/selenium/seleniumcha-zhao-yuan-su.html">
+            
+                    
+                    selenium查找元素
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5.4" data-path="../../crawler/selenium/selenium-explicit-wait.html">
+            
+                <a href="../../crawler/selenium/selenium-explicit-wait.html">
+            
+                    
+                    显式等待(explicit wait)和隐式等待 (implicit wait)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="../../crawler/splash.html">
+            
+                <a href="../../crawler/splash.html">
+            
+                    
+                    Splash
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="../../crawler/Scrapy/scrapy_start_up.html">
+            
+                <a href="../../crawler/Scrapy/scrapy_start_up.html">
+            
+                    
+                    Scrapy
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.7.1" data-path="../../crawler/Scrapy/scrapy-setting.html">
+            
+                <a href="../../crawler/Scrapy/scrapy-setting.html">
+            
+                    
+                    Scrapy setting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7.2" data-path="../../crawler/Scrapy/middlewares.html">
+            
+                <a href="../../crawler/Scrapy/middlewares.html">
+            
+                    
+                    中间件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7.3" data-path="../../crawler/Scrapy/scrapy_optimization.html">
+            
+                <a href="../../crawler/Scrapy/scrapy_optimization.html">
+            
+                    
+                    Scrapy优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7.4" data-path="../../crawler/Scrapy/deploying-scrapy-crawlers.html">
+            
+                <a href="../../crawler/Scrapy/deploying-scrapy-crawlers.html">
+            
+                    
+                    部署爬虫scrapyd
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7.5" data-path="../../crawler/Scrapy/request-and-response.html">
+            
+                <a href="../../crawler/Scrapy/request-and-response.html">
+            
+                    
+                    Request and Response
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7.6" data-path="../../crawler/Scrapy/scrapy-redis.html">
+            
+                <a href="../../crawler/Scrapy/scrapy-redis.html">
+            
+                    
+                    Scrapy-redis
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7.7" data-path="../../crawler/Scrapy/handle-http-error.html">
+            
+                <a href="../../crawler/Scrapy/handle-http-error.html">
+            
+                    
+                    http错误处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7.8" data-path="../../crawler/Scrapy/scrapyd.html">
+            
+                <a href="../../crawler/Scrapy/scrapyd.html">
+            
+                    
+                    Scrapyd
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7.9" data-path="../../crawler/Scrapy/gerapy.html">
+            
+                <a href="../../crawler/Scrapy/gerapy.html">
+            
+                    
+                    Gerapy
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8" data-path="../../crawler/proxy_server.html">
+            
+                <a href="../../crawler/proxy_server.html">
+            
+                    
+                    使用代理服务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.9" data-path="../../crawler/random_user_agent.html">
+            
+                <a href="../../crawler/random_user_agent.html">
+            
+                    
+                    随机user-agent
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.10" data-path="../../crawler/verification_code.html">
+            
+                <a href="../../crawler/verification_code.html">
+            
+                    
+                    验证码破解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.11" data-path="../../crawler/anti_spider_strategy.html">
+            
+                <a href="../../crawler/anti_spider_strategy.html">
+            
+                    
+                    反爬虫策略
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.12" data-path="../../crawler/crawler_optimization.html">
+            
+                <a href="../../crawler/crawler_optimization.html">
+            
+                    
+                    爬虫优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.13" data-path="../../crawler/others.html">
+            
+                <a href="../../crawler/others.html">
+            
+                    
+                    others
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">4. Python Web</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../../python-web/http/http.html">
+            
+                <a href="../../python-web/http/http.html">
+            
+                    
+                    HTTP
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../../python-web/http/http.html">
+            
+                <a href="../../python-web/http/http.html">
+            
+                    
+                    HTTP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="../../python-web/http/post.html">
+            
+                <a href="../../python-web/http/post.html">
+            
+                    
+                    POST
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../../python-web/ajax.html">
+            
+                <a href="../../python-web/ajax.html">
+            
+                    
+                    Ajax
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../../python-web/huan-jing-guan-li.html">
+            
+                <a href="../../python-web/huan-jing-guan-li.html">
+            
+                    
+                    环境管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="../../python-web/django.html">
+            
+                <a href="../../python-web/django.html">
+            
+                    
+                    Django
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.4.1" data-path="../../python-web/django/djangoru-men.html">
+            
+                <a href="../../python-web/django/djangoru-men.html">
+            
+                    
+                    Django入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4.2" data-path="../../python-web/django/xiang-mu-she-zhi.html">
+            
+                <a href="../../python-web/django/xiang-mu-she-zhi.html">
+            
+                    
+                    项目设置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4.3" data-path="../../python-web/django/model.html">
+            
+                <a href="../../python-web/django/model.html">
+            
+                    
+                    Model
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4.4" data-path="../../python-web/django/HTTP.html">
+            
+                <a href="../../python-web/django/HTTP.html">
+            
+                    
+                    HTTP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4.5" data-path="../../python-web/django/templates.md">
+            
+                <span>
+            
+                    
+                    Templates
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4.6" data-path="../../python-web/django/admin.html">
+            
+                <a href="../../python-web/django/admin.html">
+            
+                    
+                    Admin
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="../../python-web/webying-yong-an-quan.html">
+            
+                <a href="../../python-web/webying-yong-an-quan.html">
+            
+                    
+                    WEB应用安全
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" >
+            
+                <span>
+            
+                    
+                    Flask
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.6.1" >
+            
+                <span>
+            
+                    
+                    理解Context
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="../../python-web/web-server-nginx.html">
+            
+                <a href="../../python-web/web-server-nginx.html">
+            
+                    
+                    WEB服务器Nginx
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8" data-path="../../python-web/pythonying-yong-fu-wu-qi.html">
+            
+                <a href="../../python-web/pythonying-yong-fu-wu-qi.html">
+            
+                    
+                    Python应用服务器
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">5. 数据库</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../mongodb/install.html">
+            
+                <a href="../mongodb/install.html">
+            
+                    
+                    Mongodb
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1.1" data-path="../mongodb/install.html">
+            
+                <a href="../mongodb/install.html">
+            
+                    
+                    安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.2" data-path="../mongodb/security_deployment.html">
+            
+                <a href="../mongodb/security_deployment.html">
+            
+                    
+                    安全部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.3" data-path="../mongodb/mongodb_pymongo.html">
+            
+                <a href="../mongodb/mongodb_pymongo.html">
+            
+                    
+                    pymongo
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.4" data-path="../mongodb/mongo_shell.html">
+            
+                <a href="../mongodb/mongo_shell.html">
+            
+                    
+                    mongo shell
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.5" data-path="../mongodb/mongodb-he-pymongo/mongodb-he-pymongo-zhi-de-bi-jiao.md">
+            
+                <span>
+            
+                    
+                    值的比较
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="install.html">
+            
+                <a href="install.html">
+            
+                    
+                    Redis
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.2.1" data-path="install.html">
+            
+                <a href="install.html">
+            
+                    
+                    安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="5.2.2" data-path="python_redis.html">
+            
+                <a href="python_redis.html">
+            
+                    
+                    Python连接Redis
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="../kafka.html">
+            
+                <a href="../kafka.html">
+            
+                    
+                    消息队列Kafka
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">开发环境配置 软件设置</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../../Configurations/pycharm.html">
+            
+                <a href="../../Configurations/pycharm.html">
+            
+                    
+                    pycharm 设置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="../../Configurations/gitbook.html">
+            
+                <a href="../../Configurations/gitbook.html">
+            
+                    
+                    Gitbook配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="../../Configurations/vagrant.html">
+            
+                <a href="../../Configurations/vagrant.html">
+            
+                    
+                    Vagrant
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" data-path="../../Configurations/docker.html">
+            
+                <a href="../../Configurations/docker.html">
+            
+                    
+                    Docker
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.5" data-path="../../Configurations/virtual_machine.html">
+            
+                <a href="../../Configurations/virtual_machine.html">
+            
+                    
+                    虚拟机配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.6" data-path="../../Configurations/mxtaws.html">
+            
+                <a href="../../Configurations/mxtaws.html">
+            
+                    
+                    mxt_aws
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.7" data-path="../../Configurations/vscode.html">
+            
+                <a href="../../Configurations/vscode.html">
+            
+                    
+                    VScode
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.8" data-path="../../Configurations/mysql.html">
+            
+                <a href="../../Configurations/mysql.html">
+            
+                    
+                    Mysql
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.9" data-path="../../Configurations/shadowsocks.html">
+            
+                <a href="../../Configurations/shadowsocks.html">
+            
+                    
+                    Shadowsocks
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">面试汇总</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../../Interview/summary.html">
+            
+                <a href="../../Interview/summary.html">
+            
+                    
+                    面试汇总
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">邮件常用语</li>
+        
+        
+    
+        <li class="chapter " data-level="8.1" data-path="../../00.html">
+            
+                <a href="../../00.html">
+            
+                    
+                    00
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Python连接Redis</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#1-python&#x8FDE;&#x63A5;redis"><b></b>1. Python&#x8FDE;&#x63A5;Redis</a></li><ul><li><span class="title-icon "></span><a href="#1-redis&#x8FDE;&#x63A5;"><b></b>1. redis&#x8FDE;&#x63A5;</a></li><li><span class="title-icon "></span><a href="#2-&#x8FDE;&#x63A5;&#x6C60;"><b></b>2. &#x8FDE;&#x63A5;&#x6C60;</a></li><li><span class="title-icon "></span><a href="#3-&#x521B;&#x5EFA;redis&#x5BF9;&#x8C61;&#x65F6;&#xFF0C;&#x652F;&#x6301;&#x4E00;&#x4E9B;&#x53C2;&#x6570;"><b></b>3. &#x521B;&#x5EFA;Redis&#x5BF9;&#x8C61;&#x65F6;&#xFF0C;&#x652F;&#x6301;&#x4E00;&#x4E9B;&#x53C2;&#x6570;</a></li></ul><li><span class="title-icon "></span><a href="#2-redis-&#x6570;&#x636E;&#x64CD;&#x4F5C;"><b></b>2. redis &#x6570;&#x636E;&#x64CD;&#x4F5C;</a></li><ul><li><span class="title-icon "></span><a href="#1-redis-key&#x64CD;&#x4F5C;"><b></b>1. redis key&#x64CD;&#x4F5C;</a></li><li><span class="title-icon "></span><a href="#2-redis-string-&#x64CD;&#x4F5C;"><b></b>2. redis String &#x64CD;&#x4F5C;</a></li><li><span class="title-icon "></span><a href="#3-redis-list-&#x64CD;&#x4F5C;"><b></b>3. redis list &#x64CD;&#x4F5C;</a></li><li><span class="title-icon "></span><a href="#4-redis-set-&#x64CD;&#x4F5C;"><b></b>4. redis set &#x64CD;&#x4F5C;</a></li><li><span class="title-icon "></span><a href="#5-redis-sorted-set-&#x64CD;&#x4F5C;"><b></b>5. redis Sorted Set &#x64CD;&#x4F5C;</a></li><li><span class="title-icon "></span><a href="#6-redis-hashdict-&#x64CD;&#x4F5C;"><b></b>6. redis Hash(dict) &#x64CD;&#x4F5C;</a></li></ul></ul></div><a href="#1-python&#x8FDE;&#x63A5;redis" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h2 id="1-redis&#x547D;&#x4EE4;&#x53C2;&#x8003;"><a name="1-redis&#x547D;&#x4EE4;&#x53C2;&#x8003;" class="anchor-navigation-ex-anchor" href="#1-redis&#x547D;&#x4EE4;&#x53C2;&#x8003;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="1-redis&#x547D;&#x4EE4;&#x53C2;&#x8003;" class="plugin-anchor" href="#1-redis&#x547D;&#x4EE4;&#x53C2;&#x8003;"><i class="fa fa-link" aria-hidden="true"></i></a>1. Redis&#x547D;&#x4EE4;&#x53C2;&#x8003;</h2>
+<ol>
+<li><a href="https://redis.io/commands" target="_blank">&#x5B98;&#x7F51;&#x63D0;&#x4F9B;&#x7684;&#x53EF;&#x641C;&#x7D22;&#x7684;&#x547D;&#x4EE4;</a></li>
+<li><a href="https://wizardforcel.gitbooks.io/redis-doc/" target="_blank">&#x7FFB;&#x8BD1;&#x4E2D;&#x6587;&#x6587;&#x6863;</a></li>
+</ol>
+<h1 id="1-python&#x8FDE;&#x63A5;redis"><a name="1-python&#x8FDE;&#x63A5;redis" class="anchor-navigation-ex-anchor" href="#1-python&#x8FDE;&#x63A5;redis"><i class="fa fa-link" aria-hidden="true"></i></a><a name="1-python&#x8FDE;&#x63A5;redis" class="plugin-anchor" href="#1-python&#x8FDE;&#x63A5;redis"><i class="fa fa-link" aria-hidden="true"></i></a>1. Python&#x8FDE;&#x63A5;Redis</h1>
+<p><a href="https://github.com/andymccurdy/redis-py" target="_blank">&#x6E90;&#x4EE3;&#x7801;</a></p>
+<h2 id="1-redis&#x8FDE;&#x63A5;"><a name="1-redis&#x8FDE;&#x63A5;" class="anchor-navigation-ex-anchor" href="#1-redis&#x8FDE;&#x63A5;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="1-redis&#x8FDE;&#x63A5;" class="plugin-anchor" href="#1-redis&#x8FDE;&#x63A5;"><i class="fa fa-link" aria-hidden="true"></i></a>1. redis&#x8FDE;&#x63A5;</h2>
+<p>redis&#x63D0;&#x4F9B;&#x4E24;&#x4E2A;&#x7C7B;Redis&#x548C;StrictRedis, StrictRedis&#x7528;&#x6765;&#x5B9E;&#x73B0;&#x5927;&#x90E8;&#x5206;&#x5B98;&#x65B9;&#x7684;&#x547D;&#x4EE4;,&#x5E76;&#x4F7F;&#x7528;&#x5B98;&#x65B9;&#x7684;&#x8BED;&#x6CD5;&#x548C;&#x547D;&#x4EE4;,Redis&#x662F;StrictRedis&#x7684;&#x5B50;&#x7C7B;,&#x7528;&#x4E8E;&#x5411;&#x540E;&#x517C;&#x5BB9;&#x65E7;&#x7248;&#x672C;&#x7684;redis-py.</p>
+<p>redis&#x8FDE;&#x63A5;&#x5B9E;&#x4F8B;&#x662F;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;,&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5C06;redis&#x8BBE;&#x7F6E;&#x4E3A;&#x5168;&#x5C40;&#x53D8;&#x91CF;,&#x76F4;&#x63A5;&#x4F7F;&#x7528;.</p>
+<p><strong>&#x5B89;&#x88C5;redis&#x4F9D;&#x8D56;</strong></p>
+<pre><code>sudo pip install redis
+</code></pre><p>&#x8FDE;&#x63A5;redis&#x65F6;,&#x52A0;&#x4E0A;decode_response=True,&#x5199;&#x5165;&#x7684;&#x952E;&#x503C;&#x5BF9;&#x4E2D;&#x7684;value&#x4E3A;str&#x7C7B;&#x578B;,&#x4E0D;&#x52A0;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x5199;&#x5165;&#x7684;&#x5219;&#x4E3A;&#x5B57;&#x8282;&#x7C7B;&#x578B;.</p>
+<pre><code>import redis
+r = redis.StrictRedis(host=&apos;localhost&apos;, port=6379, password=&apos;xxx&apos;, decode_responses=True, db=0)   # host&#x662F;redis&#x4E3B;&#x673A;&#xFF0C;&#x9700;&#x8981;redis&#x670D;&#x52A1;&#x7AEF;&#x548C;&#x5BA2;&#x6237;&#x7AEF;&#x90FD;&#x542F;&#x52A8; redis&#x9ED8;&#x8BA4;&#x7AEF;&#x53E3;&#x662F;6379, &#x5BC6;&#x7801;&#x9A8C;&#x8BC1;
+r.set(&apos;name&apos;, &apos;junxi&apos;)  # key&#x662F;&quot;foo&quot; value&#x662F;&quot;bar&quot; &#x5C06;&#x952E;&#x503C;&#x5BF9;&#x5B58;&#x5165;redis&#x7F13;&#x5B58;
+print(r[&apos;name&apos;])
+print(r.get(&apos;name&apos;))  # &#x53D6;&#x51FA;&#x952E;name&#x5BF9;&#x5E94;&#x7684;&#x503C;
+print(type(r.get(&apos;name&apos;)))
+</code></pre><h2 id="2-&#x8FDE;&#x63A5;&#x6C60;"><a name="2-&#x8FDE;&#x63A5;&#x6C60;" class="anchor-navigation-ex-anchor" href="#2-&#x8FDE;&#x63A5;&#x6C60;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="2-&#x8FDE;&#x63A5;&#x6C60;" class="plugin-anchor" href="#2-&#x8FDE;&#x63A5;&#x6C60;"><i class="fa fa-link" aria-hidden="true"></i></a>2. &#x8FDE;&#x63A5;&#x6C60;</h2>
+<p>&#x9ED8;&#x8BA4;,&#x6BCF;&#x4E2A;Redis&#x5B9E;&#x4F8B;&#x90FD;&#x4F1A;&#x7EF4;&#x62A4;&#x4E00;&#x4E2A;&#x81EA;&#x5DF1;&#x7684;&#x8FDE;&#x63A5;&#x6C60;.&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5EFA;&#x7ACB;&#x4E00;&#x4E2A;&#x8FDE;&#x63A5;&#x6C60;,&#x5B9E;&#x73B0;&#x591A;&#x4E2A;Redis&#x5B9E;&#x4F8B;&#x5171;&#x4EAB;&#x4E00;&#x4E2A;&#x8FDE;&#x63A5;&#x6C60;</p>
+<pre><code>import redis    # &#x5BFC;&#x5165;redis&#x6A21;&#x5757;&#xFF0C;&#x901A;&#x8FC7;python&#x64CD;&#x4F5C;redis &#x4E5F;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5728;redis&#x4E3B;&#x673A;&#x7684;&#x670D;&#x52A1;&#x7AEF;&#x64CD;&#x4F5C;&#x7F13;&#x5B58;&#x6570;&#x636E;&#x5E93;
+
+pool = redis.ConnectionPool(host=&apos;localhost&apos;, port=6379, password=&apos;xxx&apos;, decode_responses=True)   # host&#x662F;redis&#x4E3B;&#x673A;&#xFF0C;&#x9700;&#x8981;redis&#x670D;&#x52A1;&#x7AEF;&#x548C;&#x5BA2;&#x6237;&#x7AEF;&#x90FD;&#x8D77;&#x7740; redis&#x9ED8;&#x8BA4;&#x7AEF;&#x53E3;&#x662F;6379
+r = redis.StrictRedis(connection_pool=pool)
+r.set(&apos;gender&apos;, &apos;male&apos;)     # key&#x662F;&quot;gender&quot; value&#x662F;&quot;male&quot; &#x5C06;&#x952E;&#x503C;&#x5BF9;&#x5B58;&#x5165;redis&#x7F13;&#x5B58;
+print(r.get(&apos;gender&apos;))      # gender &#x53D6;&#x51FA;&#x952E;male&#x5BF9;&#x5E94;&#x7684;&#x503C;
+</code></pre><h2 id="3-&#x521B;&#x5EFA;redis&#x5BF9;&#x8C61;&#x65F6;&#xFF0C;&#x652F;&#x6301;&#x4E00;&#x4E9B;&#x53C2;&#x6570;"><a name="3-&#x521B;&#x5EFA;redis&#x5BF9;&#x8C61;&#x65F6;&#xFF0C;&#x652F;&#x6301;&#x4E00;&#x4E9B;&#x53C2;&#x6570;" class="anchor-navigation-ex-anchor" href="#3-&#x521B;&#x5EFA;redis&#x5BF9;&#x8C61;&#x65F6;&#xFF0C;&#x652F;&#x6301;&#x4E00;&#x4E9B;&#x53C2;&#x6570;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="3-&#x521B;&#x5EFA;redis&#x5BF9;&#x8C61;&#x65F6;&#xFF0C;&#x652F;&#x6301;&#x4E00;&#x4E9B;&#x53C2;&#x6570;" class="plugin-anchor" href="#3-&#x521B;&#x5EFA;redis&#x5BF9;&#x8C61;&#x65F6;&#xFF0C;&#x652F;&#x6301;&#x4E00;&#x4E9B;&#x53C2;&#x6570;"><i class="fa fa-link" aria-hidden="true"></i></a>3. &#x521B;&#x5EFA;Redis&#x5BF9;&#x8C61;&#x65F6;&#xFF0C;&#x652F;&#x6301;&#x4E00;&#x4E9B;&#x53C2;&#x6570;</h2>
+<ol>
+<li>host</li>
+<li>port</li>
+<li>password</li>
+<li>db   # &#x9009;&#x62E9;&#x5B58;&#x5230;&#x7B2C;&#x51E0;&#x4E2A;&#x6570;&#x636E;&#x5E93;</li>
+<li>socket_timeout=None  # &#x8D85;&#x65F6;&#x65F6;&#x95F4;  </li>
+<li>connection_pool=None #  &#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x8FDE;&#x63A5;&#x6C60; </li>
+<li>charset=&apos;utf-8&apos;  # redis&#x5165;&#x5E93;&#x9ED8;&#x8BA4;utf-8&#xFF0C;&#x5982;&#x679C;&#x9700;&#x8981;&#x7F16;&#x7801;&#xFF0C;&#x7ED3;&#x679C;&#x7B2C;&#x516B;&#x9879;&#x4F7F;&#x7528; </li>
+<li>decode_responses=False   # &#x4FEE;&#x6539;&#x7F16;&#x7801;&#xFF0C;&#x8FD9;&#x4E00;&#x9879;&#x4E3A;True&#xFF0C;(charset=&apos;GBK &apos;, decode_responses=True)</li>
+<li>errors=&apos;strict&apos; </li>
+<li>unix_socket_path=None</li>
+</ol>
+<h1 id="2-redis-&#x6570;&#x636E;&#x64CD;&#x4F5C;"><a name="2-redis-&#x6570;&#x636E;&#x64CD;&#x4F5C;" class="anchor-navigation-ex-anchor" href="#2-redis-&#x6570;&#x636E;&#x64CD;&#x4F5C;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="2-redis-&#x6570;&#x636E;&#x64CD;&#x4F5C;" class="plugin-anchor" href="#2-redis-&#x6570;&#x636E;&#x64CD;&#x4F5C;"><i class="fa fa-link" aria-hidden="true"></i></a>2. redis &#x6570;&#x636E;&#x64CD;&#x4F5C;</h1>
+<p>&#x53C2;&#x8003;&#x6559;&#x7A0B;&#xFF1A;<a href="https://www.w3cschool.cn/redis_all_about/redis_all_about-jrvk26ug.html" target="_blank">https://www.w3cschool.cn/redis_all_about/redis_all_about-jrvk26ug.html</a></p>
+<h2 id="1-redis-key&#x64CD;&#x4F5C;"><a name="1-redis-key&#x64CD;&#x4F5C;" class="anchor-navigation-ex-anchor" href="#1-redis-key&#x64CD;&#x4F5C;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="1-redis-key&#x64CD;&#x4F5C;" class="plugin-anchor" href="#1-redis-key&#x64CD;&#x4F5C;"><i class="fa fa-link" aria-hidden="true"></i></a>1. redis key&#x64CD;&#x4F5C;</h2>
+<ol>
+<li>&#x5217;&#x51FA;&#x6240;&#x6709;key<pre><code> 1. r.keys()
+ 2. keys * # redis-cli
+</code></pre></li>
+<li>&#x5224;&#x65AD;&#x67D0;&#x4E2A;key&#x662F;&#x5426;&#x5B58;&#x5728;<pre><code> 1. r.exists(&apos;key&apos;)
+ 2. exists key # redis-cli
+</code></pre></li>
+<li>&#x5220;&#x9664;&#x6307;&#x5B9A;&#x7684;key<pre><code> 1. r.delete(&apos;key&apos;)
+ 2. del key1 key2 ... # redis-cli
+</code></pre></li>
+<li>&#x8FD4;&#x56DE;&#x6307;&#x5B9A;key&#x7684;value&#x7C7B;&#x578B;<pre><code> 1. r.type(&apos;key&apos;)
+ 2. type key # redis-cli (none&#x4E0D;&#x5B58;&#x5728;&#xFF0C;string&#xFF0C;list&#xFF0C;set)
+</code></pre></li>
+<li>&#x968F;&#x673A;&#x53D6;&#x4E00;&#x4E2A;key<pre><code> 1. r.randomkey()
+ 2. randomkey # redis-cli
+</code></pre></li>
+<li>&#x91CD;&#x547D;&#x540D;&#x4E00;&#x4E2A;key<pre><code> 1. r.rename(&apos;key1&apos;, &apos;key2&apos; ), r.renamenx(&apos;key1&apos;, &apos;key2&apos;)
+ 2. rename oldkey newkey | renamenx oldkey newkey  # redis-cli &#x533A;&#x522B;&#xFF0C;&#x524D;&#x9762;&#x7684;&#x5982;&#x679C;newkey&#x5B58;&#x5728;&#xFF0C;&#x5219;&#x4F1A;&#x88AB;&#x8986;&#x76D6;&#xFF0C;&#x540E;&#x9762;&#x7684;&#x5219;&#x4F1A;&#x8FD4;&#x56DE;&#x9519;&#x8BEF;
+</code></pre></li>
+<li>key&#x7684;&#x8D85;&#x65F6;&#x8BBE;&#x7F6E;<pre><code> 1. r.rename(&apos;key1&apos;, &apos;key2&apos; ), r.renamenx(&apos;key1&apos;, &apos;key2&apos;)
+ 2. redis-cli
+     - expire key seconds    &#x5355;&#x4F4D;&#x662F;&#x79D2;&#x3002;&#x8FD4;&#x56DE;1&#x6210;&#x529F;&#xFF0C;0&#x8868;&#x793A;key&#x5DF2;&#x7ECF;&#x8BBE;&#x7F6E;&#x8FC7;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x6216;&#x8005;&#x4E0D;&#x5B58;&#x5728;&#x3002;&#x5982;&#x679C;&#x60F3;&#x6D88;&#x9664;&#x8D85;&#x65F6;&#x5219;&#x4F7F;&#x7528;persist key&#x3002;&#x5982;&#x679C;&#x5E0C;&#x671B;&#x91C7;&#x7528;&#x7EDD;&#x5BF9;&#x8D85;&#x65F6;&#xFF0C;&#x5219;&#x4F7F;&#x7528;expireat&#x547D;&#x4EE4;&#x3002;
+     - ttl key   &#x8FD4;&#x56DE;&#x8BBE;&#x7F6E;&#x8FC7;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x7684;key&#x7684;&#x5269;&#x4F59;&#x8FC7;&#x671F;&#x79D2;&#x6570; -1&#x8868;&#x793A;&#x6CA1;&#x6709;&#x8BBE;&#x7F6E;&#x8FC7;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#xFF0C;&#x5BF9;&#x4E8E;&#x4E0D;&#x5B58;&#x5728;&#x7684;key,&#x8FD4;&#x56DE;-2&#x3002;
+     - pexpire key mseconds &#x8BBE;&#x7F6E;&#x751F;&#x547D;&#x5468;&#x671F;&#x3002;
+     - pttl  key &#x4EE5;&#x6BEB;&#x79D2;&#x8FD4;&#x56DE;&#x751F;&#x547D;&#x5468;&#x671F;&#x3002;
+</code></pre></li>
+</ol>
+<h2 id="2-redis-string-&#x64CD;&#x4F5C;"><a name="2-redis-string-&#x64CD;&#x4F5C;" class="anchor-navigation-ex-anchor" href="#2-redis-string-&#x64CD;&#x4F5C;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="2-redis-string-&#x64CD;&#x4F5C;" class="plugin-anchor" href="#2-redis-string-&#x64CD;&#x4F5C;"><i class="fa fa-link" aria-hidden="true"></i></a>2. redis String &#x64CD;&#x4F5C;</h2>
+<ol>
+<li><p>&#x8BBE;&#x503C;</p>
+<ul>
+<li>set &#x5355;&#x4E2A;&#x503C;<pre><code>r.set(name, value, ex=None, px=None, nx=False, xx=False)
+Redis&#x4E2D;&#x8BBE;&#x7F6E;&#x503C;,&#x9ED8;&#x8BA4;&#x4E3A;&#x4E0D;&#x5B58;&#x5728;&#x5219;&#x521B;&#x5EFA;, &#x5B58;&#x5728;&#x5219;&#x4FEE;&#x6539;
+# ex &#x8FC7;&#x671F;&#x65F6;&#x95F4;(s)
+# px &#x8FC7;&#x671F;&#x65F6;&#x95F4;(ms)
+# nx &#x5982;&#x679C;&#x4E3A;True, name&#x4E0D;&#x5B58;&#x5728;&#x65F6;set&#x624D;&#x64CD;&#x4F5C;(set&#x53EA;&#x652F;&#x6301;&#x65B0;&#x589E;)
+# xx &#x5982;&#x679C;&#x8BBE;&#x7F6E;&#x4E3A;True, name&#x5B58;&#x5728;&#x65F6;, set&#x624D;&#x64CD;&#x4F5C;(set&#x53EA;&#x652F;&#x6301;&#x4FEE;&#x6539;)
+</code></pre></li>
+<li>mset &#x6279;&#x91CF;&#x6DFB;&#x52A0;<pre><code># &#x652F;&#x6301;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;
+mset(*args, **kwargs)
+r.mset(k1=&quot;v1&quot;, k2=&quot;v2&quot;)  # &#x8FD9;&#x91CC;k1 k2&#x4E0D;&#x80FD;&#x5E26;&#x5F15;&#x53F7;,&#x4E00;&#x6B21;&#x8BBE;&#x7F6E;&#x591A;&#x4E2A;&#x952E;&#x503C;&#x5BF9;
+r.mset({&quot;k1:&quot;v1&quot;, &quot;k2&quot;:&quot;v2&quot;})  # &#x8FD9;&#x91CC;k1 k2&#x4E0D;&#x80FD;&#x5E26;&#x5F15;&#x53F7;,&#x4E00;&#x6B21;&#x8BBE;&#x7F6E;&#x591A;&#x4E2A;&#x952E;&#x503C;&#x5BF9;
+</code></pre></li>
+</ul>
+</li>
+<li><p>&#x53D6;&#x503C;</p>
+<ul>
+<li><p>get &#x83B7;&#x53D6;&#x5355;&#x4E2A;&#x503C;</p>
+<pre><code>r.get(&apos;useful_proxy&apos;)
+</code></pre></li>
+<li><p>mget &#x6279;&#x91CF;&#x83B7;&#x53D6;</p>
+<pre><code># &#x540C;&#x6837;&#x652F;&#x6301;&#x4E24;&#x79CD;
+mget(keys, *args)
+r.mget(&quot;k1&quot;, &apos;k2&apos;)
+r.mget([&quot;k1&quot;, &quot;k2&quot;])
+</code></pre></li>
+</ul>
+</li>
+<li><p>&#x8BFB;&#x53D6;&#x540E;&#x91CD;&#x8BBE;</p>
+<ul>
+<li>getset(name, value)  # &#x8BBE;&#x7F6E;&#x65B0;&#x503C;,&#x5E76;&#x83B7;&#x53D6;&#x65E7;&#x503C;<pre><code>r.getset(&apos;food&apos;, &apos;barbecue&apos;)
+</code></pre></li>
+</ul>
+</li>
+<li><p>&#x589E;&#x51CF;&#x64CD;&#x4F5C;&#xFF0C;&#x5982;&#x679C;value&#x4E0D;&#x662F;int&#xFF0C;&#x5219;&#x9519;&#x8BEF;</p>
+<pre><code> r.incr(&apos;key&apos;)   # &#x52A0;1 &#x4E0D;&#x5B58;&#x5728;&#x9ED8;&#x8BA4;&#x4E3A;0  
+ r.decr(&apos;key&apos;)   # &#x51CF;1
+ r.incrby(&apos;key&apos;, 5)   #   
+ r.decrby(&apos;key&apos;, 4)   # &#x4E5F;&#x53EF;&#x4EE5;&#x52A0;&#x4E00;&#x4E2A;&#x8D1F;&#x6570;&#x5B9E;&#x73B0;
+ r.incrbyfloat(&apos;key&apos;, 5.1)   # &#x589E;&#x51CF;&#x6D6E;&#x70B9;&#x6570;
+</code></pre></li>
+<li><p>&#x8FFD;&#x52A0;&#xFF0C;&#x622A;&#x53D6;&#x548C;&#x6539;&#x5199; &#x5B57;&#x7B26;&#x4E32;</p>
+<pre><code> r.set(&quot;name&quot;, &quot;strangename&quot;)
+ r.append(&apos;name&apos;, &apos;afterfix&apos;)    # &#x8FFD;&#x52A0;&#xFF1A;&#x7ED3;&#x679C;&#x4E3A;strangenameafterfix
+ r.getrange(&quot;name&quot;, 0, 3)  # &#x6539;&#x5199;&#xFF1A;&#x7ED3;&#x679C;&#x4E3A;:stra
+ r.substr(&apos;name&apos;, 2, 4)  # &#x622A;&#x53D6;&#xFF0C;&#x4E0D;&#x4FEE;&#x6539;&#x503C;&#xFF0C;&#x7ED3;&#x679C;&#x4E3A;&#xFF1A;ran
+</code></pre></li>
+<li><p>&#x83B7;&#x53D6;&#x5B57;&#x7B26;&#x4E32;&#x957F;&#x5EA6;</p>
+<pre><code> r.strlen(&apos;key&apos;)
+</code></pre></li>
+</ol>
+<h2 id="3-redis-list-&#x64CD;&#x4F5C;"><a name="3-redis-list-&#x64CD;&#x4F5C;" class="anchor-navigation-ex-anchor" href="#3-redis-list-&#x64CD;&#x4F5C;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="3-redis-list-&#x64CD;&#x4F5C;" class="plugin-anchor" href="#3-redis-list-&#x64CD;&#x4F5C;"><i class="fa fa-link" aria-hidden="true"></i></a>3. redis list &#x64CD;&#x4F5C;</h2>
+<ol>
+<li><p>&#x6DFB;&#x52A0;&#x5217;&#x8868;</p>
+<pre><code> r.lpush(&apos;list&apos;, &apos;1&apos;)    # &#x5DE6;push &#x53F3;pop &#x6C5F;&#x6E56;&#x89C4;&#x77E9;
+ r.lpushx(&apos;list&apos;, &apos;1&apos;)    # &#x5982;&#x679C;&#x5B58;&#x5728;&#x624D;push
+ r.linsert(name, where, refvalue, value)    # &#x7279;&#x5B9A;&#x4F4D;&#x7F6E;&#x63D2;&#x5165;&#xFF08;after&#xFF0C;before&#xFF09;
+</code></pre></li>
+<li><p>&#x67E5;&#x770B;&#x957F;&#x5EA6;</p>
+<pre><code> r.llen(&apos;list&apos;)
+</code></pre></li>
+<li><p>&#x67E5;&#x770B;&#x5143;&#x7D20;</p>
+<pre><code> r.lindex(&apos;list&apos;, 0)  # &#x8FD4;&#x56DE;&#x7279;&#x5B9A;&#x4F4D;&#x7F6E;&#x7684;&#x5143;&#x7D20;
+</code></pre></li>
+<li><p>&#x67E5;&#x770B;&#x4E00;&#x6BB5;&#x5217;&#x8868;</p>
+<pre><code> r.lrange(&apos;list&apos;, 0, -1) # &#x8FD4;&#x56DE;&#x4E00;&#x6BB5;&#x5217;&#x8868;&#xFF0C;&#x8FD9;&#x4E2A;&#x8FD4;&#x56DE;&#x5168;&#x90E8;&#x5217;&#x8868;
+</code></pre></li>
+<li><p>&#x622A;&#x53D6;&#x5217;&#x8868;</p>
+<pre><code> N = r.ltrim(&apos;list&apos;, &apos;0&apos;,&apos;2&apos;)    # &#x622A;&#x53D6;&#x4E00;&#x6BB5;&#x5217;&#x8868;&#xFF0C;&#x6539;&#x5199;&#xFF0C;&#x8FD4;&#x56DE;&#x5220;&#x6389;&#x7684;&#x5143;&#x7D20;&#x4E2A;&#x6570;
+</code></pre></li>
+<li><p>&#x5220;&#x9664;&#x5143;&#x7D20;</p>
+<pre><code> r.lrem(&apos;list&apos;, count, value)    # &#x5220;&#x9664;value&#x7684;&#x503C;&#xFF0C;count&#x4E3A;&#x5220;&#x9664;&#x7684;&#x4E2A;&#x6570;&#xFF0C;&#x6B63;&#x6570;&#x4ECE;&#x5DE6;&#x5220;&#x9664;&#xFF0C;&#x8D1F;&#x6570;&#x4ECE;&#x53F3;&#x5220;&#x9664;
+ r.lpop(&apos;list&apos;)  # &#x5220;&#x9664;&#x5DE6;&#x4FA7;&#x7B2C;&#x4E00;&#x4E2A;&#x5143;&#x7D20; 
+ r.rpop(&apos;list&apos;)  #
+</code></pre></li>
+<li><p>&#x6307;&#x5B9A;&#x67D0;&#x4E2A;&#x4E0B;&#x6807;&#x7684;&#x503C;</p>
+<pre><code> r.lset(&apos;list&apos;, 0, &apos;5&apos;)  # &#x8FD4;&#x56DE;Ture
+</code></pre></li>
+<li><p>&#x963B;&#x585E;&#x961F;&#x5217;</p>
+<pre><code> blpop key1...keyN timeout   # &#x4ECE;&#x5DE6;&#x5230;&#x53F3;&#x626B;&#x63CF;&#x8FD4;&#x56DE;&#x5BF9;&#x7B2C;&#x4E00;&#x4E2A;&#x975E;&#x7A7A;list&#x8FDB;&#x884C;lpop&#x64CD;&#x4F5C;&#x5E76;&#x8FD4;&#x56DE;&#xFF0C;&#x6BD4;&#x5982;blpop list1 list2 list3 0 ,&#x5982;&#x679C;list&#x4E0D;&#x5B58;&#x5728;list2,list3&#x90FD;&#x662F;&#x975E;&#x7A7A;&#x5219;&#x5BF9;list2&#x505A;lpop&#x5E76;&#x8FD4;&#x56DE;&#x4ECE;list2&#x4E2D;&#x5220;&#x9664;&#x7684;&#x5143;&#x7D20;&#x3002;&#x5982;&#x679C;&#x6240;&#x6709;&#x7684;list&#x90FD;&#x662F;&#x7A7A;&#x6216;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x5219;&#x4F1A;&#x963B;&#x585E;timeout&#x79D2;&#xFF0C;timeout&#x4E3A;0&#x8868;&#x793A;&#x4E00;&#x76F4;&#x963B;&#x585E;&#x3002;&#x5F53;&#x963B;&#x585E;&#x65F6;&#xFF0C;&#x5982;&#x679C;&#x6709;client&#x5BF9;key1...keyN&#x4E2D;&#x7684;&#x4EFB;&#x610F;key&#x8FDB;&#x884C;push&#x64CD;&#x4F5C;&#xFF0C;&#x5219;&#x7B2C;&#x4E00;&#x5728;&#x8FD9;&#x4E2A;key&#x4E0A;&#x88AB;&#x963B;&#x585E;&#x7684;client&#x4F1A;&#x7ACB;&#x5373;&#x8FD4;&#x56DE;&#xFF08;&#x8FD4;&#x56DE;&#x952E;&#x548C;&#x503C;&#xFF09;&#x3002;&#x5982;&#x679C;&#x8D85;&#x65F6;&#x53D1;&#x751F;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;nil&#x3002;&#x6709;&#x70B9;&#x50CF;unix&#x7684;select&#x6216;&#x8005;poll&#x3002;
+</code></pre></li>
+</ol>
+<h2 id="4-redis-set-&#x64CD;&#x4F5C;"><a name="4-redis-set-&#x64CD;&#x4F5C;" class="anchor-navigation-ex-anchor" href="#4-redis-set-&#x64CD;&#x4F5C;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="4-redis-set-&#x64CD;&#x4F5C;" class="plugin-anchor" href="#4-redis-set-&#x64CD;&#x4F5C;"><i class="fa fa-link" aria-hidden="true"></i></a>4. redis set &#x64CD;&#x4F5C;</h2>
+<ol>
+<li><p>&#x6240;&#x6709;&#x64CD;&#x4F5C;</p>
+<pre><code> # 1. &#x6DFB;&#x52A0;&#x5143;&#x7D20;
+ r.sadd(&apos;set&apos;, &apos;1s&apos;)    # &#x6210;&#x529F;&#x8FD4;&#x56DE;1&#xFF0C; &#x5DF2;&#x5B58;&#x5728;&#x8FD4;&#x56DE;0&#xFF0C;key&#x4E0D;&#x5BF9;&#x5E94;set&#x5219;&#x8FD4;&#x56DE;&#x9519;&#x8BEF;
+
+ # 2. &#x79FB;&#x9664;&#x5143;&#x7D20;
+ r.srem(&apos;set&apos;, &apos;1s&apos;)    # &#x6210;&#x529F;&#x8FD4;&#x56DE;1&#xFF0C; &#x4E0D;&#x5B58;&#x5728;&#x8FD4;&#x56DE;0&#xFF0C;key&#x4E0D;&#x5BF9;&#x5E94;set&#x5219;&#x8FD4;&#x56DE;&#x9519;&#x8BEF;
+
+ # 3. &#x5220;&#x9664;&#x5E76;&#x8FD4;&#x56DE;&#x5143;&#x7D20;
+ r.spop(&apos;set&apos;)    # &#x4E0D;&#x5B58;&#x5728;&#x62A5;&#x9519;
+
+ # 4. &#x968F;&#x673A;&#x53D6;&#x4E00;&#x4E2A;&#x5143;&#x7D20;, &#x4F46;&#x4E0D;&#x5220;&#x9664;
+ r.srandmember(&apos;set&apos;)    # &#x4E0D;&#x5B58;&#x5728;&#x62A5;&#x9519;
+
+ # 5. &#x96C6;&#x5408;&#x95F4;&#x79FB;&#x52A8;&#x5143;&#x7D20;
+ r.smove(&apos;set1&apos;, &apos;set2&apos;, &apos;member&apos;) 
+
+ # 6. &#x67E5;&#x770B;&#x96C6;&#x5408;&#x5927;&#x5C0F;
+ r.scard(&apos;set&apos;)
+
+ # 7. &#x5224;&#x65AD;&#x662F;&#x5426;&#x5728;&#x96C6;&#x5408;&#x4E2D;
+ r.sismember(&apos;set&apos;, &apos;2s&apos;)
+
+ # 8. &#x6C42;&#x4EA4;&#x96C6;
+ r.sinter(&apos;set&apos;, &apos;set2&apos;)
+ r.sinterstore(&apos;new-set&apos;, &apos;set&apos;, &apos;set2&apos;) # &#x5C06;&#x4EA4;&#x96C6;&#x4FDD;&#x5B58;&#x5728;&#x65B0;&#x7684;&#x96C6;&#x5408;&#x4E2D;
+
+ # 9. &#x6C42;&#x5E76;&#x96C6;
+ r.sunion(&apos;set&apos;, &apos;set2&apos;)
+ r.sunionstore(&apos;new-set&apos;, &apos;set&apos;, &apos;set2&apos;) # &#x5C06;&#x5E76;&#x4FDD;&#x5B58;&#x5728;&#x65B0;&#x7684;&#x96C6;&#x5408;&#x4E2D;
+
+ # 10. &#x6C42;&#x5DEE;&#x96C6;
+ r.sdiff(&apos;set&apos;, &apos;set2&apos;)
+ r.sdiffstore(&apos;new-set&apos;, &apos;set&apos;, &apos;set2&apos;) # &#x5C06;&#x5DEE;&#x96C6;&#x4FDD;&#x5B58;&#x5728;&#x65B0;&#x7684;&#x96C6;&#x5408;&#x4E2D;
+
+ # 11. &#x67E5;&#x770B;&#x6240;&#x6709;&#x5143;&#x7D20;
+ r.smembers(&apos;new-set&apos;)
+</code></pre></li>
+</ol>
+<h2 id="5-redis-sorted-set-&#x64CD;&#x4F5C;"><a name="5-redis-sorted-set-&#x64CD;&#x4F5C;" class="anchor-navigation-ex-anchor" href="#5-redis-sorted-set-&#x64CD;&#x4F5C;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="5-redis-sorted-set-&#x64CD;&#x4F5C;" class="plugin-anchor" href="#5-redis-sorted-set-&#x64CD;&#x4F5C;"><i class="fa fa-link" aria-hidden="true"></i></a>5. redis Sorted Set &#x64CD;&#x4F5C;</h2>
+<h2 id="6-redis-hashdict-&#x64CD;&#x4F5C;"><a name="6-redis-hashdict-&#x64CD;&#x4F5C;" class="anchor-navigation-ex-anchor" href="#6-redis-hashdict-&#x64CD;&#x4F5C;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="6-redis-hashdict-&#x64CD;&#x4F5C;" class="plugin-anchor" href="#6-redis-hashdict-&#x64CD;&#x4F5C;"><i class="fa fa-link" aria-hidden="true"></i></a>6. redis Hash(dict) &#x64CD;&#x4F5C;</h2>
+<ol>
+<li><p>&#x6240;&#x6709;&#x64CD;&#x4F5C;</p>
+<pre><code> # 1. &#x8BBE;&#x7F6E;hash&#x503C;
+ r.hset(&apos;hash&apos;, &apos;key1&apos;, &apos;value1&apos;)    # &#x6210;&#x529F;&#x8FD4;&#x56DE;1&#xFF0C; field&#x5DF2;&#x5B58;&#x5728;&#x5219;&#x4FEE;&#x6539;&#xFF0C;key&#x4E0D;&#x5BF9;&#x5E94;hash&#x5219;&#x8FD4;&#x56DE;&#x9519;&#x8BEF;
+ r.hsetnx(&apos;hash&apos;, &apos;key1&apos;, &apos;value1&apos;)    # nx &#x662F;no exist&#xFF0C;&#x5982;&#x679C;field&#x5B58;&#x5728;&#xFF0C;&#x8FD4;&#x56DE;0&#xFF0C;&#x4E0D;&#x4FEE;&#x6539;
+ r.hmset(&apos;hash&apos;, &apos;key1&apos;, &apos;value1&apos;, &apos;key2&apos;, &apos;value2&apos;)    # &#x6279;&#x91CF;&#x8BBE;&#x7F6E;&#x591A;&#x4E2A;&#x503C;
+
+ # 2. &#x83B7;&#x53D6;hash&#x503C;
+ r.hget(&apos;hash&apos;, &apos;key1&apos;)    # 
+ r.hmget(&apos;hash&apos;, &apos;key1&apos;, &apos;key2&apos;)    # &#x6279;&#x91CF;&#x83B7;&#x53D6;&#x591A;&#x4E2A;&#x503C;
+
+ # 3. &#x9012;&#x589E;&#x67D0;&#x4E2A;&#x57DF;&#x7684;&#x503C;
+ r.hincrby(&apos;hash&apos;, &apos;key1&apos;, 2)    # &#x4E0D;&#x662F;int&#x629B;&#x51FA;&#x9519;&#x8BEF;
+
+ # 4. &#x5224;&#x65AD;&#x67D0;&#x4E2A;&#x533A;&#x57DF;&#x662F;&#x5426;&#x5B58;&#x5728;
+ r.hexists(&apos;hash&apos;, &apos;key1&apos;)    # 
+
+ # 5. &#x5220;&#x9664;
+ r.hdel(&apos;hash&apos;, &apos;key1&apos;) 
+
+ # 6. &#x67E5;&#x770B;&#x57DF;&#x7684;&#x5927;&#x5C0F;
+ r.hlen(&apos;hash&apos;)
+
+ # 7. &#x83B7;&#x53D6;&#x6240;&#x6709;&#x57DF;&#x540D;
+ r.hkeys(&apos;hash&apos;)
+
+ # 8. &#x83B7;&#x53D6;&#x6240;&#x6709;&#x57DF;&#x7684;&#x503C;
+ r.hvals(&apos;hash&apos;)
+
+ # 9. &#x83B7;&#x53D6;&#x6574;&#x4E2A;dict
+ r.hgetall(&apos;hash&apos;)
+</code></pre></li>
+</ol>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="install.html" class="navigation navigation-prev " aria-label="Previous page: 安装">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../kafka.html" class="navigation navigation-next " aria-label="Next page: 消息队列Kafka">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Python连接Redis","level":"5.2.2","depth":2,"next":{"title":"消息队列Kafka","level":"5.3","depth":1,"path":"Database/kafka.md","ref":"Database/kafka.md","articles":[]},"previous":{"title":"安装","level":"5.2.1","depth":2,"path":"Database/Redis/install.md","ref":"Database/Redis/install.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","splitter","expandable-chapters-small","anchors","github","github-buttons","sharing-plus","anchor-navigation-ex","favicon","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/maxiaoteng001"},"livereload":{},"splitter":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"favicon":{},"github-buttons":{"buttons":[{"user":"maxiaoteng001","repo":"glory","type":"star","size":"small","count":true}]},"expandable-chapters-small":{},"sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","author":"马晓腾<jizhuwo00@hotmail.cn>","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"GitBook","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"我的博客":"http://blog.maxiaoteng.xyz"}},"gitbook":"*","description":"我的笔记本","theme-default":{"showLevel":true},"extension":null},"file":{"path":"Database/Redis/python_redis.md","mtime":"2019-03-01T07:16:01.935Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-26T07:58:35.451Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing-plus/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
