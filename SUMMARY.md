@@ -34,11 +34,13 @@
 
 ## 2. Python基础
 
-* [正则表达式](python-basics/re-model.md)
 * [进程（process）和线程（Thread）](python-basics/process_thread.md)
-* [os Model](python-basics/os-model.md)
-* [logging模块](python-basics/logging-model.md)
-* [CSV模块](python-basics/csv-model.md)
+* [内置模块](python-basics/built_in_module/built_in_module.md)
+    * [正则表达式](python-basics/built_in_module/re-model.md)
+    * [os Model](python-basics/built_in_module/os-model.md)
+    * [logging模块](python-basics/built_in_module/logging-model.md)
+    * [CSV模块](python-basics/built_in_module/csv-model.md)
+    * [json](python-basics/built_in_module/json.md)
 * [编码](python-basics/encode.md)
 * [迭代器 生成器 可迭代对象](python-basics/iteration_generator_iterable.md)
 * [数据结构](python-basics/shu-ju-jie-gou.md)

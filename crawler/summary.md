@@ -34,6 +34,7 @@
 2. [BeautifulSoup(bs4)(推荐配合lxml使用)](/crawler/beautifulsoup.md)
 3. pyquery(不推荐)
 4. html5lib(不常用)
+4. [json](/)
 
 
 ## 4. 动态网站加载
