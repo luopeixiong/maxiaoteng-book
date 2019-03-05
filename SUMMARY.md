@@ -86,6 +86,7 @@
 * [HTTP](python-web/http/http.md)
   * [HTTP](python-web/http/http.md)
   * [POST](python-web/http/post.md)
+* [RESTful API](python-web/restful.md)
 * [Ajax](python-web/ajax.md)
 * [环境管理](python-web/huan-jing-guan-li.md)
 * [Django](python-web/django.md)
