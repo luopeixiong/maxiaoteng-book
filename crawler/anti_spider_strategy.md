@@ -7,3 +7,10 @@
 4. 验证码
 5. 蜜罐(设置一些普通用户访问不到的内容)
 6. 识别到爬虫，返回假数据
+
+
+## 1. 同城旅游
+1. web端用js检测用户浏览器是否开启调试面板
+    - [实现参考知乎](https://www.zhihu.com/question/24188524)
+    - [github-用法](https://github.com/sindresorhus/devtools-detect)
+2. 
