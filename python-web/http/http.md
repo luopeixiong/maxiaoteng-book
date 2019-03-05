@@ -35,9 +35,9 @@
 206 Partial Content 表示客户端进行了范围请求  
 
 - 3XX  
-301 Moved Permanently 永久性重定向  
+301 Moved Permanently 永久性重定向, 配合`Location`使用
 302 Found 临时性重定向  
-304 Not Modified  使用本地资源(比如缓存)
+304 Not Modified  使用本地资源(比如缓存) 
 
 - 4XX
 400 Bad Request 请求的内容有问题  
