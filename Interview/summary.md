@@ -9,7 +9,14 @@
     - selenium
 
 
-2. Python堆和栈
+2. Python进程的内存结构
+参考: https://www.jianshu.com/p/4e1c751d85f8
+    1. 进程分布如下: 
+        1. text (code segment/text segment) 存放程序执行代码的一块内存区域,也包含一些只读常量.
+        2. data 通常用来存放程序中已初始化的全局变量数据,属于静态内存分配
+        3. bss (Block Started by Symbol) 通常用来存放程序中未初始化的全局变量
+        4. 堆(heap) 堆用于存放动态变量, 大小不固定,可动态扩张
+        5. 栈(stack) 
 
 3. Python的垃圾回收机制
     参考： https://www.jianshu.com/p/1e375fb40506

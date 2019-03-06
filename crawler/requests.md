@@ -24,6 +24,7 @@ res = requests.get(cookies=cookies)
 body = {}
 res = requests.post(data=body)  #如果是json,则使用json.dumps()
 ```
+    - 有个问题, 如果需要发送的body里面有中文, 则会被编码
 
 
 ## 2. cookies的使用
