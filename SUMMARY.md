@@ -48,6 +48,7 @@
   * [集合 Set](python-basics/shu-ju-jie-gou/ji-heset.md)
   * [字典 Dict](python-basics/shu-ju-jie-gou/zi-dian-dict.md)
 * [进程 线程 和协程](python-basics/process_thread_coroutine.md)
+* [装饰器(Decorators)](python-basics/decorators.md)
 * [others](python-basics/others.md)
 
 ## 3. Python爬虫
@@ -96,6 +97,7 @@
   * [HTTP](python-web/django/HTTP.md)
   * [Templates](python-web/django/templates.md)
   * [Admin](python-web/django/admin.md)
+* [Flask](python-web/flask.md)
 * [WEB应用安全](python-web/webying-yong-an-quan.md)
 * Flask
   * 理解Context
