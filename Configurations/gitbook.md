@@ -64,3 +64,10 @@ gitbook serve
             "showLevel": true
         },
     ```
+
+## 6. 启动两个gitbook服务
+参考： https://blog.csdn.net/moxiaomomo/article/details/53026645
+gitbook web服务端口:4000  重启服务端口:35729
+    ```
+    gitbook serve --lrport 35288 --port 4001 /path2/your_another_doc_dir/
+    ```
