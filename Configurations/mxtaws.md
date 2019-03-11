@@ -29,3 +29,5 @@ http://www.cnblogs.com/owenyang/p/4282283.html
 - scrapyd   nginx代理:6800
 - portia    nginx代理:9001
 
+- shadowsocks 预开放端口 27233 - 27400, 当前27333, 多开放27334, 27335, 备用端口: 27400
+
