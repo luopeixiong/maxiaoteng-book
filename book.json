@@ -12,7 +12,7 @@
             "weibo": null
         },
         "sidebar": {
-            "我的博客": "http://blog.maxiaoteng.xyz"
+            "bbs Demo": "http://bbs.maxiaoteng.xyz"
         }
     },
     "output": null,
@@ -35,7 +35,7 @@
             "showLevel": true
         },
     "plugins": [
-        "-sharing",
+        "sharing",
         "splitter",
         "expandable-chapters-small",
         "anchors",
