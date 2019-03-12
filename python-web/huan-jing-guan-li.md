@@ -7,7 +7,7 @@
 通过源码安装     
 
 
-## virtualenv安装  
+## 1. virtualenv安装  
 虚拟环境的包是对真实环境包的一个复制  
 virtualenv默认有python可执行文件, 常用标准库等.
 ```
@@ -31,17 +31,64 @@ C:\Users\jizhu>task\mxt_blogs\Scripts\activate
 (mxt_blogs) C:\Users\jizhu>
 ```
 
-## pip 包管理
-```
-# 使用pip 管理包
-pip install requests  # 安装包
-pip list  # 列出所有的第三方包
-pip freeze > requirement.txt  # 导出当前环境下的所有第三方包
-pip install -r requirement.txt  # 根据配置文件生成相同的环境
-```
+## 2. pip 包管理
 
+1. 说明
 
-## pipenv
+2. 使用
+
+    ```
+        # 列出
+        pip list  # 列出所有的第三方包
+        pip freeze > requirement.txt  # 导出当前环境下的所有第三方包
+        
+        # 安装
+        pip install requests  # 安装包
+        pip install -r requirement.txt  # 根据配置文件生成相同的环境
+
+        # 卸载
+        pip uninstall requests 
+        pip uninstall -r requirements.txt
+
+        # 升级
+        pip install -U requests  
+        pip install -U pip  # 升级pip
+
+        # 显示包所在目录
+        pip show -f requests
+
+        # 搜索包
+        pip search <搜索关键字>
+
+        # 查询可升级的包
+        pip list -o
+
+        # 下载包而不安装
+        pip install <包名> -d <目录>
+        pip install -d <目录> -r requirements.txt
+
+        # 打包
+        pip wheel <包名>
+
+    ```
+    有的环境中, python3/2与pip没有绑定, 用pip/pip3 或python -m pip
+
+3. 指定安装源
+    1. 单次安装源
+    ```
+        pip install <包名> -i http://pypi.douban.com/simple
+    ```
+    2. 全局修改
+        1. unix和macos: $HOME/.pip/pip.conf
+        2. windows: %HOME%\pip\pip.ini
+    ```
+        [global]
+        timeout = 6000
+        index-url = http://pypi.douban.com/simple
+    ```
+
+## 3. pipenv
+
 是python项目的依赖管理器
 - 根据pipfile自动寻找项目根目录
 - 如果不存在,自动生成pipfile和pipfile.lock
@@ -51,38 +98,36 @@ pip install -r requirement.txt  # 根据配置文件生成相同的环境
 
 使用pipenv代替pip安装包
 
-## pipenv 和autoenv的组合
+
+## 4. pipenv 和autoenv的组合
 
 autoenv可以在切换文件目录的同时, 自动完成激活虚拟环境
 **用法**
-```
-sudo pip install autoenv
-source /usr/local/bin/activate.sh
+    ```
+    sudo pip install autoenv
+    source /usr/local/bin/activate.sh
 
-mkdir test
-cd test
-touch .env
-echo 'source /home/xx/venv/bin/activate' > .env
-cd
-cd test  # 就会自动激活虚拟环境
+    mkdir test
+    cd test
+    touch .env
+    echo 'source /home/xx/venv/bin/activate' > .env
+    cd
+    cd test  # 就会自动激活虚拟环境
+    ```
 
-```
+## 5. conda
 
+    1. 安装
+    ```
+    # miniconda
+    wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+    bash Miniconda3-latest-Linux-x86_64.sh
 
-## conda
-1. 安装
-```
-# miniconda
-wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
-bash Miniconda3-latest-Linux-x86_64.sh
+    # conda
+    wget https://repo.continuum.io/miniconda/Anaconda-latest-Linux-x86_64.sh
+    bash Anaconda-latest-Linux-x86_64.sh
+    ```
 
-# conda
-wget https://repo.continuum.io/miniconda/Anaconda-latest-Linux-x86_64.sh
-bash Anaconda-latest-Linux-x86_64.sh
-```
-
-
-## 使用vim
 
 ## 学习Emacs
 
