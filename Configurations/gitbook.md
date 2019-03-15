@@ -142,20 +142,19 @@ gitbook web服务端口:4000  重启服务端口:35729
             width:100%;
             height: 100%;
         }
-    
+    ```
+
     3. 代码示例
-    ```
-        <br />
-        {% raw %}
-        <video id="my-video" class="video-js" controls preload="auto" width="100%" poster="https://zhangjikai.com/resource/poster.jpg" data-setup='{"aspectRatio":"16:9"}'>
-        <source src="http://zhangjikai.com/resource/demo.mp4" type='video/mp4' >
-        <p class="vjs-no-js">
-            To view this video please enable JavaScript, and consider upgrading to a web browser that
-            <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-        </p>
-        </video>
-        {% endraw %}
-    ```
+    <br />
+    {% raw %}
+    <video id="my-video" class="video-js" controls preload="auto" width="100%" poster="https://zhangjikai.com/resource/poster.jpg" data-setup='{"aspectRatio":"16:9"}'>
+    <source src="http://zhangjikai.com/resource/demo.mp4" type='video/mp4' >
+    <p class="vjs-no-js">
+        To view this video please enable JavaScript, and consider upgrading to a web browser that
+        <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+    </p>
+    </video>
+    {% endraw %}
 
 6. search-plus  # 支持中文搜索
     ```
@@ -174,7 +173,7 @@ gitbook web服务端口:4000  重启服务端口:35729
 
     使用方法  
     ```
-        {% includeCsv  src="./assets/csv/test.csv", useHeader="true" %} {% endincludeCsv %}
+    {% includeCsv  src="./assets/csv/test.csv", useHeader="true" %} {% endincludeCsv %}
     ```
 
 8. disqus   # 支持disqus评论
