@@ -31,9 +31,6 @@
     },
     "title": "GitBook",
     "variables": {},
-    "theme-default": {
-            "showLevel": true
-        },
     "plugins": [
         "-sharing",
         "sharing-plus",
@@ -117,6 +114,9 @@
         },
         "disqus": {
             "shortName": "gitbookuse"
+        },
+        "theme-default": {
+            "showLevel": true
         }
     }
 }

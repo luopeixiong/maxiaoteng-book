@@ -146,7 +146,6 @@ gitbook web服务端口:4000  重启服务端口:35729
             height: 100%;
         }
     ```
-
     3. 代码示例
 
     <br />
@@ -159,7 +158,6 @@ gitbook web服务端口:4000  重启服务端口:35729
     </p>
     </video>
     {% endraw %}
-
 
 6. search-plus  # 支持中文搜索
     ```
@@ -177,12 +175,10 @@ gitbook web服务端口:4000  重启服务端口:35729
     ```
 
     使用方法  
-    ```
+    ```python
     {% includeCsv  src="../../assets/csv/test.csv", useHeader="true" %} {% endincludeCsv %}
     ```
     
-    {% includeCsv  src="../../assets/csv/test.csv", useHeader="true" %} {% endincludeCsv %}
-
 8. disqus   # 支持disqus评论
     ```
         "plugins": [
