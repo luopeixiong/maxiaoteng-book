@@ -71,3 +71,34 @@ gitbook web服务端口:4000  重启服务端口:35729
     ```
     gitbook serve --lrport 35288 --port 4001 /path2/your_another_doc_dir/
     ```
+
+## 7. gitbook插件
+
+### 1. 使用
+1. 插件需要在book.json中配置
+2. 位于plugins中, 添加`-`将会取消插件
+    ```
+    "plugins": ["-toggle-chapters", "sectionx", "splitter"]
+    ```
+3. 安装
+    ```
+        gitbook install
+    ```
+
+### 2. 插件列表
+
+1. copy-code-button  # 为代码添加复制按钮
+2. edit-link    # 直接链接到源文件
+    ```
+        "plugins": ["edit-link"],
+        "pluginsConfig": {
+            "edit-link": {
+                "base": "https://github.com/USER/REPO/edit/BRANCH",
+                "label": {
+                "en": "Edit This Page",
+                "ch": "编辑本页"
+                }
+            }
+        }
+    ```
+3. anchor-navigation-ex # 添加toc到侧边悬浮,并添加回到顶部

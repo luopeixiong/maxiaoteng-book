@@ -35,16 +35,17 @@
             "showLevel": true
         },
     "plugins": [
-        "sharing",
+        "-sharing",
         "splitter",
         "expandable-chapters-small",
         "anchors",
-
         "github",
         "github-buttons",
         "sharing-plus",
         "anchor-navigation-ex",
-        "favicon"
+        "favicon",
+        "copy-code-button",
+        "edit-link"
     ],
     "pluginsConfig": {
         "github": {
@@ -91,7 +92,14 @@
             ]
         },
         "anchor-navigation-ex": {
-            "showLevel": true
+            "showLevel": false
+        },
+        "edit-link": {
+            "base": "https://github.com/maxiaoteng001/maxiaoteng-book/edit/master",
+            "label": {
+                "en": "Edit This Page",
+                "ch": "编辑本页"
+            }
         }
     }
 }
