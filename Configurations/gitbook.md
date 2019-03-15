@@ -102,3 +102,107 @@ gitbook web服务端口:4000  重启服务端口:35729
         }
     ```
 3. anchor-navigation-ex # 添加toc到侧边悬浮,并添加回到顶部
+
+4. simple-page-toc  # 自动生成本页的目录结构
+    ```
+        {
+            "plugins" : [
+                "simple-page-toc"
+            ],
+            "pluginsConfig": {
+                "simple-page-toc": {
+                    "maxDepth": 3,
+                    "skipFirstH1": true
+                }
+            }
+        }
+    ```
+
+5. local-video  # 使用Video.js 播放本地视频  
+    ```json
+    "plugins": [ "local-video" ]
+    ```
+
+    1. 使用示例：为了使视频可以自适应，我们指定视频的`width`为100%，并设置宽高比为`16:9`，如下面所示
+    ```
+        {% raw %}
+        <video id="my-video" class="video-js" controls preload="auto" width="100%"
+        poster="https://zhangjikai.com/resource/poster.jpg" data-setup='{"aspectRatio":"16:9"}'>
+        <source src="https://zhangjikai.com/resource/demo.mp4" type='video/mp4' >
+        <p class="vjs-no-js">
+            To view this video please enable JavaScript, and consider upgrading to a web browser that
+            <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+        </p>
+        </video>
+        {% endraw %}
+    ```
+    2. 另外我们还要再配置下css，即在website.css中加入
+    ```css
+        .video-js {
+            width:100%;
+            height: 100%;
+        }
+    
+    3. 代码示例
+    ```
+        <br />
+        {% raw %}
+        <video id="my-video" class="video-js" controls preload="auto" width="100%" poster="https://zhangjikai.com/resource/poster.jpg" data-setup='{"aspectRatio":"16:9"}'>
+        <source src="http://zhangjikai.com/resource/demo.mp4" type='video/mp4' >
+        <p class="vjs-no-js">
+            To view this video please enable JavaScript, and consider upgrading to a web browser that
+            <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+        </p>
+        </video>
+        {% endraw %}
+    ```
+
+6. search-plus  # 支持中文搜索
+    ```
+        {
+            "plugins": ["-lunr", "-search", "search-plus"]
+            # 同时禁用lunr和search
+        }
+    ```
+
+7. include-csv  # 显示csv内容
+    ```
+        {
+            "plugins": ["include-csv"]
+        }
+    ```
+
+    使用方法  
+    ```
+        {% includeCsv  src="./assets/csv/test.csv", useHeader="true" %} {% endincludeCsv %}
+    ```
+
+8. disqus   # 支持disqus评论
+    ```
+        "plugins": [
+            "disqus"
+        ],
+        "pluginsConfig": {
+            "disqus": {
+                "shortName": "gitbookuse"
+            }
+        }
+    ```
+
+9. tbfed-pagefooter # 添加页脚
+    ```
+        "plugins": [
+            "tbfed-pagefooter"
+        ],
+        "pluginsConfig": {
+            "tbfed-pagefooter": {
+                "copyright":"Copyright &copy zhangjikai.com 2017",
+                "modify_label": "该文件修订时间：",
+                "modify_format": "YYYY-MM-DD HH:mm:ss"
+            }
+        }
+    ```
+
+10. expandable-chapters-small   # 折叠左侧目录
+
+11. 

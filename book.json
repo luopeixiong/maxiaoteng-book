@@ -36,16 +36,21 @@
         },
     "plugins": [
         "-sharing",
+        "sharing-plus",
         "splitter",
         "expandable-chapters-small",
         "anchors",
         "github",
         "github-buttons",
-        "sharing-plus",
         "anchor-navigation-ex",
         "favicon",
         "copy-code-button",
-        "edit-link"
+        "edit-link",
+        "simple-page-toc",
+        "search-plus",
+        "tbfed-pagefooter",
+        "disqus",
+        ""
     ],
     "pluginsConfig": {
         "github": {
@@ -100,6 +105,18 @@
                 "en": "Edit This Page",
                 "ch": "编辑本页"
             }
+        },
+        "simple-page-toc": {
+            "maxDepth": 3,
+            "skipFirstH1": true
+        },
+        "tbfed-pagefooter": {
+            "copyright":"Copyright &copy maxiaoteng.xyz 2019",
+            "modify_label": "该文件修订时间：",
+            "modify_format": "YYYY-MM-DD HH:mm:ss"
+        },
+        "disqus": {
+            "shortName": "gitbookuse"
         }
     }
 }
