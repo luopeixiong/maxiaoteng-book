@@ -1,6 +1,6 @@
 # Summary
 
-## 1. 基础
+## 基础
 
 * [Introduction](README.md)
 * [linux常用知识](linux-common-knowledge/cha-kan-ming-ling-bang-zhu.md)
@@ -32,7 +32,7 @@
   * [Markdown 实现页内跳转](markdown/Page_internal_jump.md)
   * [Python Markdown](markdown/python-markdown.md)
 
-## 2. Python基础
+## Python基础
 
 * [进程（process）和线程（Thread）](python-basics/process_thread.md)
 * [内置模块](python-basics/built_in_module/built_in_module.md)
@@ -51,7 +51,7 @@
 * [装饰器(Decorators)](python-basics/decorators.md)
 * [others](python-basics/others.md)
 
-## 3. Python爬虫
+## Python爬虫
 
 * [概述](crawler/summary.md)
 * [前端基础](crawler/summary.md)
@@ -82,7 +82,7 @@
 * [others](crawler/others.md)
 
 
-## 4. Python Web
+## Python Web
 
 * [HTTP](python-web/http/http.md)
   * [HTTP](python-web/http/http.md)
@@ -106,7 +106,7 @@
 * [Python应用服务器](python-web/pythonying-yong-fu-wu-qi.md)
 
 
-## 5. 数据库
+## 数据库
 
 * [Mongodb](Database/mongodb/install.md)
   * [安装](Database/mongodb/install.md)

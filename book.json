@@ -54,7 +54,7 @@
             "buttons": [
                 {
                     "user": "maxiaoteng001",
-                    "repo": "glory",
+                    "repo": "maxiaoteng-book",
                     "type": "star",
                     "size": "small",
                     "count": true
@@ -62,9 +62,9 @@
             ]
         },
         "sharing": {
-            "douban": false,
+            "douban": true,
             "facebook": false,
-            "google": false,
+            "google": true,
             "hatenaBookmark": false,
             "instapaper": false,
             "line": false,
@@ -91,7 +91,7 @@
             ]
         },
         "anchor-navigation-ex": {
-            "showLevel": false
+            "showLevel": true
         }
     }
 }
