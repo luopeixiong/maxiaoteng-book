@@ -30,18 +30,21 @@ node -v
 # 安装gitbook
 sudo npm install gitbook -g
 ```
+
 2. 导入一本书
 ```
 # 将在该目录下创建一本书, 包含两个文件README.md和SUMMARY.md两个文件
 gitbook init ./directory_name
 ## 导入书籍可以直接clone到指定目录下
 ```
+
 3. 启动它
 ```
 # 在书籍的根目录下, 即有readme的目录下
 gitbook serve
 # 结束后将运行来localhost:4000下面
 ```
+
 4. 编写cronlab定时任务自动更新gitbook内容
 
 
@@ -66,11 +69,11 @@ gitbook serve
     ```
 
 ## 6. 启动两个gitbook服务
-参考： https://blog.csdn.net/moxiaomomo/article/details/53026645
-gitbook web服务端口:4000  重启服务端口:35729
-    ```
+参考： https://blog.csdn.net/moxiaomomo/article/details/53026645  
+gitbook web服务端口:4000  重启服务端口:35729   
+```
     gitbook serve --lrport 35288 --port 4001 /path2/your_another_doc_dir/
-    ```
+```
 
 ## 7. gitbook插件
 
@@ -145,6 +148,7 @@ gitbook web服务端口:4000  重启服务端口:35729
     ```
 
     3. 代码示例
+
     <br />
     {% raw %}
     <video id="my-video" class="video-js" controls preload="auto" width="100%" poster="https://zhangjikai.com/resource/poster.jpg" data-setup='{"aspectRatio":"16:9"}'>
@@ -155,6 +159,7 @@ gitbook web服务端口:4000  重启服务端口:35729
     </p>
     </video>
     {% endraw %}
+
 
 6. search-plus  # 支持中文搜索
     ```
