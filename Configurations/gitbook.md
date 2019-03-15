@@ -61,12 +61,7 @@ gitbook serve
     # 安装插件
     gitbook install
     ```
-    - 目录前面加序号
-    ```json
-    "theme-default": {
-            "showLevel": true
-        },
-    ```
+
 
 ## 6. 启动两个gitbook服务
 参考： https://blog.csdn.net/moxiaomomo/article/details/53026645  
@@ -147,7 +142,6 @@ gitbook web服务端口:4000  重启服务端口:35729
         }
     ```
     3. 代码示例
-
     <br />
     {% raw %}
     <video id="my-video" class="video-js" controls preload="auto" width="100%" poster="https://zhangjikai.com/resource/poster.jpg" data-setup='{"aspectRatio":"16:9"}'>
@@ -175,9 +169,7 @@ gitbook web服务端口:4000  重启服务端口:35729
     ```
 
     使用方法  
-    ```python
-    {% includeCsv  src="../../assets/csv/test.csv", useHeader="true" %} {% endincludeCsv %}
-    ```
+    `{% includeCsv  src="../../assets/csv/test.csv", useHeader="true" %} {% endincludeCsv %}`
     
 8. disqus   # 支持disqus评论
     ```
@@ -207,4 +199,12 @@ gitbook web服务端口:4000  重启服务端口:35729
 
 10. expandable-chapters-small   # 折叠左侧目录
 
-11. 
+11. theme-default   # 左侧目录加序号等默认主题
+    - 目录前面加序号
+        ```json
+        "pluginsConfig": {
+            "theme-default": {
+                    "showLevel": true
+                },
+        }
+        ```
