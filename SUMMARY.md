@@ -132,6 +132,7 @@
 * [Mysql](Configurations/mysql.md)
 * [Shadowsocks](Configurations/shadowsocks.md)
 * [域名绑定](Configurations/domain.md)
+* [Macos使用](Configurations/macos.md)
 
 
 ## 面试汇总

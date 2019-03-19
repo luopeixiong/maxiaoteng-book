@@ -1,17 +1,25 @@
 ## 快捷键
 设置: 文件 → 首选项 → 键盘快捷方式  -->  可以搜索关键字, 也可以直接按键
 
-- Ctrl + [  ]      # 缩进
-- Ctrl + D         # 删除整行
-- Ctrl + Delete    # 删除光标右侧
-- Alt + ⬆/⬇        # 整行上移下移
-- Ctrl+ ⬆/⬇        # 行滚动页面
-- Ctrl+ pagedown/pageup        # 滚动页面
-- Ctrl + s         # 保存
-- Ctrl + n        # 创建新文件
-- Alt + Shift + ⬆/⬇    # 复制该行内容到上一行或下一行
-- Alt + Shift + 鼠标    # 多行编辑
-- Ctrl + L + K    # 格式化代码
+1. windows下的快捷键
+    - Ctrl + [  ]      # 缩进
+    - Ctrl + D         # 删除整行
+    - Ctrl + Delete    # 删除光标右侧
+    - Alt + ⬆/⬇        # 整行上移下移
+    - Ctrl+ ⬆/⬇        # 行滚动页面
+    - Ctrl+ pagedown/pageup        # 滚动页面
+    - Ctrl + s         # 保存
+    - Ctrl + n        # 创建新文件
+    - Alt + Shift + ⬆/⬇    # 复制该行内容到上一行或下一行
+    - Alt + Shift + 鼠标    # 多行编辑
+    - Ctrl + L + K    # 格式化代码
+
+2. Macos快捷键
+    - control + shift + K   # 删除一行
+    - control + shift + ⬇️/⬆️   # 往下/往上一行
+    - option + ⬆️/⬇️    # 移动行
+    - option + shift + F  # 格式化代码
+    - option + Shift + P    # 打开搜索, language设置 Display language
 
 
 ## 设置
