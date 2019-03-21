@@ -3,125 +3,118 @@
 ## 1. 功能
 
 1. **初始化仓库**
-
-```
-git init
-```
+    ```
+    git init
+    ```
 
 2. **检出代码到本地**
+    ```
+    # git
+    git clone git_url
 
-```
-# git
-git clone git_url
-
-# svn
-svn checkout svn_url
-```
+    # svn
+    svn checkout svn_url
+    ```
 
 3. **将文件添加到版本库**
+    ```
+    # git
+    git add .  # 添加所有内容到版本库
+    git add file_name  # 添加指定文件到版本库
 
-```
-# git
-git add .  # 添加所有内容到版本库
-git add file_name  # 添加指定文件到版本库
-
-# svn
-svn add new_file
-```
+    # svn
+    svn add new_file
+    ```
 
 4. **提交更改**
+    ```
+    # git
+    git commit -m '更改说明'  # 提交更改到本地版本库
+    git push  # 推送代码到默认线上仓库
+    git push gitlab master  # 推送代码到指定的线上仓库
 
-```
-# git
-git commit -m '更改说明'  # 提交更改到本地版本库
-git push  # 推送代码到默认线上仓库
-git push gitlab master  # 推送代码到指定的线上仓库
+    git push -u github master  # 将会修改设置默认的推送流
 
-git push -u github master  # 将会修改设置默认的推送流
-
-# svn
-svn commit -m '更改说明'  # 提交更改到版本库, 并推送到线上
-```
+    # svn
+    svn commit -m '更改说明'  # 提交更改到版本库, 并推送到线上
+    ```
 
 5. **重置暂存区**
-
-```
-git reset --hard
-```
+    ```
+    git reset --hard
+    ```
 
 6. **显示提交记录**
-
-```
-git log  # 显示commit记录
-git log --graph --oneline firstbranch_name secondbranch_name  # 按图形显示
-```
+    ```
+    git log  # 显示commit记录
+    git log --graph --oneline firstbranch_name secondbranch_name  # 按图形显示
+    ```
 
 7. **检出某一版本**
-
-```
-git checkout commit_id  # 检出某一id的状态
-git checkout branch_name  # 检出指定分支的代码
-```
+    ```
+    git checkout commit_id  # 检出某一id的状态
+    git checkout branch_name  # 检出指定分支的代码
+    ```
 
 8. **更新本地代码**
-```
-# git
-git pull
-git pull remote_name branch_name 
-# svn
-svn update
-svn update -r m svn_path  # 更新指定版本的代码
-```
+    ```
+    # git
+    git pull
+    git pull remote_name branch_name 
+    # svn
+    svn update
+    svn update -r m svn_path  # 更新指定版本的代码
+    ```
 
 9. **查看当前状态**
-```
-# git
-git status
-# svn
-svn status
-```
+    ```
+    # git
+    git status
+    # svn
+    svn status
+    ```
 
 10. **查看代码库的信息**
-```
-# git
-git remote -v  # 显示远程仓库的链接
-# svn
-svn info  # 显示仓库所有信息
-svn info |grep URL/http  
-cat .svn/entries |grep http  
-```
+    ```
+    # git
+    git remote -v  # 显示远程仓库的链接
+    # svn
+    svn info  # 显示仓库所有信息
+    svn info |grep URL/http  
+    cat .svn/entries |grep http  
+    ```
 
 11. **比较工作区和代码库的差异**
-```
-# git
-git diff  # 比较工作区和暂存区的差异
-git diff commit_1 commit_2  # 比较两次提交的差异
-git diff --staged  # 比较暂存区和代码库的差异
-# svn
-svn diff
-```
+    ```
+    # git
+    git diff  # 比较工作区和暂存区的差异
+    git diff commit_1 commit_2  # 比较两次提交的差异
+    git diff --staged  # 比较暂存区和代码库的差异
+    # svn
+    svn diff
+    ```
 
 12. **remote 管理**
-```
-# 1. 查看remote
-git remote -v
-# 2. 增加新的remote** 
-git remote add gitlab git_url
-git push gitlab master
-# 3. 修改remote的url**
-git remote set-url gitlab git_url
-```
+    ```
+    # 1. 查看remote
+    git remote -v
+    # 2. 增加新的remote** 
+    git remote add gitlab git_url
+    git push gitlab master
+    # 3. 修改remote的url**
+    git remote set-url gitlab git_url
+    ```
 
 13. **rm 撤销已加入追踪的文件**
-```
-# 删除本地和仓库
-git rm file_name
-git rm -r directory/
-# 只删除仓库, 保留本地文件
-git rm --cached file_name
-# svn
-svn rm --keep-local my_important_file  # 将只删除版本库的文件，而不删除本地
-```
+    ```
+    # 删除本地和仓库
+    git rm file_name
+    git rm -r directory/
+    # 只删除仓库, 保留本地文件
+    git rm --cached file_name
+    # svn
+    svn rm --keep-local my_important_file  # 将只删除版本库的文件，而不删除本地
+    ```
 
 
 ## 2. 撤销修改
@@ -196,7 +189,7 @@ svn rm --keep-local my_important_file  # 将只删除版本库的文件，而不
     git push origin :the_branch_backup
     ```
 
-## 1. 分支操作
+## 6. 分支操作
 
 1. 新建分支
     ```
@@ -243,4 +236,27 @@ svn rm --keep-local my_important_file  # 将只删除版本库的文件，而不
         git branch -v   # 查看各分支当前的最新版本
         git branch --merged # 查看合并到当前分支的其他分支
         git branch --no-merged # 查看未合并的分支
+    ```
+
+## 7. clone 指定分支
+1. clone指定分支
+    ```
+        # 默认clone master
+        git clone XXX.git
+        # 制定
+        git clone -b branch-name XXX.git
+    ```
+
+2. 如果clone了master，其他分支隐藏
+    ```
+        # 查看
+        git branch -a
+
+        # 快速检出分支
+        # detached Head， 所做修改不会提交到任何分支
+        git checkout origin/feature 
+
+        # 快速创建一个本地分支
+        git checkout -b feature origin/feature
+        git checkout -t origin/feature  #会在本地创建一个和远程分支同名
     ```
