@@ -74,3 +74,9 @@
     ```
     kill -9 pid
     ```
+
+1. 给予root权限，文件夹的所有文件
+    ```
+        sudo chmod -R 777 ./dir/*
+        sudo chown -R  maxiaoteng ./dir/*  # 修文件所有人
+    ```

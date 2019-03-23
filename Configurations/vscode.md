@@ -51,6 +51,11 @@ setting.json中
 - 导入导出配置文件
 位于：/yonghu/Appdata/Roaming/code/user/setting.json
 
+### 1. 自动同步
+参考： https://juejin.im/post/5b9b5a6f6fb9a05d22728e36
+
+
+
 ## 2. windows10
 
 1. [WinDefend Windows Defender Antivirus Service占用内存高！怎么解决？ ](https://answers.microsoft.com/zh-hans/protect/forum/protect_defender-protect_updating-windows_10/windefend-windows-defender-antivirus/5f90145e-24f0-4552-b7e0-119e68a6db2f)
