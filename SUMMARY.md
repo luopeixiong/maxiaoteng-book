@@ -117,6 +117,7 @@
 * [Redis](Database/Redis/install.md)
   * [安装](Database/Redis/install.md)
   * [Python连接Redis](Database/Redis/python_redis.md)
+  * [Macos安装Redis](Database/Redis/macos_redis.md)
 * [消息队列Kafka](Database/kafka.md)
 
 

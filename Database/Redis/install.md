@@ -51,6 +51,8 @@
 
 ## 3. 配置Redis
 
+参考 http://www.runoob.com/redis/redis-conf.html
+
 初始配置文件位于解压目录 `.../redis-stable/redis.conf`
 ```
 cd ./redis-stable/redis.conf  
