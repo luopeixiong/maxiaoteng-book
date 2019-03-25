@@ -149,8 +149,8 @@
 
 2. **全局修改，建议将最常用的账号配置到globle中**
     ```
-    git config --globle user.name xxx
-    git config --globle user.email xxx@xxx.xxx
+    git config --global user.name xxx
+    git config --global user.email xxx@xxx.xxx
     ```
 
 3. **当前项目**
