@@ -136,6 +136,7 @@ num = collection.insert_many(...).inserted_count()  # 查看插入了多少行
     ```
 
 ### 2. 修改
+参考： https://blog.csdn.net/user_longling/article/details/52398667
     update共有四个参数：
       - query   # 条件
       - updata  # 更新内容
@@ -162,13 +163,30 @@ num = collection.insert_many(...).inserted_count()  # 查看插入了多少行
     result.modified_count()   # 返回修改内容的数量
     ```
 3. 删除某个键 "$unset"  
-4. 增加计算   
+4. 增加计算   "$inc"
     ```
         newvalue = {
             "$inc": {
                 "key" : 3,  # 或者-7
             }
         }
+    ```
+5. "$push"  # field的值必须是list
+    ```
+        updata = {
+            "$push": {
+                "field": "value",
+            }
+        }
+    ```
+
+6. "pushAll"    # 将list的每个值push进去，和push区别
+    ```
+        pushall接受list，将每个值放到目标数组中
+        如果push一个list，list将作为整体加入到目标数组中
+        原始：['aa', 'bb']
+        push ['cc', 'dd']   # 结果 ['aa', 'bb'，['cc', 'dd']]
+        pushall ['cc', 'dd']   # 结果 ['aa', 'bb'，'cc', 'dd']
     ```
      
 
@@ -217,25 +235,25 @@ num = collection.insert_many(...).inserted_count()  # 查看插入了多少行
 
 ### 4. 删除
 
-**删除一条**
-```
-query = {"name": "maxiaoteng"}
-collection.delete_one(query)  # 删除符合条件的第一条
-```
+1. **删除一条**
+    ```
+    query = {"name": "maxiaoteng"}
+    collection.delete_one(query)  # 删除符合条件的第一条
+    ```
 
-**删除多条**
-```
-query = {
-    "name": {
-        "$regex": "^F"  # 使用正则表达式:name中以F开头的
+2. **删除多条**
+    ```
+    query = {
+        "name": {
+            "$regex": "^F"  # 使用正则表达式:name中以F开头的
+        }
     }
-}
-x = collection.delete_many(query)
-count = x.deleted_count  # 返回删除文档的个数
-```
+    x = collection.delete_many(query)
+    count = x.deleted_count  # 返回删除文档的个数
+    ```
 
-**删除所有**  
-query = {}  # 即可
+3. **删除所有**  
+    query = {}  # 即可
 
 ---
 
