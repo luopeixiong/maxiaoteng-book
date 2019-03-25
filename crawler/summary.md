@@ -37,10 +37,14 @@
 4. [json](/)
 
 
-## 4. 动态网站加载
-1. [Splash(支持异步)](/crawler/splash.md)(**首选**)
-2. [chromedrier + Chrome + selenium (使用无界面模式降低资源占用)](/crawler/selenium/selenium.md)
-3. Phantomjs(已被无界面的Chrome替代)
+## 4. 模拟请求
+1. Web
+   1. [Splash(支持异步)](/crawler/splash.md)(**首选**)
+   2. [chromedrier + Chrome + selenium (使用无界面模式降低资源占用)](/crawler/selenium/selenium.md)
+   3. Phantomjs(已被无界面的Chrome替代)
+2. 移动App
+   1. [UiAutomator](/crawler/uiautomator.md) + mitmproxy
+   2. Appium + mitmproxy
 
 ## 5. 反反爬技巧
 防止被ban的技巧  
