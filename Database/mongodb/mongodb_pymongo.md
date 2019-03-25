@@ -101,41 +101,47 @@ num = collection.insert_many(...).inserted_count()  # 查看插入了多少行
 
 ### 1. 插入文档
 
-**插入一条**
-```
-item = {
-    'name': 'xxx',
-    'age': 22
-}
-
-insert_id = collection.insert_one(item).inserted_id  
-// 返回InsertOneResult实例, 就是item增加了inserted_id, 最终返回: ObjectId('...')
-```
-
-**批量插入**
-```
-items = [
-    {...}, 
-    {...},
-    ...
-]
-result = collection.insert_many(items)
-// result 是一个InsertManyResult实例
-```
-
-**批量不重复插入**
-```
-for r in rs:
-    query = {
-        "unique_colum": r.get('unique_colum'), 
+1. **插入一条**
+    ```
+    item = {
+        'name': 'xxx',
+        'age': 22
     }
-    update = {
-        "$set": r,
-    }
-    rs = collection.find_one_and_update(query, update, upsert=True)
-```
+
+    insert_id = collection.insert_one(item).inserted_id  
+    // 返回InsertOneResult实例, 就是item增加了inserted_id, 最终返回: ObjectId('...')
+    ```
+
+2. **批量插入**
+    ```
+    items = [
+        {...}, 
+        {...},
+        ...
+    ]
+    result = collection.insert_many(items)
+    // result 是一个InsertManyResult实例
+    ```
+
+3. **批量不重复插入**
+    ```
+    for r in rs:
+        query = {
+            "unique_colum": r.get('unique_colum'), 
+        }
+        update = {
+            "$set": r,
+        }
+        rs = collection.find_one_and_update(query, update, upsert=True)
+    ```
 
 ### 2. 修改
+    update共有四个参数：
+      - query   # 条件
+      - updata  # 更新内容
+      - upsert  # 默认false，如果不存在要插入，则为true
+      - multi   # 默认false，要修改所有符合条件的查询，则为true
+
 1. 基本操作，
     updata是一个完整的值，将整个document修改
 2. 修改某个key，有则修改，没有就新增 "$set"
@@ -168,46 +174,46 @@ for r in rs:
 
 ### 3. 查询文档
 
-**查询第一条**
-```
-query = {
-    'kk': 'vv',
-    ...
-}
-collection.find_one(query)
-// 返回一个dict, 没有符合条件, 返回None
-```
-
-**查询多条**
-```
-result = collection.find(query)
-#　**注意:** 此处返回result类型`<pymongo.cursor.Cursor object at 0x0000000002C6DBE0>`是可迭代对象,可以使用list(result)转换, 也可以使用for循环迭代
-
-num = result.count()   # Cursor有一个count方法, 返回查询结果的个数
-```
-
-**范围查询**
-
-```
-query = {
-    "date": {
-        "$lt": d,   # 表示查询 d日期之后的文档
+1. **查询第一条**
+    ```
+    query = {
+        'kk': 'vv',
+        ...
     }
-}
-result = collection.find(query)  # 查询结果
-result.sort('name')  # 升序排序
-result.sort('name', -1)  # 降序排序
-```
+    collection.find_one(query)
+    // 返回一个dict, 没有符合条件, 返回None
+    ```
 
-**过滤显示**
+2. **查询多条**
+    ```
+    result = collection.find(query)
+    #　**注意:** 此处返回result类型`<pymongo.cursor.Cursor object at 0x0000000002C6DBE0>`是可迭代对象,可以使用list(result)转换, 也可以使用for循环迭代
 
-```
-filter = {
-    'id': 0,  # 0表示不显示, 1表示显示, 0和1只能存在一种
-    'url': 0,
-}
-result = collection.find({}, filter)
-```
+    num = result.count()   # Cursor有一个count方法, 返回查询结果的个数
+    ```
+
+3. **范围查询**
+
+    ```
+    query = {
+        "date": {
+            "$lt": d,   # 表示查询 d日期之后的文档
+        }
+    }
+    result = collection.find(query)  # 查询结果
+    result.sort('name')  # 升序排序
+    result.sort('name', -1)  # 降序排序
+    ```
+
+4. **过滤显示**
+
+    ```
+    filter = {
+        'id': 0,  # 0表示不显示, 1表示显示, 0和1只能存在一种
+        'url': 0,
+    }
+    result = collection.find({}, filter)
+    ```
 
 ### 4. 删除
 
