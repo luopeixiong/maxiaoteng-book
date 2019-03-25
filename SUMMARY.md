@@ -41,6 +41,7 @@
     * [logging模块](python-basics/built_in_module/logging-model.md)
     * [CSV模块](python-basics/built_in_module/csv-model.md)
     * [json](python-basics/built_in_module/json.md)
+    * [ramdom](python-basics/built_in_module/random.md)
 * [编码](python-basics/encode.md)
 * [迭代器 生成器 可迭代对象](python-basics/iteration_generator_iterable.md)
 * [数据结构](python-basics/shu-ju-jie-gou.md)
