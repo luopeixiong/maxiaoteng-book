@@ -19,7 +19,7 @@
 2. 移动应用抓包
     1. Charles抓包分析http和https请求(**首选**)
     2. Fiddler抓包(优先使用上一个)
-    3. Mitmproxy(使用python编写，是命令行程序)
+    3. [Mitmproxy(使用python编写，是命令行程序)](/crawler/mitmproxy.md)
     4. Wireshark和Tcpdump(不使用http协议的app)
 
 ## 2. HTTP请求库
@@ -43,7 +43,7 @@
    2. [chromedrier + Chrome + selenium (使用无界面模式降低资源占用)](/crawler/selenium/selenium.md)
    3. Phantomjs(已被无界面的Chrome替代)
 2. 移动App
-   1. [UiAutomator](/crawler/uiautomator.md) + mitmproxy
+   1. [UiAutomator](/crawler/uiautomator.md) + [mitmproxy](/crawler/mitmproxy.md)
    2. Appium + mitmproxy
 
 ## 5. 反反爬技巧
