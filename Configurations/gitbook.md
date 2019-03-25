@@ -169,7 +169,9 @@ gitbook web服务端口:4000  重启服务端口:35729
     ```
 
     使用方法  
-    `{% includeCsv  src="../../assets/csv/test.csv", useHeader="true" %} {% endincludeCsv %}`
+    ```
+        {% includeCsv  src="../../assets/csv/test.csv", useHeader="true" %} {% endincludeCsv %}
+    ```
     
 8. disqus   # 支持disqus评论
     ```
