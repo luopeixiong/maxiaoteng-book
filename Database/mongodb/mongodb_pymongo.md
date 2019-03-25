@@ -136,23 +136,35 @@ for r in rs:
 ```
 
 ### 2. 修改
+1. 基本操作，
+    updata是一个完整的值，将整个document修改
+2. 修改某个key，有则修改，没有就新增 "$set"
+    **修改符合条件的第一条**
 
-**修改符合条件的第一条**
-
-```
-query = {
-    "name": "xxx"
-}
-
-newvalue = {
-    "$set": {
-        "name": "sss"
+    ```
+    query = {
+        "name": "xxx"
     }
-}
-collection.update_one(query, newvalue)  # 修改单条
-result = collection.update_many(query, newvalue)  # 修改多条
-result.modified_count()   # 返回修改内容的数量
-```
+
+    newvalue = {
+        "$set": {
+            "name": "sss"
+        }
+    }
+    collection.update_one(query, newvalue)  # 修改单条
+    result = collection.update_many(query, newvalue)  # 修改多条
+    result.modified_count()   # 返回修改内容的数量
+    ```
+3. 删除某个键 "$unset"  
+4. 增加计算   
+    ```
+        newvalue = {
+            "$inc": {
+                "key" : 3,  # 或者-7
+            }
+        }
+    ```
+     
 
 ### 3. 查询文档
 
