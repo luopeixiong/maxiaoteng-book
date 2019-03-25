@@ -80,3 +80,15 @@
         sudo chmod -R 777 ./dir/*
         sudo chown -R  maxiaoteng ./dir/*  # 修文件所有人
     ```
+
+## 4. 快捷键
+# 命令行技巧
+
+1. 删除整行
+    ctrl+u
+
+2. 删除前一个单词
+    ctrl+w
+
+3. 不删除直接下一行重新输入
+    ctrl+c
