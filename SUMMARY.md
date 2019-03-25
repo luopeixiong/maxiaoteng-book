@@ -134,6 +134,7 @@
 * [Shadowsocks](Configurations/shadowsocks.md)
 * [域名绑定](Configurations/domain.md)
 * [Macos使用](Configurations/macos.md)
+* [Iterm2](Configurations/iterm.md)
 
 
 ## 面试汇总
