@@ -39,6 +39,7 @@
     * [ramdom](python-basics/built_in_module/random.md)
     * [time](python-basics/built_in_module/time.md)
     * [datetime](python-basics/built_in_module/datetime.md)
+    * [subprocess](python-basics/built_in_module/subprocess.md)
 * [其他模块](python-basics/modules/modules.md)
     * [paramiko](python-basics/modules/paramiko.md)
 * [编码](python-basics/encode.md)
