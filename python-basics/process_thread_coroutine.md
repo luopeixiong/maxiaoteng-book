@@ -13,189 +13,191 @@ Process Thread Coroutine
 2. multiprocessing 
     1. 模块提供了Process类来代表一个进程对象
     2. 启动一个进程
-    ```
-    from multiprocessing import Process
-    import os
+        ```
+        from multiprocessing import Process
+        import os
 
-    # 子进程要执行的代码
-    def run_proc(name):
-        print('Run child process %s (%s)...' % (name, os.getpid()))
+        # 子进程要执行的代码
+        def run_proc(name):
+            print('Run child process %s (%s)...' % (name, os.getpid()))
 
-    if __name__=='__main__':
-        print('Parent process %s.' % os.getpid())
-        p = Process(target=run_proc, args=('test',))
-        print('Child process will start.')
-        p.start()
-        p.join()
-        print('Child process end.')
-    ```
+        if __name__=='__main__':
+            print('Parent process %s.' % os.getpid())
+            p = Process(target=run_proc, args=('test',))
+            print('Child process will start.')
+            p.start()
+            p.join()
+            print('Child process end.')
+        ```
+
     3. 进程池 Pool
-    ```
-    from multiprocessing import Pool
-    import os, time, random
+        ```
+        from multiprocessing import Pool
+        import os, time, random
 
-    def long_time_task(name):
-        print('Run task %s (%s)...' % (name, os.getpid()))
-        start = time.time()
-        time.sleep(random.random() * 3)
-        end = time.time()
-        print('Task %s runs %0.2f seconds.' % (name, (end - start)))
+        def long_time_task(name):
+            print('Run task %s (%s)...' % (name, os.getpid()))
+            start = time.time()
+            time.sleep(random.random() * 3)
+            end = time.time()
+            print('Task %s runs %0.2f seconds.' % (name, (end - start)))
 
-    if __name__=='__main__':
-        print('Parent process %s.' % os.getpid())
-        p = Pool(4)
-        for i in range(5):
-            p.apply_async(long_time_task, args=(i,))
-        print('Waiting for all subprocesses done...')
-        p.close()
-        p.join()
-        print('All subprocesses done.')
-    ```
+        if __name__=='__main__':
+            print('Parent process %s.' % os.getpid())
+            p = Pool(4)
+            for i in range(5):
+                p.apply_async(long_time_task, args=(i,))
+            print('Waiting for all subprocesses done...')
+            p.close()
+            p.join()
+            print('All subprocesses done.')
+        ```
 
     4. SubProcess
     很多时候,子进程并不是自身,而是一个外部进程,我们创建子进程还需要控制输入和输出.
     下面演示了在进程中运行命令行
-    ```
-    import subprocess
+        ```
+            import subprocess
 
-    print('$ nslookup www.python.org')
-    r = subprocess.call(['nslookup', 'www.python.org'])
-    print('Exit code:', r)
-    ```
+            print('$ nslookup www.python.org')
+            r = subprocess.call(['nslookup', 'www.python.org'])
+            print('Exit code:', r)
+        ```
 
     5. 子进程的输入
     相当于先输入命令`nslookup`,然后输入内容
-    ```
-    import subprocess
+        ```
+            import subprocess
 
-    print('$ nslookup')
-    p = subprocess.Popen(['nslookup'], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    output, err = p.communicate(b'set q=mx\npython.org\nexit\n')
-    print(output.decode('utf-8'))
-    print('Exit code:', p.returncode)
-    ```
+            print('$ nslookup')
+            p = subprocess.Popen(['nslookup'], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            output, err = p.communicate(b'set q=mx\npython.org\nexit\n')
+            print(output.decode('utf-8'))
+            print('Exit code:', p.returncode)
+        ```
 
     6. 进程间通信
-    ```
-    from multiprocessing import Process, Queue
-    import os, time, random
+        ```
+            from multiprocessing import Process, Queue
+            import os, time, random
 
-    # 写数据进程执行的代码:
-    def write(q):
-        print('Process to write: %s' % os.getpid())
-        for value in ['A', 'B', 'C']:
-            print('Put %s to queue...' % value)
-            q.put(value)
-            time.sleep(random.random())
+            # 写数据进程执行的代码:
+            def write(q):
+                print('Process to write: %s' % os.getpid())
+                for value in ['A', 'B', 'C']:
+                    print('Put %s to queue...' % value)
+                    q.put(value)
+                    time.sleep(random.random())
 
-        # 读数据进程执行的代码:
-    def read(q):
-        print('Process to read: %s' % os.getpid())
-        while True:
-            value = q.get(True)
-            print('Get %s from queue.' % value)
+                # 读数据进程执行的代码:
+            def read(q):
+                print('Process to read: %s' % os.getpid())
+                while True:
+                    value = q.get(True)
+                    print('Get %s from queue.' % value)
 
-    if __name__=='__main__':
-        # 父进程创建Queue，并传给各个子进程：
-        q = Queue()
-        pw = Process(target=write, args=(q,))
-        pr = Process(target=read, args=(q,))
-        # 启动子进程pw，写入:
-        pw.start()
-        # 启动子进程pr，读取:
-        pr.start()
-        # 等待pw结束:
-        pw.join()
-        # pr进程里是死循环，无法等待其结束，只能强行终止:
-        pr.terminate()
-    ```
+            if __name__=='__main__':
+                # 父进程创建Queue，并传给各个子进程：
+                q = Queue()
+                pw = Process(target=write, args=(q,))
+                pr = Process(target=read, args=(q,))
+                # 启动子进程pw，写入:
+                pw.start()
+                # 启动子进程pr，读取:
+                pr.start()
+                # 等待pw结束:
+                pw.join()
+                # pr进程里是死循环，无法等待其结束，只能强行终止:
+                pr.terminate()
+        ```
 
 
 ## 2. Thread 线程
 常用模块threading, 封装了(_thread)
 1. 启动一个线程
     ```
-    import time, threading
+        import time, threading
 
-    # 新线程执行的代码:
-    def loop():
+        # 新线程执行的代码:
+        def loop():
+            print('thread %s is running...' % threading.current_thread().name)
+            n = 0
+            while n < 5:
+                n = n + 1
+                print('thread %s >>> %s' % (threading.current_thread().name, n))
+                time.sleep(1)
+            print('thread %s ended.' % threading.current_thread().name)
+
         print('thread %s is running...' % threading.current_thread().name)
-        n = 0
-        while n < 5:
-            n = n + 1
-            print('thread %s >>> %s' % (threading.current_thread().name, n))
-            time.sleep(1)
+        t = threading.Thread(target=loop, name='LoopThread')
+        t.start()
+        t.join()
         print('thread %s ended.' % threading.current_thread().name)
-
-    print('thread %s is running...' % threading.current_thread().name)
-    t = threading.Thread(target=loop, name='LoopThread')
-    t.start()
-    t.join()
-    print('thread %s ended.' % threading.current_thread().name)
     ```
 
-2. Lock
-多线程和多进程最大的不同在于:
-    - 多进程中，同一个变量，各自有一份拷贝存在于每个进程中，互不影响，
-    - 多线程中，所有变量都由所有线程共享，所以，任何一个变量都可以被任何一个线程修改，因此，线程之间共享数据最大的危险在于多个线程同时改一个变量，把内容给改乱了。
+2. Lock  
+> 多线程和多进程最大的不同在于:
+>    - 多进程中，同一个变量，各自有一份拷贝存在于每个进程中，互不影响，
+>    - 多线程中，所有变量都由所有线程共享，所以，任何一个变量都可以被任何一个线程修改，因此，线程之间共享数据最大的危险在于多个线程同时改一个变量，把内容给改乱了。
     ```
-    import time, threading
+        import time, threading
 
-    # 假定这是你的银行存款:
-    balance = 0
+        # 假定这是你的银行存款:
+        balance = 0
 
-    def change_it(n):
-        # 先存后取，结果应该为0:
-        global balance
-        balance = balance + n
-        balance = balance - n
+        def change_it(n):
+            # 先存后取，结果应该为0:
+            global balance
+            balance = balance + n
+            balance = balance - n
 
-    def run_thread(n):
-        for i in range(100000):
-             # 先要获取锁:
-            lock.acquire()
-            try:
-                # 放心地改吧:
-                change_it(n)
-            finally:
-                # 改完了一定要释放锁:
-                lock.release()
+        def run_thread(n):
+            for i in range(100000):
+                # 先要获取锁:
+                lock.acquire()
+                try:
+                    # 放心地改吧:
+                    change_it(n)
+                finally:
+                    # 改完了一定要释放锁:
+                    lock.release()
 
-    t1 = threading.Thread(target=run_thread, args=(5,))
-    t2 = threading.Thread(target=run_thread, args=(8,))
-    t1.start()
-    t2.start()
-    t1.join()
-    t2.join()
-    print(balance)
+        t1 = threading.Thread(target=run_thread, args=(5,))
+        t2 = threading.Thread(target=run_thread, args=(8,))
+        t1.start()
+        t2.start()
+        t1.join()
+        t2.join()
+        print(balance)
     ```
+
 3. 由于Python的GIL锁(Global Interpreter Lock),多线程只能占用1核,交替跑,要想实现多核多任务的程序,需要使用`多进程`实现.
 
 
 ## 3. ThreadLocal
 一个ThreadLocal变量虽然是全局变量，但每个线程都只能读写自己线程的独立副本，互不干扰。ThreadLocal解决了参数在一个线程中各个函数之间互相传递的问题。
     ```
-    import threading
+        import threading
 
-    # 创建全局ThreadLocal对象:
-    local_school = threading.local()
+        # 创建全局ThreadLocal对象:
+        local_school = threading.local()
 
-    def process_student():
-        # 获取当前线程关联的student:
-        std = local_school.student
-        print('Hello, %s (in %s)' % (std, threading.current_thread().name))
+        def process_student():
+            # 获取当前线程关联的student:
+            std = local_school.student
+            print('Hello, %s (in %s)' % (std, threading.current_thread().name))
 
-    def process_thread(name):
-        # 绑定ThreadLocal的student:
-        local_school.student = name
-        process_student()
+        def process_thread(name):
+            # 绑定ThreadLocal的student:
+            local_school.student = name
+            process_student()
 
-    t1 = threading.Thread(target= process_thread, args=('Alice',), name='Thread-A')
-    t2 = threading.Thread(target= process_thread, args=('Bob',), name='Thread-B')
-    t1.start()
-    t2.start()
-    t1.join()
-    t2.join()
+        t1 = threading.Thread(target= process_thread, args=('Alice',), name='Thread-A')
+        t2 = threading.Thread(target= process_thread, args=('Bob',), name='Thread-B')
+        t1.start()
+        t2.start()
+        t1.join()
+        t2.join()
     ```
 
 
@@ -220,24 +222,24 @@ Process Thread Coroutine
 1. 优势
     1. 子程序切换不是线程切换,由程序自身控制,没有线程切换的开销
     2. 不需要多线程的锁机制,效率高
-    - 使用多核CPU可以 多进程+ 协程
+    3. 使用多核CPU可以 多进程+ 协程
 2. 用法
     ```
-    def jumping_range(N):
-    index = 0
-    while index < N:
-        # 通过send()发送的信息将赋值给jump
-        jump = yield index
-        if jump is None:
-            jump = 1
-        index += jump
+        def jumping_range(N):
+            index = 0
+            while index < N:
+                # 通过send()发送的信息将赋值给jump
+                jump = yield index
+                if jump is None:
+                    jump = 1
+                index += jump
 
-    if __name__ == '__main__':
-        itr = jumping_range(5)
-        print(next(itr))
-        print(itr.send(2))
-        print(next(itr))
-        print(itr.send(-1))
+        if __name__ == '__main__':
+            itr = jumping_range(5)
+            print(next(itr))
+            print(itr.send(2))
+            print(next(itr))
+            print(itr.send(-1))
     ```
     1. 重点是jump = yield index这个语句。分成两部分：
         - yield index 是将index return给外部调用程序。
