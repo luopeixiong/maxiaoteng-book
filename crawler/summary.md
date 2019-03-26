@@ -22,19 +22,20 @@
     3. [Mitmproxy(使用python编写，是命令行程序)](/crawler/mitmproxy.md)
     4. Wireshark和Tcpdump(不使用http协议的app)
 
-## 2. HTTP请求库
+## 2. HTTP请求库和爬虫框架
 1. [requests(可以代替python原生的请求库)](/crawler/requests.md)(**首选**)
 2. httpie(命令行库)
 3. curl
 4. aiohttp(支持异步io的库)
 5. hyper(支持http2的库)
+6. [scrapy和scrapy-redis](/crawler/Scrapy/scrapy_start_up.md)
 
 ## 3. 页面解析
 1. [lxml(推荐lxml和xpath结合使用)](/crawler/xpath.md)(**首选**)
 2. [BeautifulSoup(bs4)(推荐配合lxml使用)](/crawler/beautifulsoup.md)
 3. pyquery(不推荐)
 4. html5lib(不常用)
-4. [json](/)
+5. [json](/python-basics/built_in_module/json.md)
 
 
 ## 4. 模拟请求
