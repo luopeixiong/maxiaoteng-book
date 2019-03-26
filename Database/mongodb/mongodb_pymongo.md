@@ -214,11 +214,58 @@ num = collection.insert_many(...).inserted_count()  # 查看插入了多少行
     ```
 
 3. **范围查询**
-
+参考： https://blog.csdn.net/yangguangxiadeshu/article/details/45096007
     ```
     query = {
         "date": {
-            "$lt": d,   # 表示查询 d日期之后的文档
+            # 范围查询
+            "$gt": d,   # 大于
+            "$lt": d,   # 小于
+            "$gte": d,   # 大于等于
+            "$lte": d,   # 小于等于
+            "$ne": d,   # 不等于
+        },
+        "value1": {  
+            # 并列查询
+            "$lt": 20,   # 小于
+            "$gte": 3,   # 大于等于
+        },
+        "value2": {  
+            # in or not in
+            "$in": [2, 3], 
+            "$nin": [2, 3],   
+        },
+        "value3": {  
+            # 取模运算
+            "$mod": [10, 1],   # 等价于 value3 % 10 == 1
+        },
+        "value4": {  
+            # list大小
+            "$size": 5,   # value4这个list的大小，官网不建议查找size的范围，如果想要找size<5, 建议创建一个字段来保存元素的数量
+        },
+        "value5": {  
+            # 是否存在
+            "$exists": true,   # 存在
+            "$exists": false,   # 不存在
+        },
+        "value6": {  
+            # 类型判断
+            "$type": 2,   # string, 基于bson来判断，
+            "$type": 16,   # int
+            "$gte": 3,   # 大于等于
+        },
+        "value7": {  
+            # 元素匹配,针对list类型
+            "$elemMath":{
+                a : 1, 
+                b : {
+                    "$gt": 2
+                }
+            }
+        },
+        "value8.name": {  
+            # 嵌入对象查询,直接使用.即可
+            "name_target",
         }
     }
     result = collection.find(query)  # 查询结果
