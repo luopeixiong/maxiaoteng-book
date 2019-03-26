@@ -145,7 +145,9 @@ num = collection.insert_many(...).inserted_count()  # 查看插入了多少行
 
 1. 基本操作，
     updata是一个完整的值，将整个document修改
-2. 修改某个key，有则修改，没有就新增 "$set"
+
+2. 不存在插入，存在则不操作 "$setOnInsert"
+3. 修改某个key，有则修改，没有就新增 "$set"
     **修改符合条件的第一条**
 
     ```
@@ -162,8 +164,8 @@ num = collection.insert_many(...).inserted_count()  # 查看插入了多少行
     result = collection.update_many(query, newvalue)  # 修改多条
     result.modified_count()   # 返回修改内容的数量
     ```
-3. 删除某个键 "$unset"  
-4. 增加计算   "$inc"
+4. 删除某个键 "$unset"  
+5. 增加计算   "$inc"
     ```
         newvalue = {
             "$inc": {
@@ -171,7 +173,7 @@ num = collection.insert_many(...).inserted_count()  # 查看插入了多少行
             }
         }
     ```
-5. "$push"  # field的值必须是list
+6. "$push"  # field的值必须是list
     ```
         updata = {
             "$push": {
@@ -180,7 +182,7 @@ num = collection.insert_many(...).inserted_count()  # 查看插入了多少行
         }
     ```
 
-6. "pushAll"    # 将list的每个值push进去，和push区别
+7. "pushAll"    # 将list的每个值push进去，和push区别
     ```
         pushall接受list，将每个值放到目标数组中
         如果push一个list，list将作为整体加入到目标数组中
@@ -188,6 +190,7 @@ num = collection.insert_many(...).inserted_count()  # 查看插入了多少行
         push ['cc', 'dd']   # 结果 ['aa', 'bb'，['cc', 'dd']]
         pushall ['cc', 'dd']   # 结果 ['aa', 'bb'，'cc', 'dd']
     ```
+
      
 
 ### 3. 查询文档

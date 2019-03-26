@@ -44,6 +44,7 @@ C:\Users\jizhu>task\mxt_blogs\Scripts\activate
         
         # 安装
         pip install requests  # 安装包
+        pip install requests==3.6.0  
         pip install -r requirement.txt  # 根据配置文件生成相同的环境
 
         # 卸载
