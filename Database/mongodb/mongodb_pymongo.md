@@ -272,8 +272,17 @@ num = collection.insert_many(...).inserted_count()  # 查看插入了多少行
     result.sort('name')  # 升序排序
     result.sort('name', -1)  # 降序排序
     ```
-
-4. **过滤显示**
+4. **随机查询**
+    ```
+        result = collection.aggregate(
+            query = {
+                "$sample" : {
+                    "size": 5,
+                }
+            }
+        }
+    ```
+5. **过滤显示**
 
     ```
     filter = {
