@@ -274,13 +274,12 @@ num = collection.insert_many(...).inserted_count()  # 查看插入了多少行
     ```
 4. **随机查询**
     ```
-        result = collection.aggregate(
-            query = {
-                "$sample" : {
-                    "size": 5,
-                }
-            }
-        }
+    query = [{
+        '$sample': {
+            "size": 2,
+        },
+    }]
+    rs = list(collection.aggregate(pipeline=query))
     ```
 5. **过滤显示**
 
