@@ -1,7 +1,7 @@
 # Request and Response
 [中文文档](https://scrapy-chs.readthedocs.io/zh_CN/latest/topics/request-response.html)
 
-**cookie : scrapy 对cookie管理有很强的支持, 不需要可以去管理**
+**cookie : scrapy 对cookie管理有很强的支持, 可以不需要去管理**
 
 
 # Request
@@ -13,7 +13,7 @@
 4. body (str，经过转义的)
 	1. 当method为post时使用
 	2. 如果是get方法,get请求的querystring, 需要使用: ``` url + "?" + urllib.parse.urlencode(dict) ``` 来自动拼接,不能在此处传入。
-5. cookie
+5. cookies	# 默认生效,接受dict
 6. callback
 7. meta 
  + 上一个请求 request.meta['item'] = item

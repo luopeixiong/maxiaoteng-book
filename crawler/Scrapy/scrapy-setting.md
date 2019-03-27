@@ -12,8 +12,10 @@
     DOWNLOAD_DELAY = random.randint(1, 2)
  
 3. 是否启用cookie  
+    # COOKIES_ENABLED = False # 默认生效中，像浏览器一样，一般无需管理  
+    COOKIES_ENABLED = True  # 如果使用自定义cookie就把COOKIES_ENABLED设置为True  
+    COOKIES_ENABLED = False   # 如果使用settings的cookie就把COOKIES_ENABLED设置为False  
 
-    COOKIES_ENABLED = False
 4. ITEM的处理(pipeline)  
     ITEM_PIPELINES = {
     	# 'weapon.pipelines.WeaponPipeline': 300,
@@ -98,4 +100,3 @@
     # 设置超时，默认180秒
     DOWNLOAD_TIMEOUT = 10
     ```
-
