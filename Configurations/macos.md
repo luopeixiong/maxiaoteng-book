@@ -1,5 +1,6 @@
 # Macos 使用
 
+## 1. 快捷键
 1. command代替大多ctrl操作
     - command + X   # 剪切
     - command + C   # 复制
@@ -14,4 +15,7 @@
 4. 双指滚动，三指切换应用，四指列出桌面
 
 5. Command + Opthon + Esc   # 强制退出应用程序
+6. 截屏
+   1. Command + Ctrl + Shift + 3    # 整个屏幕截屏，剪贴板
+   2. Command + Shift + 4   # 对选定内容截屏，到桌面文件， 使用space可以对某个窗口截屏
 
