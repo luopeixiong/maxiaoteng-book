@@ -1,7 +1,16 @@
 # iterm2 
 mac下使用iterm作为终端模拟工具
 
-## 1. 使用mac进行ssh登陆linux服务器
+## 1. Iterm快捷键
+1. Command + d  # 垂直分屏
+2. Command + shift + d  # 水平分屏
+3. Command + ] /[   # 最近使用的分屏切换
+4. Command + opthon + 方向键    # 切换到指定的分屏
+5. Command + 数字/方向键   # 切换标签页
+6. shift + Command + s  # 保存当前窗口快照
+7. Command + option + b # 快照回放 
+
+## 2. 使用mac进行ssh登陆linux服务器
 1. 直接命令行操作
     ```
         ssh xiaoteng@11.11.1.1
