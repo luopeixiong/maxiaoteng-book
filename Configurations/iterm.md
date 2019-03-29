@@ -9,6 +9,10 @@ mac下使用iterm作为终端模拟工具
 5. Command + 数字/方向键   # 切换标签页
 6. shift + Command + s  # 保存当前窗口快照
 7. Command + option + b # 快照回放 
+8. ctrl + u # 删除整行
+9. ctrl + w # 删除前一个单词
+10. ctrl + c    # 直接下一行重新输入
+
 
 ## 2. 使用mac进行ssh登陆linux服务器
 1. 直接命令行操作
