@@ -72,7 +72,6 @@
   * [部署爬虫scrapyd](crawler/Scrapy/deploying-scrapy-crawlers.md)
   * [Request and Response](crawler/Scrapy/request-and-response.md)
   * [Scrapy-redis](crawler/Scrapy/scrapy-redis.md)
-  * [http错误处理](crawler/Scrapy/handle-http-error.md)
   * [Scrapyd](crawler/Scrapy/scrapyd.md)
   * [Gerapy](crawler/Scrapy/gerapy.md)
 * [UiAutomator](crawler/uiautomator.md)
