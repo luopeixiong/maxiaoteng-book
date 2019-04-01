@@ -77,3 +77,33 @@ from my_model import model_or_function
         print(li)      #输出[2, 3, 4, 5]
         print(first)   #输出 1
     ```
+
+## 8. Python执行Shell命令
+
+1. os
+    返回外部程序的运行结果
+    ```
+        import os
+        os.system('ls')
+    ```
+2. popen()
+    返回一个类文件对象，调用read()或readline()可以输出内容
+    ```
+        import os
+        output = os.popen('ps -u root')
+        print(output)
+    ```
+3. commands
+    ```
+        import commands
+        commands.getstatusoutput('ls')
+        commands.getoutput('ls')
+    ```
+
+4. subprocess
+    subprocess比os.system更灵活
+    ```
+        import subprocess
+        subprocess.call('pwd', shell=True)
+    ```
+
