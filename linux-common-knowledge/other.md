@@ -73,6 +73,8 @@
 1. netstat查看到占用,使用kill杀掉进程
     ```
     kill -9 pid
+    kill pid
+    kill 
     ```
 
 1. 给予root权限，文件夹的所有文件
@@ -92,3 +94,18 @@
 
 3. 不删除直接下一行重新输入
     ctrl+c
+
+
+## 5. 运维命令
+
+1. 一条命令杀进程
+
+    ```
+    ps -efww|grep -w 'process_test.py'|grep -v grep|cut -c 9-15|xargs kill -9
+
+    ```
+    - ps -ef    查看所有进程命令
+    - grep -w   是强制PATTERN仅完全匹配字符
+    - grep -v grep  列出的进程中去除含有grep的进程
+    - cut -c 9-15   截取pid号
+    - kill -9   强行杀掉制定进程(通过杀掉关联进程)
