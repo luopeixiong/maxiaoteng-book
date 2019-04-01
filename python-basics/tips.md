@@ -60,3 +60,20 @@ from my_model import model_or_function
     hl.update(url.encode(encoding='utf-8'))
     new = hl.hexdigest()
 ```
+
+## 7. del
+由于python都是引用，而python有GC机制，所以，del语句作用在变量上，而不是数据对象上。
+    ```
+        a = 1
+        b = a
+        c = a
+        del a
+        del b
+        print(c)    # c == 1
+        # 对于list
+        li=[1,2,3,4,5]  #列表本身不包含数据1,2,3,4,5，而是包含变量：li[0] li[1] li[2] li[3] li[4] 
+        first=li[0]     #拷贝列表，也不会有数据对象的复制，而是创建新的变量引用
+        del li[0]
+        print(li)      #输出[2, 3, 4, 5]
+        print(first)   #输出 1
+    ```

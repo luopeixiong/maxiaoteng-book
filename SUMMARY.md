@@ -16,6 +16,7 @@
   * [nano editor](linux-common-knowledge/nano-editor.md)
   * [tmux](linux-common-knowledge/tmux.md)
   * [history](linux-common-knowledge/history.md)
+  * [ps 进程查看器](linux-common-knowledge/ps.md)
   * [vim使用](linux-common-knowledge/vim.md)
   * [系统设置](linux-common-knowledge/system-setting.md)
   * [other](linux-common-knowledge/other.md)
@@ -50,7 +51,7 @@
   * [字典 Dict](python-basics/shu-ju-jie-gou/zi-dian-dict.md)
 * [进程 线程 和协程](python-basics/process_thread_coroutine.md)
 * [装饰器(Decorators)](python-basics/decorators.md)
-* [others](python-basics/others.md)
+* [others](python-basics/tips.md)
 
 ## Python爬虫
 
