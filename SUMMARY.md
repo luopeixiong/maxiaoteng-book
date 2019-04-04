@@ -34,7 +34,7 @@
 * [内置模块](python-basics/built_in_module/built_in_module.md)
     * [正则表达式](python-basics/built_in_module/re-model.md)
     * [os Model](python-basics/built_in_module/os-model.md)
-    * [logging模块](python-basics/built_in_module/logging-model.md)
+    * [logging模块](python-basics/built_in_module/logging.md)
     * [CSV模块](python-basics/built_in_module/csv-model.md)
     * [json](python-basics/built_in_module/json.md)
     * [ramdom](python-basics/built_in_module/random.md)
