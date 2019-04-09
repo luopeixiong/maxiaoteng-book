@@ -71,6 +71,9 @@ print(r.get('gender'))      # gender 取出键male对应的值
     ```
     1. r.delete('key')
     2. del key1 key2 ... # redis-cli
+
+    3. redis批量删除（通配符)
+        r.delete(*r.keys('/vender*'))
     ```
 4. 返回指定key的value类型
     ```
@@ -89,7 +92,16 @@ print(r.get('gender'))      # gender 取出键male对应的值
     ```
 7. key的超时设置
     ```
-    1. r.rename('key1', 'key2' ), r.renamenx('key1', 'key2')
+    1. redis-python
+        # 设置过期时间
+        r.expire('key1', 10 ),   # 设置10s后过期
+        extime = datetime.datetime(2018, 7, 25, 15, 19, 10)
+        extime.strftime('%Y-%m-%d %H:%M:%S %f')
+        r.expireat('key2', extime) # 可指定datetime和时间戳
+        # 查看剩余过期时间(秒)
+        r.ttl('key1')
+        r.pttl('key1') # 毫秒
+
     2. redis-cli
         - expire key seconds    单位是秒。返回1成功，0表示key已经设置过过期时间或者不存在。如果想消除超时则使用persist key。如果希望采用绝对超时，则使用expireat命令。
         - ttl key   返回设置过过期时间的key的剩余过期秒数 -1表示没有设置过过期时间，对于不存在的key,返回-2。
