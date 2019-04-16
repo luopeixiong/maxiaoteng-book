@@ -1,6 +1,8 @@
 # 数据库 pymongo
 
-### 连接
+
+## 1. 数据库操作
+### 1. 连接
 
 - **默认连接**  
 
@@ -50,7 +52,7 @@ mongo_coll = mongo_db[coll_name]
  
  
 
-### 查看数据库信息
+### 2. 查看数据库信息
 
 **查看数据库的文档**
 ```
@@ -59,10 +61,9 @@ db.collection_names(include_system_collections=False)
 
 ---
 
+# 2. 集合操作
 
-# 集合操作
-
-### 获取集合
+### 1. 获取集合
 
 ```
 def get_collection(self, name):
@@ -72,7 +73,7 @@ def get_collection(self, name):
     # 也可写成: collection = self.db.test
 ```
 
-### 删除集合
+### 2. 删除集合
 ```
 name = 'test'
 db.drop_collection(name)
@@ -82,7 +83,7 @@ collection = db[name]
 collection.drop()  # 成功返回true
 ```
 
-### 统计
+### 3. 统计
 ```
 num = collection.count_documents()   # 集合的count() 方法返回集合中文档的个数
 
@@ -97,7 +98,7 @@ num = collection.insert_many(...).inserted_count()  # 查看插入了多少行
 ```
 
 --- 
-## 文档操作
+## 3. 文档操作
 
 ### 1. 插入文档
 
@@ -315,14 +316,36 @@ num = collection.insert_many(...).inserted_count()  # 查看插入了多少行
 
 ---
 
-## 索引
+## 4. 创建索引
 
-添加索引可以加快速度
-```
-result = collection.create_index([('user_id', pymongo.ASCENDING)], unique=True)
+添加索引可以加快查询速度
 
-// user_id的值为递增, 且唯一, 之后再插入, 则抛出错误
-```
+   - 使用mongoShell操作，使用`3.0`之后版本
+    ```
+        # 创建索引，1表示升序，-1表示降序
+        # option
+        # 1. 创建索引
+        db.COLLECTION_NAME.createIndex({"name":1})
+
+        # 2. 组合索引
+        db.COLLECTION_NAME.createIndex({"name":1, "age": -1})
+
+        # 3. 后台创建索引
+        db.COLLECTION_NAME.createIndex({"name":1, "age": -1}, {"background": 1})
+
+        # 4. 查看索引
+        db.COLLECTION_NAME.getIndexes()
+        db.COLLECTION_NAME.getIndexkeys()
+
+        # 5. 删除索引,根据name
+        db.COLLECTION_NAME.dropIndex("name_1")
+        db.COLLECTION_NAME.dropIndex("name_1_age_1")
+        db.COLLECTION_NAME.dropIndexes()    # 删除所有索引
+
+        # pymongo创建
+        result = collection.create_index([('user_id', pymongo.ASCENDING)], unique=True)
+        // user_id的值为递增, 且唯一, 之后再插入, 则抛出错误
+    ```
 ---
 ## 同步操作
 
