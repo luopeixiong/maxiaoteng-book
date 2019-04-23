@@ -109,4 +109,16 @@ re.split('[_#|]','this_is#a|test')
 >> ['this', 'is', 'a', 'test']
 ```
 
+3. 使用非贪婪匹配
+    ```
+        import re
+        tags = re.findall(r"mm(.+?)ss", target_str)
+        # . 匹配所有
+        # + 至少一个
+        # ？ 非贪婪匹配，查找符合条件及停止
+        # mmkhgoiurwss  返回  khgoiurw
+        # 不包含括号，将匹配所有
+    ```
+
+
 
