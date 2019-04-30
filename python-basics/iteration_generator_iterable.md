@@ -8,20 +8,29 @@ Iteration Generator Iterable
 
 2. Generator 
     1. 列表生成器
+    set，list， dict都适用
         ```
-        # 一般操作
-         [x * x for x in range(1, 11)]
-         >> [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
-        # 双层循环
-         [m + n for m in 'ABC' for n in 'XYZ']
+            a = [1, 2, 3, 4, 5, 6]
+            squares = [x ** 2 for x in a]
+            even_squares = [x ** 2 for x in a if x % 2 == 0]
+
+            # 矩阵
+            matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+            flat = [x for x in row for row in matrix]
+            >> flat = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+            squared = [[x ** 2 for x in row] for row in matrix]
+            >> squared = [[1, 4, 9], [16, 25, 36], [49, 64, 81]]
+
+            # 再复杂的结构，建议使用for循环
+            
+            # 列表推到每个值都要创建一个全新列表，占用大量内存
         ```
-        直接生成一个list会占用内存,所以有了生成器
     2. 两种生成方法
         1. 生成器就是把[] 换成 ()
         ```
         g = (x * x for x in range(10))
         ```
-        2. 实现yield函数
+        1. 实现yield函数
             ```
             # 实现了yield的函数
             def mygen(n):
@@ -34,10 +43,10 @@ Iteration Generator Iterable
                 gen = mygen(10)
                 print(isinstance(gen, Generator))  # True
             ```
-    3. 激活生成器
+    2. 激活生成器
         1. next(g)
         2. generator.send(None)
-    4. 生成器的四种状态
+    3. 生成器的四种状态
         ```
         GEN_CREATED # 等待开始执行
         GEN_RUNNING # 解释器正在执行（只有在多线程应用中才能看到这个状态）
@@ -64,7 +73,7 @@ Iteration Generator Iterable
             print(getgeneratorstate(gen))   # GEN_CLOSED
 
         ```
-    5. 生成器的异常状态
+    4. 生成器的异常状态
         抛出: StopIteration
 
 

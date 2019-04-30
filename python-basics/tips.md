@@ -107,3 +107,26 @@ from my_model import model_or_function
         subprocess.call('pwd', shell=True)
     ```
 
+## 9. enumerate 代替range
+    ```
+        # 为了同时获取索引和列表的值
+        for i in range(len(my_list)):
+            print(i, my_list[i])
+        
+        # 使用enumerate, i其实就是计数
+        for i, item in enumerate(my_list):
+            print(i, item)
+
+        # 也可以指定i的开始值
+        # i将从1开始
+        for i, item in enumerate(my_list， 1):
+            print(i, item)
+    ```
+
+## 10. zip平行遍历多个迭代器
+    ```
+        # python3 zip相当于生成器，逐次产生元组
+        for name, count in zip(list_name, list_count):
+            print(name, count)
+        # 如果迭代器长度不一致，要使用itertool.zip_longest
+    ```
