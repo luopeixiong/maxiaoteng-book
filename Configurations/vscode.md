@@ -15,12 +15,15 @@
     - Ctrl + L + K    # 格式化代码
 
 2. Macos快捷键
-    - control + shift + K   # 删除一行
     - control + shift + ⬇️/⬆️   # 往下/往上一行
     - option + ⬆️/⬇️    # 移动行
+    - option + shift + ⬆️/⬇️  # 往上/下复制代码
     - option + shift + F  # 格式化代码
     - option + Shift + P    # 打开搜索, language设置 Display language
-
+    - command + D         # 删除整行
+    - command + Delete    # 删除光标右侧
+    - command + backspace    # 删除光标左侧
+    - 
 
 ## 设置
 - Ctrl + Shift + p    # 打开搜索, language设置 Display language
