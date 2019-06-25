@@ -9,3 +9,4 @@
 7. [time](time.md)
 8. [datetime](datetime.md)
 9. [subprocess](subprocess.md)
+10. [html](html.md)

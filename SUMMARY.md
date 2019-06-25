@@ -41,6 +41,7 @@
     * [time](python-basics/built_in_module/time.md)
     * [datetime](python-basics/built_in_module/datetime.md)
     * [subprocess](python-basics/built_in_module/subprocess.md)
+    * [html](python-basics/built_in_module/html.md)
 * [其他模块](python-basics/modules/modules.md)
     * [paramiko](python-basics/modules/paramiko.md)
 * [编码](python-basics/encode.md)
@@ -111,6 +112,7 @@
 
 ## 数据库
 
+* [Mysql](Database/Mysql/summary.md)
 * [Mongodb](Database/mongodb/install.md)
   * [安装](Database/mongodb/install.md)
   * [安全部署](Database/mongodb/security_deployment.md)
