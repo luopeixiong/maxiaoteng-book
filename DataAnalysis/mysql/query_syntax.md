@@ -1,0 +1,62 @@
+# Query Syntax
+
+## 1. 六个查询关键词
+1. SELECT
+2. FROM
+3. WHERE
+4. GROUP
+5. HAVING
+6. ORDER
+
+## 2. 数据类型(https://support.hostgator.com/articles/specialized-help/technical/phpmyadmin/mysql-variable-types)
+1. text
+   1. char(0-255 固定长度)
+   2. varchar(0-255 可变长度)
+   3. tinytext(最长255的字符串)
+   4. TEXT	A string with a maximum length of 65535 characters.
+   5. BLOB	A string with a maximum length of 65535 characters.
+   6. MEDIUMTEXT	A string with a maximum length of 16777215 characters.
+   7. MEDIUMBLOB	A string with a maximum length of 16777215 characters.
+   8. LONGTEXT	A string with a maximum length of 4294967295 characters.
+   9. LONGBLOB	A string with a maximum length of 4294967295 characters.
+    >> BLOB stands for Binary Large OBject, and can be used to store non-text information that is encoded into text.
+
+2. number
+   1. TINYINT ( )	-128 to 127 normal	0 to 255 UNSIGNED
+   2. SMALLINT( )	-32768 to 32767 normal	0 to 65535 UNSIGNED
+   3. MEDIUMINT( )	-8388608 to 8388607 normal	0 to 16777215 UNSIGNED
+   4. INT( )	-2147483648 to 2147483647 normal	0 to 4294967295 UNSIGNED
+   5. BIGINT( )	-9223372036854775808 to 9223372036854775807 normal	0 to 18446744073709551615 UNSIGNED
+   6. FLOAT	A small number with a floating decimal point.
+   7. DOUBLE( , )	A large number with a floating decimal point.
+   8. DECIMAL( , )	A DOUBLE stored as a string, allowing for a fixed decimal point.
+3. datetime
+   1. DATE	YYYY-MM-DD
+   2. DATETIME	YYYY-MM-DD HH:MM:SS
+   3. TIMESTAMP	YYYYMMDDHHMMSS
+   4. TIME	HH:MM:SS
+   5. YEAR	YYYY
+
+
+## 3. 查看数据(look at the data)
+1. 查看数据库
+    ```
+        USE db_name
+        SHOW tables
+    ```
+2. 查看表
+    ```
+
+        SHOW columns FROM table_name
+        SHOW columns FROM table_name FROM db_name
+        SHOW columns FROM db_name.table_name
+
+        DESCRIBE columns FROM table_name
+        DESCRIBE columns FROM table_name FROM db_name
+        DESCRIBE columns FROM db_name.table_name
+    ```
+3. KEY的类型
+   1. empty 表示这列既不是索引，也不会作为多列索引的辅助索引
+   2. PRI   表示该列是PRIMARY KEY，或者是多列PRIMARY KEY中的一列
+   3. UNI   表示该列是唯一索引的首列
+   4. MUL   表示该列是非唯一索引的首列

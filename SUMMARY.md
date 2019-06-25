@@ -54,6 +54,7 @@
 * [装饰器(Decorators)](python-basics/decorators.md)
 * [others](python-basics/tips.md)
 
+
 ## Python爬虫
 
 * [概述](crawler/summary.md)
@@ -86,8 +87,8 @@
 * [others](crawler/others.md)
 
 
-## Python Web
 
+## Python Web
 * [HTTP](python-web/http/http.md)
   * [HTTP](python-web/http/http.md)
   * [POST](python-web/http/post.md)
@@ -110,9 +111,14 @@
 * [Python应用服务器](python-web/pythonying-yong-fu-wu-qi.md)
 
 
+## Data Analysis 数据分析
+* [概述](DataAnalysis/summary.md)
+* [Mysql知识](DataAnalysis/mysql/summary.md)
+
+
+
 ## 数据库
 
-* [Mysql](Database/Mysql/summary.md)
 * [Mongodb](Database/mongodb/install.md)
   * [安装](Database/mongodb/install.md)
   * [安全部署](Database/mongodb/security_deployment.md)
