@@ -78,11 +78,15 @@ vim /etc/crontab  # 仅限root用户, 通常用于给其他用户指定定时任
 
 
 ## 6. 环境变量的问题
-由于crontab只加载/ect/environment，并不加载/etc/profile和~/.bash_profile，所以需要在脚本里手动添加环境变量
-```
-. /etc/profile
-. ~/.bash_profile
-export xx/xx/xx.conf  # 可以导入需要的配置文件
-```
-- 考虑到crontab中设置复杂不一, 应该规范shell命令的格式, 确保每次使用绝对路径, 适用于crontab的运行
-- crontab的任务只有一行运行shell脚本的命令即可
+1. 由于crontab只加载/ect/environment，并不加载/etc/profile和~/.bash_profile，所以需要在脚本里手动添加环境变量
+    ```
+        . /etc/profile
+        . ~/.bash_profile
+        export xx/xx/xx.conf  # 可以导入需要的配置文件
+    ```
+   - 考虑到crontab中设置复杂不一, 应该规范shell命令的格式, 确保每次使用绝对路径, 适用于crontab的运行
+   - crontab的任务只有一行运行shell脚本的命令即可
+2. 如果不适用shell脚本，也可以这样：
+   ```
+    0 10 * * 5 source ~/.bashrc;cd /home/xiaoteng/code/aspex_tickets/src && python3 all_tickets.py >/dev/null 2>&1
+   ```
