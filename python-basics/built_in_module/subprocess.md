@@ -4,7 +4,88 @@
 
 > subprocess模块中只定义了一个类: Popen。可以使用Popen来创建进程，并与进程进行复杂的交互。它的构造函数如下：
 
-## 1. Popen
+> The subprocess option:用来执行其他的可执行程序的，即执行外部命令。 他是os.fork() 和 os.execve() 的封装。 他启动的进程不会把父进程的模块加载一遍。使用subprocess的通信机制比较少，通过管道或者信号机制.
+> The multiprocessing option:用来执行python的函数，他启动的进程会重新加载父进程的代码。可以通过Queue、Array、Value等对象来通信。
+
+## 并发与并行
+    并发: 交错使用cpu实行任务，本质还是顺序执行
+    并行: 多核CPU同时执行，效率翻倍
+
+## 用subprocess模块管理子进程
+1. Python启动的多个子进程是可以并行运行的。子进程将会独立于父进程而运行，这里的父进程指的Python解释器。
+    ```Python
+    import subprocess
+    proc = subprocess.Popen(['echo', 'Hello subprocess'], stdout=subprocess.PIPE)
+    out, err = proc.communicate()
+    print(out.decode('utf-8'))    
+    ```
+
+2. Python 子进程从父进程中解耦，父进程可以运行跟多条平行的子进程
+    ```Python
+    import subprocess
+
+    def run_some():
+        proc = subprocess.Popen(['cmd'],
+                    stdout=subprocess.PIPE,
+                    stdout=subprocess.PIPE)
+        return proc
+
+    procs = []
+    for _ in range(10):
+        proc = run_some(x)
+        procs.append(proc)
+
+    for proc in procs:
+        proc.communicate()  # 通过comunicate，等待这些子进程完成I/O工作并终结
+
+    # 如果不希望交互操作,使用shell执行
+    subpros = []
+    for _ in range(10):
+        subpro = subprocess.Popen(['cmd'], shell=True)
+        subpors.append(subpro)
+    for subpro in subpors:
+        subpro.wait()
+    ```
+
+3. Python向子进程输送数据
+    ```Python
+    import os
+    def run_openssl(data):
+        env = os.environ.copy()
+        env['password'] = b'\xe24U'
+        proc = subprocess.Popen(
+            ['openssl', 'enc', '-des3', '-pass', 'env:password'],
+            env=env,
+            stdin=subprocess.PIPE,
+            stdout=subprocess.PIPE
+        )
+        proc.stdin.write(data)
+        proc.stdin.flush() # 确保子进程获得输入
+        return proc
+
+    procs = []
+    for _ in range(3):
+        data = os.urandom(10)
+        proc = run_openssl(data)
+        procs.append(proc)
+        other_proc = run_other(proc.stdout) # 将前一个进程的输出为输入
+        other_procs.append(other_proc)
+
+    for proc in procs:
+        out, error = proc.communicate()  # 通过comunicate，等待这些子进程完成I/O工作并终结
+        print(out)
+    ```
+4. Python子进程超时设置
+    ```Python
+    for proc in procs:
+        try:
+            proc.communicate(timeout=0.1)  # 如果子进程在0.1s内没有结束，将抛出异常，可以强行终止
+        except subprocess.TimeoutExpired:
+            proc.terminate()
+            proc.wait()
+    ```
+
+## Popen详解
 1. 初始化
     ```
         subprocess.Popen(args, bufsize=0, executable=None, stdin=None, stdout=None, stderr=None, preexec_fn=None, close_fds=False, shell=False, cwd=None, env=None, universal_newlines=False, startupinfo=None, creationflags=0)
@@ -60,14 +141,14 @@
 
             # 如果上面写成a=p.wait()，a就是returncode。那么输出a的话，有可能就是0【表示执行成功】。
         ```
-    2. 进程通讯
+    1. 进程通讯
         1. 如果想得到进程的输出，管道是个很方便的方法，这样：
         ```
             p=subprocess.Popen("dir", shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)  
             (stdoutput,erroutput) = p.communicate()  
             p.communicate会一直等到进程退出，并将标准输出和标准错误输出返回，这样就可以得到子进程的输出了。
         ```
-        2. 例子2:
+        1. 例子2:
         ```
             p=subprocess.Popen('ls',shell=True,stdout=subprocess.PIPE)
             stdoutput,erroutput = p.communicate('/home/zoer')
@@ -78,7 +159,7 @@
             # 上面，标准输出和标准错误输出是分开的，也可以合并起来，只需要将stderr参数设置为subprocess.STDOUT就可以了，这样子：
         ```
 
-        3. 如果你想一行行处理子进程的输出，也没有问题：
+        1. 如果你想一行行处理子进程的输出，也没有问题：
 
         ```
             p=subprocess.Popen("dir", shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)  
@@ -87,14 +168,14 @@
                 if buff == '' and p.poll() != None:  
                     break 
         ```
-    3. 死锁
+    2. 死锁
         但是如果你使用了管道，而又不去处理管道的输出，那么小心点，如果子进程输出数据过多，死锁就会发生了，比如下面的用法：
         ```
         p=subprocess.Popen("longprint", shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)  
         p.wait()  
         longprint是一个假想的有大量输出的进程，那么在我的xp, Python2.5的环境下，当输出达到4096时，死锁就发生了。当然，如果我们用p.stdout.readline或者p.communicate去清理输出，那么无论输出多少，死锁都是不会发生的。或者我们不使用管道，比如不做重定向，或者重定向到文件，也都是可以避免死锁的。
         ```
-    4. 管道连接
+    3. 管道连接
         subprocess还可以连接起来多个命令来执行。
 
         在shell中我们知道，想要连接多个命令可以使用管道。
@@ -146,7 +227,7 @@
         ```
         如果使用多个线程，那么最长执行时间的线程就是整个程序运行的总时间。【时间比单个线程节省多了】
 
-## 2. 这里要注意一下Queue模块的学习。
+## 这里要注意一下Queue模块的学习。
 
 pingme函数的执行是这样的：  
 启动的线程会去执行pingme函数。  
