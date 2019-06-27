@@ -1,4 +1,4 @@
-# datetime
+# datetime time
 
 > datetime比time高级了不少，可以理解为datetime基于time进行了封装，提供了更多实用的函数。在datetime 模块中包含了几个类，具体关系如下:
 
@@ -42,4 +42,20 @@
 
         In [6]: print(time_now - delta1)
         2014-10-26 20:46:16.657523
+    ```
+
+## time
+
+1. 生成时间
+    ```
+    import time
+    time.time()  
+    int(time.time())  # 10位整数
+    ```
+
+2. datetime转time
+    ```
+    import datetime
+    now = datetime.datetime.now()
+    now.timestamp()
     ```
