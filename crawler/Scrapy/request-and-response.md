@@ -13,7 +13,20 @@
 4. body (str，经过转义的)
 	1. 当method为post时使用
 	2. 如果是get方法,get请求的querystring, 需要使用: ``` url + "?" + urllib.parse.urlencode(dict) ``` 来自动拼接,不能在此处传入。
-5. cookies	# 默认生效,接受dict
+5. cookies	# 默认生效,接受dict 
+    ```
+    cookies = {
+        'PREF': "TM={}277:L={}".format(last_time, keyword_urlencode),
+        'RQ': "q=&l={}&ts={}114".format(keyword_urlencode, before_time),
+    }
+    request = scrapy.Request(url=url, 
+                    headers=self.headers,
+                    cookies=cookies,
+                    callback=self.parse, 
+                    errback=self.errback_httpbin,
+                    dont_filter=True,
+                    meta=data)
+    ```
 6. callback
 7. meta 
  + 上一个请求 request.meta['item'] = item
