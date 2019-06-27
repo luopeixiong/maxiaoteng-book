@@ -1,5 +1,26 @@
 ## scrapy配置
 
+## 配置优先级
+1. 命令行选项 -s 最高
+    ```
+    scrapy crawl myspider -s LOG_FILE=scrapy.log
+    ```
+2. 每个spider的custom_settings
+    ```
+    class Spider(RedisSpider):
+        name = 'spider_name'
+        redis_key = xxx
+        custom_settings = {
+            'REDIRECT_ENABLED': True,
+            'COOKIES_ENABLED': True,
+            }
+    ```
+3. settings.py
+4. 每个命令的默认setting
+5. 默认的setting
+
+
+## settings.py配置
 1. 网站爬虫规则，关闭robots.txt遵循
     ```
     # Obey robots.txt rules
@@ -100,3 +121,5 @@
     # 设置超时，默认180秒
     DOWNLOAD_TIMEOUT = 10
     ```
+
+
