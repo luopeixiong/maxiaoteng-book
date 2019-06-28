@@ -46,6 +46,7 @@
     * [urllib](python-basics/built_in_module/urllib.md)
 * [其他模块](python-basics/modules/modules.md)
     * [paramiko](python-basics/modules/paramiko.md)
+    * [apscheduler](python-basics/modules/apscheduler.md)
 * [编码](python-basics/encode.md)
 * [迭代器 生成器 可迭代对象](python-basics/iteration_generator_iterable.md)
 * [数据结构](python-basics/shu-ju-jie-gou.md)
