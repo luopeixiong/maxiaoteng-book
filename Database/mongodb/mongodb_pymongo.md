@@ -121,7 +121,9 @@ num = collection.insert_many(...).inserted_count()  # 查看插入了多少行
         ...
     ]
     result = collection.insert_many(items)
-    // result 是一个InsertManyResult实例
+    // result 是一个InsertManyResult实例，支持迭代
+    # 如果插入时数据库有唯一约束，可以添加ordered为无序，使用try except来忽略重复插入的异常，其他的就可以继续插入
+    result = collection.insert_many(items, ordered=False)
     ```
 
 3. **批量不重复插入**
@@ -341,6 +343,13 @@ num = collection.insert_many(...).inserted_count()  # 查看插入了多少行
         db.COLLECTION_NAME.dropIndex("name_1")
         db.COLLECTION_NAME.dropIndex("name_1_age_1")
         db.COLLECTION_NAME.dropIndexes()    # 删除所有索引
+
+        # 6. 创建唯一索引
+        db.COLLECTION_NAME.createIndex({"name":1, "age": -1}, {unique: true})
+
+        # 7. 修改索引
+        db.COLLECTION_NAME.reIndex({"name":1, "age": -1})
+        # 将数据插入带有唯一约束的表中，在insert_many中设置ordered=false
 
         # pymongo创建
         result = collection.create_index([('user_id', pymongo.ASCENDING)], unique=True)
