@@ -47,3 +47,17 @@
         seconds = 2  # 表示每2s执行一次
         start_date='2018-12-11 09:30:00', end_date='2018-12-15 11:00:00'  # 也可以添加开始停止时间
         ```
+
+4. cron api
+    - year (int|str) – 4-digit year
+    - month (int|str) – month (1-12)
+    - day (int|str) – day of the (1-31)
+    - week (int|str) – ISO week (1-53)
+    - day_of_week (int|str) – number or name of weekday (0-6 or mon,tue,wed,thu,fri,sat,sun), 每周第一天是星期一
+    - hour (int|str) – hour (0-23)
+    - minute (int|str) – minute (0-59)
+    - second (int|str) – second (0-59)
+    - start_date (datetime|str) – earliest possible date/time to trigger on (inclusive)
+    - end_date (datetime|str) – latest possible date/time to trigger on (inclusive)
+    - timezone (datetime.tzinfo|str) – time zone to use for the date/time calculations (defaults to scheduler timezone)
+    - jitter (int|None) – advance or delay the job execution by jitter seconds at most.
