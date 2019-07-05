@@ -80,4 +80,6 @@
 
     # 导入
     mongoimport --host xx --port xx -u root -p xx --authenticationDatabase admin --db HotelRoomCounts --collection CtripRoomCounts --upsert file_name
+    # 发现其实这种导入有些问题，推荐使用python手动导入，起因是我通过导出添加唯一索引再导入去重，能够将满足要求的导入，其他的数据会停在外面，进程也不结束。
+    # 而且Python导入也更快一些， 4w条insert_many
     ```
