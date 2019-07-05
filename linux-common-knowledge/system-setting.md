@@ -1,11 +1,11 @@
 # 系统设置
 
-## 修改dns
-```
-vim /etc/resolv.conf
-nameserver 172.24.73.130
-nameserver 172.24.73.131
-```
+## 1. 修改dns
+    ```
+    vim /etc/resolv.conf
+    nameserver 172.24.73.130
+    nameserver 172.24.73.131
+    ```
 
 - centos7引入新的机制
 重启服务
@@ -41,3 +41,12 @@ resolvconf -u
 chattr +i /etc/resolv.conf
 chattr -i /etc/resolv.conf
 ```
+
+## 2. 自启动
+1. chkconfig 查看自启动的服务
+
+2. 生效禁用
+    ```
+    sudo systemctl disable/enable squid.service
+    # 禁用输出 Removed symlink /etc/systemd/system/multi-user.target.wants/squid.service.
+    ```
