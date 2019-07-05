@@ -8,7 +8,7 @@
   * [tar/split 解压缩操作](linux-common-knowledge/tar.md)
   * [rsync  传输同步文件](linux-common-knowledge/rsync-chuan-shu-tong-bu-wen-jian.md)
   * [chmod  修改文件权限](linux-common-knowledge/chmod-xiu-gai-wen-jian-quan-xian.md)
-  * [supervisor 进程守护](linux-common-knowledge/supervisor-jin-cheng-shou-hu.md)
+  * [supervisor 进程守护](linux-common-knowledge/supervisor.md)
   * [Crontab](linux-common-knowledge/crontab.md)
   * [shell command](linux-common-knowledge/shell-command.md)
   * [expect command](linux-common-knowledge/expect.md)
