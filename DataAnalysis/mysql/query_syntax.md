@@ -60,3 +60,10 @@
    2. PRI   表示该列是PRIMARY KEY，或者是多列PRIMARY KEY中的一列
    3. UNI   表示该列是唯一索引的首列
    4. MUL   表示该列是非唯一索引的首列
+
+
+## mysql shell
+
+1. 查询执行任务
+    show full processlist;
+    select * from information_schema.innodb_trx\G
