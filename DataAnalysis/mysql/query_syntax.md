@@ -67,3 +67,22 @@
 1. 查询执行任务
     show full processlist;
     select * from information_schema.innodb_trx\G
+
+
+## 查询
+1. 截取字符串
+    ```
+    where substring(cs_name, 4) == 'kat';   # 从第4个开始
+    where substring(cs_name, -4) == 'kat';   # 从倒数第4个开始
+    where substring(cs_name, 4, 2) == 'kat';   # 从第4个开始，截取两个
+    where right(str, length);   # 右截取
+    where left(str, length);   # 左截取
+    ```
+2. 字符长度
+    ```
+    length(cs_name)
+    ```
+3. 正则
+    ```
+    where name like '%A%'
+    ```
