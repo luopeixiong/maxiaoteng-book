@@ -17,36 +17,70 @@ gitbook自动同步github上的内容
 [说明](https://yangjh.oschina.io/gitbook/faq/Contents.html)
 gitbook通过根目录下的SUMMARY.md来管理目录结构, 最多三级目录
 
+## 4. 部署gitbook
 
-## 4. 将gitbook配置在自己的服务器
-1. 安装nodejs和gitbook-cli
-```
-# 安装依赖
-sudo yum install epel-release
-# 安装nodejs
-sudo yum install nodejs
-# 验证
-node -v
-# 安装gitbook
-sudo npm install gitbook -g
-```
+1. 将gitbook配置在自己的服务器
+   1. 安装nodejs和gitbook-cli
+        ```
+        # 安装依赖
+        sudo yum install epel-release
+        # 安装nodejs
+        sudo yum install nodejs
+        # 验证
+        node -v
+        # 安装gitbook
+        sudo npm install gitbook -g
+        ```
+   2. 导入一本书
+        ```
+        # 将在该目录下创建一本书, 包含两个文件README.md和SUMMARY.md两个文件
+        gitbook init ./directory_name
+        ## 导入书籍可以直接clone到指定目录下
+        ```
 
-2. 导入一本书
-```
-# 将在该目录下创建一本书, 包含两个文件README.md和SUMMARY.md两个文件
-gitbook init ./directory_name
-## 导入书籍可以直接clone到指定目录下
-```
+   3. 启动它
+        ```
+        # 在书籍的根目录下, 即有readme的目录下
+        gitbook serve
+        # 结束后将运行来localhost:4000下面
+        ```
+   4. 编写cronlab定时任务自动更新gitbook内容
+2. 自动部署到github pages
+    ```
+    #!/usr/bin/env sh
 
-3. 启动它
-```
-# 在书籍的根目录下, 即有readme的目录下
-gitbook serve
-# 结束后将运行来localhost:4000下面
-```
+    # 拉取代码
+    echo '开始执行命令'
+    git pull
 
-4. 编写cronlab定时任务自动更新gitbook内容
+    # 生成静态文件
+    echo '执行命令：gitbook build .'
+    gitbook build .
 
+    # 进入生成的文件夹
+    echo "执行命令：cd ./_book\n"
+    cd ./_book
+
+    # 初始化一个仓库，仅仅是做了一个初始化的操作，项目里的文件还没有被跟踪
+    echo "执行命令：git init\n"
+    git init
+
+    # 保存所有的修改
+    echo "执行命令：git add -A"
+    git add -A
+
+    # 把修改的文件提交
+    echo "执行命令：commit -m 'deploy'"
+    git commit -m 'deploy'
+
+    # 如果发布到 https://<USERNAME>.github.io/<REPO>
+    echo "执行命令：git push -f https://github.com/yulilong/book.git master:gh-pages"
+    git push -f git@github.com:maxiaoteng001/maxiaoteng-book.git master:gh-pages
+
+    # 返回到上一次的工作目录
+    echo "回到刚才工作目录"
+    cd -
+    ```
 
 ## 5. gitbook配置文件
 1. gitbook的插件
