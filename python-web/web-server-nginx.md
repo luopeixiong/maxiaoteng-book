@@ -34,12 +34,67 @@ sudo nginx -s reload
 ```
 
 ## 配置文件位置
-```
-# 查找主配置文件, 里面包含日志文件路径和子配置文件路径
-find / -name nginx.conf
-# 子路径配置文件
-/etc/nginx/conf.d/*.conf
-```
+1. 配置目录
+    ```
+    # 查找主配置文件, 里面包含日志文件路径和子配置文件路径
+    find / -name nginx.conf
+    # 子路径配置文件
+    /etc/nginx/conf.d/*.conf
+    ```
+2. 配置文件demo
+    ```
+    # nginx.conf
+    user root;
+    worker_processes  1;
+
+    error_log  /var/log/nginx/error.log warn;
+    pid        /var/run/nginx.pid;
+
+
+    events {
+        worker_connections  1024;
+    }
+
+
+    http {
+        include       /etc/nginx/mime.types;
+        default_type  application/octet-stream;
+
+        log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                        '$status $body_bytes_sent "$http_referer" '
+                        '"$http_user_agent" "$http_x_forwarded_for"';
+
+        access_log  /var/log/nginx/access.log  main;
+
+        sendfile        on;
+        #tcp_nopush     on;
+
+        keepalive_timeout  65;
+
+        #gzip  on;
+
+        include /etc/nginx/conf.d/*.conf;
+    }
+
+    # 子配置文件
+    server {
+        charset utf-8;
+        listen 80;
+        server_name book.maxiaoteng.xyz;
+        server_name book.maxiaoteng.tk;
+
+        # 重定向
+        rewrite  ^/(.*)$  https://maxiaoteng001.github.io/maxiaoteng-book/$1 permanent;
+
+        # 代理
+        location /static {
+            alias /var/www/mxt_blogs_project/static; 
+        }
+        location / {
+            proxy_pass http://localhost:4000;
+        }
+    }
+    ```
 
 ## 日志位置
 ```bash
