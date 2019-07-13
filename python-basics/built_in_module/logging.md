@@ -118,19 +118,25 @@ logging可以发送到控制台, 文件, 网络
 
 
 ## 2. 配置
-```python
-import logging
+1. 基础配置
+    ```python
+    import logging
 
-logFilename = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../log/ele.log')
+    logFilename = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../log/ele.log')
 
-log_dir = os.path.split(logFilename)[0]
-if not os.path.exists(log_dir):
-  os.makedirs(log_dir)
-logging.basicConfig(
-  level = logging.DEBUG,  # 定义输出到文件的log级别，
-  format = '%(asctime)s  %(filename)s : %(levelname)s  %(message)s',  # 定义输出log的格式
-  datefmt= '%Y-%m-%d %A %H:%M:%S',  # 时间
-  filename = logFilename,  # log文件名
-  filemode = 'w')   
-```
+    log_dir = os.path.split(logFilename)[0]
+    if not os.path.exists(log_dir):
+        os.makedirs(log_dir)
+    logging.basicConfig(
+        level = logging.DEBUG,  # 定义输出到文件的log级别，
+        format = '%(asctime)s  %(filename)s : %(levelname)s  %(message)s',  # 定义输出log的格式
+        datefmt= '%Y-%m-%d %A %H:%M:%S',  # 时间
+        filename = logFilename,  # log文件名
+        filemode = 'w'
+    )   
+    ```
+2. 日志是线程安全的，但是多进程会有问题，通常解决思路：
+   1. 每个进程单独写一个文件
+   2. 使用socketHandler，启一个线程或进程单独处理
+   3. 多进程mulitprocessing中的Queue队列存储日志，单独一个进程处理
 
