@@ -29,7 +29,7 @@
    5. BIGINT( )	-9223372036854775808 to 9223372036854775807 normal	0 to 18446744073709551615 UNSIGNED
    6. FLOAT	A small number with a floating decimal point.
    7. DOUBLE( , )	A large number with a floating decimal point.
-   8. DECIMAL( , )	A DOUBLE stored as a string, allowing for a fixed decimal point.
+   8. DECIMAL(M,D)	A DOUBLE stored as a string, allowing for a fixed decimal point. M表示整个长度，D表示小数点后的位数
 3. datetime
    1. DATE	YYYY-MM-DD
    2. DATETIME	YYYY-MM-DD HH:MM:SS
@@ -78,11 +78,15 @@
     where right(str, length);   # 右截取
     where left(str, length);   # 左截取
     ```
-2. 字符长度
+2. 连接字符
+    ```
+    CONCATE(column1, column2, '--');   # 连接
+    ```
+3. 字符长度
     ```
     length(cs_name)
     ```
-3. 正则
+4. 正则
     ```
     where name like '%A%'
     ```
