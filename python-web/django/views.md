@@ -30,6 +30,27 @@
 
 ## 2. views三种返回
 1. HttpResponse()
+   1. 直接返回
+        ```
+            from django.http import HttpResponse
+
+            def index(request):
+                return HttpResponse("欢迎访问我的博客首页！")
+        ```
+   2. render
+        ```
+            from django.shortcuts import render
+
+            def index(request):
+                post_list = Post.objects.all().order_by('-created_time')
+                context = {
+                    'post_list': post_list,
+                    'title': '博客首页',
+                    'welcome': '欢迎访问我的博客首页',
+                }
+                return render(request, 'blog/index.html', context=context)
+        ```
+
 2. JsonResponse()
 3. redirect('/other_url')
 

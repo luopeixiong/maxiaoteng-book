@@ -1,30 +1,11 @@
-# Django 开始
+# Django 
 
-安装: 
-```
-sudo pip install Django
-sudo python -m pip install Django
-```
+1. [Django入门](django_start_up.md)
+1. [项目设置](settings.md)
+1. [HTTP](HTTP.md)
+1. [Model](models.md)
+1. [Views](views.md)
+1. [Urls](urls.md)
+1. [Templates](templates.md)
+1. [Admin](admin.md)
 
-## 坑
-
-导入模块, 必须
-```
-from xx.xx import ss
-```
-
-## 开发流程
-- 搭建开发环境
-- 创建Django工程, 基础设置(数据库版本, 模板路径, 语言等), 创建超级用户
-- 建立应用app, 并注册到setting
-- 创建数据库模型models, 迁移数据库
-- 设计app需要的urls, 添加到工程的urls中
-- 设计url对应的视图函数views, 编辑需要的模板
-
-## 部署流程
-- clone代码
-- 启动虚拟环境, 安装依赖
-- 收集静态文件
-```
-py
-```
