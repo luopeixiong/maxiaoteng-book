@@ -8,4 +8,6 @@
 1. [Urls](urls.md)
 1. [Templates](templates.md)
 1. [Admin](admin.md)
+2. [静态文件](static_files.md)
+
 

@@ -106,6 +106,7 @@
   * [Views](python-web/django/views.md)
   * [Urls](python-web/django/urls.md)
   * [Templates](python-web/django/templates.md)
+  * [静态文件](python-web/django/static_files.md)
   * [Admin](python-web/django/admin.md)
 * [Flask](python-web/flask.md)
 * [WEB应用安全](python-web/webying-yong-an-quan.md)
