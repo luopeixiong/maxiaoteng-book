@@ -8,10 +8,10 @@
 3. settings 中配置 `STATIC_URL = '/static/'`
 4. 引用
     ```html
-    {% load staticfiles %}
+    {\% load staticfiles \%}
     <!-- 相当于渲染：/static/blog/css/bootstrap.min.css -->
-    <link rel="stylesheet" href="{% static 'blog/css/bootstrap.min.css' %}">
-    <script src="{% static 'blog/js/modernizr.custom.js' %}"></script>
+    <link rel="stylesheet" href="{\% static 'blog/css/bootstrap.min.css' \%}">
+    <script src="{\% static 'blog/js/modernizr.custom.js' \%}"></script>
     ```
 
 ## 2. 部署使用
