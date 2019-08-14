@@ -62,14 +62,14 @@
    4. MUL   表示该列是非唯一索引的首列
 
 
-## mysql shell
+## 4.mysql shell
 
 1. 查询执行任务
     show full processlist;
     select * from information_schema.innodb_trx\G
 
 
-## 查询
+## 5. 查询
 1. 截取字符串
     ```
     where substring(cs_name, 4) == 'kat';   # 从第4个开始
