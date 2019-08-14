@@ -17,3 +17,9 @@
 ## 5. 索引
 
 ## 6. 修改表结构
+
+1. 修改编码
+    ```
+    alter database datebase_name character set utf8mb4;
+    alter table table_name character set utf8mb4;
+    ```

@@ -119,7 +119,10 @@
 ## Data Analysis 数据分析
 * [概述](DataAnalysis/summary.md)
 * [Mysql知识](DataAnalysis/mysql/summary.md)
-
+  * [查询语法](/DataAnalysis/mysql/query_syntax.md)
+  * [其他语法](/DataAnalysis/mysql/others_syntax.md)
+  * [Jupyter连接数据库](/DataAnalysis/mysql/jupyter_mysql.md)
+  * [Mysql优化](/DataAnalysis/mysql/mysql_optimization.md)
 
 
 ## 数据库
