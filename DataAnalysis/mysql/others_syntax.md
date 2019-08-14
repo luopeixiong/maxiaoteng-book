@@ -4,7 +4,7 @@
     ```
 
     ```
-1. 注意数据库和表的字符集，在mysql和MariaDB中都要使用utf8mb4，而不是utf8，详见[mysql中永远不要使用utf8](https://www.techug.com/post/in-mysql-never-use-utf8-use-utf8mb4.html)
+1. 建表编码使用utf8mb4, 祥见[Tips](/DataAnalysis/mysql/tips.md)
 
 
 ## 2. 插入数据

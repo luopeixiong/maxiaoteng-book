@@ -123,6 +123,7 @@
   * [其他语法](/DataAnalysis/mysql/others_syntax.md)
   * [Jupyter连接数据库](/DataAnalysis/mysql/jupyter_mysql.md)
   * [Mysql优化](/DataAnalysis/mysql/mysql_optimization.md)
+  * [Tips](/DataAnalysis/mysql/tips.md)
 
 
 ## 数据库
