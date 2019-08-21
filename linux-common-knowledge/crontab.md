@@ -90,3 +90,10 @@ vim /etc/crontab  # 仅限root用户, 通常用于给其他用户指定定时任
    ```
     0 10 * * 5 source ~/.bashrc;cd /home/xiaoteng/code/aspex_tickets/src && python3 all_tickets.py >/dev/null 2>&1
    ```
+
+## 7. docker中
+由于docker默认不启动，启动容器后执行如下:
+```
+# 后台启动cron
+/usr/sbin/crond -i
+```
