@@ -27,24 +27,45 @@
     ROBOTSTXT_OBEY = False
     ```
 
-2. 下载延迟  
-
+2. 下载延迟
+    ```
     import random  
     DOWNLOAD_DELAY = random.randint(1, 2)
- 
-3. 是否启用cookie  
+    ```
+
+3. 并发
+    ```
+    CONCURRENT_REQUESTS = 64
+
+    ```
+
+4. 是否启用cookie  
+    ```
     # COOKIES_ENABLED = False # 默认生效中，像浏览器一样，一般无需管理  
     COOKIES_ENABLED = True  # 如果使用自定义cookie就把COOKIES_ENABLED设置为True  
     COOKIES_ENABLED = False   # 如果使用settings的cookie就把COOKIES_ENABLED设置为False  
+    ```
 
-4. ITEM的处理(pipeline)  
+5. extensions  
+    ```
+    EXTENSIONS = {
+        'scrapy.extensions.telnet.TelnetConsole': None,
+        # CloseSpiderRedis是设置redis没有任务后自动关闭的扩展, 如果不用bo_lib, 需要手动加入(见[extensions.md](extensions.md))
+        'bo_lib.scrapy_tools.CloseSpiderRedis': 100,
+    }
+    CLOSE_SPIDER_AFTER_IDLE_TIMES = 5  
+    ```
+
+6. ITEM的处理(pipeline)
+    ```  
     ITEM_PIPELINES = {
     	# 'weapon.pipelines.WeaponPipeline': 300,
     	# 'weapon.mongoPipeline.MongoPipeline': 301,
     	'weapon.mysql_pipelines.MySQLPipeline': 301,
 	}
-5. 文件编码  
+    ```
 
+5. 文件编码  
     FEED_EXPORT_ENCODING = 'utf-8'
 
 6. LOG的配置  
@@ -115,11 +136,29 @@
     
     FEED_EXPORT_ENCODING = 'UTF-8'
     ```
-
 12. 请求超时
     ```python
     # 设置超时，默认180秒
     DOWNLOAD_TIMEOUT = 10
     ```
+13. 处理HTTP错误
+    ```
+    # 默认为[], 即所有的httperror请求调用errback, 配置后对应的响应将调用callback
+    HTTPERROR_ALLOWED_CODES = [302, 404]
 
+    # 默认False
+    HTTPERROR_ALLOW_ALL = TRUE
+
+    # spider中可以用
+    handle_httpstatus_list = [404]
+    ```
+
+14. scrapy_redis
+    ```python
+    # scrapy_redis 默认有 REDIS_PARAMS 这个参数，且会自动将你的 REDIS_PARAMS 用你的指定的值更新。所以我们可以这样写
+    REDIS_PARAMS = {
+        'db': 11,
+        'use_helper': True,
+    }
+    ```
 

@@ -35,9 +35,9 @@
  + 返回non-200时调用
  + 比如：def errback_httpbin(self, failure): … ，
  + failure.check(ErrorType),    
- > ErrorType有HttpError, DNSLookupError,TimeoutError, TCPTimeOutError…
+ + ErrorType有HttpError, DNSLookupError,TimeoutError, TCPTimeOutError…
 
-9. dont_filter(默认false, 过滤重复请求)
+9. dont_filter(默认false, 过滤重复请求, 如果要处理302,301, 就需要设置成True)
 
 ## 2. 子类FormRequest（发送post请求, 可选）
 - url
@@ -53,6 +53,59 @@ v. FromRequest.from_response(response, formdata, call_back)
 	)
 
 ## 3. dont_filter机制
+
+
+## 4. errback的处理
+scrapy默认情况下, 只有status在200-300之间时才会调用callback, 其他都由errback调用  
+可以定义要进入callback的其他返回码[setting.md的处理HTTP错误](scrapy-setting.md), 
+1. 调用方法
+    ```
+    # 通常有三种情况会调用到errback
+    import scrapy
+
+    from scrapy.spidermiddlewares.httperror import HttpError
+    from twisted.internet.error import DNSLookupError
+    from twisted.internet.error import TimeoutError, TCPTimedOutError
+
+    ...
+
+    def errback_httpbin(self, failure):
+        # log all failures
+        self.logger.error(repr(failure))
+        # in case you want to do something special for some errors,
+        # you may need the failure's type:
+
+        if failure.check(HttpError):
+            # these exceptions come from HttpError spider middleware
+            # you can get the non-200 response
+            response = failure.value.response
+            self.logger.error('HttpError on %s', response.url)
+
+        elif failure.check(DNSLookupError):
+            # this is the original request
+            request = failure.request
+            self.logger.error('DNSLookupError on %s', request.url)
+
+        elif failure.check(TimeoutError, TCPTimedOutError):
+            request = failure.request
+            self.logger.error('TimeoutError on %s', request.url)
+    ```
+2. 几种处理
+   1. 重试
+        ```
+        # 通常都是在meta中保存请求的参数，可以放回redis或直接重构请求
+        meta = failure.request.meta.copy()
+        ```
+   2. 对于HttpError的请求
+        ```
+        # 可以取回status, url, headers(用来获取重定向的url)等
+        response = failure.value.response
+        url = response.url
+        status = response.status
+        headers = response.headers
+        # 如果返回302或301
+        location = headers.get('Location').decode('utf-8')
+        ```
 
 # Response
 

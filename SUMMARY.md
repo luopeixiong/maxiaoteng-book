@@ -74,6 +74,7 @@
 * [Scrapy](crawler/Scrapy/scrapy_start_up.md)
   * [Scrapy setting](crawler/Scrapy/scrapy-setting.md)
   * [中间件](crawler/Scrapy/middlewares.md)
+  * [extensions](crawler/Scrapy/extensions.md)
   * [Scrapy优化](crawler/Scrapy/scrapy_optimization.md)
   * [部署爬虫scrapyd](crawler/Scrapy/deploying-scrapy-crawlers.md)
   * [Request and Response](crawler/Scrapy/request-and-response.md)
