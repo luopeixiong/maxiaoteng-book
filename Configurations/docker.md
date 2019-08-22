@@ -65,111 +65,140 @@ sudo systemctl start docker  # 启动docker
     
 
 ## 基本操作  
+参考[docker命令详解](https://segmentfault.com/a/1190000008876540#articleHeader21)
 
-- 查看docker版本  
-```
-docker --version
-```
   
-- 运行实例hello-world  
-```
-# 自动下载image并运行, 展示一个基本工作流程  
-docker run hello-world   
-```
-
-## 映像image  
-- 查看本地有哪些镜像  
-```
-docker image ls
-```
-
-- 搜索docker镜像  
-```
-docker search ubuntu
-```
-
-- 下载需要的docker镜像  
-```
-docker pull ubuntu:rolling
-# The centos: **latest** tag is always the most recent version currently available.
-docker pull centos:latest
-```
-
-- 删除映像
-```
-docker rmi image_name  # 删除映像
-docker rmi image_name -f # 强制删除映像
-```
-
 ## 容器Container
 容器对应本地针对镜像运行起来的实例
 
-- 启动使用  
-```
-docker run -it centos  # 即可进入虚拟机(centos为镜像名)
-# 可以添加-p参数实现端口转发
-cat /etc/issue
-uname 
-uname -a
-```
-
-- 查看本地有哪些容器   
-``` 
-docker container ls  # 只列出正在运行的
-docker container ls --all  # 列出所有, 包括运行结束的
-docker ps  # 查看正在运行的容器
-docker ps --all  # 查看所有的容器
-```
-
-- 查看容器日志
-```
-docker logs 858fd7c6a9d5(container_id)  # 查看容器的log
-```
-
-- 启动并登陆指定容器
-```
-docker start 858fd7c6a9d5(container_id)  # 启动一个容器
-docker attach container_name/container_id  # 重新登陆指定容器
-```
-
-- 退出容器
-```
-exit  # 即可退出并关闭
-或使用 ctrl + D
-# 退出并后台运行:
-ctrl + P + Q
-或: Ctrl + P , Ctrl + D
-```
-
-- 删除容器操作
-```
-docker rm container_id/container_name  # 删除容器
-```
-
-## 容器持久化与导出
-- 容器持久化
-```
-# 不保存历史的导入导出
-docker export contain_id > ./new_contain.tar
-```
-
-```
-# 保存历史的导入导出
-docker save contain_id > ./new_contain.tar
-```
-
-- 容器的导入
-```
-docker import dtp_container.tar dtp  # 容器的名称将是dtp
-```
-
-- 容器制作镜像
-```
-# 根据容器的改变生成一个新的镜像
-docker commit contain_id ./new_image.tar
-```
 
 
+
+1. 查看docker版本  
+    ```
+    docker --version
+    ```
+2. image 查看本地有哪些镜像  
+    ```
+    docker image ls
+    ```
+3. search 搜索docker镜像  
+    ```
+    docker search ubuntu
+    ```
+4. pull 下载需要的docker镜像  
+    ```
+    docker pull ubuntu:rolling
+    # The centos: **latest** tag is always the most recent version currently available.
+    docker pull centos:latest
+    ```
+5. rmi 删除映像
+    ```
+    docker rmi image_name  # 删除映像
+    docker rmi image_name -f # 强制删除映像
+    ```
+6. ps/container 查看本地有哪些容器   
+    ``` 
+    docker container ls  # 只列出正在运行的
+    docker container ls --all  # 列出所有, 包括运行结束的
+    docker ps  # 查看正在运行的容器
+    docker ps --all  # 查看所有的容器
+    ```
+7. create 创建容器
+    ```
+    docker create <选项><镜像名称,id><命令><参数>
+    --attach="stdin"  # 将标准输入、标准输出、标准错误链接到容器
+    --add-host=hello:192.168.0.233  # 向容器的/etc/hosts添加主机名与IP地址
+    --link mysql-server:mysql   # 进行容器连接，格式为<容器名称>:<别名>
+    --name # 设置容器名称
+    --net="bridge" # 设置容器的网络模式（选项可以是：bridge,none,container,host）
+    -P、--publish-all=false # 将连接到主机的容器的所有端口暴露在外
+    -p、--publish=[]    # 将连接到主机的容器的特定端口暴露在外。一般主要用于暴露web服务器的端口
+    -v、--volume=[] # 设置数据卷。设置要与主机共享目录，不将文件保存到容器，而直接保存到主机。在主机目录后添加 :ro、:rw进行读写设置，默认为:rw
+    -w、--workdir=""    # 设置容器内部要运行进程的目录
+    ```
+8. run 启动容器
+    ```
+    # 参数同create
+    docker run <选项><镜像名称，id><命令><参数>
+    -d、--detach    # Detach模式，一般为守护进程模式，容器以后台方式运行
+    --rm=false  #若容器内的进程终止，则自动删除容器，此选项不能与-d选项一起使用
+    --sig-proxy=true    # 将所有信号传递给进程（非TTY模式时也一样），但不传递SIGCHLD、SIGKILL、SIGSTOP信号
+    ```
+9. start/attach/restart 启动并登陆指定容器
+    ```
+    docker start 858fd7c6a9d5(container_id)  # 启动一个容器
+    docker attach container_name/container_id  # 重新登陆指定容器
+    ```
+10. pause/unpause 暂停/启动容器
+11. exit 退出容器
+    ```
+    exit  # 即可退出并关闭
+    或使用 ctrl + D
+    # 退出并后台运行:
+    ctrl + P + Q
+    或: Ctrl + P , Ctrl + D
+    ```
+12. logs 查看容器日志
+    ```
+    docker logs 858fd7c6a9d5(container_id)  # 查看容器的log
+    -f # 持续输出
+    --tail=7    # 指定数量
+    -t  # 显示时间戳 
+    ```
+13. port 查看容器开放的端口
+    ```
+    docker port 858fd7c6a9d5(container_id)
+    ```
+14. cp 容器和外界文件传输
+    ```
+    sudo docker cp contain_id:/root/DTP/output.xlsx ~/new_dir/
+    ```
+15. top 查看容器进程信息
+    ```
+    docker top 858fd7c6a9d5(container_id) aux  # 查看容器的进程
+    ```
+16. exec 从外部运行内部的命令
+    ```
+    docker exec -it 858fd7c6a9d5(container_id) /bin/bash  # 连接容器
+    ps ax
+    ```
+17. export 容器持久化
+    ```
+    # 不保存历史的导入导出
+    docker export contain_id > ./new_contain.tar
+    ```
+18. save 
+    ```
+    # 保存历史的导入导出
+    docker save contain_id > ./new_contain.tar
+    ```
+
+19. import 容器的导入
+    ```
+    docker import dtp_container.tar dtp  # 容器的名称将是dtp
+    ```
+
+20. commit 容器制作镜像
+    ```
+    # 根据容器的改变生成一个新的镜像
+    docker commit contain_id ./new_image.tar
+    ```
+
+21. rm 删除容器操作
+    ```
+    docker rm container_id/container_name  # 删除容器
+    ```
+22. rmi 删除镜像
+    ```
+    docker rmi image_name  # 删除镜像
+    ```
+
+23. info 显示当前系统信息、docker容器、镜像个数、设置等信息。
+    ```
+    docker info
+    ```
+24. version 版本信息
 
 ## 说明
 
@@ -180,17 +209,8 @@ windows10安装了docker,要求启用hyper-v来运行运行docker的虚拟机Mob
 - bcdedit  # 查看Hyper-V是否启用
 - bcdedit /set hypervisorlaunchtype auto  # 设置为启动
 
-## 其他
 
-- docker容器中使用nano
-```
-apt install nano
-```
 
-## 容器和外界文件传输
-```
-sudo docker cp contain_id:/root/DTP/output.xlsx ~/new_dir/
-```
 
 ## 用户管理
 Docker守候进程绑定的是一个unix  socket，而不是TCP端口。这个套接字默认的属主是root，其他是用户可以使用sudo命令来访问这个套接字文件。因为这个原因，docker服务进程都是以root帐号的身份运行的。
