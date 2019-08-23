@@ -65,14 +65,8 @@ sudo systemctl start docker  # 启动docker
     
 
 ## 基本操作  
-参考[docker命令详解](https://segmentfault.com/a/1190000008876540#articleHeader21)
-
-  
-## 容器Container
-容器对应本地针对镜像运行起来的实例
-
-
-
+参考[docker命令详解](https://segmentfault.com/a/1190000008876540#articleHeader21)  
+[全面教程](https://jiajially.gitbooks.io/dockerguide/content/index.html)
 
 1. 查看docker版本  
     ```
@@ -198,7 +192,6 @@ sudo systemctl start docker  # 启动docker
     ```
     docker info
     ```
-24. version 版本信息
 
 ## 说明
 
@@ -208,8 +201,6 @@ windows10安装了docker,要求启用hyper-v来运行运行docker的虚拟机Mob
 - 管理员身份打开PowerShell
 - bcdedit  # 查看Hyper-V是否启用
 - bcdedit /set hypervisorlaunchtype auto  # 设置为启动
-
-
 
 
 ## 用户管理
