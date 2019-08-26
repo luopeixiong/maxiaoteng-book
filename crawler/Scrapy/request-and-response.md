@@ -12,6 +12,19 @@
 3. method
 4. body (str，经过转义的)
 	1. 当method为post时使用
+        ```
+        import urllib
+        post_data = {}
+        post_data = urllib.parse.urlencode(post_data, doseq=True)
+        yield scrapy.Request(post_url,
+                    method='post',
+                    body=post_data,
+                    headers=self.headers,
+                    callback=self.parse,
+                    dont_filter=True,
+                    errback=self.errback_httpbin
+                )
+        ```
 	2. 如果是get方法,get请求的querystring, 需要使用: ``` url + "?" + urllib.parse.urlencode(dict) ``` 来自动拼接,不能在此处传入。
 5. cookies	# 默认生效,接受dict 
     ```
