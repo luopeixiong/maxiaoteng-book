@@ -193,6 +193,11 @@ sudo systemctl start docker  # 启动docker
     docker info
     ```
 
+24. 使用特权运行docker[https://blog.51cto.com/lizhenliang/1975466](https://blog.51cto.com/lizhenliang/1975466)
+    ```
+    docker run -d -name centos7 --privileged=true centos:7 /usr/sbin/init    
+    ```
+
 ## 说明
 
 windows10安装了docker,要求启用hyper-v来运行运行docker的虚拟机MobyLinuxVM, 所以需要重启
