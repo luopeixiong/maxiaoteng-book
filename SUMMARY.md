@@ -23,8 +23,8 @@
 * [版本控制](version-control/svn-git-commands.md)
   * [svn - git 基本操作](version-control/svn-git-commands.md)
   * [git 进阶](version-control/git-advanced.md)
-* [Markdown](markdown/ji-ben-yu-fa.md)
-  * [基本语法](markdown/ji-ben-yu-fa.md)
+* [Markdown](markdown/basic.md)
+  * [基本语法](markdown/basic.md)
   * [Markdown 实现页内跳转](markdown/Page_internal_jump.md)
   * [Python Markdown](markdown/python-markdown.md)
 
