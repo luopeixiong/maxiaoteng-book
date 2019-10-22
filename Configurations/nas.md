@@ -33,8 +33,9 @@
         docker exec -it docker_id /bin/bash
         ```
       2. crontab
+         1. 系统缺少curl等命令, 但是docker对crontab的支持不好用, 最终解决如下
         ```
-
+        /mnt/md0/application/bin/docker exec mxt_centos /bin/bash -c "cd /root & /usr/bin/sh /root/dnspod_ddns.sh >/root/cron.log"
         ```
       3. dnspod 动态ip绑定域名
         ```
