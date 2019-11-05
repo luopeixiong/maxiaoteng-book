@@ -42,3 +42,13 @@ mac下使用iterm作为终端模拟工具
    3. 启动iterm时选择profile1的名字即可
 
 3. 对于需要密钥登陆的服务器，可以自动登陆
+
+## 3. 设置
+1. 代理设置
+   ```
+    export http_proxy=socks5://127.0.0.1:1080 # 配置http 代理访问
+    export https_proxy=socks5://127.0.0.1:1080 # 配置https 代理访问
+    export all_proxy=socks5://127.0.0.1:1080 # 配置http和https访问
+    unset http_proxy  # 取消http 代理访问
+    unset https_proxy # 取消https 代理访问
+   ```
