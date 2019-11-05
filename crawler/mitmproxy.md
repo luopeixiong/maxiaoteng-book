@@ -94,6 +94,8 @@
                     host = flow.request.host
                     sort = flow.request.query.get('sort')
                     resp = flow.response.text
+                    # post方法的body
+                    content = flow.request.get_content()
             
             # 直接拦截
             def http_connect(self, flow: mitmproxy.http.HTTPFlow):
@@ -106,6 +108,9 @@
 3. 命令行启动脚本
     ```
     mitmdump -s script.py
+
+    # 非登陆代理
+    mitmdump --mode upstream:http://127.0.0.1:7890 -s mitm_for_script.py
 
     # 使用阿布云代理, -p为指定代理端口
     mitmdump --mode upstream:http-dyn.abuyun.com:9020 --upstream-auth username:password -s mitm_for_script.py -p 8090
