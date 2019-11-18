@@ -166,6 +166,7 @@
 * [Xposed](Configurations/xposed.md)
 * [Nas](Configurations/nas.md)
 * [Gmail](Configurations/gmail.md)
+* [照片管理](Configurations/media_manager.md)
 
 
 ## 面试汇总
