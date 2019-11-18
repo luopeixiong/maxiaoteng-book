@@ -90,3 +90,12 @@
     ```
     where name like '%A%'
     ```
+5. join
+   1. inner join
+   2. left join
+   3. right join
+   4. full join
+6. limit
+   1. limit 5   返回五条
+   2. limit 10, 50  返回符合结果的11-60条数据
+
