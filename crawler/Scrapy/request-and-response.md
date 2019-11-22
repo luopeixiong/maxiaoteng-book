@@ -12,10 +12,14 @@
 3. method
 4. body (str，经过转义的)
 	1. 当method为post时使用
-        ```
+        ```python
         import urllib
+        import json
         post_data = {}
+        # 'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
         post_data = urllib.parse.urlencode(post_data, doseq=True)
+        # "Content-Type": "application/json",
+        post_data = json.dumps(post_data)
         yield scrapy.Request(post_url,
                     method='post',
                     body=post_data,
