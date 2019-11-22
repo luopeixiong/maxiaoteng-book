@@ -14,3 +14,9 @@
                             database=database, charset="utf8mb4"
                             )
         ```
+3. 数据库同步策略
+   1. 带时间戳的数据, 只有insert操作
+      1. 按时间戳同步
+   2. 不带时间戳的
+      1. 全表update的, 全部同步
+      2. 增量更新的, 按id查询后添加
