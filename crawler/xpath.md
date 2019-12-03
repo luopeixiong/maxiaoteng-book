@@ -3,22 +3,32 @@ XPath即为XML路径语言（XML Path Language），它是一种用来确定XML�
 
 ## 用法
 
-```
-from lxml import etree
-html = response.text  # requests和scrapy都可以, html要求是str
-page_source = etree.HTML(html)
-tr = page_source.xpath('//div[@class="chunk"]/table/tr[1]')
-```
-- page_source 
+1. 基本用法
+    ```
+    from lxml import etree
+    html = response.text  # requests和scrapy都可以, html要求是str
+    page_source = etree.HTML(html)
+    tr = page_source.xpath('//div[@class="chunk"]/table/tr[1]')
+    ```
+2. page_source 
 HTML方法有自动修正不全tag的功能, tostring()方法转成源文件, 为bytes类型, 需要decode为str
 
-- 也可以直接读取文本文件进行解析
-```
-from lxml import etree
-html = etree.parse('./test.html', etree.HTMLParser())
-result = etree.tostring(html)
-print(result.decode('utf-8'))
-```
+3. 也可以直接读取文本文件进行解析
+    ```
+    from lxml import etree
+    html = etree.parse('./test.html', etree.HTMLParser())
+    result = etree.tostring(html)
+    print(result.decode('utf-8'))
+    ```
+4. 对于xml的响应
+    ```
+    from lxml import etree
+    page_source = etree.XML(response.content)  # requests
+    page_source = etree.XML(response.body)  # scrapy
+    # 如果使用text, '可能报错: Unicode strings with encoding declaration are not supported. Please use bytes input or XML fragments without declaration'.
+    ```
+  
+
 
 ## 常用规则
 - /     # 从当前节点选取所有子节点, 返回list
