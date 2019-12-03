@@ -168,6 +168,7 @@
 * [Nas](Configurations/nas.md)
 * [Gmail](Configurations/gmail.md)
 * [照片管理](Configurations/media_manager.md)
+* [Google](Configurations/google.md)
 
 
 ## 面试汇总
