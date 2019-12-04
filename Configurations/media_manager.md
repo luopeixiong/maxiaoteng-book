@@ -1,4 +1,5 @@
 # 多媒体管理
+[TOC]
 
 多媒体包含照片和视频
 
@@ -6,7 +7,7 @@
 基本思路是
 1. google photo和NAS双备份
 
-## 1. google Photo
+## 2. google Photo
 1. 上传
    1. mac和windows, 使用备份工具上传
       1. 选择所在文件夹, 以高画质上传照片和视频
