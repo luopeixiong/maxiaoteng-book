@@ -25,8 +25,8 @@ echo "执行命令：commit -m 'deploy'"
 git commit -m 'deploy'
 
 # 如果发布到 https://<USERNAME>.github.io/<REPO>
-echo "执行命令：git push -f https://github.com/yulilong/book.git master:gh-pages"
-git push -f git@github.com:maxiaoteng001/maxiaoteng-book.git master:gh-pages
+echo "执行命令：git push -f https://github.com/maxiaoteng001/maxiaoteng-book.git master:gh-pages"
+git push -f https://github.com/maxiaoteng001/maxiaoteng-book.git master:gh-pages
 
 # 返回到上一次的工作目录
 echo "回到刚才工作目录"
