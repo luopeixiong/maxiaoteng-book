@@ -1,6 +1,9 @@
 # 马晓腾
 爱好技术,喜欢运动,实践做一个终身学习者
-[pdf版本简历](/assets/马晓腾-Python开发工程师.pdf)
+
+[![点击图片](https://images03.military.com/sites/default/files/styles/full/public/2018-06/linked-in-3200.jpg?itok=4_pYYhXY)](https://www.linkedin.com/in/xiaoteng-566040129/)
+
+<!-- [pdf版本简历](/assets/马晓腾-Python开发工程师.pdf)
 
 ## 1. 个人简介
 - 5年工作经验
@@ -40,5 +43,5 @@
     3. 参与供应商的体系审核和评选工作。
 
 
-## 5. 项目经历
+## 5. 项目经历 -->
 

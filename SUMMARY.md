@@ -175,7 +175,7 @@
 
 ## 面试汇总
 * [我的简历](Interview/resume.md)
-* [简历图片版](Interview/resume_pic.md)
+<!-- * [简历图片版](Interview/resume_pic.md) -->
 * [面试汇总](Interview/summary.md)
 
 
