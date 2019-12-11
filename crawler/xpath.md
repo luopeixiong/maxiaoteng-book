@@ -1,7 +1,9 @@
 # XPATH
+[TOC]
+
 XPath即为XML路径语言（XML Path Language），它是一种用来确定XML文档中某部分位置的语言。 XPath基于XML的树状结构，提供在数据结构树中找寻节点的能力。 
 
-## 用法
+## 1. 用法
 
 1. 基本用法
     ```
@@ -30,7 +32,7 @@ HTML方法有自动修正不全tag的功能, tostring()方法转成源文件, �
   
 
 
-## 常用规则
+## 2. 常用规则
 - /     # 从当前节点选取所有子节点, 返回list
 - //    # 从当前节点选取所有子孙节点, 返回list
 - .     # 选取当前节点
@@ -55,3 +57,4 @@ HTML方法有自动修正不全tag的功能, tostring()方法转成源文件, �
     - result = html.xpath('//li[1]/descendant::span')   # 返回li的所有span子孙节点, list
     - result = html.xpath('//li[1]/following::*[2]')    # 返回li的后续的第2个节点
     - result = html.xpath('//li[1]/following-sibling::*')   # 返回li的后续所有同级节点, list
+    - result = html.xpath('//li[1]/preceding-sibling::h6[1]')   # 返回li的前面的同级节点, list, [1]指最接近li[1]的, 依次往前
