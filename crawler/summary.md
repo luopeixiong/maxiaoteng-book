@@ -53,6 +53,7 @@
 1. [并发逐步增加，参考scrapy，大致了解对方网站对并发的限制情况](/crawler/Scrapy/scrapy_optimization.md)
 2. 伪装不同的请求，包括[使用代理ip](/crawler/proxy_server.md)和[user-agent随机](/crawler/random_user_agent.md)
 3. [验证码破解](/crawler/verification_code.md)
+4. [Cookie](/crawler/cookies.md)
 
 ## 6. 反爬策略
 1. [反爬策略](/crawler/anti_spider_strategy.md)
