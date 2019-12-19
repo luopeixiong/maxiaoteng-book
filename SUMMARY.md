@@ -48,6 +48,7 @@
     * [paramiko](python-basics/modules/paramiko.md)
     * [apscheduler](python-basics/modules/apscheduler.md)
     * [PyExecJS](python-basics/modules/pyexecjs.md)
+    * [Matplotlib](python-basics/modules/matplotlib.md)
 * [编码](python-basics/encode.md)
 * [迭代器 生成器 可迭代对象](python-basics/iteration_generator_iterable.md)
 * [数据结构](python-basics/shu-ju-jie-gou.md)
