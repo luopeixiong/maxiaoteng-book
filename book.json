@@ -46,7 +46,7 @@
         "simple-page-toc",
         "search-plus",
         "tbfed-pagefooter",
-        "disqus",
+        "-disqus",
         "include-csv"
     ],
     "pluginsConfig": {
