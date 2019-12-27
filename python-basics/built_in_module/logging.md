@@ -140,3 +140,8 @@ logging可以发送到控制台, 文件, 网络
    2. 使用socketHandler，启一个线程或进程单独处理
    3. 多进程mulitprocessing中的Queue队列存储日志，单独一个进程处理
 
+## 3. 遇到的bug
+    1. [多进程+ 多线程 + logging遇到的问题](https://mozillazg.com/2016/09/python-threading-multiprocessing-logging-equal-deadlock.html)
+        1. 主要问题是创建子进程时, 如果使用multiprocessing, 会fork父进程的所有的状态, 此时如果某个线程正在写日志, logging的锁将被fork到子进程中, 导致子进程logging锁无法释,产生死锁
+        2. 解决办法: 使用subprocess, 或只使用多进程+logging
+
