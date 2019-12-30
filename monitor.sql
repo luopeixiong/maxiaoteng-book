@@ -25,7 +25,7 @@ count(*)
 -- DISTINCT left(Date_origin, 6)
 -- delete
 from customs.trade_statistics where 
-left(Date_origin, 6)='108年9月' and 
+left(Date_origin, 6)='108年10月' and 
 Date_origin like '%初步值%'
 ;
 
@@ -34,7 +34,7 @@ select
 count(*)
 -- DISTINCT left(Date_origin, 6)
 from customs.trade_statistics where 
-left(Date_origin, 6)='108年9月' and 
+left(Date_origin, 6)='108年10月' and 
 Date_origin not like '%初步值%'
 ;
 
@@ -76,6 +76,7 @@ select ts_short, count(*) from Hotels.jinjiang_hotels group by ts_short;
 select ts_short, count(*) from Hotels.oyo_cities group by ts_short;
 select ts_short, count(*) from Hotels.oyo_hotels group by ts_short;
 select ts_short, count(*) from Hotels.oyo_hot_cities group by ts_short;
+select ts_short, sum(hotelCountInCity) from Hotels.oyo_cities group by ts_short;
 
 select ts_short, count(*) from Hotels.bth_hotels group by ts_short;
 select ts_short, count(*) from Hotels.bth_cities group by ts_short;
@@ -96,17 +97,16 @@ on aa.shop_no=bb.shop_no
 where bb.shop_no is null;
 
 select ts_short, count(1) from Hotels.bth_remain group by ts_short;
-select left(ts,16), count(1) from Hotels.bth_remain group by left(ts,16);
+select left(ts,13), count(1) from Hotels.bth_remain group by left(ts,13) order by left(ts, 13) desc;
 
 # 机票项目
 select ts_short, count(*) from flight_ticket.tickets group by ts_short;
 select ts_short, count(*) from flight_ticket.ctrip_tickets group by ts_short;
 
 select ts_short, from_net, count(*) from flight_ticket.tickets group by ts_short, from_net;
-select ts_short,from_net, count(*) from flight_ticket.ctrip_tickets group by ts_short, from_net;
+select ts_short,from_net, count(*) from flight_ticket.ctrip_tickets group by ts_short, from_net order by ts_short desc;
 select ts_short, count(*) from flight_ticket.umetrip_info group by ts_short;
 
-delete from flight_ticket.tickets where from_net="china_air" and ts_short="2019-11-08" group by arr_port, dep_port;
 
 -- 日本机票
 select ts_short, count(*) from jp_flight_ticket.jal where from_net="jal_domestic" group by ts_short;
@@ -131,22 +131,36 @@ select ts_short, count(*) from Jobs.zhilian_company group by ts_short;
 -- 690 45 475 15919
 select count(*) from Jobs.`58_cities`;
 select count(*) from Jobs.`58_industries`;
-select count(*) from Jobs.`58_job_type`;
+select count(*) from Jobs.`58_job`;
 select count(*) from Jobs.`58_sub_local`;
 select ts_short, count(*) from Jobs.`58_job` group by ts_short;
-select batch_id, count(*) from Jobs.`58_job_info` group by batch_id;
+select batch_id, count(*) from Jobs.`58_job` group by batch_id;
 select batch_id, count(*) from Jobs.`58_job_from_company` group by batch_id;
 select batch_id, count(*) from Jobs.`58_company` group by batch_id;
 select batch_id, count(*) from Jobs.`58_company_tag` group by batch_id;
 select batch_id, count(*) from Jobs.`58_company_info` group by batch_id;
+select batch_id, count(*) from Jobs.`58_job_info` group by batch_id;
 
+-- 最终计算
+insert ignore into Jobs.`58_job_finally`
+select cc.*, dd.pubdateInterval from
+	(select aa.*, bb.updateInterval from
+		(select * from Jobs.`58_job` where batch_id='2019-11-01') as aa
+		left join 
+		(select job_no, updateInterval from Jobs.`58_job_from_company` where batch_id='2019-11-01') as bb
+		on aa.job_no = bb.job_no
+	) cc
+	left join 
+	(select job_no,pubdateInterval from Jobs.`58_job_info` where batch_id='2019-11-01') dd
+	on cc.job_no=dd.job_no
+;
 
-select left(ts, 13), count(*) from Jobs.`58_job` where batch_id="2019-10-01" group by left(ts, 13) ;
+select left(ts, 13), count(*) from Jobs.`58_job` where batch_id="2019-11-01" group by left(ts, 13) ;
 select left(ts, 13), count(*) from Jobs.`58_job_from_company` where batch_id="2019-10-01" group by left(ts, 13) ;
 
 select left(ts, 13), count(*) from Jobs.`58_job` where batch_id="2019-09-01" group by left(ts, 13) ;
 select left(ts, 13), count(*) from Jobs.`58_job_from_company` where batch_id="2019-10-01" group by left(ts, 13) ;
-select left(ts, 13), count(*) from Jobs.`58_job_info` where batch_id="2019-10-01" group by left(ts, 13) ;
+select left(ts, 13), count(*) from Jobs.`58_job_info` where batch_id="2019-11-01" group by left(ts, 13) ;
 select left(ts, 13), count(*) from Jobs.`58_company_tag` where batch_id="2019-10-01" group by left(ts, 13) ;
 select ts_short, count(*) from Jobs.`58_job_info` where batch_id="2019-09-01" group by ts_short ;
 
@@ -157,6 +171,7 @@ select ts_short, count(*) from xiaohongshu.brands group by ts_short;
 select ts_short, count(*) from xiaohongshu.brand_info group by ts_short;
 select ts_short, count(*) from xiaohongshu.notes_by_brand group by ts_short;
 select ts_short, count(*) from xiaohongshu.note_info group by ts_short;
+select left(ts,16), count(*) from xiaohongshu.note_info group by left(ts,16) order by left(ts,16) desc;
 select pub_date, count(*) from xiaohongshu.note_info group by pub_date order by pub_date DESC;
 
 select count(*) from
@@ -178,15 +193,28 @@ select * from xiaohongshu.brand_info where brand_name="三只松鼠";
 
 -- 周一更新
 select ts_short, count(*) from xiaohongshu.z_notes_by_keyword group by ts_short;
-select keyword, sort, count(*) from xiaohongshu.z_notes_by_keyword where ts_short="2019-11-25" group by keyword, sort;
+select keyword, sort, count(*) from xiaohongshu.z_notes_by_keyword where ts_short="2019-12-30" group by keyword, sort;
 select ts_short, count(*) from xiaohongshu.z_note_info group by ts_short;
-select * from xiaohongshu.z_note_info where ts_short="2019-11-18" order by ts desc limit 500, 10;
+select * from xiaohongshu.z_note_info where ts_short="2019-12-23" order by ts desc limit 500, 10;
 
 
 # 珀莱雅
 -- 月更
 select ts_short, count(*) from proya.cities group by ts_short;
 select ts_short, count(*) from proya.stores group by ts_short;
+
+select ts_short, count(*) from proya.canadagoose_countries group by ts_short;
+select ts_short, count(*) from proya.canadagoose_stores group by ts_short;
+
+select ts_short, count(*) from proya.moncler_stores group by ts_short;
+select ts_short, count(*) from proya.muji_stores group by ts_short;
+select ts_short, count(*) from proya.muji_address group by ts_short;
+select ts_short, count(*) from proya.muji_news group by ts_short;
+select ts_short, count(*) from proya.nome_stores group by ts_short;
+select ts_short, count(*) from proya.uniqlo_stores group by ts_short;
+select country, ts_short, count(*) from proya.uniqlo_stores group by country, ts_short;
+select country, count(*) from proya.uniqlo_stores where ts_short="2019-12-16" group by country;
+select * from proya.uniqlo_stores where ts_short="2019-12-16" and country="China";
 
 
 # 大众点评
@@ -195,12 +223,14 @@ select left(ts,13), count(*) from dianping.shops group by left(ts,13);
 select left(ts, 16), count(*) from dianping.shops_wx where ts_short="2019-10-30" group by left(ts, 16);
 select count(*) from dianping.shops_m;
 select count(*) from dianping.shops_2_2019_07;
+select ts_short, count(distinct city_id) from dianping.shops_m_search_count group by ts_short;
+
 
 -- 生成表2 shops_2_2019_07
-create table dianping.shops like dianping.shops_2019_09;
-create table dianping.shops_2_2019_09 like dianping.shops_2_2019_08;
+create table dianping.shops like dianping.shops_2019_12;
+create table dianping.shops_2_2019_12 like dianping.shops_2_2019_11;
 
-insert ignore into dianping.shops_2_2019_09
+insert ignore into dianping.shops_2_2019_12
 select e.province_short, e.cate_2_name, sum(count_num) as count_num
 from
 	(
@@ -215,7 +245,7 @@ from
 						(select province_short, city_id from dianping.city_list_province )as a
 						left join
 						(
-							select city_id,cate_id, count(*) as count_num from dianping.shops_2019_09 group by city_id, cate_id
+							select city_id,cate_id, count(*) as count_num from dianping.shops_2019_12 group by city_id, cate_id
 						) as b
 						on a.city_id=b.city_id
 			) c
@@ -232,20 +262,19 @@ select ts_short, cloud, count(*) from cloud.Uniform_bk group by ts_short, cloud;
 -- ali
 select ts_short, count(*) from cloud.aliyun_instance group by ts_short;
 select ts_short, count(*) from cloud.aliyun_instance_zone group by ts_short;
-select regionId, count(*) from cloud.aliyun_instance_zone where ts_short='2019-08-07' group by regionId;
+select regionId, count(*) from cloud.aliyun_instance_zone where ts_short='2019-12-05' group by regionId;
 select ts_short, count(*) from cloud.aliyun_prices group by ts_short;
 select ts_short, count(*) from cloud.aliyun_regions group by ts_short;
 -- tencent
 select ts_short, count(*) from cloud.tencent_regions group by ts_short;
 select ts_short, count(*) from cloud.tencent_instances group by ts_short;
-
 select ts_short, count(*) from cloud.tencent_basic_instances group by ts_short;
 
 -- aws
 select ts_short, count(*) from cloud.aws_regions group by ts_short;
 select ts_short, count(*) from cloud.aws_instances group by ts_short;
 
-select distinct location from cloud.aws_instances where ts_short="2019-09-05";
+select distinct location from cloud.aws_instances where ts_short="2019-12-05";
 select distinct Region from cloud.Uniform where ts_short="2019-09-05" and Cloud="AWS";
 
 
@@ -263,6 +292,7 @@ select ts_short, count(*) from cloud.gcp_regions group by ts_short;
 -- 最终统计
 select Cloud, count(*) from cloud.Uniform where ts_short='2019-09-05' group by Cloud;
 select ts_short, Cloud, count(*) from cloud.Uniform group by ts_short, Cloud;
+select ts_short, Cloud, count(*) from cloud.Uniform_bk group by ts_short, Cloud;
 
 select count(*)
 from cloud.Uniform
@@ -272,41 +302,76 @@ where ts_short="2019-09-05" and Cloud="Azure" and (CPUseries is NULL or GPUserie
 
 -- 分析当前批次新增用户
 select ts_short, count(1) from mercari.brands group by ts_short;
-select ts_short, count(1) from mercari.categories group by ts_short;
+select batch_id, count(1) from mercari.brands_by_category group by batch_id;
 select ts_short, count(1) from mercari.app_sku_2019_10_02 group by ts_short;
-select count(1) from mercari.app_sku;
+select count(*) from mercari.app_sku;
+select left(ts, 13), count(*) from mercari.app_sku group by left(ts, 13);
+select left(ts, 13), count(*) from mercari.app_user where batch_id="2019-12-01" group by left(ts, 13);
+
 select batch_id, count(1) from mercari.app_user group by batch_id;
+select ts_short, count(1) from mercari.app_user group by ts_short order by ts_short DESC;
 select ts_short, count(1) from mercari.all_user group by ts_short;
 select ts_short, count(1) from mercari.us_all_user group by ts_short;
 select * from mercari.app_sku_2019_10_02 where batch_id="2019-10-01";
 
 -- 计算表的验证
-select yearmonth, count(*) from mercari.final_buyer_txn group by yearmonth; 
-select update_date, count(*) from mercari.final_buyer_txn group by update_date; 
+select yearmonth, sum(value) from mercari.final_buyer_txn group by yearmonth; 
+select yearmonth, sum(value) from mercari.final_seller_txn group by yearmonth; 
 
+select yearmonth, count(*) from mercari.final_buyer_txn group by yearmonth; 
 select yearmonth, count(*) from mercari.final_seller_txn group by yearmonth; 
 select yearmonth, count(*) from mercari.final_seller_listing group by yearmonth; 
 
 
-select sum(value) from mercari.us_final_buyer_txn where yearmonth="2019-09"; 
-select sum(value) from mercari.us_final_seller_txn where yearmonth="2019-09"; 
-select count(*) from mercari.us_final_buyer_txn where yearmonth="2019-09"; 
-select count(*) from mercari.us_final_seller_txn where yearmonth="2019-09"; 
+select yearmonth, sum(value) from mercari.us_final_buyer_txn group by yearmonth; 
+select yearmonth, sum(value) from mercari.us_final_seller_txn group by yearmonth; 
+select yearmonth, count(*) from mercari.us_final_buyer_txn group by yearmonth; 
+select yearmonth, count(*) from mercari.us_final_seller_txn group by yearmonth; 
+select yearmonth, count(*) from mercari.us_final_seller_listing group by yearmonth; 
 
 -- mercari us
 select ts_short, count(1) from mercari.us_categories group by ts_short;
 select ts_short, count(1) from mercari.us_brands group by ts_short;
 select ts_short, count(1) from mercari.us_brands_by_category group by ts_short;
 select ts_short, count(1) from mercari.us_sku group by ts_short;
+select ts_short, count(1) from mercari.us_sku_info group by ts_short;
 select left(ts,13), count(1) from mercari.us_sku group by left(ts,13);
 select batch_id, count(1) from mercari.us_sku group by batch_id;
-select count(1) from mercari.us_sku_from_seller where batch_id="2019-11-02";
+select count(1) from mercari.us_sku_from_seller where batch_id="2019-12-02";
 select left(ts,13), count(1) from mercari.us_brands_by_category group by left(ts,13);
 select left(ts,13), count(1) from mercari.us_sku where batch_id="2019-11-02" group by left(ts,13);
-select left(ts,13), count(1) from mercari.us_sku_info where batch_id="2019-11-02" group by left(ts,13);
+select left(ts,13), count(1) from mercari.us_sku_info where batch_id="2019-12-02" group by left(ts,13);
 select left(ts,13), count(1) from mercari.us_sku_from_seller where batch_id="2019-11-02" group by left(ts,13);
-select left(ts,13), count(1) from mercari.us_sku_info_for_all where batch_id="2019-10-02" group by left(ts,13);
+select left(ts,10), count(1) from mercari.us_sku_info_for_all where batch_id="2019-11-02" group by left(ts,10);
 select  left(ts,13), count(1) from mercari.us_sku_from_seller where batch_id="2019-10-02" group by  left(ts,13);
+
+-- fangtianxia 房天下
+select ts_short, count(*) from fangtianxia.community_list group by ts_short;
+select ts_short, count(*) from fangtianxia.community_info group by ts_short;
+select ts_short, count(*) from fangtianxia.community_live_history group by ts_short;
+select ts, count(*) from fangtianxia.final_delivery group by ts;
+
+-- 数据清洗和计算
+insert ignore into fangtianxia.final_delivery
+    select null, bb.community, aa.name, aa.city , bb.decoration, bb.price, bb.property_costs, bb.developer, bb.manager, aa.livindate, bb.construction_area/cc.live_count, bb.total_houses/cc.live_count, "2019-12" from
+    (select * from fangtianxia.community_list where left(ts_short, '7')= "2019-12" ) aa
+    left join
+    (select * from fangtianxia.community_info where left(ts_short, '7')= "2019-12" ) bb
+    on aa.url=bb.community
+    left join
+    (
+    select community, count(*) as live_count from fangtianxia.community_live_history where left(ts_short, '7')= "2019-12" group by community
+    ) cc
+    on aa.url = cc.community
+    where bb.community is not null
+    ;
+ 
+
+select distinct price_origin from fangtianxia.community_info where price = 0;
+select distinct decoration_origin from fangtianxia.community_info where decoration is null and ts_short="2019-12-20";
+select distinct construction_area_origin from fangtianxia.community_info where (construction_area =0 or construction_area is null) and ts_short="2019-12-20";
+select distinct total_houses_origin from fangtianxia.community_info where (total_houses =0 or total_houses is null) and ts_short="2019-12-20";
+select distinct property_costs_origin from fangtianxia.community_info where (property_costs =0 or property_costs is null) and ts_short="2019-12-20";
 
 
 -- wow
@@ -317,11 +382,14 @@ select `language`, region, ts_short, count(*) from wow.topics group by `language
 select ts_short, count(*) from paypay.categories group by ts_short;
 select ts_short, count(*) from paypay.brands group by ts_short;
 select ts_short, count(*) from paypay.search_count group by ts_short;
+select ts_short, count(*) from paypay.sku_by_seller group by ts_short;
 select DISTINCT category_id_1 from paypay.category_new;
 select * from paypay.search_count WHERE total_count=149999;
-select * from paypay.search_count WHERE ts<"2019-11-18 14" and ts_short="2019-11-18" and brand_id!="134320" order by total_count desc;
+select * from paypay.search_count WHERE ts_short="2019-12-09"  order by total_count desc;
 select left(ts, 16), count(*) from paypay.sku_by_seller where ts_short="2019-11-07" group by left(ts, 16);
 select ts_short, sum(total_count) from paypay.search_count group by ts_short;
+select ts_short, count(*) from paypay.sku_status group by ts_short;
+
 
 select aa.*, bb.total_count as bb_total_count, aa.total_count-bb.total_count as m FROM
 (select brand_id, category_id, item_status, total_count from paypay.search_count where ts_short="2019-11-25") aa
@@ -334,6 +402,13 @@ select * FROM
 (select * from paypay.search_count where ts_short="2019-11-04") aa
 left join 
 (select * from paypay.search_count where ts_short="2019-11-04") bb
+
+-- muji网络商城
+select ts_short, count(*) from muji.categories group by ts_short;
+select ts_short, count(*) from muji.goods group by ts_short;
+select ts_short, count(*) from muji.sku group by ts_short;
+select count(*) from muji.sku group by ts_short;
+
 
 -- 台湾上市公司
 select ts_short, count(*) from twse.company_income group by ts_short;
