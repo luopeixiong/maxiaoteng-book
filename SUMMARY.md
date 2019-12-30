@@ -3,8 +3,8 @@
 ## 基础
 
 * [Introduction](README.md)
-* [linux常用知识](linux-common-knowledge/cha-kan-ming-ling-bang-zhu.md)
-  * [查看命令使用文档](linux-common-knowledge/cha-kan-ming-ling-bang-zhu.md)
+* [linux常用知识](linux-common-knowledge/command-helps.md)
+  * [查看命令使用文档](linux-common-knowledge/command-helps.md)
   * [tar/split 解压缩操作](linux-common-knowledge/tar.md)
   * [rsync  传输同步文件](linux-common-knowledge/rsync-chuan-shu-tong-bu-wen-jian.md)
   * [chmod  修改文件权限](linux-common-knowledge/chmod-xiu-gai-wen-jian-quan-xian.md)
