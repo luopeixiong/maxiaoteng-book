@@ -31,3 +31,4 @@ book.mobi
 .idea/*
 .vscode/settings.json
 .DS_Store
+*.pyc

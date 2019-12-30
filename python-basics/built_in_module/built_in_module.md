@@ -12,3 +12,4 @@
 10. [multiprocessing](multiprocessing.md)
 11. [html](html.md)
 12. [urllib](urllib.md)
+13. [string](string.md)

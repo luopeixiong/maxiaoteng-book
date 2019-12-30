@@ -44,6 +44,7 @@
     * [multiprocessing](python-basics/built_in_module/multiprocessing.md)
     * [html](python-basics/built_in_module/html.md)
     * [urllib](python-basics/built_in_module/urllib.md)
+    * [string](python-basics/built_in_module/string.md)
 * [其他模块](python-basics/modules/modules.md)
     * [paramiko](python-basics/modules/paramiko.md)
     * [apscheduler](python-basics/modules/apscheduler.md)
