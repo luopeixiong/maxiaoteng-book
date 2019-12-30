@@ -30,3 +30,7 @@
     hexdigits = digits + 'abcdef' + 'ABCDEF'
     whitespace = ' \t\n\r\v\f'
     ```
+3. 随机字符串
+    ```
+    ''.join([random.choice(string.digits+string.ascii_lowercase) for _ in range(20)])
+    ```
