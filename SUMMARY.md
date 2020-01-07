@@ -183,6 +183,5 @@
 
 ## 其他
 * [健身相关](fitness.md)
-* [2019年终](others/summary_2019.md)
 * [00](00.md)
 
