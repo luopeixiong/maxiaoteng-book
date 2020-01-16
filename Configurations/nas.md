@@ -106,3 +106,34 @@
     docker run -d -p 5901:5901 -v /mnt/md0/public/baiduyun:/mnt/drive_d -e vnc_password=password johnshine/baidunetdisk-crossover-vnc:latest
     ``` 
    4. 
+
+
+## 3. 系统OMV
+1. 安装
+    1. 常用安装
+        1. 使用U盘刻录omv系统镜像, 软件[balena](https://www.balena.io/etcher/)
+        2. 将系统和系统U盘插入, 自动安装和启动 
+    2. 也可以用虚拟机也可以安装后插入到主机上, 见[无显示器安装](https://forum.openmediavault.org/index.php/Thread/3453-Installing-OMV-w-o-keyboard-and-monitor-using-VirtualBox/)
+        1. 网络配置有问题
+2. 配置
+    1. 服务
+        1. web页面
+            1. omv-firstaid设置
+            2. 端口: 8181
+        2. ssh
+            1. 端口: 9222
+        3. docker
+        4. ftp
+        5. smb
+    2. 插件
+        1. lvm
+        2. omv extra
+            1. ```wget http://omv-extras.org/openmediavault-omvextrasorg_latest_all4.deb
+                dpkg -i openmediavault-omvextrasorg_latest_all4.deb
+                ```
+    3. 文件系统
+        1. wipe擦写磁盘
+        2. 创建raid(可选)
+        3. 创建lvm分区, 并挂载
+    4. 在分区上建立共享目录
+        1. 
