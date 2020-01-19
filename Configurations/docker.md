@@ -197,6 +197,15 @@ sudo systemctl start docker  # 启动docker
     ```
     docker run -d -name centos7 --privileged=true centos:7 /usr/sbin/init    
     ```
+### 1. 启动容器注意
+1. 配置参数可以看官方说明, 一般映射左侧为宿主机, 右侧为docker内: 
+    1. --volume /path/to/config:/config, 数据卷挂载, 统一挂载到/docker_data/contain_name/
+    2. --port 3306:3306, 端口转发
+    3. --restart=unless-stopped 重启选项, 一直重启或一直重启除非停止
+    4. 其他
+2. 启动参考
+    1. docker run --name mysql_docker_8 --restart unless-stopped -p 3306:3306 -e MYSQL_ROOT_PASSWORD=password -v /root/mysql/data:/var/lib/mysql -d mysql:8.0
+    2. docker run -d -p 5901:5901 -v /mnt/md0/public/baiduyun:/mnt/drive_d -e vnc_password=92Hi4aJ6Fp6aLDj5 johnshine/baidunetdisk-crossover-vnc:latest
 
 ## 说明
 
