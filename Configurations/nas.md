@@ -124,7 +124,17 @@
             1. 端口: 9222
         3. docker
         4. ftp
+            1. 21 22
         5. smb
+            1. maxiaoteng
+        6. jellyfin
+            1. maxiaoteng
+            2. docker安装
+            3. 8096
+        7. mysql
+            1. docker安装
+            2. 3306
+
     2. 插件
         1. lvm
         2. omv extra
