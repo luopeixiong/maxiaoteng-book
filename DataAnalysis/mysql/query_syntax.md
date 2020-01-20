@@ -98,4 +98,19 @@
 6. limit
    1. limit 5   返回五条
    2. limit 10, 50  返回符合结果的11-60条数据
+7. 排序
+    1. @row_number变量
+        ```sql
+        set @row_number=0;
+        insert into talabat.tmp_count 
+        select null, cc.city_name, cc.area_name, cc.cnt, @row_number:=@row_number+1, 'hungerstation' from 
+        (
+        select aa.area_name, aa.city_name, bb.* from 
+        hungerstation.areas aa
+        left join 
+        (select city_id, area_id, count(*) as cnt from hungerstation.restaurants_by_area group by city_id, area_id) bb
+        on aa.area_id=bb.area_id and aa.city_id=bb.city_id
+        ) cc
+        order by cc.cnt desc;
+        ```
 
