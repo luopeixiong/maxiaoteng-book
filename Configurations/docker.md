@@ -204,7 +204,12 @@ sudo systemctl start docker  # 启动docker
     3. --restart=unless-stopped 重启选项, 一直重启或一直重启除非停止
     4. 其他
 2. 启动参考
-    1. docker run --name mysql_docker_8 --restart unless-stopped -p 3306:3306 -e MYSQL_ROOT_PASSWORD=password -v /root/mysql/data:/var/lib/mysql -d mysql:8.0
+    1. docker run -p 3306:3306 --restart=always --name mymysql -v /srv/dev-disk-by-label-other/docker_data/mysql/conf:/etc/mysql/conf.d -v /srv/dev-disk-by-label-other/docker_data/mysql/logs:/var/log/mysql -v /srv/dev-disk-by-label-other/docker_data/mysql/db:/var/lib/mysql -v /srv/dev-disk-by-label-other/docker_data/mysql/mysql_files:/var/lib/mysql-files -e MYSQL_ROOT_PASSWORD=maxiaoteng -d mysql:latest
+        1. 端口映射
+        2. 自动重启 unless-stopped/always
+        3. 名称
+        4. 挂载 db, conf, log, mysql-files(用于mysql dump)
+        5. root密码
     2. docker run -d -p 5901:5901 -v /mnt/md0/public/baiduyun:/mnt/drive_d -e vnc_password=92Hi4aJ6Fp6aLDj5 johnshine/baidunetdisk-crossover-vnc:latest
 
 ## 说明
