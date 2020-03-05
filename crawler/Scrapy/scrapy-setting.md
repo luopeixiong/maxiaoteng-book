@@ -161,4 +161,11 @@
         'use_helper': True,
     }
     ```
+15. retry重试
+    ```
+    RETRY_ENABLED: 是否开启retry
+    RETRY_TIMES: 重试次数
+    RETRY_HTTP_CODECS: 遇到什么http code时需要重试，默认是500,502,503,504,408，其他的，网络连接超时等问题也会自动retry的
+    # 208需要重试, twitchmetrics 发现的问题
+    ```
 
