@@ -113,4 +113,23 @@
         ) cc
         order by cc.cnt desc;
         ```
+8. datetime的计算
+    ```mysql
+        -- MySQL 为日期增加一个时间间隔：date_add()
+        -- now()       //now函数为获取当前时间
+        select date_add(now(), interval 1 day); - 加1天
+        select date_add(now(), interval 1 hour); -加1小时
+        select date_add(now(), interval 1 minute); - 加1分钟
+        select date_add(now(), interval 1 second); -加1秒
+        select date_add(now(), interval 1 microsecond);-加1毫秒
+        select date_add(now(), interval 1 week);-加1周
+        select date_add(now(), interval 1 month);-加1月
+        select date_add(now(), interval 1 quarter);-加1季
+        select date_add(now(), interval 1 year);-加1年
+        MySQL adddate(), addtime()函数，可以用date_add() 来替代。
+        2. MySQL 为日期减去一个时间间隔：date_sub()
+        MySQL date_sub() 日期时间函数 和date_add() 用法一致。
+        MySQL 中subdate(),subtime()函数，建议，用date_sub()来替代。
+    ```
+9.  
 
