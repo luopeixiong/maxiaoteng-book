@@ -1,6 +1,10 @@
 # PyExecJS python执行js代码
 
-1. demo
+1. install
+    ```
+    pip install PyExecJS
+    ```
+2. demo
     ```
         import execjs
         js_str = """var re = function(){

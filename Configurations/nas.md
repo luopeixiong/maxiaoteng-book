@@ -134,6 +134,8 @@
         7. mysql
             1. docker安装
             2. 3306
+        8. kodexplore
+            1. https://www.jianshu.com/p/4731a1ef01d1
 
     2. 插件
         1. lvm
@@ -146,4 +148,4 @@
         2. 创建raid(可选)
         3. 创建lvm分区, 并挂载
     4. 在分区上建立共享目录
-        1. 
+    5. 配置time machine 备份mac
