@@ -39,6 +39,7 @@
    1. 配置目录
        ```
        # 查找主配置文件, 里面包含日志文件路径和子配置文件路径
+       # 优先配置方案参考https://serverfault.com/questions/527630/what-is-the-different-usages-for-sites-available-vs-the-conf-d-directory-for-ngi
        find / -name nginx.conf
        # 子路径配置文件
        /etc/nginx/conf.d/*.conf

@@ -136,6 +136,9 @@
             2. 3306
         8. kodexplore
             1. https://www.jianshu.com/p/4731a1ef01d1
+            2. 通过/data访问宿主机目录
+            3. 设置防止crtf登录, 甚至可以加上验证码
+            4. 除了管理员, 其他用户要想访问/data, 需要单独配置php
 
     2. 插件
         1. lvm
