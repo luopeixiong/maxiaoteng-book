@@ -369,7 +369,8 @@ find_one_and_delete
 ```
 query = {
     'name': {
-        "$regex": "^f",   # 以f开头的
+        "$regex": "^f", # 以f开头的
+        "$regex": "f",  # 包含f的
     }
 
 }

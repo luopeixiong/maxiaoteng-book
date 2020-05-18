@@ -52,7 +52,7 @@ mac下使用iterm作为终端模拟工具
     unset http_proxy  # 取消http 代理访问
     unset https_proxy # 取消https 代理访问
 
-    # proxy
+    # 简易化设置proxy
     alias proxy_charls='export http_proxy=http://127.0.0.1:8888 https_proxy=http://127.0.0.1:8888'
     alias proxy_mitmproxy='export http_proxy=http://127.0.0.1:8080 https_proxy=http://127.0.0.1:8080'
     alias proxy_system='export http_proxy=http://127.0.0.1:7890 https_proxy=http://127.0.0.1:7890'
