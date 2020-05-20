@@ -31,6 +31,7 @@
     curl -O http://mirror.bit.edu.cn/apache/kafka/2.1.0/kafka_2.11-2.1.0.tgz  # 用于下载文件，按服务器上的文件名保存
   
     curl -o filename url     # 文件下载后重命名为filename 
+    curl --interface ppp0(192.168.0.0) https://httpbin.org/ip   # 指定网络出口
     ```
 
 ## 1. top命令
