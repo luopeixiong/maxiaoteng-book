@@ -10,6 +10,9 @@
     s = json.dumps(d)
     s == '{"age": 20, "score": 88, "name": "Bob"}'
 
+    s = json.dumps(s, separators=(',', ':'), ensure_ascii=False)
+    # separators 用来解决:后面带空格问题, ensure_ascii解决中文编码问题
+
     # 反序列化
     d = json.loads(s)
     ```
