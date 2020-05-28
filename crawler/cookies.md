@@ -26,7 +26,7 @@
     for cookie in cookies:
         cookie = cookie.decode('utf-8')
         cookie_dict = SimpleCookie(cookie)
-        for i in cookie.values():
+        for i in cookie_dict.values():
             i.key
             i.value
     ```
