@@ -9,23 +9,36 @@
 
 ## 1. virtualenv安装  
 虚拟环境的包是对真实环境包的一个复制  
-1. virtualenv默认有python可执行文件, 常用标准库等.
-    ```
-    sudo pip install virtualenv  # 安装virtualenv
-
-    # 创建一个project
-    mkdir project
-    cd project
-    virtualenv venv  # 启动一个虚拟环境(名为:venv, 也可以带一些路径, 默认当前文件夹), 默认复制系统所有的第三方包
-    virtualenv --no-site-packages venv  # 启动一个虚拟环境
-    virtualenv venv --python=python3.6
-    ,不包含任何第三方包
-    source venv/bin/activate  # 生效一个虚拟环境
-    (venv)>which python
-    > /home.../bin/python
-    (venv)>deactivate  # 退出虚拟环境
-    ```
-2. windows启动虚拟环境
+1. virtualenv是python2使用的, python3.3引入了pyvenv, 作为自带模块
+2. virtualenv默认有python可执行文件, 常用标准库等.
+    1. python2
+        ```bash
+        sudo pip install virtualenv  # 安装virtualenv
+        # 创建一个project
+        mkdir project
+        cd project
+        virtualenv venv  # 启动一个虚拟环境(名为:venv, 也可以带一些路径, 默认当前文件夹), 默认复制系统所有的第三方包
+        virtualenv --no-site-packages venv  # 启动一个虚拟环境
+        virtualenv venv --python=python3.6
+        ,不包含任何第三方包
+        source venv/bin/activate  # 生效一个虚拟环境
+        (venv)>which python
+        > /home.../bin/python
+        (venv)>deactivate  # 退出虚拟环境
+        ```
+    2. python3.3+
+        ```bash
+        python3 -m venv env_name
+            --no-site-packages  # 不包含第三方包
+            --python=python3.6  # 指定python版本
+        # 启动一个虚拟环境(名为:env_name, 也可以带一些路径, 默认当前文件夹), 默认复制系统所有的第三方包
+        # 创建一个project
+        source venv/bin/activate  # 生效一个虚拟环境
+        (venv)>which python
+        > /home.../bin/python
+        (venv)>deactivate  # 退出虚拟环境
+        ```
+3. windows启动虚拟环境
     ```
     # 直接命令行运行active文件执行
     C:\Users\jizhu>task\mxt_blogs\Scripts\activate
