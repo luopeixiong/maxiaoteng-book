@@ -139,6 +139,10 @@
             2. 通过/data访问宿主机目录
             3. 设置防止crtf登录, 甚至可以加上验证码
             4. 除了管理员, 其他用户要想访问/data, 需要单独配置php
+            5. >docker run -d -p 9000:80 --name kodexplorer  \
+                -v /srv/dev-disk-by-label-kulh2t/appdata/www:/var/www/html  \
+                -v /srv:/data  \
+                qinkangdeid/kodexplorer
 
     2. 插件
         1. lvm
