@@ -38,6 +38,7 @@
 5. [json](/python-basics/built_in_module/json.md)
 6. [protobuf](/crawler/protobuf.md)
 7. [ocr](/python-basics/modules/tesserocr.md)
+8. [ocr调用百度接口](/crawler/ocr_baidu.md)
 
 
 ## 4. 模拟请求
