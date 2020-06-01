@@ -184,6 +184,9 @@
 
 
 ## 其他
-* [健身相关](fitness.md)
+* [居住证办理](others/juzhuzheng.md)
+<!-- * [2019年终总结](others/summary_2019.md) -->
+* [健身相关](others/fitness.md)
+* [游泳](others/swiming.md)
 * [00](00.md)
 
