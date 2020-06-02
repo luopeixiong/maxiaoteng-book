@@ -156,3 +156,4 @@
         3. 创建lvm分区, 并挂载
     4. 在分区上建立共享目录
     5. 配置time machine 备份mac
+        1. https://dannyda.com/2019/07/17/how-to-create-apple-time-machine-in-open-media-vault-omv/
