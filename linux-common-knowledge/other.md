@@ -141,3 +141,13 @@ nas是debian系统, 无法输入和显示中文
         ```
 3. 生效
     1. source ~/.bashrc
+
+## 7. debian设置时区
+```bash
+# vim /etc/timezone
+Asia/Shanghai
+
+# ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+或者
+# cp -a /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+```
