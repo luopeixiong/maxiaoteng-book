@@ -20,3 +20,4 @@
    2. Command + Shift + 4   # 对选定内容截屏，到桌面文件， 使用space可以对某个窗口截屏
 
 7. 外接鼠标之后，滚轮和滑动加速度不匹配，参考 [https://sspai.com/post/40596](https://sspai.com/post/40596) 解决
+8. 查看窗口坐标 command + shift + 4

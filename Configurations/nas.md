@@ -116,7 +116,15 @@
     2. 也可以用虚拟机也可以安装后插入到主机上, 见[无显示器安装](https://forum.openmediavault.org/index.php/Thread/3453-Installing-OMV-w-o-keyboard-and-monitor-using-VirtualBox/)
         1. 网络配置有问题
 2. 配置
-    1. 服务
+    1. 概述
+        1. 文件服务
+            1. SMB: 局域网主要通过SMB访问
+            2. kodexplorer: 
+                1. 文档和图片需要简单预览
+                2. 备份电脑以及手机文件时
+                3. 多平台共享文件
+        2. 网络服务
+    2. 开启服务
         1. web页面
             1. omv-firstaid设置
             2. 端口: 8181
@@ -127,6 +135,9 @@
             1. 21 22
         5. smb
             1. maxiaoteng
+            2. 共享两个
+                1. for_guest 公开视频目录
+                2. maxiaoteng   整个目录
         6. jellyfin
             1. maxiaoteng
             2. docker安装
@@ -144,16 +155,21 @@
                 -v /srv:/data  \
                 qinkangdeid/kodexplorer
 
-    2. 插件
+    3. 插件
         1. lvm
         2. omv extra
             1. ```wget http://omv-extras.org/openmediavault-omvextrasorg_latest_all4.deb
                 dpkg -i openmediavault-omvextrasorg_latest_all4.deb
                 ```
-    3. 文件系统
+    4. 文件系统
         1. wipe擦写磁盘
         2. 创建raid(可选)
         3. 创建lvm分区, 并挂载
-    4. 在分区上建立共享目录
-    5. 配置time machine 备份mac
+    5. 在分区上建立共享目录
+        1. 2T硬盘分两个
+            1. storage 保存所有自由数据
+            2. docker_lib保存docker相关的,镜像, 数据库文件等
+        2. public1 500G
+            1. 用来备份time machine
+    6. 配置time machine 备份mac
         1. https://dannyda.com/2019/07/17/how-to-create-apple-time-machine-in-open-media-vault-omv/
