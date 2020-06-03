@@ -1,0 +1,6 @@
+luckin
+
+
+1. 先爬撞库: shop_detail_all 结果在: luckin_all_shops_detail
+2. 在从经纬度获取实际在线的店铺, luckin_shops_new 存放最终结果, 来自爬虫luckin_shops
+3. 更新城市信息, luckin_city_by_lat
