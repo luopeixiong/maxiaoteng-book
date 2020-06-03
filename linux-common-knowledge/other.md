@@ -110,3 +110,34 @@
     - grep -v grep  列出的进程中去除含有grep的进程
     - cut -c 9-15   截取pid号
     - kill -9   强行杀掉制定进程(通过杀掉关联进程)
+
+## 6. 语言问题
+nas是debian系统, 无法输入和显示中文
+1. 添加语言支持
+    ```bash
+        apt install -y locale
+        locales dpkg-reconfigure locales
+        # 选择Zh开头的
+        # 输入法不一定需要
+    ```
+2. 配置locale
+    1. 默认locale: /etc/default/locale
+    2. ~/.bashrc 优先级最高, 在这里设置
+        ```bash
+            export LANG="en_US.UTF-8"
+            export LC_CTYP="en_US.UTF-8"
+            export LC_NUMERIC="en_US.UTF-8"
+            export LC_TIME="en_US.UTF-8"
+            export LC_COLLATE="en_US.UTF-8"
+            export LC_MONETARY="en_US.UTF-8"
+            export LC_MESSAGES="en_US.UTF-8"
+            export LC_PAPER="en_US.UTF-8"
+            export LC_NAME="en_US.UTF-8"
+            export LC_ADDRESS="en_US.UTF-8"
+            export LC_TELEPHONE="en_US.UTF-8"
+            export LC_MEASUREMENT="en_US.UTF-8"
+            export LC_IDENTIFICATION="en_US.UTF-8"
+            export LC_ALL=
+        ```
+3. 生效
+    1. source ~/.bashrc
