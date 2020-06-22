@@ -1,6 +1,22 @@
 -- 通用
 
+# 显示查询
 select * from information_schema.innodb_trx;
+show processlist;
+select concat(round(sum(data_length/1024/1024/1024),2),'GB') from information_schema.TABLES;
+
+# 查询表占用空间
+select concat(round(sum(data_length/1024/1024/1024),2),'GB') as data 
+from 
+information_schema.tables where table_schema='mercari' and table_name='app_user';
+
+select table_schema, table_name, concat(round(sum(data_length/1024/1024/1024),2),'GB') as data_str,  round(sum(data_length/1024/1024/1024),2) as data,  round(sum(INDEX_LENGTH/1024/1024/1024),2) as index_data, sum(TABLE_ROWS), max(AUTO_INCREMENT)
+from 
+information_schema.tables group by table_schema, table_name order by data desc limit 50;
+
+# 
+select TABLE_SCHEMA, TABLE_NAME, `AUTO_INCREMENT`, round(DATA_LENGTH/1024/1024/1024, 2) as memory from information_schema.TABLES where TABLE_ROWS>30000000;
+select * from information_schema.tables order by `AUTO_INCREMENT` desc;
 
 -- 计算库里有多少表
 show databases;
@@ -46,18 +62,18 @@ select left(batch_id, 10), count(*) from raksul.raksul_info group by left(batch_
 
 
 # twitch定期统计
-select ts_short, count(*) from twitch.game_list group by ts_short;
-select ts_short, count(*) from twitch.channel_list group by ts_short;
-select ts_short, count(*) from twitch.game_info group by ts_short;
-select ts_short, count(*) from twitch.channel_info group by ts_short;
-select ts_short, count(*) from twitch.game_activity_info group by ts_short;
-select ts_short, count(*) from twitch.channel_activity_info group by ts_short;
+select ts_short, count(*) from twitch.game_list group by ts_short order by ts_short desc;
+select ts_short, count(*) from twitch.channel_list group by ts_short order by ts_short desc;
+select ts_short, count(*) from twitch.game_info group by ts_short order by ts_short desc;
+select ts_short, count(*) from twitch.channel_info group by ts_short order by ts_short desc;
+select ts_short, count(*) from twitch.game_activity_info group by ts_short order by ts_short desc;
+select ts_short, count(*) from twitch.channel_activity_info group by ts_short order by ts_short desc;
 -- select ts_short, count(*), count(distinct channel_id) from twitch.channel_stream_info group by ts_short order by ts_short desc;
-select ts_short, count(*) from twitch.channel_stream_info group by ts_short;
-select ts_short, count(*) from twitch.channel_activity_info_v2 group by ts_short;
-select left(time_of_occurrence, 10), count(*) from twitch.tmp_channel_session_info group by left(time_of_occurrence, 10);
+select ts_short, count(*) from twitch.channel_stream_info group by ts_short order by ts_short desc;
+select ts_short, count(*) from twitch.channel_activity_info_v2 group by ts_short order by ts_short desc;
+select left(time_of_occurrence, 10), count(*) from twitch.tmp_channel_session_info group by left(time_of_occurrence, 10) order by left(time_of_occurrence, 10) desc;
 select left(time_of_occurrence, 10), count(*), count(distinct channel_id) from twitch.channel_stream_info group by left(time_of_occurrence, 10) order by left(time_of_occurrence, 10) desc;
-select left(time_data, 10), count(*) from twitch.channel_activity_info_v2 group by left(time_data, 10);
+select left(time_data, 10), count(*) from twitch.channel_activity_info_v2 group by left(time_data, 10) order by left(time_data, 10) desc;
 -- select left(time_of_occurrence, 10), count(*) from twitch.channel_stream_info group by left(time_of_occurrence, 10) order by left(time_of_occurrence, 10) desc;
 select occurrence_date, count(*) from twitch.game_share group by occurrence_date order by occurrence_date DESC;
 
@@ -70,11 +86,16 @@ SELECT ts_short, count(*) from recruit_agent.job group by ts_short;
 
 # indeed
 # 每次分析
-select ts_short,count(*) from Indeed.indeed_searchcount_final group by ts_short;
-select ts_short,count(*) from Indeed.indeed_search_count group by ts_short;
-select ts_short,count(*) from Indeed.indeed_info group by ts_short;
-select * from Indeed.indeed_searchcount_final where ts_short="2020-02-26";
+select ts_short,count(*) from Indeed.indeed_searchcount_final group by ts_short order by ts_short desc;
+select ts_short,count(*) from Indeed.indeed_search_count group by ts_short order by ts_short desc;
+-- select ts_short,count(*) from Indeed.indeed_info group by ts_short order by ts_short desc;
+select * from Indeed.indeed_searchcount_final order by ts_short desc;
+select * from Indeed.indeed_search_count order by ts_short desc;
 
+-- 美国indeed
+select ts_short, count(*), count(distinct city_url), sum(cast(search_count as UNSIGNED)), max(cast(search_count as UNSIGNED)), min(cast(search_count as UNSIGNED)) from Indeed.indeed_search_count_us group by ts_short order by ts_short desc;
+select ts_short, count(*), count(distinct city_url) from Indeed.indeed_us_cities group by ts_short order by ts_short desc;
+select * from Indeed.indeed_search_count_us order by id desc;
 
 # Hotel
 select ts_short, count(*) from Hotels.jinjiang_cities group by ts_short;
@@ -82,66 +103,124 @@ select ts_short, count(*) from Hotels.jinjiang_hotels group by ts_short;
 
 select ts_short, count(*) from Hotels.oyo_cities group by ts_short;
 select ts_short, count(*) from Hotels.oyo_hotels group by ts_short;
-select ts_short, count(*) from Hotels.oyo_hot_cities group by ts_short;
+-- select ts_short, count(*) from Hotels.oyo_hot_cities group by ts_short;
 select ts_short, sum(hotelCountInCity) from Hotels.oyo_cities group by ts_short;
 
 select ts_short, count(*) from Hotels.bth_hotels group by ts_short;
 select ts_short, count(*) from Hotels.bth_cities group by ts_short;
 select ts_short, count(*) from Hotels.bth_brands group by ts_short;
 
+select ts_short, count(*) from Hotels.viennar_cities group by ts_short;
 select ts_short, count(*) from Hotels.viennar_hotels group by ts_short;
 
-select ts_short, count(*) from Hotels.luckin_shops where address not like '%敬请期待%' group by ts_short;
+select ts_short, count(1), count(distinct left(ts, 13)) from Hotels.bth_remain group by ts_short order by ts_short desc;
+select left(ts,13), count(1) from Hotels.bth_remain group by left(ts,13) order by left(ts, 13) desc;
+
+-- 瑞幸咖啡
+select ts_short, count(*) from Hotels.luckin_shops group by ts_short;
 select ts_short, count(*) from Hotels.luckin_shops_other group by ts_short;
+select ts_short, count(*) from Hotels.tmp_luckin_all_info group by ts_short;
+
+select * from Hotels.luckin_shops where ts_short='2020-04-10' and left(ts, 10)='2020-04-06';
 
 select * from Hotels.luckin_shops where shop_name like '%瑞即购%' and ts_short='2020-03-10';
-select * from Hotels.luckin_shops where shop_name like "%瑞%";
+select * from Hotels.luckin_shops where city ='' and ts_short='2020-03-25';
 select ts_short, count(*) from Hotels.luckin_shops where address not like "%敬请期待%" group by ts_short;
 select * from Hotels.luckin_shops_other where shop_name="厦门东方财富广场店";
 select distinct(left(ts, 13)) from Hotels.luckin_shops where ts_short="2019-11-16";
 
-select * from
-(SELECT DISTINCT shop_no, shop_name, city from Hotels.luckin_shops where ts_short="2020-03-10") aa
+set @batch_id='2020-06-10';
+set @last_batch_id='2020-05-25';
+
+-- 更新新增店铺的城市信息
+update Hotels.luckin_shops aa, Hotels.tmp_luckin_all_info bb
+set aa.city=bb.city 
+where aa.ts_short=@batch_id and bb.ts_short=aa.ts_short and aa.deptid=bb.deptid and aa.city is null;
+
+update Hotels.luckin_shops_other aa, Hotels.tmp_luckin_all_info bb
+set aa.city=bb.city 
+where aa.ts_short=@batch_id and bb.ts_short=aa.ts_short and aa.deptid=bb.deptid and aa.city is null;
+
+-- shopNO
+update Hotels.luckin_shops aa , Hotels.tmp_luckin_all_info  bb
+set aa.shop_no=bb.shop_no
+where aa.shop_no ='' and aa.deptid=bb.deptid and aa.ts_short=@batch_id and bb.ts_short=aa.ts_short;
+
+update Hotels.luckin_shops_other aa , Hotels.tmp_luckin_all_info  bb
+set aa.shop_no=bb.shop_no
+where aa.shop_no ='' and aa.deptid=bb.deptid and aa.ts_short=@batch_id and bb.ts_short=aa.ts_short;
+
+-- 查看worktime
+select count(*) from Hotels.luckin_shops where work_time is null and ts_short=@batch_id;
+
+select count(*) from Hotels.luckin_shops where city is null and ts_short=@batch_id;
+
+-- 新增店铺的城市分布
+-- select count(*) from
+select aa.* from 
+(SELECT * from Hotels.luckin_shops where ts_short=@batch_id) aa
 left join 
-(SELECT * from Hotels.luckin_shops where ts_short="2020-02-25") bb
-on aa.shop_no=bb.shop_no
+(SELECT * from Hotels.luckin_shops where ts_short=@last_batch_id) bb
+on aa.deptid=bb.deptid
 where bb.shop_no is null;
 
-explain
-update Hotels.luckin_shops aa, Hotels.tmp_luckin_shops bb
-set aa.city=bb.city 
-where aa.ts_short="2020-01-22" and bb.city !='' and aa.ts_short=bb.ts_short and aa.shop_no=bb.shop_no;
+-- 查看消失的店铺是否真的关闭了
+select * from
+(SELECT * from Hotels.luckin_shops where ts_short=@last_batch_id) aa
+left join 
+(SELECT * from Hotels.luckin_shops where ts_short=@batch_id) bb
+on aa.deptid=bb.deptid
+where bb.shop_no is null;
 
+-- 完整验证
+-- city is null or ''
+select * from Hotels.luckin_shops where ts_short=@batch_id and city is null or city ='';
+select * from Hotels.luckin_shops where ts_short=@batch_id and shop_no is null or shop_no ='';
+select * from Hotels.luckin_shops_other where ts_short=@batch_id and city is null or city ='';
+select count(*) from Hotels.luckin_shops_other where ts_short=@batch_id and city is null or city ='';
 
+-- 店铺城市变更
+select * from 
+(SELECT * from Hotels.luckin_shops where ts_short=@batch_id) aa
+left join 
+(SELECT * from Hotels.luckin_shops where ts_short=@last_batch_id) bb
+on aa.deptid=bb.deptid
+where aa.city !=bb.city;
 
-select count(*) from Hotels.tmp_luckin_shops where ts_short="2020-01-22" and city!='';
-
-select ts_short, count(1) from Hotels.bth_remain group by ts_short;
-select left(ts,13), count(1) from Hotels.bth_remain group by left(ts,13) order by left(ts, 13) desc;
 
 # 机票项目
 select ts_short, count(*) from flight_ticket.tickets group by ts_short;
 select ts_short, count(*) from flight_ticket.ctrip_tickets group by ts_short;
 
-select ts_short, from_net, count(*) from flight_ticket.tickets group by ts_short, from_net order by ts_short desc;
+select ts_short, from_net, count(*), count(distinct flight_no), count(distinct dep_port, arr_port, time_interval) from flight_ticket.tickets group by ts_short, from_net order by ts_short desc;
 select ts_short,from_net, count(*) from flight_ticket.ctrip_tickets group by ts_short, from_net order by ts_short desc;
-select ts_short, count(*) from flight_ticket.umetrip_info group by ts_short;
-select distinct dep_port, arr_port from flight_ticket.tickets where from_net="cs_air" and ts_short="2019-12-27";
-select ts_short, count(distinct dep_port, arr_port) from flight_ticket.tickets where from_net="cs_air" group by  ts_short;
+select ts_short, count(*) from flight_ticket.umetrip_info group by ts_short desc;
+select ts_short, count(*) from flight_ticket.sanya_flight_info group by ts_short desc;
+
+select aa.* from 
+(select distinct dep_port, arr_port from jp_flight_ticket.jal where from_net="jal_domestic" and ts_short="2020-05-15" ) aa
+left join 
+(select distinct dep_port, arr_port from jp_flight_ticket.jal where from_net="jal_domestic" and ts_short="2020-05-22" ) bb
+on aa.dep_port=bb.dep_port and aa.arr_port=bb.arr_port
+where bb.arr_port is null;
+
+-- 三亚航线
+select ts_short, from_net, count(*), count(distinct flight_no), count(distinct dep_port, arr_port, time_interval) from flight_ticket.sanya_tickets group by ts_short, from_net order by ts_short desc;
+select ts_short, count(*), count(distinct flight_no) from flight_ticket.sanya_ctrip_tickets group by ts_short order by ts_short desc;
+select ts_short, count(*), count(distinct flight_no) from flight_ticket.sanya_flight_info group by ts_short order by ts_short desc;
 
 -- 日本机票
-select ts_short, count(*) from jp_flight_ticket.jal where from_net="jal_domestic" group by ts_short;
-select ts_short, count(*) from jp_flight_ticket.jal where from_net="jal_internal" group by ts_short;
-select ts_short, count(*) from jp_flight_ticket.ana group by ts_short;
-select ts_short, count(*) from jp_flight_ticket.ctrip_tickets group by ts_short;
-select dep_port, arr_port, count(*) from flight_ticket.tickets where from_net="china_air" and ts_short="2019-11-01" group by dep_port, arr_port;
-
+select ts_short, count(*), count(distinct flight_no), count(distinct dep_port, arr_port) from jp_flight_ticket.jal where from_net="jal_domestic" group by ts_short;
+select ts_short, count(*), count(distinct flight_no), count(distinct dep_port, arr_port) from jp_flight_ticket.jal where from_net="jal_internal" group by ts_short;
+select ts_short, count(*), count(distinct flight_no), count(distinct dep_city, arr_city) from jp_flight_ticket.ana group by ts_short;
+select ts_short, count(*), count(distinct dep_city_id, arr_city_id) from jp_flight_ticket.ctrip_tickets group by ts_short;
+select * from jp_flight_ticket.ctrip_tickets order by ts desc;
 
 select dep_city, arr_city, count(*) from jp_flight_ticket.jal where from_net="jal_domestic" and ts_short="2019-10-18" group by dep_city, arr_city;
 select dep_city, arr_city, count(*) from jp_flight_ticket.jal where from_net="jal_internal" and ts_short="2019-11-08" group by dep_city, arr_city;
 
 select dep_city_name, arr_city_name, count(*) from jp_flight_ticket.ctrip_tickets where ts_short="2019-10-18" group by dep_city_name, arr_city_name;
-select dep_city, arr_city, count(*) from jp_flight_ticket.ana where ts_short="2019-10-18" group by dep_city, arr_city;
+select dep_city, arr_city, count(*) from jp_flight_ticket.ana where ts_short="2020-04-24" group by dep_city, arr_city;
 
 
 # 智联
@@ -151,10 +230,32 @@ select ts_short, count(*) from Jobs.zhilian_job group by ts_short;
 select ts_short, count(*) from Jobs.zhilian_company group by ts_short;
 
 select ts_short, count(*) from Jobs.tmp_zhilian_job group by ts_short;
+select count(*) from Jobs.tmp_zhilian_company;
+
+-- 合并职位
+select left(ts, 13), count(*) from Jobs.tmp_zhilian_job where ts_short in ('2020-04-16') group by left(ts, 13);
 
 insert ignore into Jobs.zhilian_job 
-select null,job_number,jobName,company,updateDate,updateDay,min_salary,max_salary,salary,eduLevel,jobType,workingExp,workingExp_str,industry,industry_first,emplType,applyType,saleType,companyLogo,expandCount,score,vipLevel,tagIntHighend,rootOrgId,staffId,chatWindow,timeState,rate,city_code,city_name,region_code,industry_id,bestEmployerLabel,ts,'2020-03-05' 
-from Jobs.tmp_zhilian_job where ts_short in ('2020-03-05', '2020-03-06');
+select null,job_number,jobName,company,updateDate,updateDay,min_salary,max_salary,salary,eduLevel,jobType,workingExp,workingExp_str,industry,industry_first,emplType,
+	applyType,saleType,companyLogo,expandCount,score,vipLevel,tagIntHighend,rootOrgId,staffId,chatWindow,timeState,rate,city_code,city_name,region_code,industry_id,
+	bestEmployerLabel,ts,'2020-06-18' 
+-- select count(distinct job_number) 
+from Jobs.tmp_zhilian_job where ts_short in ('2020-06-18', '2020-06-19', '2020-06-20');
+
+-- 分析新增公司比例
+select distinct t1.cz_name, t1.cz_id from
+-- select count(*) from 
+Jobs.tmp_zhilian_company_03 t1
+left join 
+Jobs.tmp_zhilian_company t2
+on t1.cz_id=t2.cz_id
+where t2.cz_id is null
+;
+
+
+-- 合并智联的新公司
+insert ignore into Jobs.zhilian_company
+select null,cz_id,cz_name,cz_type,url,cz_size,ts,'2020-05-30' from Jobs.tmp_zhilian_company where ts_short in ('2020-05-01', '2020-05-15') and cz_name not like '%companyName%';
 
 # 58同城
 -- 690 45 475 15919
@@ -164,27 +265,27 @@ select count(*) from Jobs.`58_job`;
 select count(*) from Jobs.`58_sub_local`;
 select ts_short, count(*) from Jobs.`58_job` group by ts_short;
 select batch_id, count(*) from Jobs.`58_job` group by batch_id;
-select ts_short, count(*) from Jobs.`58_job_from_company` group by ts_short;
+select batch_id, count(*) from Jobs.`58_job_from_company` group by batch_id;
 select batch_id, count(*) from Jobs.`58_company` group by batch_id;
 select batch_id, count(*) from Jobs.`58_company_tag` group by batch_id;
 select batch_id, count(*) from Jobs.`58_company_info` group by batch_id;
 select batch_id, count(*) from Jobs.`58_job_info` group by batch_id;
-select ts_short, count(*) from Jobs.`58_job_info` where batch_id='2020-02-01' group by ts_short;
+select left(ts, 13), count(*) from Jobs.`58_job_info` where batch_id='2020-02-01' group by left(ts, 13);
 
 select count(distinct comp_no) from Jobs.`58_company`;
-
+select batch_id, count(*) from Jobs.`58_job_finally` group by batch_id;
 
 -- 最终计算
 insert ignore into Jobs.`58_job_finally`
 select cc.*, dd.pubdateInterval from
 	(select aa.*, bb.updateInterval from
-		(select * from Jobs.`58_job` where batch_id='2020-02-01') as aa
+		(select * from Jobs.`58_job` where batch_id='2020-05-01') as aa
 		left join 
-		(select job_no, updateInterval from Jobs.`58_job_from_company` where batch_id='2020-02-01') as bb
+		(select job_no, updateInterval from Jobs.`58_job_from_company` where batch_id='2020-05-01') as bb
 		on aa.job_no = bb.job_no
 	) cc
 	left join 
-	(select job_no,pubdateInterval from Jobs.`58_job_info` where batch_id='2020-02-01') dd
+	(select job_no,pubdateInterval from Jobs.`58_job_info` where batch_id='2020-05-01') dd
 	on cc.job_no=dd.job_no
 ;
 
@@ -200,21 +301,21 @@ select ts_short, count(*) from Jobs.`58_job_info` where batch_id="2019-09-01" gr
 
 # 小红书
 -- 周更
-select ts_short, count(*) from xiaohongshu.brands group by ts_short;
-select ts_short, count(*) from xiaohongshu.brand_info group by ts_short;
-select ts_short, count(*) from xiaohongshu.notes_by_brand group by ts_short;
-select ts_short, count(*) from xiaohongshu.note_info group by ts_short;
-select left(ts,16), count(*) from xiaohongshu.note_info group by left(ts,16) order by left(ts,16) desc;
+select ts_short, count(*) from xiaohongshu.brands group by ts_short order by ts_short desc;
+select ts_short, count(*), count(account_id) from xiaohongshu.brand_info group by ts_short order by ts_short desc;
+select ts_short, count(*), count(distinct brand_id) from xiaohongshu.notes_by_brand group by ts_short order by ts_short desc limit 10;
+select ts_short, count(*) from xiaohongshu.note_info group by ts_short order by ts_short desc;
 select pub_date, count(*) from xiaohongshu.note_info group by pub_date order by pub_date DESC;
+select ts_short, count(*) from xiaohongshu.user_info group by ts_short;
 
 select count(*) from
-(select note_id from xiaohongshu.notes_by_brand where ts_short="2019-11-07") aa
+(select note_id from xiaohongshu.notes_by_brand where ts_short="2020-05-07") aa
 left join 
-(select note_id from xiaohongshu.notes_by_brand where ts_short<"2019-11-07") bb
+(select note_id from xiaohongshu.notes_by_brand where ts_short="2020-04-30") bb
 on aa.note_id=bb.note_id
 where bb.note_id is null;
 
-select ts_short, count(*) from xiaohongshu.user_info group by ts_short;
+select ts_short, count(*) from xiaohongshu.tmp_user_info group by ts_short;
 
 -- 月更
 select ts_short, count(*) from xiaohongshu.goods_by_brand group by ts_short;
@@ -225,8 +326,8 @@ select ts_short, count(*) from xiaohongshu.app_brand_category group by ts_short;
 select * from xiaohongshu.brand_info where brand_name="三只松鼠";
 
 -- 周一更新
-select ts_short, count(*) from xiaohongshu.z_notes_by_keyword group by ts_short;
-select keyword, sort, count(*) from xiaohongshu.z_notes_by_keyword where ts_short="2020-02-17" group by keyword, sort;
+select ts_short, count(*) from xiaohongshu.z_notes_by_keyword group by ts_short order by ts_short desc;
+select ts_short,keyword, sort, count(*) from xiaohongshu.z_notes_by_keyword group by ts_short, keyword, sort;
 select ts_short, count(*) from xiaohongshu.z_note_info group by ts_short;
 select * from xiaohongshu.z_note_info order by ts desc limit 10;
 select * from xiaohongshu.z_notes_by_keyword order by ts desc limit 10;
@@ -238,35 +339,47 @@ delete from xiaohongshu.z_notes_by_keyword where ts_short='2020-02-24';
 select ts_short, count(*) from proya.cities group by ts_short;
 select ts_short, count(*) from proya.stores group by ts_short;
 
-select ts_short, count(*) from proya.canadagoose_countries group by ts_short;
+select count(*) from proya.canadagoose_countries;
 select ts_short, count(*) from proya.canadagoose_stores group by ts_short;
 select ts_short, country, count(*) from proya.canadagoose_stores group by ts_short, country;
 
 select ts_short, count(*) from proya.moncler_stores group by ts_short;
 select ts_short, count(*) from proya.muji_stores group by ts_short;
+select country, ts_short, count(*) from proya.muji_stores group by country, ts_short;
 select ts_short, count(*) from proya.muji_address group by ts_short;
 select ts_short, count(*) from proya.muji_news group by ts_short;
 select ts_short, count(*) from proya.nome_stores group by ts_short;
 select ts_short, count(*) from proya.uniqlo_stores group by ts_short;
 select country, ts_short, count(*) from proya.uniqlo_stores group by country, ts_short;
 select country, count(*) from proya.uniqlo_stores where ts_short="2019-12-16" group by country;
-select * from proya.uniqlo_stores where ts_short="2019-12-16" and country="China";
+select * from proya.uniqlo_stores where ts_short="2019-12-16" and country="Japan";
 
+select ts_short, count(*) from miniso.store_address group by ts_short;
+-- 检查地址为空的
+select * from miniso.store_address where city is null order by id desc;
+select ts_short, count(*) from miniso.wx_stores group by ts_short;
+select * from miniso.wx_stores order by id desc;
+-- select ts_short, count(*) from miniso.stores_dianping group by ts_short;
+select ts_short, count(*) from miniso.stores group by ts_short;
 
 # 大众点评
 select count(*) from dianping.shops;
-select left(ts,13), count(*) from dianping.shops_2020_01 group by left(ts,13);
+select count(distinct shop_id) from dianping.shops;
+select left(ts,13), count(*) from dianping.shops group by left(ts,13);
 select left(ts, 16), count(*) from dianping.shops_wx where ts_short="2019-10-30" group by left(ts, 16);
 select count(*) from dianping.shops_m;
 select count(*) from dianping.shops_2_2019_07;
 select ts_short, count(distinct city_id) from dianping.shops_m_search_count group by ts_short;
 
-
 -- 生成表2 shops_2_2019_07
-create table dianping.shops like dianping.shops_2019_12;
-create table dianping.shops_2_2020_02 like dianping.shops_2_2019_11;
+create table dianping.shops_2020_05 like dianping.shops_2020_03;
+create table dianping.shops_2_2020_05 like dianping.shops_2_2019_11;
 
-insert ignore into dianping.shops_2_2020_02
+insert ignore into dianping.shops_2020_05 
+select * from dianping.shops;
+
+
+insert ignore into dianping.shops_2_2020_05
 select e.province_short, e.cate_2_name, sum(count_num) as count_num
 from
 	(
@@ -281,7 +394,7 @@ from
 						(select province_short, city_id from dianping.city_list_province )as a
 						left join
 						(
-							select city_id,cate_id, count(*) as count_num from dianping.shops_2020_02 group by city_id, cate_id
+							select city_id,cate_id, count(*) as count_num from dianping.shops_2020_05 group by city_id, cate_id
 						) as b
 						on a.city_id=b.city_id
 			) c
@@ -298,39 +411,40 @@ select ts_short, cloud, count(*) from cloud.Uniform_bk group by ts_short, cloud;
 -- ali
 select ts_short, count(*) from cloud.aliyun_instance group by ts_short;
 select ts_short, count(*) from cloud.aliyun_instance_zone group by ts_short;
-select regionId, count(*) from cloud.aliyun_instance_zone where ts_short='2020-03-06' group by regionId;
+select regionId, count(*) from cloud.aliyun_instance_zone where ts_short='2020-06-04' group by regionId;
 select ts_short, count(*) from cloud.aliyun_prices group by ts_short;
 select ts_short, count(*) from cloud.aliyun_regions group by ts_short;
 -- tencent
 select ts_short, count(*) from cloud.tencent_regions group by ts_short;
 select ts_short, count(*) from cloud.tencent_instances group by ts_short;
-select zoneId, count(*) from cloud.tencent_instances where ts_short='2020-02-05' group by zoneId;
+select zoneId, count(*) from cloud.tencent_instances where ts_short='2020-06-04' group by zoneId;
 select ts_short, count(*) from cloud.tencent_basic_instances group by ts_short;
-select `zone`, count(*) from cloud.aliyun_instance_zone where ts_short='2019-12-05' group by `zone`;
+select `zone`, count(*) from cloud.aliyun_instance_zone where ts_short='2020-05-07' group by `zone`;
 
 -- aws
 select ts_short, count(*) from cloud.aws_regions group by ts_short;
 select ts_short, count(*) from cloud.aws_instances group by ts_short;
 
-select distinct location from cloud.aws_instances where ts_short="2020-03-06";
-select distinct Region from cloud.Uniform where ts_short="2019-09-05" and Cloud="AWS";
+select distinct location from cloud.aws_instances where ts_short="2020-06-04";
+select * from cloud.Uniform where ts_short="2020-05-07" and Cloud="AWS" and Region is null;
 
 
 -- azure
 select ts_short, count(*) from cloud.azure_os group by ts_short;
 select ts_short, count(*) from cloud.azure_regions group by ts_short;
-select ts_short, count(*) from cloud.azure_prices group by ts_short;
+select ts_short, count(*), count(distinct os_name), count(distinct location, os_name) from cloud.azure_prices group by ts_short;
 select ts_short, count(*) from cloud.azure_instance_info group by ts_short;
 
 
 -- gcp
 select ts_short, count(*) from cloud.gcp_instances group by ts_short;
 select ts_short, count(*) from cloud.gcp_prices group by ts_short;
-select ts_short, count(*) from cloud.gcp_cpu_group group by ts_short;
+-- select ts_short, count(*) from cloud.gcp_cpu_group group by ts_short;
 select ts_short, count(*) from cloud.gcp_regions group by ts_short;
 
+-- 分析是不是需要手动添加group id
 select * from 
-(select distinct group_id from cloud.gcp_instances where ts_short='2019-12-05') aa
+(select distinct group_id from cloud.gcp_instances where ts_short='2020-06-04') aa
 left join 
 (select * from cloud.gcp_cpu_group where ts_short is null)  bb
 on aa.group_id = bb.group_id
@@ -343,27 +457,29 @@ select ts_short, Cloud, count(*) from cloud.Uniform_bk group by ts_short, Cloud;
 
 select count(*)
 from cloud.Uniform
-where ts_short="2019-09-05" and Cloud="Azure" and (CPUseries is NULL or GPUseries is NULL or Region is NULL or InstanceType is NULL );
+where ts_short="2020-04-07" and Cloud="Azure" and (CPUseries is NULL or GPUseries is NULL or Region is NULL or InstanceType is NULL );
 
 -- Mercari
 
 -- 分析当前批次新增用户
 select ts_short, count(1) from mercari.brands group by ts_short;
+select ts_short, count(1) from mercari.categories group by ts_short;
 select batch_id, count(1) from mercari.brands_by_category group by batch_id;
-select ts_short, count(1) from mercari.app_sku_2019_10_02 group by ts_short;
+select ts_short, count(1) from mercari.app_sku_2020_02_02 group by ts_short;
 select count(*) from mercari.app_sku;
+select * from mercari.app_sku order by id desc;
 select left(ts, 13), count(*) from mercari.app_sku group by left(ts, 13);
-select left(ts, 13), count(*) from mercari.app_user where batch_id="2020-01-01" group by left(ts, 13);
+select count(*) from mercari.app_user where batch_id="2020-06-01";
 
 select batch_id, count(1) from mercari.app_user group by batch_id;
 select ts_short, count(1) from mercari.app_user group by ts_short order by ts_short DESC;
 select left(ts, 13), count(1) from mercari.app_user group by left(ts, 13) order by left(ts, 13) DESC;
 select ts_short, count(1) from mercari.all_user group by ts_short;
 select count(*) from mercari.all_user;
-select ts_short, count(1) from mercari.us_all_user group by ts_short;
 select * from mercari.app_sku_2019_10_02 where batch_id="2019-10-01";
 
-create table mercari.app_sku like mercari.app_sku_2020_02_01;
+create table mercari.app_sku like mercari.app_sku_2020_05_01;
+
 
 -- 计算表的验证
 select yearmonth, sum(value) from mercari.final_buyer_txn group by yearmonth; 
@@ -374,9 +490,9 @@ select yearmonth, count(*) from mercari.final_seller_txn group by yearmonth;
 select yearmonth, count(*) from mercari.final_seller_listing group by yearmonth; 
 
 
-select yearmonth, sum(value) from mercari.us_final_buyer_txn group by yearmonth; 
-select yearmonth, sum(value) from mercari.us_final_seller_txn group by yearmonth; 
-select yearmonth, count(*) from mercari.us_final_buyer_txn group by yearmonth; 
+select yearmonth, sum(value), sum(sku), count(*) from mercari.us_final_buyer_txn group by yearmonth; 
+select yearmonth, sum(value), sum(sku), count(*) from mercari.us_final_seller_txn group by yearmonth; 
+select update_date, sum(value), sum(sku), count(*) from mercari.us_final_seller_txn group by update_date; 
 select yearmonth, count(*) from mercari.us_final_seller_txn group by yearmonth; 
 select yearmonth, count(*) from mercari.us_final_seller_listing group by yearmonth; 
 
@@ -395,55 +511,74 @@ select left(ts,13), count(1) from mercari.us_sku_info where batch_id="2020-02-02
 select left(ts,13), count(1) from mercari.us_sku_from_seller where batch_id="2019-11-02" group by left(ts,13);
 select ts_short, count(1) from mercari.us_sku_info_for_all where batch_id="2020-01-02" group by ts_short order by ts_short desc;
 select  left(ts,13), count(1) from mercari.us_sku_from_seller where batch_id="2019-10-02" group by  left(ts,13);
-select batch_id, count(1) from mercari.us_app_sku_info_for_all group by batch_id;
+select count(*) from mercari.us_app_sku_info_for_all;
 select left(ts,13), count(1) from mercari.us_app_sku_info_for_all group by left(ts,13);
+select count(1) from mercari.us_all_user;
 select ts_short, count(1) from mercari.us_all_user group by ts_short;
+select batch_id, count(1) from mercari.us_user_info group by batch_id;
+
+create table mercari.us_app_sku_info_for_all like mercari.us_app_sku_info_for_all_2020_05;
 
 -- fangtianxia 房天下
-select ts_short, count(*) from fangtianxia.community_list group by ts_short;
-select ts_short, count(*) from fangtianxia.community_info group by ts_short;
-select ts_short, count(*) from fangtianxia.community_live_history group by ts_short;
+select ts_short, count(*), count(distinct url), count(distinct livindate) from fangtianxia.community_list group by ts_short;
+select ts_short, count(*), count(distinct community) from fangtianxia.community_info group by ts_short;
+select ts_short, count(*), count(community) from fangtianxia.community_live_history group by ts_short;
 select ts, count(*) from fangtianxia.final_delivery group by ts;
 
--- 数据清洗和计算
+-- 判断数据是否漏爬或误爬
+set @batch_id='2020-06-20';
+select * from 
+(select distinct decoration_origin from fangtianxia.community_info where ts_short=@batch_id) aa
+left join 
+(select distinct decoration_origin from fangtianxia.community_info where ts_short<@batch_id) bb
+on aa.decoration_origin=bb.decoration_origin;
+
+select distinct price_origin from fangtianxia.community_info where  ts_short=@batch_id and price = 0;
+select distinct decoration_origin from fangtianxia.community_info where ts_short=@batch_id;
+select distinct construction_area_origin from fangtianxia.community_info where (construction_area =0 or construction_area is null) and ts_short=@batch_id;
+select distinct total_houses_origin from fangtianxia.community_info where (total_houses =0 or total_houses is null) and ts_short=@batch_id;
+select distinct property_costs_origin from fangtianxia.community_info where (property_costs =0 or property_costs is null) and ts_short=@batch_id;
+
+select ts, decoration, count(*), sum(construction_area_p), sum(total_houses_p) from fangtianxia.final_delivery group by ts, decoration;
+
+-- 数据计算
 insert ignore into fangtianxia.final_delivery
-    select null, bb.community, aa.name, aa.city , bb.decoration, bb.price, bb.property_costs, bb.developer, bb.manager, aa.livindate, bb.construction_area/cc.live_count, bb.total_houses/cc.live_count, '2020-02' from
-    (select * from fangtianxia.community_list where ts_short= "2020-02-14" ) aa
+    select null, bb.community, aa.name, aa.city , bb.decoration, bb.price, bb.property_costs, bb.developer, bb.manager, aa.livindate, bb.construction_area/cc.live_count, bb.total_houses/cc.live_count, '2020-06' from
+    (select * from fangtianxia.community_list where ts_short= @batch_id ) aa
     left join
-    (select * from fangtianxia.community_info where ts_short= "2020-02-14" ) bb
+    (select * from fangtianxia.community_info where ts_short= @batch_id ) bb
     on aa.url=bb.community
     left join
     (
-    select community, count(*) as live_count from fangtianxia.community_live_history where ts_short= "2020-02-14" group by community
+    select community, count(*) as live_count from fangtianxia.community_live_history where ts_short= @batch_id group by community
     ) cc
     on aa.url = cc.community
     where bb.community is not null
     ;
-
--- 判断数据是否漏爬或误爬
-select distinct price_origin from fangtianxia.community_info where  ts_short="2020-02-14" and price = 0;
-select distinct decoration_origin from fangtianxia.community_info where  ts_short="2019-12-20";
-select distinct construction_area_origin from fangtianxia.community_info where (construction_area =0 or construction_area is null) and ts_short="2020-02-14";
-select distinct total_houses_origin from fangtianxia.community_info where (total_houses =0 or total_houses is null) and ts_short="2020-02-14";
-select distinct property_costs_origin from fangtianxia.community_info where (property_costs =0 or property_costs is null) and ts_short="2020-02-14";
-
-select ts, decoration, count(*), sum(construction_area_p), sum(total_houses_p) from fangtianxia.final_delivery group by ts, decoration;
+   
 
 -- wow
 select ts_short, count(*) from wow.topics group by ts_short;
 select `language`, region, ts_short, count(*) from wow.topics group by `language`, region, ts_short;
 
+select left(created_at, 10), count(*) from wow.topics where ts_short='2020-04-07' and region='eu' and `language`='English (EU)' group by left(created_at, 10);
+
 -- paypay
 select ts_short, count(*) from paypay.categories group by ts_short;
 select ts_short, count(*) from paypay.brands group by ts_short;
-select ts_short, count(*) from paypay.search_count group by ts_short;
-select ts_short, count(*) from paypay.sku_by_seller group by ts_short;
+
+-- 每周一
+select ts_short, count(*), sum(total_count) from paypay.search_count group by ts_short desc;
+-- 每天
+select ts_short, count(*) from paypay.sku_status group by ts_short desc;
+-- 第一第三周的周一
+select ts_short, count(*), count(distinct seller_id) from paypay.sku_by_seller group by ts_short desc;
+
+
 select DISTINCT category_id_1 from paypay.category_new;
 select * from paypay.search_count WHERE total_count=149999;
 select * from paypay.search_count WHERE ts_short="2019-12-09"  order by total_count desc;
 select left(ts, 16), count(*) from paypay.sku_by_seller where ts_short="2019-11-07" group by left(ts, 16);
-select ts_short, sum(total_count) from paypay.search_count group by ts_short;
-select ts_short, count(*) from paypay.sku_status group by ts_short;
 
 
 select aa.*, bb.total_count as bb_total_count, aa.total_count-bb.total_count as m FROM
@@ -468,34 +603,146 @@ select ts_short, count(*) from muji.sku group by ts_short;
 select ts_short, count(*) from twse.company_income group by ts_short;
 select data_date, count(*) from twse.company_income group by data_date;
 select ts_short, count(*) from twse.tsmc_speech group by ts_short;
+select * from twse.company_income order by ts_short desc;
 
 -- talabat
-select count(*) from talabat.areas;
+# 8号
+select ts_short, count(*), count(area_url) from talabat.areas group by ts_short;
 select count(*) from talabat.cuisines;
-select ts_short, count(*) from talabat.restaurants group by ts_short;
-select ts_short, count(*), count(distinct area_url) from talabat.area_restaurants group by ts_short;
-select ts_short, count(*) from talabat.area_restaurants group by ts_short;
-select ts_short, count(*) from talabat.`21_area_restaurants` group by ts_short;
-select left(ts, 13), count(*), count(distinct area_url) from talabat.`21_area_restaurants` group by left(ts, 13) order by left(ts, 13) desc;
+select ts_short, count(*),count(distinct restaurant_id), count(distinct area_url) from talabat.area_restaurants group by ts_short;
 select ts_short, count(*) from talabat.trav_areas group by ts_short;
 select ts_short, count(*) from talabat.trav_restaurants group by ts_short;
 select ts_short, count(*) from talabat.rba_map group by ts_short;
+## 每天
+select ts_short, count(*) from talabat.restaurants group by ts_short order by ts_short desc;
+select left(ts, 13), count(*), count(distinct area_url) from talabat.`21_area_restaurants` group by left(ts, 13) order by left(ts, 13) desc;
+select ts_short, count(*), count(distinct area_url), count(distinct left(ts, 13)) from talabat.`21_area_restaurants` group by ts_short;
+
+
 
 -- hungerstation
 ## 每天
 select ts_short, count(*) from hungerstation.`3_areas` group by ts_short;
 select ts_short, count(*) from hungerstation.`3_restaurants_by_area` group by ts_short;
-select left(ts, 13), count(*), count(distinct area_id, city_id) from hungerstation.`3_restaurants_by_area` group by left(ts, 13) order by left(ts, 13) desc;
+select left(ts, 13), count(*), count(distinct branch_id), count(distinct restaurant_id), count(distinct area_id, city_id), count(distinct left(ts, 13)) from hungerstation.`3_restaurants_by_area` group by left(ts, 13) order by left(ts, 13) desc;
+select ts_short, area_id, city_id, count(*), count(distinct branch_id), count(distinct restaurant_id) from hungerstation.`3_restaurants_by_area` group by ts_short, area_id, city_id order by ts_short desc;
+
 
 ## 每月
 select ts_short, count(*) from hungerstation.areas group by ts_short;
 select ts_short, count(*) from hungerstation.cuisines group by ts_short;
-select ts_short, count(*), count(distinct area_id, city_id) from hungerstation.restaurants_by_area group by ts_short;
-select ts_short, count(*) from hungerstation.reviews_by_branch group by ts_short;
+select ts_short, count(*), count(distinct restaurant_id), count(distinct area_id, city_id) from hungerstation.restaurants_by_area group by ts_short;
+select ts_short, count(*), count(distinct branch_id) from hungerstation.reviews_by_branch group by ts_short;
+
 
 -- yogiyo
 # 每月5 20
 select ts_short, count(*) from yogiyo.restaurants group by ts_short;
+select ts_short, from_site, count(*) from yogiyo.res_info_by_day group by ts_short, from_site order by ts_short desc;
+select count(distinct restaurant_id) from yogiyo.restaurants where franchise_id in ("18", "37");
+
+select franchise_id, franchise_name, count(distinct restaurant_id) as cnt from yogiyo.restaurants group by franchise_id, franchise_name order by cnt desc;
 select ts_short, count(*) from yogiyo.tmp_total_objects group by ts_short;
 
 
+-- baemin
+select ts_short, count(*) from baemin.franchises group by ts_short;
+select ts_short, count(*) from baemin.franchises_list group by ts_short;
+select ts_short, query_type, count(*) from baemin.restaurants_baemin_solo group by query_type, ts_short;
+select ts_short, count(*) from baemin.restaurants_riders group by ts_short;
+select ts_short, count(*) from baemin.restaurants_takeout group by ts_short;
+select ts_short, count(*) from baemin.res_info group by ts_short;
+select left(ts, 13), count(*) from baemin.res_info where ts_short='2020-06-21' group by left(ts, 13);
+select ts_short, query_type, count(*) from baemin.tmp_all_restaurants group by query_type, ts_short;
+select ts_short, count(distinct shopNumber) from baemin.tmp_all_restaurants group by ts_short;
+select count(distinct shopNumber) from baemin.tmp_all_restaurants where ts_short >'2020-05' and query_type='baemin';
+select ts_short, count(*) from baemin.tmp_restaurants_in group by ts_short;
+
+select ts_short, count(*) from baemin.restaurants_finally group by ts_short;
+select ts_short, count(*) from baemin.restaurants_finally where in_baemin is NULL group by ts_short;
+
+
+select count(distinct Shop_No) from baemin.franchises_list where Fr_No in ('2011100211', '2011100212');
+
+-- tesla
+select ts_short, count(*), count(distinct user_id) from tesla.cur_visitors group by ts_short order by ts_short desc;
+select * from tesla.online_statistics order by ts desc;
+select ts_short, count(*) from tesla.visitor_info where status = 1 group by ts_short;
+select * from tesla.cur_visitors order by cast(user_id as unsigned) desc;
+select * from tesla.visitor_info order by cast(user_id as unsigned) desc;
+-- 每周二
+select ts_short, count(distinct user_id), count(*) from tesla.visitor_info group by ts_short;
+select left(joined, 10), max(user_id), count(*) from tesla.visitor_info group by left(joined, 10) order by left(joined, 10) desc; 
+
+select * from tesla.visitor_info where left(joined, 10)>left(last_activity, 10);
+select * from tesla.visitor_info order by user_id desc;
+
+select aa.status, bb.status, count(*) from 
+(select * from tesla.visitor_info where ts_short='2020-04-14') aa
+left join
+(select * from tesla.visitor_info where ts_short!='2020-04-14') bb
+on aa.user_id=bb.user_id
+group by aa.status, bb.status
+;
+
+# uniqlo
+-- 中国
+select * from uniqlo.uniqlo_cn_products_sum;
+-- 每天四次
+select ts_short, count(*), count(distinct productCode), count(distinct left(ts, 13)) from uniqlo.uniqlo_cn_products group by ts_short;
+select ts_short, count(*), count(distinct sku_code), count(distinct product_code), count(distinct left(ts, 13)) from uniqlo.uniqlo_cn_sku_stock group by ts_short;
+select ts_short, count(*), count(distinct product_code), count(distinct left(ts, 13)) from uniqlo.uniqlo_cn_product_stock group by ts_short;
+
+-- 10分钟一次
+-- select ts_short, count(*), count(distinct productCode), count(distinct left(ts, 13)) from uniqlo.uniqlo_cn_products_20 group by ts_short;
+select ts_short, count(distinct sku_code), count(*) from uniqlo.uniqlo_cn_sku_stock_by_store group by ts_short;
+
+-- 两小时一次
+select ts_short, count(*), count(distinct product_code), count(distinct left(ts, 13)) from uniqlo.uniqlo_cn_product_stock_sample group by ts_short;
+select ts_short, count(*), count(distinct product_code), count(distinct left(ts, 13)) from uniqlo.uniqlo_cn_sku_stock_sample group by ts_short;
+
+
+-- 日本
+## 10分钟一次
+-- select ts_short, count(*), count(distinct product_code), count(distinct left(ts, 13)) from uniqlo.uniqlo_product_stock_jp group by ts_short;
+-- select ts_short, count(*), count(distinct sku_code), count(distinct left(ts, 13)) from uniqlo.uniqlo_sku_stock_jp group by ts_short;
+
+## 每天13次
+select left(ts, 13),is_visible, count(*), count(distinct productID), count(distinct left(ts, 13)) from uniqlo.uniqlo_jp_products group by left(ts, 13), is_visible order by left(ts, 13) desc;
+select productID, count(*)as cnt from uniqlo.uniqlo_jp_products where is_visible=0 and left(ts, 13)='2020-05-26 18' group by productID order by cnt desc;
+-- select left(ts, 13), count(*), count(distinct left(ts, 13)) from uniqlo.uniqlo_jp_skus group by left(ts, 13);
+
+
+## sushiro
+select * from sushiro.sushiro order by id desc;
+select ts_short, count(*) from sushiro.sushiro group by ts_short order by ts_short desc;
+select * from sushiro.sushiro where table_number='63‘';
+select distinct appointment_number from sushiro.sushiro order by appointment_number;
+select distinct bar_seat_number from sushiro.sushiro order by bar_seat_number;
+select distinct table_number from sushiro.sushiro order by table_number;
+
+select * from 
+sushiro.sushiro aa 
+left JOIN
+sushiro.sushiro bb 
+on aa.channel_id=bb.channel_id
+where aa.ts_short=bb.ts_short and aa.ts_short>'2020-06-07' and bb.bar_seat_number != '' and aa.id<bb.id and aa.bar_seat_number>bb.bar_seat_number;
+
+
+select distinct aa.channel_name, aa.ts from 
+sushiro.sushiro aa 
+left JOIN
+sushiro.sushiro bb 
+on aa.channel_id=bb.channel_id
+where aa.ts_short=bb.ts_short and aa.ts_short>'2020-06-02' and bb.bar_seat_number != '' and aa.ts<bb.ts and aa.bar_seat_number=bb.bar_seat_number and aa.table_number=bb.table_number and aa.appointment_number=bb.appointment_number and aa.next_number=bb.next_number;
+
+# popmart
+
+--  15号
+select ts_short, count(*) from popmart.shops group by ts_short order by ts_short desc;
+
+-- 每天
+select ts_short, count(*), count(distinct left(ts, 13)) from popmart.goods group by ts_short order by ts_short desc;
+select left(ts, 13), count(*), count(distinct shop_id) from popmart.goods group by left(ts, 13) order by left(ts, 13) desc;
+
+select distinct left(ts, 13) from popmart.goods;
