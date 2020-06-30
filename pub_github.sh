@@ -4,6 +4,10 @@
 echo '开始执行命令'
 git pull
 
+# 安装gitbook 插件
+echo '执行命令：gitbook install 安装插件'
+gitbook install
+
 # 生成静态文件
 echo '执行命令：gitbook build .'
 gitbook build .

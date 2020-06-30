@@ -29,7 +29,13 @@ gitbook通过根目录下的SUMMARY.md来管理目录结构, 最多三级目录
         # 验证
         node -v
         # 安装gitbook
-        sudo npm install gitbook -g
+        <!-- sudo npm install gitbook -g -->
+        npm install -g gitbook-cli
+        
+        # debian需要
+        apt-get install curl software-properties-common
+        curl -sL https://deb.nodesource.com/setup_10.x | sudo bash -
+        apt-get install -y nodejs
         ```
    2. 导入一本书
         ```
@@ -52,6 +58,10 @@ gitbook通过根目录下的SUMMARY.md来管理目录结构, 最多三级目录
     # 拉取代码
     echo '开始执行命令'
     git pull
+
+    # 安装gitbook 插件
+    echo '执行命令：gitbook install 安装插件'
+    gitbook install
 
     # 生成静态文件
     echo '执行命令：gitbook build .'

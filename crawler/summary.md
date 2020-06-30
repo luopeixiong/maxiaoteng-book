@@ -21,6 +21,7 @@
     2. Fiddler抓包(优先使用上一个)
     3. [Mitmproxy(使用python编写，是命令行程序)](/crawler/mitmproxy.md)
     4. Wireshark和Tcpdump(不使用http协议的app)
+    5. [部分APP无法代理抓包的原因及解决方法](https://cloud.tencent.com/developer/article/1490033)
 
 ## 2. HTTP请求库和爬虫框架
 1. [requests(可以代替python原生的请求库)](/crawler/requests.md)(**首选**)
