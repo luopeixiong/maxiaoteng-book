@@ -17,5 +17,5 @@
 
 
 ## 2. google相册
-具体内容见[媒体管理](./media_manager.md)
+具体内容见[媒体管理](./backup.md)
 

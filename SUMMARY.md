@@ -175,7 +175,7 @@
 * [Xposed](Configurations/xposed.md)
 * [Nas](Configurations/nas.md)
 * [Gmail](Configurations/gmail.md)
-* [照片管理](Configurations/media_manager.md)
+* [备份管理](Configurations/backup.md)
 * [Google](Configurations/google.md)
 
 
