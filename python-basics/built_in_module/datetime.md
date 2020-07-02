@@ -44,7 +44,17 @@
         In [6]: print(time_now - delta1)
         2014-10-26 20:46:16.657523
     ```
-3. 其他
+3. 时区
+    1. 起因是在日本服务器运行, 写入时间差一小时
+        ```
+            import datetime
+            # utc now
+            utc_now = datetime.datetime.utcnow()
+            now = datetime.datetime.utcnow()
+            # +8:00 时间
+            now = utc_now.astimezone(datetime.timezone(datetime.timedelta(hours=8)))
+        ```
+4. 其他
     1. 上周五的算法
         '''
             weeks = {
