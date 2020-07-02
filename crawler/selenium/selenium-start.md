@@ -11,10 +11,24 @@ sudo python3 -m pip install selenium
 
 当你使用PhantomJS时, selenium会提醒PhantomJS已经被弃用,并且 PhantomJS 不再更新. 同时为了便于调试, windows上用的chrome, 所以选择chrome
 
-** windows 安装都很简单, 主要说明linux安装 **
+**windows 安装都很简单, 主要说明linux安装**
 - 环境: Amazon Linux
 - chrome安装: [安装说明](https://intoli.com/blog/installing-google-chrome-on-centos/)
+    - centos: curl https://intoli.com/install-google-chrome.sh | bash
 - chromedriver安装: [安装说明](https://devopsqa.wordpress.com/2018/03/08/install-google-chrome-and-chromedriver-in-amazon-linux-machine/)
+
+**自动适配浏览器驱动**
+参考[chromedriver-executable-needs-to-be-available-in-the-path](https://stackoverflow.com/questions/29858752/error-message-chromedriver-executable-needs-to-be-available-in-the-path/52878725#52878725)
+```
+# 安装
+pip install webdriver-manager
+
+# 自动匹配
+from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
+
+driver = webdriver.Chrome(ChromeDriverManager().install())
+```
 
 
 ## 3. 快速入门
