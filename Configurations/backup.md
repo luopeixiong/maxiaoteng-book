@@ -29,13 +29,15 @@
 ## 2. 其他
 1. mac电脑
     1. Timemachine
-
 2. 常用密码
     1. onenote, chrome
-
 3. ipad
     1. ituns备份到nas
-
 4. 微信聊天
     1. mac电脑备份
     2. 同时可以从timemachine恢复
+5. 通讯录
+    1. gmail
+6. 运动记录
+    1. garmin connect
+    2. 咕咚
