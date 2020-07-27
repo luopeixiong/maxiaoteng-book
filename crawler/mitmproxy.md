@@ -94,10 +94,12 @@
                     host = flow.request.host
                     sort = flow.request.query.get('sort')
                     resp = flow.response.text
+                    headers = flow.request.headers
                     # post方法的body
                     content = flow.request.get_content()
+                    josn_post_data= json.loads(flow.request.get_content().decode('utf-8'))
             
-            # 直接拦截
+            # 直接拦截, 不握手
             def http_connect(self, flow: mitmproxy.http.HTTPFlow):
                 if flow.request.host == "www.google.com":
                     flow.response = http.HTTPResponse.make(404)
