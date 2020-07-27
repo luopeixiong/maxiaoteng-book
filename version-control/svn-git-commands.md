@@ -48,6 +48,7 @@
     ```
     git log  # 显示commit记录
     git log --graph --oneline firstbranch_name secondbranch_name  # 按图形显示
+    git log -1 -- [file path]   # 查看指定文件的记录, 即时删除了也支持
     ```
 
 7. **检出某一版本**
