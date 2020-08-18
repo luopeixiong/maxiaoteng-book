@@ -54,3 +54,13 @@ gzip xx.tar  # 将自动生成xx.tar.gz的压缩文件, 并替换掉之前的xx.
 # 解压
 gzip -d xx.tar.gz  # 将解压文件为xx.tar并替换掉原来的xx.tar.gz
 ```
+
+## 7. zip unzip
+```
+# -d 指定解压目录
+unzip xxx.zip -d xxdir/
+
+# -q 不显示过程, -r 递归压缩
+zip -q -r html.zip /home/html
+zip -q -r html.zip *
+```
