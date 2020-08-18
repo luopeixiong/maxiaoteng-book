@@ -178,6 +178,7 @@
 * [备份管理](Configurations/backup.md)
 * [Google](Configurations/google.md)
 * [Github](Configurations/github.md)
+* [pixel android开发机](Configurations/pixel.md)
 
 
 ## 面试汇总
@@ -191,5 +192,6 @@
 <!-- * [2019年终总结](others/summary_2019.md) -->
 * [健身相关](others/fitness.md)
 * [游泳](others/swiming.md)
+* [迎接宝宝](others/baby.md)
 * [00](00.md)
 
