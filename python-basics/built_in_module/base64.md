@@ -11,4 +11,8 @@ def get_base64_code(file_path):
         data = f.read()
         encodestr = base64.b64encode(data) # 得到 byte 编码的数据
         return encodestr
+
+def base64_decode(base64_code, file_path):
+    with open(file_path, 'wb') as f:  # 以二进制读取图片
+        f.write(base64.b64decode(base64_code))
 ```
