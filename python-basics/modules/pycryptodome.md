@@ -8,3 +8,19 @@
 ```
 sudo pip install pycryptodome
 ```
+
+## 1. AES
+1. demo
+    ```
+    from Crypto.Cipher import AES
+    import base64
+
+    def decode_ecs_nio(res='', key='kcc$[41_fpqxxxxx'):
+        # 如果key位数不够, 补齐
+        while len(key) % 16 != 0:
+            key += '\0'
+        cipher = AES.new(key.encode(), AES.MODE_ECB)
+        result = base64.b64decode(res)
+        res_text = cipher.decrypt(result)
+        return res_text
+    ```
