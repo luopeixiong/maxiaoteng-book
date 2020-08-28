@@ -195,6 +195,9 @@
 1. 新建分支
     ```
         git checkout -b iss53
+        
+        # 将会新建一个空白分支, 所有文件处于待提交状态
+        git checkout --orphan iss53
 
         # 相当于
         git branch iss53
