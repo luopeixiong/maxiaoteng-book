@@ -78,7 +78,8 @@
         pip freeze > requirement.txt  # 导出当前环境下的所有第三方包
         
         # 安装
-        pip install requests  # 安装包
+        pip install requests  # 安装包 
+            -i https://pypi.tuna.tsinghua.edu.cn/simple
         pip install requests==3.6.0  
         pip install -r requirement.txt  # 根据配置文件生成相同的环境
 
