@@ -7,9 +7,12 @@
 通过源码安装     
 
 
-## 1. virtualenv安装  
+## 1. 安装
 虚拟环境的包是对真实环境包的一个复制  
-1. virtualenv是python2使用的, python3.3引入了pyvenv, 作为自带模块
+1. virtualenv是python2使用的, python3.3引入了venv, 作为自带模块
+    > 参考 https://docs.python.org/3.6/library/venv.html
+    > The pyvenv script has been deprecated as of Python 3.6 in favor of using python3 -m venv to help prevent any potential confusion as to which Python interpreter a virtual environment will be based on.
+
 2. virtualenv默认有python可执行文件, 常用标准库等.
     1. python2
         ```bash
@@ -28,15 +31,33 @@
         ```
     2. python3.3+
         ```bash
-        python3 -m venv env_name
-            --no-site-packages  # 不包含第三方包
-            --python=python3.6  # 指定python版本
+        python3 -m venv
+            positional arguments:
+                ENV_DIR               A directory to create the environment in.
+            optional arguments:
+                -h, --help            show this help message and exit
+                --system-site-packages
+                                        Give the virtual environment access to the system
+                                        site-packages dir.
+                --symlinks            Try to use symlinks rather than copies, when symlinks
+                                        are not the default for the platform.
+                --copies              Try to use copies rather than symlinks, even when
+                                        symlinks are the default for the platform.
+                --clear               Delete the contents of the environment directory if it
+                                        already exists, before environment creation.
+                --upgrade             Upgrade the environment directory to use this version
+                                        of Python, assuming Python has been upgraded in-place.
+                --without-pip         Skips installing or upgrading pip in the virtual
+                                        environment (pip is bootstrapped by default)
         # 启动一个虚拟环境(名为:env_name, 也可以带一些路径, 默认当前文件夹), 默认复制系统所有的第三方包
+        python3 -m venv ./path/env_name
         # 创建一个project
         source venv/bin/activate  # 生效一个虚拟环境
         (venv)>which python
         > /home.../bin/python
         (venv)>deactivate  # 退出虚拟环境
+        # 安装依赖包
+        sudo pip install -r requirements.txt
         ```
 3. windows启动虚拟环境
     ```
