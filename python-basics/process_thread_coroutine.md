@@ -6,11 +6,15 @@ Process Thread Coroutine
 ## 1. Process 进程
 
 1. os模块封装了常见的系统调用,
-    - fork()调用一次,返回两次.因为父进程可以fork多个子进程
-    - 父进程返回子进程的pid 
-    - 子进程返回0,子进程.getppid()返回父进程的pid
-
-2. multiprocessing 
+    1. fork()调用一次,返回两次.因为父进程可以fork多个子进程
+    2. 父进程返回子进程的pid 
+    3. 子进程返回0,子进程.getppid()返回父进程的pid
+2. 如何选择
+    1. 参考
+        1. https://stackoverflow.com/questions/2629680/deciding-among-subprocess-multiprocessing-and-thread-in-python
+        2. https://stackoverflow.com/questions/13606867/what-is-the-difference-between-multiprocessing-and-subprocess
+    2. multiprocessing调用任务通常是python编写的, 而subprocess可以运行和控制其他程序
+3. multiprocessing 
     1. 模块提供了Process类来代表一个进程对象
     2. 启动一个进程
         ```
@@ -64,7 +68,7 @@ Process Thread Coroutine
             print('Exit code:', r)
         ```
 
-    5. 子进程的输入
+    1. 子进程的输入
     相当于先输入命令`nslookup`,然后输入内容
         ```
             import subprocess
@@ -76,7 +80,7 @@ Process Thread Coroutine
             print('Exit code:', p.returncode)
         ```
 
-    6. 进程间通信
+    1. 进程间通信
         ```
             from multiprocessing import Process, Queue
             import os, time, random
