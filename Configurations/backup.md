@@ -41,3 +41,19 @@
 6. 运动记录
     1. garmin connect
     2. 咕咚
+7. 邮箱
+    1. 配置客户端是一定要是IMAP协议的, 可以同步修改服务器内容
+    2. 关注邮箱
+        1. 个人
+            1. jizhuwo00@hotmail.com
+                1. 接收 jizhuwo000@gmail.com
+                2. 接收 871408893@qq.com
+                    1. 配置客户端时的密码时, 密码框请输入“授权码”进行验证
+        2. 工作
+            1. xiaoteng@baiguanlab.com(腾讯企业邮箱)
+                1. 接收 xiaoteng@bigonelab.com
+8. 日历提醒
+    1. 个人:
+        1. iCloud日历
+    2. 工作
+        1. Google calendar
