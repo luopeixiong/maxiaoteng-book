@@ -1,8 +1,10 @@
 # urllib 
 
+[AttributeError: module 'urllib' has no attribute 'parse'](https://stackoverflow.com/questions/41501638/attributeerror-module-urllib-has-no-attribute-parse)
+
 1. 构造请求
     ```
-    import urllib
+    import urllib.parse
     # &后面的组合生成
     urllib.parse.urlencode(query_data, doseq=True)  # query_data是一个dict
     # 如果一个key中是list，doseq可以确保正确的编码
