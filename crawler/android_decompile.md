@@ -68,7 +68,8 @@
 
 
 ## 7. xposed hook java层
-[见项目xposeds](https://github.com/Baiguanlab/xposeds.git)
+[见项目xposeds](https://github.com/maxiaoteng001/xposeds)
+[xposed](xposed.md)
 1. Android Studio打开时选择XposedHook, 之后就会自动安装依赖后识别app模块
 2. 在手机端安装后启用xposed模块, 即可在log查看到输出
 
@@ -95,6 +96,7 @@
 
 
 ## 10. hook so
+[hook so](hook_so.md)
 
 
 ## last
