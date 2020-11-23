@@ -50,7 +50,8 @@
 2. 移动App
    1. [UiAutomator](/crawler/uiautomator.md) + [mitmproxy](/crawler/mitmproxy.md)
    2. Appium + mitmproxy
-   3. [逆向分析app](/crawler/android_de.md)
+   3. [逆向分析app](/crawler/android_decompile.md)
+   4. [Xposed](/crawler/xposed.md)
 
 ## 5. 反反爬技巧
 防止被ban的技巧  

@@ -98,6 +98,8 @@
 * [反爬虫策略](crawler/anti_spider_strategy.md)
 * [爬虫优化](crawler/crawler_optimization.md)
 * [ocr调用百度接口](/crawler/ocr_baidu.md)
+* [Android 逆向分析](/crawler/android_decompile.md)
+* [Xposed](/crawler/xposed.md)
 * [others](crawler/others.md)
 
 
