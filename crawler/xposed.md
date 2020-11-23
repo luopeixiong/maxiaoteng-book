@@ -5,7 +5,7 @@
 
 ## 2. 项目编写说明
 [见项目xposeds](https://github.com/maxiaoteng001/xposeds)  
-[demo见项目xposed_demo](https://github.com/maxiaoteng001/xposeds)
+[demo见项目xposed_demo](https://github.com/maxiaoteng001/xiaoteng_demo.git)
 
 1. Android studio开始一个android项目
 2. 添加xposed api `app/build.gradle `
