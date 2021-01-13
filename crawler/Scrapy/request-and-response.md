@@ -31,19 +31,36 @@
         ```
 	2. 如果是get方法,get请求的querystring, 需要使用: ``` url + "?" + urllib.parse.urlencode(dict) ``` 来自动拼接,不能在此处传入。
 5. cookies	# 默认生效,接受dict 
-    ```
-    cookies = {
-        'PREF': "TM={}277:L={}".format(last_time, keyword_urlencode),
-        'RQ': "q=&l={}&ts={}114".format(keyword_urlencode, before_time),
-    }
-    request = scrapy.Request(url=url, 
-                    headers=self.headers,
-                    cookies=cookies,
-                    callback=self.parse, 
-                    errback=self.errback_httpbin,
-                    dont_filter=True,
-                    meta=data)
-    ```
+    1. 普通添加cookie
+        ```python
+        cookies = {
+            'PREF': "TM={}277:L={}".format(last_time, keyword_urlencode),
+            'RQ': "q=&l={}&ts={}114".format(keyword_urlencode, before_time),
+        }
+        request = scrapy.Request(url=url, 
+                        headers=self.headers,
+                        cookies=cookies,
+                        callback=self.parse, 
+                        errback=self.errback_httpbin,
+                        dont_filter=True,
+                        meta=data)
+        ```
+    2. dont_merge_cookies   此时cookies参数就不再适用, cookie中间件也不再处理set-cookie
+        ```python
+        custom_settings = {
+            'COOKIES_ENABLED': True,
+        }
+        meta = {}
+        meta['dont_merge_cookies'] = True
+        self.headers['Cookie'] = "; ".join([str(x)+"="+str(y) for x,y in cookies.items()])
+        return scrapy.Request(meta.get('url'), 
+            headers=self.headers, 
+            callback=self.parse, 
+            errback=self.errback_httpbin,
+            meta=meta, 
+            dont_filter=True)
+
+        ```
 6. callback
 7. meta 
  + 上一个请求 request.meta['item'] = item
