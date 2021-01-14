@@ -20,6 +20,8 @@ HTML方法有自动修正不全tag的功能, tostring()方法转成源文件, �
     from lxml import etree
     html = etree.parse('./test.html', etree.HTMLParser())
     result = etree.tostring(html)
+    # 可以转换编码问题
+    result = etree.tostring(html, encoding = "utf-8", pretty_print = True, method = "html").decode('utf-8')
     print(result.decode('utf-8'))
     ```
 4. 对于xml的响应
