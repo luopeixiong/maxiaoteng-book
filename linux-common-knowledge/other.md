@@ -26,13 +26,21 @@
     ```
 
 4. curl
-
     ```Shell
     curl -O http://mirror.bit.edu.cn/apache/kafka/2.1.0/kafka_2.11-2.1.0.tgz  # 用于下载文件，按服务器上的文件名保存
   
     curl -o filename url     # 文件下载后重命名为filename 
     curl -C 200 url     # 支持断点续传, 200为最小片段
     curl --interface ppp0(192.168.0.0) https://httpbin.org/ip   # 指定网络出口
+    ```
+
+5. wget
+    ```Shell
+    wget -c -b https://www1.ncdc.noaa.gov/pub/data/ghcn/daily/by_year/2020.csv.gz
+    -c 断点续传
+    -b 后台运行
+    # 添加代理
+    -e "http_proxy=http://10.40.36.196:3389" https://github.com/yichengchen/clashX/releases/download/1.31.3/ClashX.dmg
     ```
 
 ## 1. top命令
