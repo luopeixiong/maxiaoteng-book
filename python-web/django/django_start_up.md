@@ -27,10 +27,17 @@ cd mysite
 
 ## 2. 创建虚拟环境
 ```
+# deprecated
 virtualenv --no-site-packages venv
 source venv/bin/activate
 # 安装包
 pip -r requirement.txt
+## activate
+python3 -m venv ./django_venv
+source django_venv/bin/activate
+# check version
+python3 -m pip install django
+python -m django --version
 ```
 
 ## 3. 创建django项目
@@ -76,7 +83,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog', # 注册 blog 应用
+    'polls.apps.PollsConfig', # 注册 polls 应用
 ]
 ## 其他配置项..
 ```
@@ -87,12 +94,7 @@ INSTALLED_APPS = [
 
 ## 7. 配置urls[urls.md](./urls.md)
 
-## 8. 初始化数据库
-    ```
-    python manage.py makemigrations
-
-    python manage.py migrate
-    ```
+## 8. Django admin[django_admin](./django_admin.md)
 
 ## 9. 启动服务
 `python3 manage.py runserver localhost:8000`
@@ -101,3 +103,13 @@ INSTALLED_APPS = [
 `python manage.py shell`
 
 ## 11. 设置[settings.md](settings.md)
+
+## 12. shell调试
+```
+python manage.py shell
+```
+
+## 13. good Web development practice
+1. 使用post请求来修改数据
+2. 执行post操作后使用重定向来返回页面, 如果用户点击返回按钮, 将会重复提交post
+3. 

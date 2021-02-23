@@ -12,19 +12,30 @@ obj.id  obj.name.....类实例对象的属性
 Django orm的优势：  
 Django的orm操作本质上会根据对接的数据库引擎，翻译成对应的sql语句；所有使用Django开发的项目无需关心程序底层使用的是MySQL、Oracle、sqlite....，如果数据库迁移，只需要更换Django的数据库引擎即可；
 
+1. 新建或修改models的三步骤:
+    1. Change your models (in models.py).
+    2. Run `python manage.py makemigrations` to create migrations for those changes
+    3. Run `python manage.py migrate` to apply those changes to the database.
+2. 说明
+    ```
+    # 生效models的创建和更改
+    python manage.py makemigrations
+    python manage.py makemigrations polls   # 指定app
+    # 查看modles sql, 不执行仅用于调试判断是否符合预期
+    python manage.py sqlmigrate polls 0001  # 0001是更新历史
+    # 
+    # 创建和更新表    `INSTALLED_APPS` 包含了一些默认组建方便使用, 这些组件可能需要使用数据库, 所以下列操作创建必要的表
+    python manage.py migrate
+    ```
 
 ## 1. 初始化Models
 创建models.py来表示数据库关系
-
 1. 数据库关系
-
     ```
     - ForeignKey  # 外键, 设置一对多, 例如: models.ForeignKey(User, on_delete=models.CASCADE)  # on_delete在1.10版本上不需要
     - ManyToManyField  # 多对多关系,tags = models.ManyToManyField(Tag, blank=True)
     ```
-
 2. 数据库内容类型
-
     ```
     - CharField  # 字符串
     - TextField  # 很长的字符串
@@ -38,14 +49,11 @@ Django的orm操作本质上会根据对接的数据库引擎，翻译成对应�
         )
         lover=models.IntegerField(choices=choice)
     ```
-
-3 内容参数
-
+3. 内容参数
     ```
     - max_length=100  
     - blank=True # 默认False
     ```
-
 4. 例子
     ```
     from django.db import models
@@ -57,25 +65,21 @@ Django的orm操作本质上会根据对接的数据库引擎，翻译成对应�
         category = models.ForeignKey(Category, on_delete=models.CASCADE)
         tags = models.ManyToManyField(Tag, blank=True)
     ```
-
 5. 内置Model
-
     ```    
     # django.contrib.auth 是 Django 内置的应用，专门用于处理网站用户的注册、登录等流程，User 是 Django 为我们已经写好的用户模型。
     from django.contrib.auth.models import User
     ```
-
 6. 外键的创建
     ```
     people_id = ForeignKey() 
     ```
 
 
-
 ## 2. Django操作数据库
 
-### 1. 增
-    1. 增加单个
+1. 增
+    - 增加单个
         ```
             # 方法一
             from blog.models import Tag
@@ -86,7 +90,7 @@ Django的orm操作本质上会根据对接的数据库引擎，翻译成对应�
             p1 = Publisher.objects.create(name='Apress',address='2855 Telegraph Avenue',city='Berkeley',state_province='CA', country='U.S.A.',website='http://www.apress.com/')
         ```
 
-    2. 批量增加
+    - 批量增加
         ```
             t1 = Tag(name='name1')
             t2 = Tag(name='name2')
@@ -95,9 +99,7 @@ Django的orm操作本质上会根据对接的数据库引擎，翻译成对应�
             tags = [t1, t2, t3, t4]
             TAG.objects.bulk_create(tags)
         ```
-
-
-### 2. 查
+2. 查
     1. 查询全部
         ```
             Tag.objects.all()
@@ -143,8 +145,7 @@ Django的orm操作本质上会根据对接的数据库引擎，翻译成对应�
             # 虽然不支持负索引，但是可以使用其他的方法。 比如，修改order_by() 语句来实现：
             >>> Publisher.objects.order_by('-name')[0]
         ```
-
-### 3. 改, 更新
+3. 改, 更新
     1. save()方法
         ```
             # save方法将会更新对象的所有信息,不管有没有更改
@@ -176,10 +177,7 @@ Django的orm操作本质上会根据对接的数据库引擎，翻译成对应�
 
             # 返回一个int型,表示更改的条数
         ```
-    
-
-
-### 4. 删
+4. 删
 
     ```
         # 删除数据库中的对象只需调用该对象的delete()方法即可：
@@ -206,8 +204,7 @@ Django的orm操作本质上会根据对接的数据库引擎，翻译成对应�
         # 如果只需要删除部分的数据，就不需要调用all()方法。再看一下之前的例子：
         >>> Publisher.objects.filter(country='USA').delete()
     ```
-
-### 5. 排序
+5. 排序
     1. 自定义排序
     ```
         # 升序排列：
@@ -223,7 +220,7 @@ Django的orm操作本质上会根据对接的数据库引擎，翻译成对应�
         [<Publisher: Apress>, <Publisher: O'Reilly>]
     ```
 
-    2. 缺省默认排序
+    1. 缺省默认排序
     ```
         class Publisher(models.Model):
             name = models.CharField(max_length=30)
@@ -241,11 +238,6 @@ Django的orm操作本质上会根据对接的数据库引擎，翻译成对应�
             # 你可以在任意一个 模型 类中使用 Meta 类，来设置一些与特定模型相关的选项。 如果你设置了ordering这个选项，那么除非你检索时特意额外地使用了 order_by()，
             否则，当你使用 Django 的数据库 API 去检索时，Publisher对象的相关返回值默认地都会按 name 字段排序。
     ```
-
-
-
-
-
 
 
 ## 3. Django中的Q对象和复杂查询
@@ -279,24 +271,15 @@ Django的orm操作本质上会根据对接的数据库引擎，翻译成对应�
     
     ```
 
-## 3. 迁移数据库
-```
-# django判断做了哪些改变
-# migrations\ 目录下生成了一个 0001_initial.py 文件
-python manage.py makemigrations
-# 操作数据库, 建表
-python manage.py migrate
-```
-
-```
-python manage.py sqlmigrate blog 0001
-# 将显示经django翻译后的SQL语句
-```
-
 ## 4. 选择数据库版本
 见设置文件
 
-## 5. 创建超级用户
-```
-python manage.py createsuperuser
-```
+## 5. 安全操作
+1. Avoiding race conditions using F()
+    ```
+    # 数据库级别操作 
+    from django.db.models import F
+    reporter = Reporters.objects.get(name='Tintin')
+    reporter.stories_filed = F('stories_filed') + 1
+    reporter.save()
+    ```

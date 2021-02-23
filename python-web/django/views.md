@@ -82,3 +82,5 @@
 2. method
 3. GET
 4. COOKIES
+5. POST
+    1. 类似字典对象, 可以通过`request.POST['choice']`来获取post的请求参数
