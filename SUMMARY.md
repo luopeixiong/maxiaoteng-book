@@ -184,6 +184,7 @@
 * [Gmail](Configurations/gmail.md)
 * [备份管理](Configurations/backup.md)
 * [Google](Configurations/google.md)
+* [高德地图](Configurations/gaode_amap.md)
 * [Github](Configurations/github.md)
 * [pixel android开发机](Configurations/pixel.md)
 
