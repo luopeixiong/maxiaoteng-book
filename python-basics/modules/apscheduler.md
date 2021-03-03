@@ -6,7 +6,6 @@
    1. cron 定时任务触发器
    2. interval 循环任务触发器
    3. date 一次性任务触发器
-
 2. 使用
     ```Python
     from apscheduler.schedulers.blocking import BlockingScheduler
@@ -27,7 +26,6 @@
         sched.add_job(func=clear_job, args=('cron_job', ), trigger='date', next_run_time='2019-06-28 18:09:00', id='date_job')
         sched.start()
     ```
-
 3. 一些说明
    1. 定时任务设置hours
         ```
@@ -47,7 +45,6 @@
         seconds = 2  # 表示每2s执行一次
         start_date='2018-12-11 09:30:00', end_date='2018-12-15 11:00:00'  # 也可以添加开始停止时间
         ```
-
 4. cron api
     - year (int|str) – 4-digit year
     - month (int|str) – month (1-12)
@@ -61,3 +58,25 @@
     - end_date (datetime|str) – latest possible date/time to trigger on (inclusive)
     - timezone (datetime.tzinfo|str) – time zone to use for the date/time calculations (defaults to scheduler timezone)
     - jitter (int|None) – advance or delay the job execution by jitter seconds at most.
+5. 任务持久化
+    ```python
+        from apscheduler.schedulers.background import BackgroundScheduler
+        from apscheduler.jobstores.redis import RedisJobStore
+        from apscheduler.jobstores.mongodb import MongoDBJobStore
+        # 配置
+        jobs_key = 'apscheduler.jobs'
+        run_times_key = 'apscheduler.run_times'
+        REDIS_CONF = {
+            "host": "localhost",
+            "port": 6379,
+            "db": 0
+        }
+        jobstores = {
+            'redis': RedisJobStore(jobs_key=jobs_key, run_times_key=run_times_key, **REDIS_CONF),
+            'mongo': MongoDBJobStore(),
+        }
+        def add_job():
+            sched = BackgroundScheduler(jobstores=jobstores)
+            # 灵活指定jobstore
+            sched.add_job(func=some_job, trigger='cron', minute='*/10', jobstore='redis', id='some_job')
+    ```
