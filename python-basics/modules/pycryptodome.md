@@ -6,12 +6,13 @@
 
 ## 安装
 ```
-sudo pip install pycryptodome
+# 版本影响使用
+sudo pip install pycryptodome==3.9.8
 ```
 
 ## 1. AES
 1. demo
-    ```
+    ```python
     from Crypto.Cipher import AES
     import base64
 
