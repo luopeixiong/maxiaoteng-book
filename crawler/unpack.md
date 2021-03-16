@@ -5,6 +5,6 @@
 1. ApkScan-PKID.jar 备份在百度云
     ```java -jar ApkScan-PKID.jar```
 2. fDex2脱壳方案
-    1. 梆梆企业版方案(nine*bot)
+    1. 梆梆企业版方案(ninebot)
     2. 脱壳后的dex统一命名为classes.dex, classes1.dex, 打包.zip, 重命名.apk, 使用jadx反编译即可
     3. 

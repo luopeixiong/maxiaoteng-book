@@ -36,6 +36,7 @@
         ```
 2. frida启动服务
     ```
+    cd /data/local/tmp/
     ./frida-server &
     ```
 3. frida --no-pause -D 872QEDUA2224U -l hook_nio.js -f cn.com.weilaihui3 
@@ -48,6 +49,21 @@
     1. 查看哪些进程
 6. frida和Magisk冲突
     1. https://stackoverflow.com/questions/56316329/frida-failed-to-spawn-unable-to-access-zygote64-while-preparing-for-app-launc
+
+### frida objection
+1. 安装
+    ```shell
+    pip install objection
+    # objection --version要和收集的版本匹配
+    ```
+2. 参考[objection](https://juejin.cn/post/6844904148215808014)
+3. 常用命令
+    1. pytho
+    ```shell
+    # 查看b方法参数、返回值和调用栈的命令
+    android hooking watch class_method com.xingin.alioth.others.a.b  --dump-args --dump-return --dump-backtrace
+    ```
+
 
 ## 5. android studio 动态调试 smali
 1. 找到app当前activate
@@ -80,7 +96,7 @@
     2. 直接操作 ```apktook d xx.apk```
 2. dex to jar
     1. jadx直接反编译, jadx-gui直接打开即可
-    2. dex2jar
+    2. dex2jar(`~/Downloads/dex2jar_2.1/dex-tools-2.1-SNAPSHOT/d2j-dex2jar.sh`)
         1. 支持dex2jar `./d2j-dex2jar.sh ~/projects/aspex_ninebot/unpack/classes6.dex`
             1. 得到的jar解压缩为.class文件
             2. 如果个别文件反编译失败, 参考第三项

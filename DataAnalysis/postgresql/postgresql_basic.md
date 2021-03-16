@@ -1,6 +1,11 @@
-# Postgresql 和 Greenplum
+# Postgresql
+[TOC]
 
-## 常用语法
+## 1. 相关
+1. greenplum
+2. redshift
+
+## 2. 常用语法
 1. 建表
    1. 去重和类型转换
         ```sql
@@ -75,5 +80,11 @@
         set num_sell_items = decode(aaa.now_sell_items, '', '0', aaa.now_sell_items)::int - decode(bbb.now_sell_items, '', '0', bbb.now_sell_items)::int
         ```
     
+## 3. 权限管理
+information_schema.table_privileges表记录着所有用户的权限信息。
+1. 查看权限
+   ```
     
+   ```
+2. 修改权限
     

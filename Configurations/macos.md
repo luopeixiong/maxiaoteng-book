@@ -112,5 +112,18 @@
         1. vnc客户端输入局域网ip和密码
 
 
-## 4. 其他
+## 4. 迁移mac 
+由于更换了m1芯片的macbook, 直接迁移系统会有很多软件不兼容, 出现重启和发热的情况, 记录手动迁移
+### 1. 软件篇
+1. clashx-mac
+    1. 登录账号后设置为系统代理即可正常使用
+2. chrome
+    1. 登录个人账号/办公账号/sheng, 插件自动同步
+3. vscode arm版
+4. royal tsx ssh工具
+5. homebrew
+    1. 
+
+
+## 其他
 1. 磁盘管理工具格式化u盘, 需要显示所有设备[在 Mac 上的“磁盘工具”中格式化磁盘以用于 Windows 电脑](https://support.apple.com/zh-cn/guide/disk-utility/dskutl1010/mac)
