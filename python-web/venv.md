@@ -82,14 +82,15 @@
             -i https://pypi.tuna.tsinghua.edu.cn/simple
         pip install requests==3.6.0  
         pip install -r requirement.txt  # 根据配置文件生成相同的环境
+        pip install git+https://github.com/xxx  # 安装github仓库的包
+        
+        # 升级
+        pip install -U requests  
+        pip install -U pip  # 升级pip
 
         # 卸载
         pip uninstall requests 
         pip uninstall -r requirements.txt
-
-        # 升级
-        pip install -U requests  
-        pip install -U pip  # 升级pip
 
         # 显示包所在目录
         pip show -f requests
