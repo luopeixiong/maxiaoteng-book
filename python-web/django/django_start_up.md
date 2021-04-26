@@ -1,7 +1,8 @@
 # 开始一个项目
 
-## 0安装: 
-```
+## 0安装:
+
+```shell
 sudo pip install Django
 sudo python -m pip install Django
 ```
@@ -20,13 +21,15 @@ sudo python -m pip install Django
    - 收集静态文件
 
 ## 1. 准备目录
-```
+
+```shell
 mkdir mysite
 cd mysite
 ```
 
 ## 2. 创建虚拟环境
-```
+
+```shell
 # deprecated
 virtualenv --no-site-packages venv
 source venv/bin/activate
@@ -41,26 +44,28 @@ python -m django --version
 ```
 
 ## 3. 创建django项目
-```
+
+```shell
 django-admin startproject mysite
 cd mysit
 # 可以指定应用访问的web ip和端口
 python36 manage.py runserver 0:8000 
 ```
+
 开发服务器自动重载代码的修改, 但是文件的添加需要重启.
 
 django提供了自动生成一个app的目录结构的功能.
 
-
 ## 4. 创建一个app
 
-```
+```shell
 python manage.py startapp polls
 # 将会创建出一个目录
 ```
 
 - app文件夹结构
-```
+
+```shell
 blog\
     __init__.py
     admin.py
@@ -73,7 +78,8 @@ blog\
 ```
 
 - 配置文件中注册应用
-```
+
+```python
 blogproject/blogproject/settings.py
 ## 其他配置项...
 INSTALLED_APPS = [
@@ -97,19 +103,27 @@ INSTALLED_APPS = [
 ## 8. Django admin[django_admin](./django_admin.md)
 
 ## 9. 启动服务
+
 `python3 manage.py runserver localhost:8000`
 
 ## 10. 调试
+
 `python manage.py shell`
 
 ## 11. 设置[settings.md](settings.md)
 
 ## 12. shell调试
-```
+
+```shell
 python manage.py shell
 ```
 
 ## 13. good Web development practice
+
 1. 使用post请求来修改数据
 2. 执行post操作后使用重定向来返回页面, 如果用户点击返回按钮, 将会重复提交post
-3. 
+
+## 14. NO
+
+1. 不使用orm
+2. 学习使用规范的settings

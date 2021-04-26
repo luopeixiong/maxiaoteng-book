@@ -1,7 +1,9 @@
 # models.py
-[参考:https://www.cnblogs.com/sss4/p/7070942.html]
+
+[参考:<https://www.cnblogs.com/sss4/p/7070942.html>]
 
 ## 0. 前言
+
 ORM是什么？：(在django中，根据代码中的类自动生成数据库的表也叫--code first)  
 ORM：Object Relational Mapping(关系对象映射)  
 类名对应------》数据库中的表名  
@@ -17,7 +19,8 @@ Django的orm操作本质上会根据对接的数据库引擎，翻译成对应�
     2. Run `python manage.py makemigrations` to create migrations for those changes
     3. Run `python manage.py migrate` to apply those changes to the database.
 2. 说明
-    ```
+
+    ```shell
     # 生效models的创建和更改
     python manage.py makemigrations
     python manage.py makemigrations polls   # 指定app
@@ -29,14 +32,19 @@ Django的orm操作本质上会根据对接的数据库引擎，翻译成对应�
     ```
 
 ## 1. 初始化Models
+
 创建models.py来表示数据库关系
+
 1. 数据库关系
-    ```
+
+    ```shell
     - ForeignKey  # 外键, 设置一对多, 例如: models.ForeignKey(User, on_delete=models.CASCADE)  # on_delete在1.10版本上不需要
     - ManyToManyField  # 多对多关系,tags = models.ManyToManyField(Tag, blank=True)
     ```
+
 2. 数据库内容类型
-    ```
+
+    ```python
     - CharField  # 字符串
     - TextField  # 很长的字符串
     - DateTimeField  # 时间日期
@@ -49,13 +57,17 @@ Django的orm操作本质上会根据对接的数据库引擎，翻译成对应�
         )
         lover=models.IntegerField(choices=choice)
     ```
+
 3. 内容参数
-    ```
+
+    ```python
     - max_length=100  
     - blank=True # 默认False
     ```
+
 4. 例子
-    ```
+
+    ```python
     from django.db import models
     class Post(models.Model):
         # 文章标题
@@ -65,22 +77,26 @@ Django的orm操作本质上会根据对接的数据库引擎，翻译成对应�
         category = models.ForeignKey(Category, on_delete=models.CASCADE)
         tags = models.ManyToManyField(Tag, blank=True)
     ```
+
 5. 内置Model
-    ```    
+
+    ```python
     # django.contrib.auth 是 Django 内置的应用，专门用于处理网站用户的注册、登录等流程，User 是 Django 为我们已经写好的用户模型。
     from django.contrib.auth.models import User
     ```
-6. 外键的创建
-    ```
-    people_id = ForeignKey() 
-    ```
 
+6. 外键的创建
+
+    ```python
+    people_id = ForeignKey(XX, on_delete=models.CASCADE) 
+    ```
 
 ## 2. Django操作数据库
 
 1. 增
     - 增加单个
-        ```
+
+        ```python
             # 方法一
             from blog.models import Tag
             p1 = Publisher(name='Apress', address='2855 Telegraph Avenue',city='Berkeley', state_province='CA', country='U.S.A.',website='http://www.apress.com/')
@@ -91,7 +107,8 @@ Django的orm操作本质上会根据对接的数据库引擎，翻译成对应�
         ```
 
     - 批量增加
-        ```
+
+        ```python
             t1 = Tag(name='name1')
             t2 = Tag(name='name2')
             t3 = Tag(name='name3')
@@ -99,32 +116,41 @@ Django的orm操作本质上会根据对接的数据库引擎，翻译成对应�
             tags = [t1, t2, t3, t4]
             TAG.objects.bulk_create(tags)
         ```
+
 2. 查
     1. 查询全部
-        ```
+
+        ```python
             Tag.objects.all()
             > <QuerySet [<Tag: Tag object>]>  # 返回类型
             # 可迭代类型,每个都是model实例
         ```
+
     2. 条件查询
-        ```
+
+        ```python
             t = Tag.objects.get(title='test')  # 返回一条数据, 当有多条或没有错误, 抛出异常
         ```
+
     3. where 或 where not 查询
-        ```
+
+        ```python
             t = Tag.objects.filter(condition) 
             t = Tag.objects.exclude(condition)
             # condition语句支持 = 大于 小于, 与或非操作 
-        ```   
+        ```
+
     4. 连锁查询
         需要同时进行过滤和排序查询的操作时，可以简单地写成这种“链式”的形式：
-        ```
+
+        ```python
             Publisher.objects.filter(country="U.S.A.").order_by("-name")
             [<Publisher: O'Reilly>, <Publisher: Apress>]
-        ``` 
+        ```
 
     5. 限制返回的语句
-        ```
+
+        ```python
             >>> Publisher.objects.order_by('name')[0]
             <Publisher: Apress>
 
@@ -145,9 +171,11 @@ Django的orm操作本质上会根据对接的数据库引擎，翻译成对应�
             # 虽然不支持负索引，但是可以使用其他的方法。 比如，修改order_by() 语句来实现：
             >>> Publisher.objects.order_by('-name')[0]
         ```
+
 3. 改, 更新
     1. save()方法
-        ```
+
+        ```python
             # save方法将会更新对象的所有信息,不管有没有更改
             t = Tag.objects.get(name='test').update(age=18)
             t.name = 'new_name'
@@ -165,7 +193,8 @@ Django的orm操作本质上会根据对接的数据库引擎，翻译成对应�
         ```
 
     2. update()方法
-        ```
+
+        ```python
             Publisher.objects.filter(id=52).update(name='Apress Publishing')
             # update()对任何结果集都有效,可以同时更新多条
             Publisher.objects.all().update(country='USA')
@@ -177,9 +206,10 @@ Django的orm操作本质上会根据对接的数据库引擎，翻译成对应�
 
             # 返回一个int型,表示更改的条数
         ```
+
 4. 删
 
-    ```
+    ```python
         # 删除数据库中的对象只需调用该对象的delete()方法即可：
         >>> p = Publisher.objects.get(name="O'Reilly")
         >>> p.delete()
@@ -204,9 +234,11 @@ Django的orm操作本质上会根据对接的数据库引擎，翻译成对应�
         # 如果只需要删除部分的数据，就不需要调用all()方法。再看一下之前的例子：
         >>> Publisher.objects.filter(country='USA').delete()
     ```
+
 5. 排序
     1. 自定义排序
-    ```
+
+    ```python
         # 升序排列：
         >>> Publisher.objects.order_by("name")
         [<Publisher: Apress>, <Publisher: O'Reilly>]
@@ -221,7 +253,8 @@ Django的orm操作本质上会根据对接的数据库引擎，翻译成对应�
     ```
 
     1. 缺省默认排序
-    ```
+
+    ```python
         class Publisher(models.Model):
             name = models.CharField(max_length=30)
             address = models.CharField(max_length=50)
@@ -239,10 +272,11 @@ Django的orm操作本质上会根据对接的数据库引擎，翻译成对应�
             否则，当你使用 Django 的数据库 API 去检索时，Publisher对象的相关返回值默认地都会按 name 字段排序。
     ```
 
-
 ## 3. Django中的Q对象和复杂查询
+
 1. 多次查询
-    ```
+
+    ```python
     # 一般我们在Django程序中查询数据库操作都是在QuerySet里进行进行，例如下面代码:
 
     >>> q1 = Entry.objects.filter(headline__startswith="What")
@@ -251,7 +285,8 @@ Django的orm操作本质上会根据对接的数据库引擎，翻译成对应�
     ```
 
 2. 组合
-    ```
+
+    ```python
     # 两个Q默认为and的关系
     News.objects.get(
         Q(question__startswith='Who'),
@@ -272,11 +307,14 @@ Django的orm操作本质上会根据对接的数据库引擎，翻译成对应�
     ```
 
 ## 4. 选择数据库版本
+
 见设置文件
 
 ## 5. 安全操作
+
 1. Avoiding race conditions using F()
-    ```
+
+    ```python
     # 数据库级别操作 
     from django.db.models import F
     reporter = Reporters.objects.get(name='Tintin')

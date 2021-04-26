@@ -1,7 +1,8 @@
-## setting.py
+# setting.py
 
 - 设置语言
-```
+
+```python
 blogproject/blogproject/settings.py
 ## 其它配置代码...
 LANGUAGE_CODE = 'en-us'  # 'zh-hans'
@@ -10,7 +11,8 @@ TIME_ZONE = 'UTC'  # 'Asia/beijing'
 ```
 
 - 设置模板路径
-```
+
+```python
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -30,8 +32,9 @@ TEMPLATES = [
 ```
 
 - 选择数据库版本
- - 查看默认设置
-```
+- 查看默认设置
+
+```python
 # blogproject/settings.py
 DATABASES = {
     'default': {
@@ -40,8 +43,10 @@ DATABASES = {
     }
 }
 ```
- - 修改MySql数据库
-```
+
+- 修改MySql数据库
+
+```python
 DEFAULT_CHARSET = 'utf8'
 DATABASES = {
     'default': {
@@ -59,7 +64,3 @@ DATABASES = {
     }
 }
 ```
-
-
-
-
