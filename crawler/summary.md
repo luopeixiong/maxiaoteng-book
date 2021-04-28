@@ -11,6 +11,7 @@
 # 工具篇
 
 ## 1. 抓包工具
+
 1. Web抓包工具
     1. Chrome 开发者工具(**首选**)
     2. Tamper Chrome(可以拦截请求，修改后继续请求)
@@ -24,6 +25,7 @@
     5. [部分APP无法代理抓包的原因及解决方法](https://cloud.tencent.com/developer/article/1490033)
 
 ## 2. HTTP请求库和爬虫框架
+
 1. [requests(可以代替python原生的请求库)](/crawler/requests.md)(**首选**)
 2. httpie(命令行库)
 3. curl
@@ -32,6 +34,7 @@
 6. [scrapy和scrapy-redis](/crawler/Scrapy/scrapy_start_up.md)
 
 ## 3. 页面解析
+
 1. [lxml(推荐lxml和xpath结合使用)](/crawler/xpath.md)(**首选**)
 2. [BeautifulSoup(bs4)(推荐配合lxml使用)](/crawler/beautifulsoup.md)
 3. pyquery(不推荐)
@@ -41,8 +44,8 @@
 7. [ocr](/python-basics/modules/tesserocr.md)
 8. [ocr调用百度接口](/crawler/ocr_baidu.md)
 
-
 ## 4. 模拟请求
+
 1. Web
    1. [Splash(支持异步)](/crawler/splash.md)(**首选**)
    2. [chromedrier + Chrome + selenium (使用无界面模式降低资源占用)](/crawler/selenium/selenium.md)
@@ -54,14 +57,23 @@
    4. [Xposed](/crawler/xposed.md)
 
 ## 5. 反反爬技巧
+
 防止被ban的技巧  
+
 1. [并发逐步增加，参考scrapy，大致了解对方网站对并发的限制情况](/crawler/Scrapy/scrapy_optimization.md)
 2. 伪装不同的请求，包括[使用代理ip](/crawler/proxy_server.md)和[user-agent随机](/crawler/random_user_agent.md)
 3. [验证码破解](/crawler/verification_code.md)
 4. [Cookie](/crawler/cookies.md)
 
 ## 6. 反爬策略
+
 1. [反爬策略](/crawler/anti_spider_strategy.md)
 
 ## 7. 爬虫优化
+
 * [爬虫优化](/crawler/crawler_optimization.md)
+
+## 8. 开发总结
+
+1. pipeline
+2. 爬虫任务如果依赖历史数据, 尽量生成新的数据源, 不要完全依赖ods数据(ods可能被归档)
