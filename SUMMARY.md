@@ -32,27 +32,27 @@
 
 * [进程（process）和线程（Thread）](python-basics/process_thread.md)
 * [内置模块](python-basics/built_in_module/built_in_module.md)
-    * [正则表达式](python-basics/built_in_module/re-model.md)
-    * [os Model](python-basics/built_in_module/os-model.md)
-    * [logging模块](python-basics/built_in_module/logging.md)
-    * [CSV模块](python-basics/built_in_module/csv-model.md)
-    * [json](python-basics/built_in_module/json.md)
-    * [ramdom](python-basics/built_in_module/random.md)
-    * [time](python-basics/built_in_module/time.md)
-    * [datetime](python-basics/built_in_module/datetime.md)
-    * [subprocess](python-basics/built_in_module/subprocess.md)
-    * [multiprocessing](python-basics/built_in_module/multiprocessing.md)
-    * [html](python-basics/built_in_module/html.md)
-    * [urllib](python-basics/built_in_module/urllib.md)
-    * [string](python-basics/built_in_module/string.md)
-    * [base64](python-basics/built_in_module/base64.md)
-    * [sys](python-basics/built_in_module/sys.md)
+  * [正则表达式](python-basics/built_in_module/re-model.md)
+  * [os Model](python-basics/built_in_module/os-model.md)
+  * [logging模块](python-basics/built_in_module/logging.md)
+  * [CSV模块](python-basics/built_in_module/csv-model.md)
+  * [json](python-basics/built_in_module/json.md)
+  * [ramdom](python-basics/built_in_module/random.md)
+  * [time](python-basics/built_in_module/time.md)
+  * [datetime](python-basics/built_in_module/datetime.md)
+  * [subprocess](python-basics/built_in_module/subprocess.md)
+  * [multiprocessing](python-basics/built_in_module/multiprocessing.md)
+  * [html](python-basics/built_in_module/html.md)
+  * [urllib](python-basics/built_in_module/urllib.md)
+  * [string](python-basics/built_in_module/string.md)
+  * [base64](python-basics/built_in_module/base64.md)
+  * [sys](python-basics/built_in_module/sys.md)
 * [其他模块](python-basics/modules/modules.md)
-    * [paramiko](python-basics/modules/paramiko.md)
-    * [apscheduler](python-basics/modules/apscheduler.md)
-    * [PyExecJS](python-basics/modules/pyexecjs.md)
-    * [OCR](python-basics/modules/tesserocr.md)
-    * [Matplotlib](python-basics/modules/matplotlib.md)
+  * [paramiko](python-basics/modules/paramiko.md)
+  * [apscheduler](python-basics/modules/apscheduler.md)
+  * [PyExecJS](python-basics/modules/pyexecjs.md)
+  * [OCR](python-basics/modules/tesserocr.md)
+  * [Matplotlib](python-basics/modules/matplotlib.md)
 * [编码](python-basics/encode.md)
 * [迭代器 生成器 可迭代对象](python-basics/iteration_generator_iterable.md)
 * [数据结构](python-basics/shu-ju-jie-gou.md)
@@ -62,7 +62,6 @@
 * [进程 线程 和协程](python-basics/process_thread_coroutine.md)
 * [装饰器(Decorators)](python-basics/decorators.md)
 * [others](python-basics/tips.md)
-
 
 ## Python爬虫
 
@@ -102,9 +101,8 @@
 * [Xposed](/crawler/xposed.md)
 * [others](crawler/others.md)
 
-
-
 ## Python Web
+
 * [HTTP](python-web/http/http.md)
   * [HTTP](python-web/http/http.md)
   * [POST](python-web/http/post.md)
@@ -129,8 +127,8 @@
 * [WEB服务器Nginx](python-web/web-server-nginx.md)
 * [Python应用服务器](python-web/pythonying-yong-fu-wu-qi.md)
 
-
 ## Data Analysis 数据分析
+
 * [概述](DataAnalysis/summary.md)
 * [Postgresql知识](DataAnalysis/postgresql/postgresql_basic.md)
 * [Python numpy](DataAnalysis/python/numpy.md)
@@ -142,7 +140,6 @@
   * [Mysql优化](/DataAnalysis/mysql/mysql_optimization.md)
   * [Tips](/DataAnalysis/mysql/tips.md)
   * [docker_mysql](/DataAnalysis/mysql/docker_mysql.md)
-
 
 ## 数据库
 
@@ -159,10 +156,9 @@
   * [Macos安装Redis](Database/Redis/macos_redis.md)
 * [消息队列Kafka](Database/kafka.md)
 
-
 ## Effective Python
-* [Summary](Effective_Python/summary.md)
 
+* [Summary](Effective_Python/summary.md)
 
 ## 开发环境配置 软件设置
 
@@ -188,18 +184,17 @@
 * [Github](Configurations/github.md)
 * [pixel android开发机](Configurations/pixel.md)
 
-
 ## 面试汇总
+
 * [我的简历](Interview/resume.md)
 <!-- * [简历图片版](Interview/resume_pic.md) -->
 * [面试汇总](Interview/summary.md)
 
-
 ## 其他
+
 * [居住证办理](others/juzhuzheng.md)
 <!-- * [2019年终总结](others/summary_2019.md) -->
 * [健身相关](others/fitness.md)
 * [游泳](others/swiming.md)
 * [迎接宝宝](others/baby.md)
 * [00](00.md)
-
