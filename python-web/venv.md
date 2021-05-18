@@ -1,20 +1,22 @@
 
 # 包管理和虚拟环境
 
-- 包安装方法    
-通过Python社区开发的pip, easy_install等工具   
-使用系统本身自带的包管理器(yum, apt-get)      
-通过源码安装     
-
+- 包安装方法
+通过Python社区开发的pip, easy_install等工具
+使用系统本身自带的包管理器(yum, apt-get)
+通过源码安装
 
 ## 1. 安装
+
 虚拟环境的包是对真实环境包的一个复制  
+
 1. virtualenv是python2使用的, python3.3引入了venv, 作为自带模块
-    > 参考 https://docs.python.org/3.6/library/venv.html
+    > 参考 <https://docs.python.org/3.6/library/venv.html>
     > The pyvenv script has been deprecated as of Python 3.6 in favor of using python3 -m venv to help prevent any potential confusion as to which Python interpreter a virtual environment will be based on.
 
 2. virtualenv默认有python可执行文件, 常用标准库等.
     1. python2
+
         ```bash
         sudo pip install virtualenv  # 安装virtualenv
         # 创建一个project
@@ -29,7 +31,9 @@
         > /home.../bin/python
         (venv)>deactivate  # 退出虚拟环境
         ```
+
     2. python3.3+
+
         ```bash
         python3 -m venv
             positional arguments:
@@ -59,8 +63,10 @@
         # 安装依赖包
         sudo pip install -r requirements.txt
         ```
+
 3. windows启动虚拟环境
-    ```
+
+    ```shell
     # 直接命令行运行active文件执行
     C:\Users\jizhu>task\mxt_blogs\Scripts\activate
     (mxt_blogs) C:\Users\jizhu>
@@ -72,7 +78,7 @@
 
 2. 使用
 
-    ```
+    ```shell
         # 列出
         pip list  # 列出所有的第三方包
         pip freeze > requirement.txt  # 导出当前环境下的所有第三方包
@@ -109,54 +115,60 @@
         pip wheel <包名>
 
     ```
+
     有的环境中, python3/2与pip没有绑定, 用pip/pip3 或python -m pip
 
 3. 指定安装源
     1. 单次安装源
-    ```
-        pip install <包名> -i http://pypi.douban.com/simple
-    ```
+
+        ```shell
+            pip install <包名> -i http://pypi.douban.com/simple
+        ```
+
     2. 全局修改
         1. unix和macos: $HOME/.pip/pip.conf
         2. windows: %HOME%\pip\pip.ini
-    ```
-        [global]
-        timeout = 6000
-        index-url = http://pypi.douban.com/simple
-    ```
+
+        ```shell
+            [global]
+            timeout = 6000
+            index-url = http://pypi.douban.com/simple
+        ```
 
 ## 3. pipenv
 
 是python项目的依赖管理器
+
 - 根据pipfile自动寻找项目根目录
 - 如果不存在,自动生成pipfile和pipfile.lock
-- 自动在项目目录的.venv目录创建虚拟环境. 
+- 自动在项目目录的.venv目录创建虚拟环境.
 - 自动管理pipfile新安装和删除的包
 - 自动更新pip
 
 使用pipenv代替pip安装包
 
-
 ## 4. pipenv 和autoenv的组合
 
 autoenv可以在切换文件目录的同时, 自动完成激活虚拟环境
 **用法**
-    ```
-    sudo pip install autoenv
-    source /usr/local/bin/activate.sh
 
-    mkdir test
-    cd test
-    touch .env
-    echo 'source /home/xx/venv/bin/activate' > .env
-    cd
-    cd test  # 就会自动激活虚拟环境
-    ```
+```shell
+sudo pip install autoenv
+source /usr/local/bin/activate.sh
+
+mkdir test
+cd test
+touch .env
+echo 'source /home/xx/venv/bin/activate' > .env
+cd
+cd test  # 就会自动激活虚拟环境
+```
 
 ## 5. conda
 
-    1. 安装
-    ```
+1. 安装
+
+    ```shell
     # miniconda
     wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
     bash Miniconda3-latest-Linux-x86_64.sh
@@ -166,25 +178,24 @@ autoenv可以在切换文件目录的同时, 自动完成激活虚拟环境
     bash Anaconda-latest-Linux-x86_64.sh
     ```
 
-
 ## 学习Emacs
 
 - 安装
 
 - 两种模式
- - GUI模式
- ```
+- GUI模式
+
+ ```shell
  emacs  # 默认启动GUI
  emacd -nw FILE  # 终端中启动
  ```
- - Daemon模式
+
+- Daemon模式
 
 - 学习lisp
-
 
 ## Pycharm安装和使用
 
 ## 使用IPython
 
 ## Web开发环境配置
-
