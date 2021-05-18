@@ -2,14 +2,15 @@
 
 ## 1.安装
 
-
 ## 2. 项目编写说明
+
 [见项目xposeds](https://github.com/maxiaoteng001/xposeds)  
 [demo见项目xposed_demo](https://github.com/maxiaoteng001/xiaoteng_demo.git)
 
 1. Android studio开始一个android项目
-2. 添加xposed api `app/build.gradle `
-    ```
+2. 添加xposed api `app/build.gradle`
+
+    ```java
     repositories {
         jcenter();
     }
@@ -17,8 +18,10 @@
         compileOnly 'de.robv.android.xposed:api:82'
     }
     ```
+
 3. 设置属性`app/mainfests/AndroidManifest.xml`
-    ```
+
+    ```xml
     <application
     android:icon="@drawable/ic_launcher"
     android:label="@string/app_name" >
@@ -34,6 +37,7 @@
         android:name="xposedminversion"
         android:value="53" />
     ```
+
 4. hook demo
     1. input和output见`app/src/main/java/com/example/xposed_demo/HookNineBot.java`
     2. hook 调用so, 考虑集成[sekiro](https://github.com/virjar/sekiro), demo见`app/src/main/java/com/example/xposed_demo/HookNineBotSekiro.java`
@@ -41,19 +45,22 @@
 5. 指定生效的Xposed模块
     1. 创建文件`app/src/main/assets/xposed_init`
     2. 内容`com.example.xposedhook.HookNineBot`
-
+    3. 一个app可以支持多个模块, 直接在下方追加即可
 
 6. 补充
     1. 使用`import com.alibaba.fastjson.JSON;`
-        ```
+
+        ```java
         <!-- app/build.gradle -->
         implementation 'com.alibaba:fastjson:1.1.54.android'
         ```
+
     2. app的一些属性修改`app/src/main/res/values/strings.xml`
     3. 报错`More than one file was found with OS independent path 'META-INF/LICENSE'`
         1. 参考: [More than one file was found with OS independent path 'META-INF/LICENSE](https://stackoverflow.com/questions/44342455/more-than-one-file-was-found-with-os-independent-path-meta-inf-license)
-        2. `app/build.gradle `
-            ```
+        2. `app/build.gradle`
+
+            ```java
             buildTypes {
                 release {
                     minifyEnabled false
@@ -67,4 +74,3 @@
                 exclude ('META-INF/io.netty.versions.properties')
             }
             ```
-
