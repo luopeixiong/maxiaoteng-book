@@ -13,14 +13,23 @@
 
 ## 3. adb
 
-1. ~/Library/Android/sdk/platform-tools/adb
-2. adb kill-server/start-server
-3. adb devices -l
-4. adb -s {device_code} shell
-5. adb shell    shell
-    1. su   root权限
+adb 操作手机
 
-6.
+1. adb应用位置: `~/Library/Android/sdk/platform-tools/adb`
+2. 命令行
+
+    ```shell
+    adb kill-server/start-server
+    adb devices -l
+    adb -s {device_code} shell
+    adb shell    shell
+    # adb启动应用
+    adb -s 58d8cd167d44 shell am start cn.ninebot.ninebot/.mainshell.MainActivity
+    # 查看app对应包
+    adb shell ps|grep cn.ninebot.ninebot
+    # 查看activi
+    adb shell dumpsys package cn.ninebot.ninebot
+    ```
 
 ## 4. frida动态调试
 
