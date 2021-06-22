@@ -42,6 +42,7 @@
     1. input和output见`app/src/main/java/com/example/xposed_demo/HookNineBot.java`
     2. hook 调用so, 考虑集成[sekiro](https://github.com/virjar/sekiro), demo见`app/src/main/java/com/example/xposed_demo/HookNineBotSekiro.java`
         1. 服务端直接启动即可, 请求参考: `http://192.168.2.141:5601/asyncInvoke?group=ninebot&action=checkcode&query=origin_str`
+        2. 在配置sekiro服务时, 尽量使用post请求发送参数(get参数可能有编码和长度限制问题, post也更直观, sekiro对post和get参数做了聚合, 可以直接提取), 参考QQmusicSekiro
 5. 指定生效的Xposed模块
     1. 创建文件`app/src/main/assets/xposed_init`
     2. 内容`com.example.xposedhook.HookNineBot`
