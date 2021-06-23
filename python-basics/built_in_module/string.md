@@ -2,9 +2,9 @@
 
 提供字符串和数字组合
 
-
 1. 用法
-    ```
+
+    ```python
     >>> import string
     >>> string
     <module 'string' from '/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/string.py'>
@@ -23,14 +23,17 @@
     >>> string.ascii_letters
     'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
     ```
-    
+
 2. 关系
-    ```
+
+    ```python
     printable = digits + ascii_letters + punctuation + whitespace
     hexdigits = digits + 'abcdef' + 'ABCDEF'
     whitespace = ' \t\n\r\v\f'
     ```
+
 3. 随机字符串
-    ```
+
+    ```python
     ''.join([random.choice(string.digits+string.ascii_lowercase) for _ in range(20)])
     ```

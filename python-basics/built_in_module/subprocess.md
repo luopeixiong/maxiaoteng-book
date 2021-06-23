@@ -1,26 +1,27 @@
 # Subprocess
 
 > subprocess的目的就是启动一个新的进程并且与之通信。
-
 > subprocess模块中只定义了一个类: Popen。可以使用Popen来创建进程，并与进程进行复杂的交互。它的构造函数如下：
-
 > The subprocess option:用来执行其他的可执行程序的，即执行外部命令。 他是os.fork() 和 os.execve() 的封装。 他启动的进程不会把父进程的模块加载一遍。使用subprocess的通信机制比较少，通过管道或者信号机制.
 > The multiprocessing option:用来执行python的函数，他启动的进程会重新加载父进程的代码。可以通过Queue、Array、Value等对象来通信。
 
-## 并发与并行
+- 并发与并行
     并发: 交错使用cpu实行任务，本质还是顺序执行
     并行: 多核CPU同时执行，效率翻倍
 
 ## 用subprocess模块管理子进程
+
 1. Python启动的多个子进程是可以并行运行的。子进程将会独立于父进程而运行，这里的父进程指的Python解释器。
+
     ```Python
     import subprocess
     proc = subprocess.Popen(['echo', 'Hello subprocess'], stdout=subprocess.PIPE)
     out, err = proc.communicate()
-    print(out.decode('utf-8'))    
+    print(out.decode('utf-8'))
     ```
 
 2. Python 子进程从父进程中解耦，父进程可以运行跟多条平行的子进程
+
     ```Python
     import subprocess
 
@@ -48,6 +49,7 @@
     ```
 
 3. Python向子进程输送数据
+
     ```Python
     import os
     def run_openssl(data):
@@ -75,7 +77,9 @@
         out, error = proc.communicate()  # 通过comunicate，等待这些子进程完成I/O工作并终结
         print(out)
     ```
+
 4. Python子进程超时设置
+
     ```Python
     for proc in procs:
         try:
@@ -86,11 +90,14 @@
     ```
 
 ## Popen详解
+
 1. 初始化
-    ```
+
+    ```python
         subprocess.Popen(args, bufsize=0, executable=None, stdin=None, stdout=None, stderr=None, preexec_fn=None, close_fds=False, shell=False, cwd=None, env=None, universal_newlines=False, startupinfo=None, creationflags=0)
         # 参数args可以是字符串或者序列类型（如：list，元组），用于指定进程的可执行文件及其参数。如果是序列类型，第一个元素通常是可执行文件的路径。我们也可以显式的使用executeable参数来指定可执行文件的路径。
     ```
+
 2. 参数
     1. 参数stdin, stdout, stderr分别表示程序的标准输入、输出、错误句柄。他们可以是PIPE，文件描述符或文件对象，也可以设置为None，表示从父进程继承。
 
@@ -133,23 +140,19 @@
         获取进程的返回值。如果进程还没有结束，返回None。
 
 4. 简单的用法
-   1. 执行
-        ```
-            p=subprocess.Popen("dir", shell=True)  
-            p.wait() 
-            # shell参数根据你要执行的命令的情况来决定，上面是dir命令，就一定要shell=True了，p.wait()可以得到命令的返回值。
+    1. 执行
 
-            # 如果上面写成a=p.wait()，a就是returncode。那么输出a的话，有可能就是0【表示执行成功】。
+        ```python
+        p=subprocess.Popen("dir", shell=True)  
+        p.wait() 
+        # shell参数根据你要执行的命令的情况来决定，上面是dir命令，就一定要shell=True了，p.wait()可以得到命令的返回值。
+        # 如果上面写成a=p.wait()，a就是returncode。那么输出a的话，有可能就是0【表示执行成功】。
         ```
-    1. 进程通讯
+
+    2. 进程通讯
         1. 如果想得到进程的输出，管道是个很方便的方法，这样：
-        ```
-            p=subprocess.Popen("dir", shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)  
-            (stdoutput,erroutput) = p.communicate()  
-            p.communicate会一直等到进程退出，并将标准输出和标准错误输出返回，这样就可以得到子进程的输出了。
-        ```
-        1. 例子2:
-        ```
+
+            ```python
             p=subprocess.Popen('ls',shell=True,stdout=subprocess.PIPE)
             stdoutput,erroutput = p.communicate('/home/zoer')
             print stdoutput[0]
@@ -157,40 +160,43 @@
             # 上面的例子通过communicate给stdin发送数据，然后使用一个tuple接收命令的执行结果。
 
             # 上面，标准输出和标准错误输出是分开的，也可以合并起来，只需要将stderr参数设置为subprocess.STDOUT就可以了，这样子：
-        ```
+            p=subprocess.Popen("dir", shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)  
+            (stdoutput,erroutput) = p.communicate()  
+            p.communicate会一直等到进程退出，并将标准输出和标准错误输出返回，这样就可以得到子进程的输出了。
 
-        1. 如果你想一行行处理子进程的输出，也没有问题：
-
-        ```
+            # 如果你想一行行处理子进程的输出，也没有问题：
             p=subprocess.Popen("dir", shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)  
             while True:  
                 buff = p.stdout.readline()  
                 if buff == '' and p.poll() != None:  
                     break 
-        ```
-    2. 死锁
-        但是如果你使用了管道，而又不去处理管道的输出，那么小心点，如果子进程输出数据过多，死锁就会发生了，比如下面的用法：
-        ```
+            ```
+
+    3. 死锁
+
+        ```python
+        # 但是如果你使用了管道，而又不去处理管道的输出，那么小心点，如果子进程输出数据过多，死锁就会发生了，比如下面的用法：
         p=subprocess.Popen("longprint", shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)  
         p.wait()  
         longprint是一个假想的有大量输出的进程，那么在我的xp, Python2.5的环境下，当输出达到4096时，死锁就发生了。当然，如果我们用p.stdout.readline或者p.communicate去清理输出，那么无论输出多少，死锁都是不会发生的。或者我们不使用管道，比如不做重定向，或者重定向到文件，也都是可以避免死锁的。
         ```
-    3. 管道连接
+
+    4. 管道连接
         subprocess还可以连接起来多个命令来执行。
-
         在shell中我们知道，想要连接多个命令可以使用管道。
-
         在subprocess中，可以使用上一个命令执行的输出结果作为下一次执行的输入。例子如下：
+
+        ```python
+        p1=subprocess.Popen('cat ff',shell=True,stdout=subprocess.PIPE)
+        p2=subprocess.Popen('tail -2',shell=True,stdin=p1.stdout,stdout=subprocess.PIPE)
+        print p2.stdout
+        print p2.stdout.read()
+        # 例子中，p2使用了第一次执行命令的结果p1的stdout作为输入数据，然后执行tail命令。
         ```
-            p1=subprocess.Popen('cat ff',shell=True,stdout=subprocess.PIPE)
-            p2=subprocess.Popen('tail -2',shell=True,stdin=p1.stdout,stdout=subprocess.PIPE)
-            print p2.stdout
-            print p2.stdout.read()
-            例子中，p2使用了第一次执行命令的结果p1的stdout作为输入数据，然后执行tail命令。
-        ```
+
         下面是一个更大的例子。用来ping一系列的ip地址，并输出是否这些地址的主机是alive的。代码参考了python unix linux 系统管理指南。
 
-        ```
+        ```python
             #!/usr/bin/env python  
             
             from threading import Thread  
@@ -225,9 +231,10 @@
 
             假设说我们用一个线程来处理，那么每个 ping都要等待前一个结束之后再ping其他地址。那么如果有100个地址，一共需要的时间=100*平均时间。
         ```
+
         如果使用多个线程，那么最长执行时间的线程就是整个程序运行的总时间。【时间比单个线程节省多了】
 
-## 这里要注意一下Queue模块的学习。
+## 这里要注意一下Queue模块的学习
 
 pingme函数的执行是这样的：  
 启动的线程会去执行pingme函数。  
@@ -238,6 +245,5 @@ pingme函数会检测队列中是否有元素。如果有的话，则取出并�
 >
 > Queue.join()
 >
->　　Blocks until all items in the queue have been gotten and processed(task_done()).
+>　Blocks until all items in the queue have been gotten and processed(task_done()).
 > 学习Processing模块的时候，遇到了进程的join函数。进程的join函数意思说，等待进程运行结束。与这里的Queue的join有异曲同工之妙啊。processing模块学习的文章在这里。
-
