@@ -46,6 +46,34 @@ where table_schema not in ("information_schema", "mysql", "performance_schema")
 SELECT GROUP_CONCAT(COLUMN_NAME SEPARATOR ",") FROM information_schema.COLUMNS
 WHERE TABLE_SCHEMA = 'mercari' AND TABLE_NAME = 'app_sku_2019_10_01';
 
+####################################
+#            需要定期删除的表         #
+####################################
+
+
+# 执行delete操作的, 原则上只保留近一个月的数
+select * from baemin.tmp_b_mart_products where id<120000000 order by id desc;
+-- delete from baemin.tmp_b_mart_products where id<120000000;
+
+select * from baemin.tmp_b_mart_skus where id<140000000 order by id desc;
+-- delete from baemin.tmp_b_mart_skus where id<140000000;
+
+select * from baemin.tmp_baemin_sku_batch where id<140000000 order by id desc;
+-- delete from baemin.tmp_baemin_sku_batch where id<140000000;
+
+select * from popmart.tmp_chouhe_batch_origin where id<140000000 order by id desc;
+-- delete from popmart.tmp_chouhe_batch_origin where id<140000000;
+
+# 可以执行truncate操作的
+
+-- 不可以在周二执行, 因为有任务
+select count(*) from nio.tmp_loc_chargingpile;
+-- truncate table nio.tmp_loc_chargingpile;
+
+select count(*) from baemin.tmp_b_mart_res;
+-- truncate table baemin.tmp_b_mart_res;
+
+
 ## 台湾贸易数据
 -- 找出上个月初步值的数量
 select 
@@ -144,8 +172,8 @@ select ts_short, count(*) from Hotels.luckin_shops where address not like "%敬�
 select * from Hotels.luckin_shops_other where shop_name="厦门东方财富广场店";
 select distinct(left(ts, 13)) from Hotels.luckin_shops where ts_short="2019-11-16";
 select * from Hotels.tmp_luckin_all_info where deptid='338666';
-set @batch_id='2021-05-10';
-set @last_batch_id='2021-04-25';
+set @batch_id='2021-06-25';
+set @last_batch_id='2021-06-10';
 
 -- 更新新增店铺的城市信息
 update Hotels.luckin_shops aa, Hotels.tmp_luckin_all_info bb
@@ -175,7 +203,7 @@ select aa.* from
 left join 
 (SELECT * from Hotels.luckin_shops where ts_short=@last_batch_id) bb
 on aa.deptid=bb.deptid
-where bb.shop_no is null;
+where bb.deptid is null;
 
 -- 查看消失的店铺是否真的关闭了
 select * from
@@ -183,13 +211,13 @@ select * from
 left join 
 (SELECT * from Hotels.luckin_shops where ts_short=@batch_id) bb
 on aa.deptid=bb.deptid
-where bb.shop_no is null;
-
+where bb.deptid is null;
+select * from Hotels.luckin_shops where city='南宁';
 
 -- 完整验证
 -- city is null or ''
 select * from Hotels.luckin_shops where ts_short=@batch_id and (city is null or city ='');
-select * from Hotels.luckin_shops where ts_short=@batch_id and shop_no is null or shop_no ='';
+select * from Hotels.luckin_shops where ts_short=@batch_id and (shop_no is null or shop_no ='');
 select * from Hotels.luckin_shops_other where ts_short=@batch_id and (city is null or city ='');
 select count(*) from Hotels.luckin_shops_other where ts_short=@batch_id and (city is null or city ='');
 
@@ -202,6 +230,18 @@ on aa.deptid=bb.deptid
 where aa.city !=bb.city;
 
 update Hotels.luckin_shops aa, Hotels.luckin_shops bb
+set aa.city=bb.city 
+where aa.ts_short=@batch_id and bb.ts_short=@last_batch_id and aa.deptid=bb.deptid and aa.city!=bb.city;
+
+update Hotels.luckin_shops aa, Hotels.luckin_shops bb
+set aa.city=bb.city 
+where aa.ts_short=@batch_id and bb.ts_short=@last_batch_id and aa.deptid=bb.deptid and aa.city is null;
+
+update Hotels.luckin_shops_other aa, Hotels.luckin_shops_other bb
+set aa.city=bb.city 
+where aa.ts_short=@batch_id and bb.ts_short=@last_batch_id and aa.deptid=bb.deptid and aa.city is null;
+
+update Hotels.luckin_shops_other aa, Hotels.luckin_shops_other bb
 set aa.city=bb.city 
 where aa.ts_short=@batch_id and bb.ts_short=@last_batch_id and aa.deptid=bb.deptid and aa.city!=bb.city;
 
@@ -229,8 +269,8 @@ select ts_short, from_net, count(*), count(distinct flight_no), count(distinct d
 select ts_short, from_net, count(*) from flight_ticket.ctrip_tickets group by ts_short, from_net order by ts_short desc;
 select ts_short, count(*) from flight_ticket.umetrip_info group by ts_short desc;
 select ts_short, count(*) from flight_ticket.sanya_flight_info group by ts_short desc;
-select dep_date, count(*) from flight_ticket.umetrip_info group by dep_date desc;
-select dep_date, count(*) from flight_ticket.sanya_flight_info group by dep_date desc;
+select dep_date, count(*), count(distinct flight_no) from flight_ticket.umetrip_info group by dep_date desc;
+select dep_date, count(*), count(distinct flight_no) from flight_ticket.sanya_flight_info group by dep_date desc;
 select ts_short, count(*) from flight_ticket.variflight_list group by ts_short desc;
 select ts_short, count(*), count(distinct flight_no) from flight_ticket.variflight_info group by ts_short desc;
 select dep_date, count(*) from flight_ticket.variflight_info group by dep_date desc;
@@ -290,11 +330,11 @@ select count(distinct job_number) from Jobs.tmp_zhilian_job group by ts_short;
 insert ignore into Jobs.zhilian_job 
 select null,job_number,jobName,company,updateDate,updateDay,min_salary,max_salary,salary,eduLevel,jobType,workingExp,workingExp_str,industry,industry_first,emplType,
 	applyType,saleType,companyLogo,expandCount,score,vipLevel,tagIntHighend,rootOrgId,staffId,chatWindow,timeState,rate,city_code,city_name,region_code,industry_id,
-	bestEmployerLabel,ts,'2021-01-21' 
+	bestEmployerLabel,ts,'2021-06-17' 
 -- select count(distinct job_number) 
-from Jobs.tmp_zhilian_job where ts_short >='2021-01-21';
+from Jobs.tmp_zhilian_job where ts_short >='2021-06-17';
 
-select count(*), count(distinct job_number) from Jobs.tmp_zhilian_job where ts_short < '2021-05-10';
+select count(*), count(distinct job_number) from Jobs.tmp_zhilian_job where ts_short > '2021-06-16';
 
 -- 分析新增公司比例
 select distinct t1.cz_name, t1.cz_id from
@@ -412,12 +452,15 @@ select ts_short, count(*), count(distinct shop_id) from proya.muji_stores group 
 select country, ts_short, count(*) from proya.muji_stores where ts_short>"2020-10" group by country, ts_short;
 select ts_short, count(*) from proya.muji_address group by ts_short;
 select ts_short, count(*) from proya.muji_news group by ts_short;
+select * from proya.muji_stores where country is null;
+select * from proya.muji_address order by id desc;
+
 update proya.muji_stores aa, proya.muji_address bb 
 set aa.country=bb.country, aa.city=bb.city
-where aa.shop_id=bb.shop_id and aa.country is null and aa.ts_short='2021-02-15';
+where aa.shop_id=bb.shop_id and aa.country is null and aa.ts_short='2021-06-15';
 select ts_short, count(*) from proya.nome_stores group by ts_short;
 select ts_short, count(*) from proya.uniqlo_stores group by ts_short;
-select country, ts_short, count(*) from proya.uniqlo_stores where ts_short>"2020-10" group by country, ts_short;
+select country, ts_short, count(*) from proya.uniqlo_stores where ts_short>"2021" group by country, ts_short;
 select country, count(*) from proya.uniqlo_stores where ts_short="2019-12-16" group by country;
 select * from proya.uniqlo_stores where ts_short="2019-12-16" and country="Japan";
 
@@ -456,22 +499,24 @@ where aa.shop_no=bb.shop_no and aa.province is null and aa.ts_short='2021-02-20'
 
 # 检查全部更新
 select * from miniso.wx_stores_finally where province is null;
+select * from miniso.wx_stores_finally where city like '%大理%';
+
 
 
 -- 新增店铺验证
-set @batch_id='2021-05-15';
-set @last_batch_id='2021-05-10';
+set @batch_id='2021-05-25';
+set @last_batch_id='2021-05-20';
 select aa.* from 
 (SELECT * from miniso.wx_stores_finally where ts_short=@batch_id) aa
 left join 
-(SELECT distinct shop_no from miniso.wx_stores_finally where ts_short<=@last_batch_id) bb
+(SELECT distinct shop_no from miniso.wx_stores_finally where ts_short<@batch_id) bb
 on aa.shop_no=bb.shop_no
 where bb.shop_no is null;
 
 select aa.* from 
 (SELECT * from miniso.wx_stores_finally where ts_short=@batch_id) aa
 left join 
-(SELECT * from miniso.wx_stores_finally where ts_short=@last_batch_id) bb
+(SELECT * from miniso.wx_stores_finally where ts_short<=@last_batch_id) bb
 on aa.shop_no=bb.shop_no
 where bb.shop_no is null;
 
@@ -482,7 +527,7 @@ select ts_short, count(*) from popmart.shops group by ts_short order by ts_short
 
 -- yadea
 select ts_short, count(*) from proya.yadea_cities group by ts_short order by ts_short desc;
-select ts_short, count(*) from proya.yadea_stores group by ts_short order by ts_short desc;
+select ts_short, count(*), count(distinct posCode), COUNT(distinct region_name), count(distinct district_name), count(distinct town_name) from proya.yadea_stores group by ts_short order by ts_short desc;
 
 -- 哈啰hello
 select ts_short, count(*) from hellobike.hellobike_store_app_finally where businessType=0 and pointType=0 group by ts_short;
@@ -528,6 +573,16 @@ create table dianping.shops_2_2021_04 like dianping.shops_2_2021_03;
 create table dianping.shops_2021_04 like dianping.shops_2021_03;
 alter table dianping.shops drop index ts_short_index;
 
+create table dianping.shops_2021_06 like dianping.tmp_shops_map;
+
+alter table dianping.shops_2021_06 add unique index shop_id(shop_id);
+
+insert ignore into dianping.shops_2021_06
+(shop_id,shop_name,shopPower,cate_id,region_id,city_id,city_name,geoLat,geoLng,address,avgPrice,bookingSetting,branchUrl,defaultPic,dishTag,expand,hasSceneryOrder,memberCardId,phoneNo,poi,promoId,regionList,shopPowerTitle,shopDealId,ts,ts_short)
+select shopId,shopName,shopPower,cate_id,region_id,city_id,city_name,geoLat,geoLng,address,avgPrice,bookingSetting,branchUrl,defaultPic,dishTag,expand,hasSceneryOrder,memberCardId,phoneNo,poi,promoId,regionList,shopPowerTitle,shopDealId,ts,ts_short from dianping.tmp_shops_map;
+
+show index from dianping.shops_2021_04;
+
 -- 去重
 insert ignore into dianping.shops_2021_04
 select * from dianping.shops;
@@ -535,7 +590,7 @@ select * from dianping.shops;
 -- 置空原始数据
 TRUNCATE dianping.shops;
 
-insert ignore into dianping.shops_2_2021_04
+insert ignore into dianping.shops_2_2021_06
 select e.province_short, e.cate_2_name, sum(count_num) as count_num
 from
 	(
@@ -543,7 +598,7 @@ from
 		from
 			(
 				## 09-22为第二批分类
-				select cate_2_id, cate_2_name from dianping.categories where ts_short='2020-09-22') d
+				select cate_2_id, cate_2_name from dianping.categories where ts_short='2021-06-25') d
 				left join 
 				(
 				    select a.province_short, b.city_id, b.cate_id, b.count_num
@@ -551,7 +606,7 @@ from
 						(select province_short, city_id from dianping.city_list_province )as a
 						left join
 						(
-							select city_id,cate_id, count(*) as count_num from dianping.shops_2021_04 group by city_id, cate_id
+							select city_id,cate_id, count(*) as count_num from dianping.shops_2021_06 group by city_id, cate_id
 						) as b
 						on a.city_id=b.city_id
 			) c
@@ -706,7 +761,7 @@ select ts_short, count(1) from mercari.us_all_user group by ts_short;
 select ts_short, count(1) from mercari.us_all_user group by ts_short;
 select batch_id, count(1) from mercari.us_user_info group by batch_id;
 
-create table mercari.us_app_sku_info_for_all like mercari.us_app_sku_info_for_all_2021_04;
+create table mercari.us_app_sku_info_for_all like mercari.us_app_sku_info_for_all_2021_05;
 
 -- fangtianxia 房天下
 select ts_short, count(*), count(distinct url), count(distinct livindate) from fangtianxia.community_list group by ts_short;
@@ -716,7 +771,7 @@ select ts, live_date_std, count(*) from fangtianxia.final_delivery group by ts, 
 select ts, count(*) from fangtianxia.final_delivery group by ts;
 
 -- 判断数据是否漏爬或误爬
-set @batch_id='2021-04-21';
+set @batch_id='2021-06-17';
 select * from 
 (select distinct decoration_origin from fangtianxia.community_info where ts_short=@batch_id) aa
 left join 
@@ -848,6 +903,7 @@ select ts_short, count(*) from baemin.restaurants_baemin_solo group by ts_short;
 
 
 -- baemin
+select count(*) from baemin.tmp_main_categories;
 select ts_short, count(*) from baemin.franchises group by ts_short;
 select ts_short, count(*) from baemin.franchises_list group by ts_short;
 select ts_short, query_type, count(*) from baemin.restaurants_baemin_solo group by query_type, ts_short;
@@ -1056,8 +1112,8 @@ select ts_short, res, count(*) from popmart.tmp_res group by ts_short, res order
 
 # nio蔚来汽车
 
-select left(ts, 15), count(*) from nio.chargingpile where group by left(ts, 15) order by left(ts, 15) desc;
-select left(ts, 15), sum(charger_total_number), sum(free_number), sum(resource_number) from nio.merged_info group by left(ts, 15) order by left(ts, 15) desc;
+select left(ts, 15), count(*) from nio.chargingpile group by left(ts, 15) order by left(ts, 15) desc;
+select left(ts, 15), count(*), sum(charger_total_number), sum(free_number), sum(resource_number) from nio.merged_info group by left(ts, 15) order by left(ts, 15) desc;
 select left(ts, 13), count(*) from nio.chargingpile group by left(ts, 13) order by left(ts, 13) desc;
 
 select ts_short, count(*) from nio.tmp_merged_info group by ts_short;
@@ -1073,13 +1129,15 @@ select ts_short, count(*) from nio.tmp_loc_chargingpile_unique group by ts_short
 select ts_short, count(*) from monitor.monitor_log group by ts_short;
 
 SELECT ts_short, query, count(*) from wechat.wechat_search_index group by ts_short, query;
+SELECT ts_short, count(*), count(distinct query) from wechat.wechat_search_index group by ts_short;
+select * from wechat.wechat_search_index order by id desc;
 
 # ninebot
 select ts_short, count(*), count(distinct circle_id) from ninebot.circle_list group by ts_short;
 select ts_short, count(*), count(distinct shop_id) from ninebot.shop_list group by ts_short;
 select ts_short, count(*) from ninebot.user_list group by ts_short;
 select ts_short, count(*) from ninebot.user_info group by ts_short;
-select ts_short, count(*), count(nickname) from ninebot.newuser_info group by ts_short;
+select ts_short, count(*), count(nickname) from ninebot.newuser_info group by ts_short order by ts_short desc;
 select left(regdate, 10), count(*), count(nickname), count(distinct uid), max(uid), min(uid),max(uid)-min(uid)  from ninebot.newuser_info where nickname is not null group by left(regdate, 10);
 select left(regdate, 13), count(*), count(nickname), count(distinct uid), max(uid), min(uid),max(uid)-min(uid)  from ninebot.newuser_info where nickname is not null group by left(regdate, 13) order by left(regdate, 13) desc;
 select * from ninebot.newuser_info where left(regdate, 10) = '2018-12-26';
@@ -1087,10 +1145,10 @@ select * from ninebot.newuser_info where left(regdate, 10) = '2018-12-26';
 # coupang eats
 select ts_short, count(*), count(distinct restaurant_id) from coupang_eats.tmp_restaurants group by ts_short;
 select ts_short, count(*), sum(case when expressDeliveryBadge like '%"expressBadge": true%' then 1 else 0 end) from coupang_eats.restaurants group by ts_short;
-delete from coupang_eats.restaurants where ts_short='2021-04-21';
 
-insert ignore into coupang_eats.tmp_tmp_restaurants
-select * from coupang_eats.tmp_restaurants;
+insert ignore into coupang_eats.restaurants
+(restaurant_id,name,openStatus,openStatusText,nextOpenAt,distance,estimatedDeliveryTime,minDeliveryTime,maxDeliveryTime,shareable,benefit,favorite,reviewRating,reviewCount,deliveryFeeInfo,deliveryFee,extraDocuments,storeInformation,badges,searchId,expressDeliveryBadge,curatedType,newStoreBadge,nameTexts,reviewCarousels,reviewShortCuts,emphasized,minimumOrderThresholds,merchantId,categories,paymentStoreId,description,telNo,bizNo,approvalStatus,zipNo,address,addressDetail,latitude,longitude,serviceFeeRatio,menus,imageHeightRatio,taxBaseType,storeLevelInfoId,manuallyShutdown,deleted,brandLogoPath,origin_latitude,origin_longitude,ts,ts_short)
+select restaurant_id,name,openStatus,openStatusText,nextOpenAt,distance,estimatedDeliveryTime,minDeliveryTime,maxDeliveryTime,shareable,benefit,favorite,reviewRating,reviewCount,deliveryFeeInfo,deliveryFee,extraDocuments,storeInformation,badges,searchId,expressDeliveryBadge,curatedType,newStoreBadge,nameTexts,reviewCarousels,reviewShortCuts,emphasized,minimumOrderThresholds,merchantId,categories,paymentStoreId,description,telNo,bizNo,approvalStatus,zipNo,address,addressDetail,latitude,longitude,serviceFeeRatio,menus,imageHeightRatio,taxBaseType,storeLevelInfoId,manuallyShutdown,deleted,brandLogoPath,origin_latitude,origin_longitude,ts,'2021-06-20' from coupang_eats.restaurants where ts_short='2021-06-21';
 
 
 # bizreach
@@ -1099,6 +1157,9 @@ select ts_short, count(*),
 	sum(case when jobIncomeCd is not null then allRecordCount else 0 end) as income, 
 	sum(case when jobCategoryList is not null then allRecordCount else 0 end) as job_category 
 from bizreach.job_search_count jsc  group by ts_short;
+
+select ts_short, count(*), max(cast(company_id as unsigned)) from bizreach.search_count group by ts_short;
+select ts_short, count(*) from bizreach.headhunter group by ts_short;
 
 select ts_short, count(*), count(distinct jobId), max(ts) from bizreach.job_list group by ts_short;
 
@@ -1120,7 +1181,7 @@ select distinct flair from reddit.tmp_post_list where ts_short='2021-03-09' and 
 
 # phxlabs
 select ts_short, count(*) from phxlabs.job_info group by ts_short;
-select * from phxlabs.job_infojob_info order by id desc;
+select * from phxlabs.job_info order by id desc;
 
 
 # qqmusic
@@ -1148,7 +1209,25 @@ where tt2.SHIPNAME is null;
 
 
 # 得物
-select ts_short, count(*) from dewu.spus_unique group by ts_short;
-select ts_short, count(*) from dewu.brands group by ts_short;
+select ts_short, count(*), count(distinct brandId), count(distinct categoryId) from dewu.spus_unique group by ts_short;
+select ts_short, count(*), count(distinct brandId) from dewu.brands group by ts_short;
 select ts_short, count(*) from dewu.categories group by ts_short;
+select * from 
+        (select distinct categoryId from dewu.spus_unique) tt1
+        left join 
+        (select distinct sub_sub_categoryId from dewu.categories) tt2
+        on tt1.categoryId=tt2.sub_sub_categoryId
+        where tt2.sub_sub_categoryId is null;
+       
+       
+# 货拉拉
 
+-- 一次洗   
+insert into qqmusic.tmp_huolala_orders_new
+(create_time, create_time_unix, order_uuid,order_display_id,vehicle_type_name)
+select DATE_FORMAT(FROM_UNIXTIME(create_time), '%Y-%m-%d %H:%i:%s'), create_time, order_uuid,order_id,vehicle_type_name from qqmusic.tmp_huolala_orders order by create_time;
+
+-- 每周二周五更新订单
+insert into qqmusic.tmp_huolala_orders_new
+(create_time, create_time_unix, order_uuid,order_display_id,vehicle_type_name)
+select DATE_FORMAT(FROM_UNIXTIME(1624586483), '%Y-%m-%d %H:%i:%s'), 1624586483, '10021062510012379710170039063679','1408243897800343577','小面';

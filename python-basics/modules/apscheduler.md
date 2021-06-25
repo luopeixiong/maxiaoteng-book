@@ -2,11 +2,12 @@
 
 [apscheduler](https://github.com/agronholm/apscheduler)是python的定时任务框架， 可以将定时任务持久化
 
-1. 三种出发模式
+1. 三种触发模式
    1. cron 定时任务触发器
    2. interval 循环任务触发器
    3. date 一次性任务触发器
 2. 使用
+
     ```Python
     from apscheduler.schedulers.blocking import BlockingScheduler
     import time 
@@ -26,25 +27,32 @@
         sched.add_job(func=clear_job, args=('cron_job', ), trigger='date', next_run_time='2019-06-28 18:09:00', id='date_job')
         sched.start()
     ```
+
 3. 一些说明
    1. 定时任务设置hours
-        ```
+
+        ```python
         * 表示每
         * /2 # 偶数
         x,y,z  # 组合
         ```
+
    2. 一次任务
-        ```
+
+        ```python
         next_run_time = '2019-06-28 18:09:00'
         next_run_time = date(2019, 06, 28)
         next_run_time = datetime(2019, 06, 28, 1, 0, 2)
         # 未指定时间将立即执行
         ```
+
    3. 周期执行任务
-        ```
+
+        ```python
         seconds = 2  # 表示每2s执行一次
         start_date='2018-12-11 09:30:00', end_date='2018-12-15 11:00:00'  # 也可以添加开始停止时间
         ```
+
 4. cron api
     - year (int|str) – 4-digit year
     - month (int|str) – month (1-12)
@@ -59,6 +67,7 @@
     - timezone (datetime.tzinfo|str) – time zone to use for the date/time calculations (defaults to scheduler timezone)
     - jitter (int|None) – advance or delay the job execution by jitter seconds at most.
 5. 任务持久化
+
     ```python
         from apscheduler.schedulers.background import BackgroundScheduler
         from apscheduler.jobstores.redis import RedisJobStore
