@@ -50,6 +50,10 @@ django-admin startproject mysite
 cd mysit
 # 可以指定应用访问的web ip和端口
 python36 manage.py runserver 0:8000 
+
+# python manage.py runserver 会使AppConfig.ready() running twice, 可以加参数
+# https://stackoverflow.com/questions/33814615/how-to-avoid-appconfig-ready-method-running-twice-in-django
+python manage.py runserver --noreload 0:8000 
 ```
 
 开发服务器自动重载代码的修改, 但是文件的添加需要重启.

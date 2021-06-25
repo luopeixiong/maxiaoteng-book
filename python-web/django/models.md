@@ -124,6 +124,10 @@ Django的orm操作本质上会根据对接的数据库引擎，翻译成对应�
             Tag.objects.all()
             > <QuerySet [<Tag: Tag object>]>  # 返回类型
             # 可迭代类型,每个都是model实例
+            # 返回list, 每个是dict
+            Tag.objects.all().values()
+            # 返回list, 每个是list, 只保留value
+            Tag.objects.all().values_list()
         ```
 
     2. 条件查询
