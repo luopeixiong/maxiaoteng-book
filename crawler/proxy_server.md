@@ -59,8 +59,8 @@ sudo service squid start
             # 代理服务器
             proxyServer = "http://http-dyn.abuyun.com:9020"
             # 代理隧道验证信息
-            proxyUser = "HU80498W9ZK49KGD"
-            proxyPass = "60DBD202DC5E8F35"
+            proxyUser = "HUxxGD"
+            proxyPass = "60xx35"
             # for Python2
             # proxyAuth = "Basic " + base64.b64encode(proxyUser + ":" + proxyPass)
             # for Python3
