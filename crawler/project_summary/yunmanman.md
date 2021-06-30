@@ -87,7 +87,9 @@
         6. 验证猜测成立
     2. 请求逻辑
         1. 请求<https://www.ymm56.com/risk-encrypt/encrypt/key-generate> 返回加密后的密钥, 然后通过自定义解密方法`dk`解密
+            1. 加密内容长度对10取余 *16 为密码
+            2. aes解密得到真实密钥
         2. 发送<https://www.ymm56.com/ymm-cargo-search-app/cargoes/applet/multiSearch>时, 根据前一个请求的密钥, 传输密钥的md5和sign来标记请求
         3. 接收到响应后, 用密钥的后16位作为密码, 解密
         4. 所有加密采用aes.ECB, 填充方式: pkcs7padding, 数据块:128位
-
+        5. key-generate产生的密钥会有效一段时间, 可以通过发送请求的`re-key`, `re-sign`来判断是否一致
