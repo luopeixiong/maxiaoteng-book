@@ -45,7 +45,8 @@ adb 操作手机
     3. pc
 
         ```shell
-        pip install frida
+        pip install frida 
+        pip install frida-tools
         ```
 
 2. frida启动服务
@@ -64,6 +65,8 @@ adb 操作手机
 4. frida-ps -D 872QEDUA2224U 查看哪些进程
 5. frida和Magisk冲突
     1. <https://stackoverflow.com/questions/56316329/frida-failed-to-spawn-unable-to-access-zygote64-while-preparing-for-app-launc>
+6. 如果frida被app检测, 可以试试hluda-server-15.0.0-android-arm64
+    `https://github.com/hluwa/strongR-frida-android/releases`
 
 ### frida objection
 
@@ -136,6 +139,10 @@ adb 操作手机
 ## 10. hook so
 
 [hook so](hook_so.md)
+
+## 11. unidbg
+
+模拟Android运行环境, <https://github.com/zhkl0228/unidbg>
 
 ## last
 
