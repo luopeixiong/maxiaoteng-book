@@ -1,7 +1,9 @@
 # Macos 使用
+
 [TOC]
 
 ## 1. 快捷键
+
 1. command代替大多ctrl操作
     - command + X   # 剪切
     - command + C   # 复制
@@ -9,8 +11,7 @@
     - command + Z   # 撤销
 
 2. 锁屏
-    - control + command + Q 
-
+    - control + command + Q
 3. 大小写   长按中英切换，或按住shift + 字母
 
 4. 双指滚动，三指切换应用，四指列出桌面
@@ -23,10 +24,10 @@
 7. 外接鼠标之后，滚轮和滑动加速度不匹配，参考 [https://sspai.com/post/40596](https://sspai.com/post/40596) 解决
 8. 查看窗口坐标 command + shift + 4
 
-
 ## 2. Time Machine
 
 ### 0. 关于备份
+
 1. 考虑因素: 安全与成本
 2. 常用选择
     1. 网盘
@@ -37,9 +38,10 @@
     2. 支持部分文件恢复
     3. 增量备份
 
-
 ### 1. mac配置时间返回舱
+
 配置airport时间返回舱
+
 1. 挂载磁盘
     1. 铁威马磁盘阵列, 使用专用软件组建raid10
     2. 挂在到mac server
@@ -52,8 +54,8 @@
         1. 系统偏好设置--共享--文件共享--选中Timemachine, 右键高级设置, 设置成支持timemachine的共享
         2. 最大500G备份, 此时才能从局域网中的其他电脑的备份选项中看到
 
-
 ### 2. MacServer用户的配置
+
 1. 管理员
 2. sharing only用于访问磁盘, 不支持远程控制mac
 3. 群组
@@ -69,8 +71,8 @@
     2. finder中打开, 右键--显示简介--权限--添加timemachine群组--读写
     3. 添加其他支持的用户
 
-
 ### 3. Timemachine备份指南
+
 1. 找我创建备份磁盘的用户
 2. 备份操作
     1. 连接 BigOne Lab_Office_5G
@@ -83,9 +85,9 @@
     3. 备份不影响正常使用, 初次备份比较久, 要耐心等待
     4. 使用加密备份(**牢记密码, 牢记密码, 牢记密码**), 确保只有自己能恢复
     5. 避免重复备份大的文件, 可在时间机器-- 偏好设置-- 选项 -- 排除掉这些文件(包含不限于系统镜像, 虚拟机文件, 坚果云和其他云盘同步文件夹, Backup)
-   
 
 ### 4. Timemachine恢复指南
+
 1. [从备份恢复 Mac](https://support.apple.com/zh-cn/HT203981)
 2. 目前的问题:
     1. 更新10.15系统后, 备份文件格式导致无法恢复
@@ -96,8 +98,8 @@
         2. 紧急恢复可能需要直接连接磁盘阵列
     3. option + command + R 开机
 
-
 ## 3. 远程控制
+
 1. 被共享的电脑
     1. 创建用户
     2. 系统偏好设置 -> 共享 -> 远程管理
@@ -111,10 +113,12 @@
     2. vnc访问
         1. vnc客户端输入局域网ip和密码
 
+## 4. 迁移mac
 
-## 4. 迁移mac 
 由于更换了m1芯片的macbook, 直接迁移系统会有很多软件不兼容, 出现重启和发热的情况, 记录手动迁移
-### 1. 软件篇
+
+### 1. 软件篇, 见doc[macbook迁移](https://docs.google.com/spreadsheets/d/1Utu95OxSNnJhRg1arz_9rSnhu_x-5u4IHeWgIrjnUoI/edit#gid=0)
+
 1. clashx-mac
     1. 登录账号后设置为系统代理即可正常使用
 2. chrome
@@ -122,8 +126,8 @@
 3. vscode arm版
 4. royal tsx ssh工具
 5. homebrew
-    1. 
-
 
 ## 其他
+
 1. 磁盘管理工具格式化u盘, 需要显示所有设备[在 Mac 上的“磁盘工具”中格式化磁盘以用于 Windows 电脑](https://support.apple.com/zh-cn/guide/disk-utility/dskutl1010/mac)
+2. 制作可以同时在Windows和macOS上使用的U盘, 磁盘工具中选中要格式话的U盘或硬盘, 抹掉选择 主引导记录+ExFAT格式化硬盘
