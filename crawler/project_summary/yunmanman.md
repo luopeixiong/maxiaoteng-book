@@ -93,3 +93,156 @@
         3. 接收到响应后, 用密钥的后16位作为密码, 解密
         4. 所有加密采用aes.ECB, 填充方式: pkcs7padding, 数据块:128位
         5. key-generate产生的密钥会有效一段时间, 可以通过发送请求的`re-key`, `re-sign`来判断是否一致
+
+## 2. app 运满满司机客户端
+
+1. 检测frida
+
+    ```Java
+    package com.mb.lib.device.security;
+
+    class SecurityServiceImpl(){
+        private boolean continueCheckFrida(CheckOption checkOption, final ContinueCheckListener continueCheckListener) {
+            ...
+        }
+    }
+    ```
+
+2. 当天货源接口
+    app当天货源在匿名和用户登陆后, 分别使用不同的接口
+
+    ```Java
+    // 加密方式也不同, 登陆后接口返回参数有etype=1, 调用
+    // 响应包含 var tmp etype三个参数
+    if (rawResponseObj.geteType() == 0) {
+        response = decryptByPShell(response, rawResponseObj);
+    } else {
+        response = decryptByIE(response, rawResponseObj, isEmpty);
+    }
+    ```
+
+    解密后发现, 订单列表等一些请求做了压缩
+
+    ```Java
+    package com.ymm.lib.commonbusiness.ymmbase.network.interceptor;
+
+    public class EncryptInterceptor extends BaseInterceptor{
+        if (isEmpty && (split = response.header("M-X").split("&")) != null) {
+            for (String str : split) {
+                if (str.trim().equals("type=2")) {
+                    try {
+                        response.body().contentLength();
+                        response.request().url().toString();
+                        byte[] decompress = DelfateUtil.decompress(response.body().bytes());
+                        int length = decompress.length;
+                        response = response.newBuilder().body(ResponseBody.create(response.body().contentType(), new String(decompress, this.mCharset.name()))).removeHeader("M-X").build();
+                    } catch (Exception e2) {
+                    }
+                }
+            }
+        }
+    }
+
+
+    // package com.ymm.lib.commonbusiness.ymmbase.util.DelfateUtil
+
+    public static byte[] decompress(byte[] bArr)
+    ```
+
+    - 登陆搜索: <https://www.ymm56.com/ymm-cargo-search-app/cargoes/multiSearch>
+
+        ```Java
+        package com.ymm.lib.commonbusiness.ymmbase.network.interceptor;
+
+        public class EncryptInterceptor extends BaseInterceptor{
+            private c iEncrypt = cl.a.a("random_cipher");
+
+            private Response decryptByIE(Response response, RawResponseObj rawResponseObj, boolean z2) throws IOException {
+                PatchProxyResult proxy = PatchProxy.proxy(new Object[]{response, rawResponseObj, new Byte(z2 ? (byte) 1 : 0)}, this, changeQuickRedirect, false, 20146, new Class[]{Response.class, RawResponseObj.class, Boolean.TYPE}, Response.class);
+                if (proxy.isSupported) {
+                    return (Response) proxy.result;
+                }
+                if (rawResponseObj.isVarEmpty()) {
+                    throw new EncryptException(201);
+                } else if (z2) {
+                    try {
+                        byte[] c2 = this.iEncrypt.c(com.ijiami.a.a(rawResponseObj.getVar()));
+                        if (c2.length != 0) {
+                            return response.newBuilder().body(ResponseBody.create(response.body().contentType(), c2)).build();
+                        }
+                        throw new EncryptException(202);
+                    } catch (Exception unused) {
+                        throw new EncryptException(200);
+                    }
+                } else {
+                    try {
+                        String c3 = this.iEncrypt.c(rawResponseObj.getVar());
+                        if (!TextUtils.isEmpty(c3)) {
+                            return response.newBuilder().body(ResponseBody.create(response.body().contentType(), c3)).build();
+                        }
+                        throw new EncryptException(202);
+                    } catch (Exception unused2) {
+                        throw new EncryptException(200);
+                    }
+                }
+            }
+        }
+
+        // cl.a
+        // return cl.e.a
+        public byte[] a(byte[] bArr) throws Exception {
+            PatchProxyResult proxy = PatchProxy.proxy(new Object[]{bArr}, this, changeQuickRedirect, false, 4486, new Class[]{byte[].class}, byte[].class);
+            return proxy.isSupported ? (byte[]) proxy.result : d.a(bArr);
+        }
+
+        // cl.d.a
+        public static byte[] a(byte[] bArr) throws Exception {
+            PatchProxyResult proxy = PatchProxy.proxy(new Object[]{bArr}, null, changeQuickRedirect, true, 4480, new Class[]{byte[].class}, byte[].class);
+            return proxy.isSupported ? (byte[]) proxy.result : JMEncryptBoxByRandom.a(bArr);
+        }
+
+        // 解密
+        // this.iEncrypt.c
+        // com.ijiami.JMEncryptBoxByRandom
+        public class JMEncryptBoxByRandom {
+            public static native byte[] dencryptByRandom(byte[] bArr);
+
+            public static native byte[] encryptByRandom(byte[] bArr);
+
+            static {
+                new JMEncryptBox();
+            }
+
+            public static byte[] c(byte[] bArr) throws Exception {
+                return dencryptByRandom(bArr);
+            }
+        }
+
+        ```
+
+    - 访客搜索: <https://www.ymm56.com/ymm-cargo-search-app/cargoes/visitorSearch>
+
+        ```Java
+        package com.ymm.lib.commonbusiness.ymmbase.network.interceptor;
+
+        private Response decryptByPShell(Response response, RawResponseObj rawResponseObj) throws IOException {
+            PatchProxyResult proxy = PatchProxy.proxy(new Object[]{response, rawResponseObj}, this, changeQuickRedirect, false, 20147, new Class[]{Response.class, RawResponseObj.class}, Response.class);
+            if (proxy.isSupported) {
+                return (Response) proxy.result;
+            }
+            URL url = new URL(response.request().url().toString());
+            if (SecurityCenter.getInstance().needRefresh(rawResponseObj.getOverload(), rawResponseObj.getTemp(), rawResponseObj.getVar())) {
+                SecurityCenter.getInstance().requestRefreshAlgorithm(new RefreshParam.Builder().setKey(url.toString()).setOldPolicyNumber(rawResponseObj.getNumber()).setPath(rawResponseObj.getPath()).setOverload(rawResponseObj.getOverload()).setAim(rawResponseObj.getAim()).build());
+            }
+            if (!rawResponseObj.isTmpVarEmpty()) {
+                DecryptResultObj decrypt = SecurityCenter.getInstance().decrypt(url.toString(), rawResponseObj.getVar(), buildFactors(response.request()), rawResponseObj.getTemp(), Integer.valueOf(rawResponseObj.getNumber()));
+                if (decrypt.getDecrypt() == null || decrypt.getDecrypt().length <= 0) {
+                    SecurityCenter.getInstance().requestRefreshAlgorithm(new RefreshParam.Builder().setKey(url.toString()).setOldPolicyNumber(rawResponseObj.getNumber()).setPath(rawResponseObj.getPath()).setOverload(rawResponseObj.getOverload()).setAim(rawResponseObj.getAim()).build());
+                    throw new EncryptException(102);
+                }
+                return response.newBuilder().body(ResponseBody.create(response.body().contentType(), decrypt.getDecrypt())).build();
+            }
+            throw new EncryptException(101);
+        }
+
+        ```

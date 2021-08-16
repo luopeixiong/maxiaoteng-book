@@ -1,9 +1,10 @@
 # Docker
+
 [TOC]
 
 ## 1. 基本概念
 
-- LXC(Linux Containers)    
+- LXC(Linux Containers)
 操作系统层面化的虚拟技术, 只运行1个内核, 一个虚拟化的可执行内核就是一个容器,可以绑定CPU和内存的使用, 分配特定比例的CPU的时间, IO时间, 容器技术的本质是对对计算机系统资源的隔离和控制
 
 - Docker 是一个虚拟环境的容器.
@@ -13,12 +14,15 @@
 应用程序需要不同的应用环境
 耗费资源很小
 
-**虚拟机 or 用容器技术**  
-1. 一个应用通常需要启动很多服务, 每个服务器需要一个容器, 开发麻烦 
+**虚拟机or用容器技术**
+
+1. 一个应用通常需要启动很多服务, 每个服务器需要一个容器, 开发麻烦
 2. Docker桌面环境支持少
+
 > 所以开发使用vagrant虚拟机, 部署使用docker  
 
 ---
+
 ## 2. 安装和开始
 
 ### 1. windows
@@ -27,9 +31,11 @@
 官网安装, 目录: `C:\Program Files\Docker`
 2. 文件目录  
 docker pull下载后的文件位置: `C:\Users\Public\Documents\Hyper-V\Virtual Hard Disks`
->**说明: ** windows上的docker本质上还是借助与windows平台的hyper-v创建一个linux虚拟机，你执行的所有命令都是在这个虚拟机里执行的，所有pull到本地的image都会在虚拟机的Virtual hard disks目录的文件中，这个文件就是虚拟硬盘文件（有点类似与vmware的原理）。
-因此你打开hyper-v管理器，可以找到docker创建的虚拟机，点击左侧的虚拟机名称，然后再点击右边的移动选项，按照向导将虚拟机移动到其他目录即可。
-另外还可以在菜单栏点击:操作->Hyper-v设置，来调整你所有虚拟机的虚拟硬盘文件的默认存储位置
+
+    >**说明:** windows上的docker本质上还是借助与windows平台的hyper-v创建一个linux虚拟机，你执行的所有命令都是在这个虚拟机里执行的，所有pull到本地的image都会在虚拟机的Virtual hard disks目录的文件中，这个文件就是虚拟硬盘文件（有点类似与vmware的原理）。
+    因此你打开hyper-v管理器，可以找到docker创建的虚拟机，点击左侧的虚拟机名称，然后再点击右边的移动选项，按照向导将虚拟机移动到其他目录即可。
+    另外还可以在菜单栏点击:操作->Hyper-v设置，来调整你所有虚拟机的虚拟硬盘文件的默认存储位置
+
 3. 说明
 windows10安装了docker,要求启用hyper-v来运行运行docker的虚拟机MobyLinuxVM, 所以需要重启
 启用关闭Hyper-V的方法:
@@ -40,24 +46,36 @@ windows10安装了docker,要求启用hyper-v来运行运行docker的虚拟机Mob
 ### 2. linux(centos)
 
 1. 使用仓库安装
->sudo yum install -y yum-utils device-mapper-persistent-data lvm2
-sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-sudo yum install docker-ce
+
+    ```shell
+    >sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+    sudo yum-config-manager --add-repo <https://download.docker.com/linux/centos/docker-ce.repo>
+    sudo yum install docker-ce
+    ```
+
 2. 使用脚本安装
->curl -fsSL https://get.docker.com -o get-docker.sh
-sudo sh get-docker.sh
+
+    ```shell
+    >curl -fsSL <https://get.docker.com> -o get-docker.sh
+    sudo sh get-docker.sh
+    ```
+
 3. 查看启动
->sudo systemctl start docker  # 启动docker
+
+    ```shell
+    >sudo systemctl start docker  # 启动docker
+    ```
 
 4. RHEL 安装
-踩坑参考(https://stackoverflow.com/questions/45415524/installing-docker-ce-in-redhat/47903707#47903707)
+踩坑参考(<https://stackoverflow.com/questions/45415524/installing-docker-ce-in-redhat/47903707#47903707>)
     - 安装
     >sudo yum install -y docker
     - 错误 (报错: `No package docker available.` 或 `Package: docker-ce-17.06.0.ce-1.el7.centos.x86_64 (docker-ce-stable) Requires: container-selinux >= 2.9`)
         - 对于RHEL 7.x以上的系统, docker在 `rhel-7-server-extras-rpms`仓库中, 可以使用如下命令生效:
             `subscription-manager repos --enable=rhel-7-server-extras-rpms`
-        - 如果系统(如: aws上的RHEL)没有任何subscription, 可以使用centos的扩充yum源, 方法如下: 
-            ```
+        - 如果系统(如: aws上的RHEL)没有任何subscription, 可以使用centos的扩充yum源, 方法如下:
+
+            ```shell
             sudo vim /etc/yum.repos.d/centos.repo
             
             [CentOS-extras]
@@ -67,55 +85,76 @@ sudo sh get-docker.sh
             gpgcheck=0
             gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
             ```
-### 3. macos 
-参考菜鸟教程[https://www.runoob.com/docker/macos-docker-install.html](https://www.runoob.com/docker/macos-docker-install.html) 
+
+### 3. macos
+
+参考菜鸟教程[https://www.runoob.com/docker/macos-docker-install.html](https://www.runoob.com/docker/macos-docker-install.html)
+
 1. homebrew安装
-> brew cask install docker
-2. >
+
+    ```shell
+    brew cask install docker
+    ```
 
 ## 3. Docker常用命令  
+
 参考[docker命令详解](https://segmentfault.com/a/1190000008876540#articleHeader21)  
 [全面教程](https://jiajially.gitbooks.io/dockerguide/content/index.html)
 
 ### 1. 命令
+
 1. 查看docker版本  
-    ```
+
+    ```shell
     docker --version
     ```
+
 2. image 查看本地有哪些镜像  
-    ```
+
+    ```shell
     docker image ls
     ```
+
 3. search 搜索docker镜像  
-    ```
+
+    ```shell
     docker search ubuntu
     ```
+
 4. pull 下载需要的docker镜像  
-    ```
+
+    ```shell
     docker pull ubuntu:rolling
     # The centos: **latest** tag is always the most recent version currently available.
     docker pull centos:latest
     ```
+
 5. rmi 删除映像
-    ```
+
+    ```shell
     docker rmi image_name  # 删除映像
     docker rmi image_name -f # 强制删除映像
     ```
-6. ps/container 查看本地有哪些容器   
-    ``` 
+
+6. ps/container 查看本地有哪些容器
+
+    ```shell
     docker container ls  # 只列出正在运行的
     docker container ls --all  # 列出所有, 包括运行结束的
     docker ps  # 查看正在运行的容器
     docker ps --all  # 查看所有的容器
     ```
+
 7. create 创建容器
-    ```
+
+    ```shell
     docker create <选项><镜像名称,id><命令><参数>
     -i  # 交互式操作
     -t  # 终端
     --rm    # --rm 等价于 --rm=True, 默认False,若容器内的进程终止，则自动删除容器，此选项不能与-d选项一起使用, 一旦退出则删除, 一般用于测试
     --attach="stdin"  # 将标准输入、标准输出、标准错误链接到容器
     --add-host=hello:192.168.0.233  # 向容器的/etc/hosts添加主机名与IP地址
+    --add-host=host.docker.internal:host-gateway # 实现容器访问主机端口, linux需要适用, mac直接访问docker.for.mac.host.internal
     --link mysql-server:mysql   # 进行容器连接，格式为<容器名称>:<别名>
     --name # 设置容器名称
     --net="bridge" # 设置容器的网络模式（选项可以是：bridge,none,container,host）
@@ -127,91 +166,120 @@ sudo sh get-docker.sh
     -d、--detach    # Detach模式，一般为守护进程模式，容器以后台方式运行
     --sig-proxy=true    # 将所有信号传递给进程（非TTY模式时也一样），但不传递SIGCHLD、SIGKILL、SIGSTOP信号
     ```
+
 8. run 启动容器
-    ```
+
+    ```shell
     # 参数同create
     docker run <选项> <镜像名称，id> <命令> <参数>
     ```
+
 9. start/attach/restart 启动并登陆指定容器
-    ```
+
+    ```shell
     docker start 858fd7c6a9d5(container_id)  # 启动一个容器
     docker attach container_name/container_id  # 重新登陆指定容器
     ```
+
 10. pause/unpause 暂停/启动容器
 11. exit 退出容器
-    ```
+
+    ```shell
     exit  # 即可退出并关闭
     或使用 ctrl + D
     # 退出并后台运行:
     ctrl + P + Q
     或: Ctrl + P , Ctrl + D
     ```
+
 12. logs 查看容器日志
-    ```
+
+    ```shell
     docker logs 858fd7c6a9d5(container_id)  # 查看容器的log
     -f # 持续输出
     --tail=7    # 指定数量
     -t  # 显示时间戳 
     ```
+
 13. port 查看容器开放的端口
-    ```
+
+    ```shell
     docker port 858fd7c6a9d5(container_id)
     ```
+
 14. cp 容器和外界文件传输
-    ```
+
+    ```shell
     sudo docker cp contain_id:/root/DTP/output.xlsx ~/new_dir/
     ```
+
 15. top 查看容器进程信息
-    ```
+
+    ```shell
     docker top 858fd7c6a9d5(container_id) aux  # 查看容器的进程
     ```
+
 16. exec 从外部运行内部的命令
-    ```
+
+    ```shell
     docker exec -it 858fd7c6a9d5(container_id) /bin/bash  # 连接容器
     ps ax
     ```
+
 17. export 容器持久化
-    ```
+
+    ```shell
     # 不保存历史的导入导出
     docker export contain_id > ./new_contain.tar
     ```
-18. save 
-    ```
+
+18. save
+
+    ```shell
     # 保存历史的导入导出
     docker save contain_id > ./new_contain.tar
     ```
 
 19. import 容器的导入
-    ```
+
+    ```shell
     docker import dtp_container.tar dtp  # 容器的名称将是dtp
     ```
 
 20. commit 容器制作镜像
-    ```
+
+    ```shell
     # 根据容器的改变生成一个新的镜像
     docker commit contain_id ./new_image.tar
     ```
 
 21. rm 删除容器操作
-    ```
+
+    ```shell
     docker rm container_id/container_name  # 删除容器
     ```
+
 22. rmi 删除镜像
-    ```
+
+    ```shell
     docker rmi image_name  # 删除镜像
     ```
 
 23. info 显示当前系统信息、docker容器、镜像个数、设置等信息。
-    ```
+
+    ```shell
     docker info
     ```
 
 24. 使用特权运行docker[https://blog.51cto.com/lizhenliang/1975466](https://blog.51cto.com/lizhenliang/1975466)
-    ```
+
+    ```shell
     docker run -d -name centos7 --privileged=true centos:7 /usr/sbin/init    
     ```
+
 ### 2. 启动容器注意
-1. 配置参数可以看官方说明, 一般映射左侧为宿主机, 右侧为docker内: 
+
+1. 配置参数可以看官方说明, 一般映射左侧为宿主机, 右侧为docker内:
     1. --volume /path/to/config:/config, 数据卷挂载, 统一挂载到/docker_data/contain_name/
     2. --port 3306:3306, 端口转发
     3. --restart=unless-stopped 重启选项, 一直重启或一直重启除非停止
@@ -225,19 +293,21 @@ sudo sh get-docker.sh
         5. root密码
     2. docker run -d -p 5901:5901 -v /mnt/md0/public/baiduyun:/mnt/drive_d -e vnc_password=92Hi4aJ6Fp6aLDj5 johnshine/baidunetdisk-crossover-vnc:latest
 
-
 ## 4. 用户管理
+
 Docker守候进程绑定的是一个unix  socket，而不是TCP端口。这个套接字默认的属主是root，其他是用户可以使用sudo命令来访问这个套接字文件。因为这个原因，docker服务进程都是以root帐号的身份运行的。
 
 为了避免每次运行docker命令的时候都需要输入sudo，可以创建一个docker用户组，并把相应的用户添加到这个分组里面。当docker进程启动的时候，会设置该套接字可以被docker这个分组的用户读写。这样只要是在docker这个组里面的用户就可以直接执行docker命令了。
 
 - 查看docker相关的分组
-```
+
+```shell
 sudo cat /etc/group | grep docker
 ```
 
 - 创建分组, 添加用户
-```
+
+```shell
 sudo groupadd -g 999 docker   # 999是分组id, 可不指定
 # 添加用户
 sudo usermod -aG dockerroot ec2-user
@@ -245,18 +315,25 @@ sudo usermod -aG docker ec2-user
 ```
 
 - 确认创建成功
-```
+
+```shell
 cat /etc/group
 ```
 
 - 重启
-```
+
+```shell
 sudo systemctl restart docker
 ```
 
 - 确认能否直接运行
-```
+
+```shell
 docker info
 # 如果提示权限不足
 sudo chmod a+rw /var/run/docker.sock
 ```
+
+## Other
+
+1. mac上容器访问宿主机`docker.for.mac.host.internal:5000`

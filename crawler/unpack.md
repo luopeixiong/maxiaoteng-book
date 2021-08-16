@@ -12,7 +12,11 @@
 
 3. [https://github.com/CodingGay/BlackDex](https://github.com/CodingGay/BlackDex)
     1. 有32位/64位两个app, 分别尝试
-    2. 运满满使用爱加密加固, 脱壳成功
+    2. 运满满(32位应用[如何检测Android应用是32位还是64位](https://blog.csdn.net/u010194271/article/details/115694727))使用爱加密加固, 脱壳成功
+
+    ```shell
+        adb pull /storage/emulated/0/Android/data/top.niunaijun.blackdexa32/dump/com.xiwei.logistics/ ../resource_projects/yunmanman/ymm_apk_dex/ymm_v6.70
+    ```
 
 4. [https://github.com/Youlor/Youpk](https://github.com/Youlor/Youpk)
     1. 参考: <https://www.jianshu.com/p/07cbe154879b>

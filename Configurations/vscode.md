@@ -67,7 +67,7 @@ setting.json中
 
 1. todo(安装 TODO Highlight, TODO Tree)
     1. 重启后可以在左侧todo tree看到
-    2. 代码中加入`TODO:` 即可标记todo
+    2. 代码中行首加入`TODO:` 即可标记todo
 
 ## 2. windows10
 
