@@ -8,3 +8,19 @@
         3. 优先使用
     2. os._exit()
         1. 直接终止解释器运行
+    3. quit()
+        1. raist SystemExit
+        2. demo
+
+            ```python
+
+            def test_quit():
+                try:
+                    quit()
+                except:
+                    pass
+                except Exception as e:
+                    print(e)
+                except SystemExit:
+                    pass
+            ```
