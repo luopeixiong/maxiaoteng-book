@@ -105,16 +105,18 @@
     ```
     docker run -d -p 5901:5901 -v /mnt/md0/public/baiduyun:/mnt/drive_d -e vnc_password=password johnshine/baidunetdisk-crossover-vnc:latest
     ``` 
-   4. 
-
 
 ## 3. 系统OMV
+
+选择omv主要是原有系统太拉垮, 各种严格和不兼容, 和黑群晖(系统安装在每块硬盘下)相比, omv系统独立安装在U盘, 数据盘独立, 可以直接挂载到其他linux系统读写
+
 1. 安装
     1. 常用安装
         1. 使用U盘刻录omv系统镜像, 软件[balena](https://www.balena.io/etcher/)
-        2. 将系统和系统U盘插入, 自动安装和启动 
+        2. 将系统和系统U盘插入, 自动安装和启动
     2. 也可以用虚拟机也可以安装后插入到主机上, 见[无显示器安装](https://forum.openmediavault.org/index.php/Thread/3453-Installing-OMV-w-o-keyboard-and-monitor-using-VirtualBox/)
         1. 网络配置有问题
+
 2. 配置
     1. 概述
         1. 文件服务
@@ -131,13 +133,16 @@
         2. ssh
             1. 端口: 9222
         3. docker
-        4. ftp
+        4. ~~ftp~~
             1. 21 22
         5. smb
             1. maxiaoteng
             2. 共享两个
                 1. for_guest 公开视频目录
                 2. maxiaoteng   整个目录
+            3. 服务
+                - SMB➡️设置(启用)
+                - 共享(添加需要的文件夹), 需要在访问权限管理中先配置共享文件夹
         6. jellyfin
             1. maxiaoteng
             2. docker安装
@@ -146,7 +151,7 @@
             1. docker安装
             2. 3306
         8. kodexplore
-            1. https://www.jianshu.com/p/4731a1ef01d1
+            1. <https://www.jianshu.com/p/4731a1ef01d1>
             2. 通过/data访问宿主机目录
             3. 设置防止crtf登录, 甚至可以加上验证码
             4. 除了管理员, 其他用户要想访问/data, 需要单独配置php
@@ -158,18 +163,36 @@
     3. 插件
         1. lvm
         2. omv extra
-            1. ```wget http://omv-extras.org/openmediavault-omvextrasorg_latest_all4.deb
-                dpkg -i openmediavault-omvextrasorg_latest_all4.deb
-                ```
+
+        ```shell
+        wget http://omv-extras.org/openmediavault-omvextrasorg_latest_all4.deb
+        dpkg -i openmediavault-omvextrasorg_latest_all4.deb
+        ```
+
     4. 文件系统
         1. wipe擦写磁盘
         2. 创建raid(可选)
         3. 创建lvm分区, 并挂载
-    5. 在分区上建立共享目录
-        1. 2T硬盘分两个
-            1. storage 保存所有自由数据
-            2. docker_lib保存docker相关的,镜像, 数据库文件等
-        2. public1 500G
-            1. 用来备份time machine
+    5. 存储器
+        在分区上建立共享目录
+        1. 存储➡️磁盘, 可以查看现有硬盘
+        2. 存储➡️逻辑卷管理, 相当于Windows的C/D盘
+            - 2T硬盘分两个
+                storage 保存所有自由数据
+                docker_lib(位于other, 200G)保存docker相关的,镜像, 数据库文件等
+            - public1 500G
+                用来备份time machine
+        3. 存储➡️文件系统
+            用于格式化/挂载/卸载/删除之前的逻辑卷(分区), 可以全用ext4(兼容mac/linux/Windows), 也可以自由选择
     6. 配置time machine 备份mac
-        1. https://dannyda.com/2019/07/17/how-to-create-apple-time-machine-in-open-media-vault-omv/
+        1. <https://dannyda.com/2019/07/17/how-to-create-apple-time-machine-in-open-media-vault-omv/>
+        2. 创建时间机器备份磁盘
+            - 创建共享文件夹: 访问权限管理➡️共享文件夹➡️添加➡️选择名称/路径(xx/timemachine)/设备
+        3. 创建备份时间机器的用户, 将tm文件夹读写权限共享给它
+            - 用户 选择tm用户, 特权将共享文件夹权限读写全选
+    7. 用户
+        - 添加, 所有访问服务器的用户都在此, 包括web界面/smb等
+        - 编辑
+        - 用户特权, 用于共享和设置权限
+    8. 共享文件夹
+        见访问权限管理➡️共享文件夹
