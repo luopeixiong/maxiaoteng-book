@@ -114,6 +114,10 @@
         # 打包
         pip wheel <包名>
 
+        # zsh错误匹配
+        # https://stackoverflow.com/questions/30539798/zsh-no-matches-found-requestssecurity
+        pip3 install 'httpx[http2]'
+
     ```
 
     有的环境中, python3/2与pip没有绑定, 用pip/pip3 或python -m pip
