@@ -1,23 +1,23 @@
-## 1. Redis命令参考
+# Python Redis
+
 1. [官网提供的可搜索的命令](https://redis.io/commands)
 2. [翻译中文文档](https://wizardforcel.gitbooks.io/redis-doc/)
-
-# 1. Python连接Redis
-[源代码](https://github.com/andymccurdy/redis-py)
+3. [源代码](https://github.com/andymccurdy/redis-py)
 
 ## 1. redis连接
+
 redis提供两个类Redis和StrictRedis, StrictRedis用来实现大部分官方的命令,并使用官方的语法和命令,Redis是StrictRedis的子类,用于向后兼容旧版本的redis-py.
 
 redis连接实例是线程安全的,可以直接将redis设置为全局变量,直接使用.
-
 **安装redis依赖**
-```
+
+```shell
 sudo pip install redis
 ```
 
 连接redis时,加上decode_response=True,写入的键值对中的value为str类型,不加这个参数写入的则为字节类型.
 
-```
+```python
 import redis
 r = redis.StrictRedis(host='localhost', port=6379, password='xxx', decode_responses=True, db=0)   # host是redis主机，需要redis服务端和客户端都启动 redis默认端口是6379, 密码验证
 r.set('name', 'junxi')  # key是"foo" value是"bar" 将键值对存入redis缓存
@@ -26,10 +26,11 @@ print(r.get('name'))  # 取出键name对应的值
 print(type(r.get('name')))
 ```
 
-## 2. 连接池
+### 连接池
 
 默认,每个Redis实例都会维护一个自己的连接池.可以直接建立一个连接池,实现多个Redis实例共享一个连接池
-```
+
+```python
 import redis    # 导入redis模块，通过python操作redis 也可以直接在redis主机的服务端操作缓存数据库
 
 pool = redis.ConnectionPool(host='localhost', port=6379, password='xxx', decode_responses=True)   # host是redis主机，需要redis服务端和客户端都起着 redis默认端口是6379
@@ -38,8 +39,8 @@ r.set('gender', 'male')     # key是"gender" value是"male" 将键值对存入re
 print(r.get('gender'))      # gender 取出键male对应的值
 ```
 
+### 创建Redis对象时，支持一些参数
 
-## 3. 创建Redis对象时，支持一些参数
 1. host
 2. port
 3. password
@@ -51,47 +52,60 @@ print(r.get('gender'))      # gender 取出键male对应的值
 9. errors='strict' 
 10. unix_socket_path=None
 
+## 2. redis 数据操作
 
-# 2. redis 数据操作
 参考教程：https://www.w3cschool.cn/redis_all_about/redis_all_about-jrvk26ug.html
 
-## 1. redis key操作
+### 1. redis key操作
 
 1. 列出所有key
-    ```
+
+    ```python
     1. r.keys()
     2. keys * # redis-cli
     ```
+
 2. 判断某个key是否存在
-    ```
+
+    ```python
     1. r.exists('key')
     2. exists key # redis-cli
     ```
-3. 删除指定的key
-    ```
-    1. r.delete('key')
-    2. del key1 key2 ... # redis-cli
 
-    3. redis批量删除（通配符)
-        r.delete(*r.keys('/vender*'))
+3. 删除指定的key
+
+    ```python
+    r.delete('key')
+    del key1 key2 ... # redis-cli
+
+    # redis批量删除（通配符)
+    r.delete(*r.keys('/vender*'))
     ```
+
 4. 返回指定key的value类型
+
+    ```python
+    r.type('key')
+    type key # redis-cli (none不存在，string，list，set)
     ```
-    1. r.type('key')
-    2. type key # redis-cli (none不存在，string，list，set)
-    ```
+
 5. 随机取一个key
+
+    ```python
+    r.randomkey()
+    randomkey # redis-cli
     ```
-    1. r.randomkey()
-    2. randomkey # redis-cli
-    ```
+
 6. 重命名一个key
+
+    ```python
+    r.rename('key1', 'key2' ), r.renamenx('key1', 'key2')
+    rename oldkey newkey | renamenx oldkey newkey  # redis-cli 区别，前面的如果newkey存在，则会被覆盖，后面的则会返回错误
     ```
-    1. r.rename('key1', 'key2' ), r.renamenx('key1', 'key2')
-    2. rename oldkey newkey | renamenx oldkey newkey  # redis-cli 区别，前面的如果newkey存在，则会被覆盖，后面的则会返回错误
-    ```
+
 7. key的超时设置
-    ```
+
+    ```python
     1. redis-python
         # 设置过期时间
         r.expire('key1', 10 ),   # 设置10s后过期
@@ -109,12 +123,12 @@ print(r.get('gender'))      # gender 取出键male对应的值
         - pttl  key 以毫秒返回生命周期。
     ```
 
-
-## 2. redis String 操作
+### 2. redis String 操作
 
 1. 设值
     - set 单个值
-    ```
+
+    ```python
     r.set(name, value, ex=None, px=None, nx=False, xx=False)
     Redis中设置值,默认为不存在则创建, 存在则修改
     # ex 过期时间(s)
@@ -122,8 +136,10 @@ print(r.get('gender'))      # gender 取出键male对应的值
     # nx 如果为True, name不存在时set才操作(set只支持新增)
     # xx 如果设置为True, name存在时, set才操作(set只支持修改)
     ```
+
     - mset 批量添加
-    ```
+
+    ```python
     # 支持两种方式
     mset(*args, **kwargs)
     r.mset(k1="v1", k2="v2")  # 这里k1 k2不能带引号,一次设置多个键值对
@@ -132,12 +148,14 @@ print(r.get('gender'))      # gender 取出键male对应的值
 
 2. 取值
     - get 获取单个值
-    ```
+
+    ```python
     r.get('useful_proxy')
     ```
 
     - mget 批量获取
-    ```
+
+    ```python
     # 同样支持两种
     mget(keys, *args)
     r.mget("k1", 'k2')
@@ -146,12 +164,14 @@ print(r.get('gender'))      # gender 取出键male对应的值
 
 3. 读取后重设
     - getset(name, value)  # 设置新值,并获取旧值
-    ```
+
+    ```python
     r.getset('food', 'barbecue')
     ```
 
 4. 增减操作，如果value不是int，则错误
-    ```
+
+    ```python
     r.incr('key')   # 加1 不存在默认为0  
     r.decr('key')   # 减1
     r.incrby('key', 5)   #   
@@ -160,7 +180,8 @@ print(r.get('gender'))      # gender 取出键male对应的值
     ```
 
 5. 追加，截取和改写 字符串
-    ```
+
+    ```python
     r.set("name", "strangename")
     r.append('name', 'afterfix')    # 追加：结果为strangenameafterfix
     r.getrange("name", 0, 3)  # 改写：结果为:stra
@@ -168,61 +189,49 @@ print(r.get('gender'))      # gender 取出键male对应的值
     ```
 
 6. 获取字符串长度
-    ```
+
+    ```python
     r.strlen('key')
     ```
 
+### 3. redis list 操作
 
-## 3. redis list 操作
+1. 基本操作
 
-1. 添加列表
-    ```
+    ```python
+    # 1. 添加列表
     r.lpush('list', '1')    # 左push 右pop 江湖规矩
     r.lpushx('list', '1')    # 如果存在才push
     r.linsert(name, where, refvalue, value)    # 特定位置插入（after，before）
-    ```
-
-2. 查看长度
-    ```
+    
+    # 2. 查看长度
     r.llen('list')   
-    ```
 
-3. 查看元素
-    ```
+    # 3. 查看元素
     r.lindex('list', 0)  # 返回特定位置的元素
-    ```
 
-4. 查看一段列表
-    ```
+    # 4. 查看一段列表
     r.lrange('list', 0, -1) # 返回一段列表，这个返回全部列表
-    ```
 
-5. 截取列表
-    ```
+    # 5. 截取列表
     N = r.ltrim('list', '0','2')    # 截取一段列表，改写，返回删掉的元素个数
-    ```
 
-6. 删除元素
-    ```
+    # 6. 删除元素
     r.lrem('list', count, value)    # 删除value的值，count为删除的个数，正数从左删除，负数从右删除
     r.lpop('list')  # 删除左侧第一个元素 
     r.rpop('list')  # 
-    ```
-
-7. 指定某个下标的值
-    ```
+    # 7. 指定某个下标的值
     r.lset('list', 0, '5')  # 返回Ture
-    ```
     
-8. 阻塞队列
-    ```
+    # 阻塞队列
     blpop key1...keyN timeout   # 从左到右扫描返回对第一个非空list进行lpop操作并返回，比如blpop list1 list2 list3 0 ,如果list不存在list2,list3都是非空则对list2做lpop并返回从list2中删除的元素。如果所有的list都是空或不存在，则会阻塞timeout秒，timeout为0表示一直阻塞。当阻塞时，如果有client对key1...keyN中的任意key进行push操作，则第一在这个key上被阻塞的client会立即返回（返回键和值）。如果超时发生，则返回nil。有点像unix的select或者poll。
     ```
 
-## 4. redis set 操作
+### 4. redis set 操作
 
 1. 所有操作
-    ```
+
+    ```python
     # 1. 添加元素
     r.sadd('set', '1s')    # 成功返回1， 已存在返回0，key不对应set则返回错误
 
@@ -260,12 +269,13 @@ print(r.get('gender'))      # gender 取出键male对应的值
     r.smembers('new-set')
     ```
 
-## 5. redis Sorted Set 操作
+### 5. redis Sorted Set 操作
 
-## 6. redis Hash(dict) 操作
+### 6. redis Hash(dict) 操作
 
 1. 所有操作
-    ```
+
+    ```python
     # 1. 设置hash值
     r.hset('hash', 'key1', 'value1')    # 成功返回1， field已存在则修改，key不对应hash则返回错误
     r.hsetnx('hash', 'key1', 'value1')    # nx 是no exist，如果field存在，返回0，不修改
