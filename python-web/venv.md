@@ -203,3 +203,15 @@ cd test  # 就会自动激活虚拟环境
 ## 使用IPython
 
 ## Web开发环境配置
+
+虚拟环境目录参考:
+
+```shell
+python3 -m venv /data/xiaoteng_venv
+
+source /data/xiaoteng_venv/bin/activate
+
+pip freeze > /data/requirements.txt
+
+pip install -r /data/requirements.txt
+```
