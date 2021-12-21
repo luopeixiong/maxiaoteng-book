@@ -2,7 +2,8 @@
 
 1. scrapy-redis自动关闭
    1. 脚本
-    ```
+
+    ```python
     #!/usr/bin/env python
     # encoding: utf-8
     import logging

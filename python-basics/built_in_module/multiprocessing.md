@@ -45,3 +45,7 @@
         p.join()
         print('All subprocesses done.')
     ```
+
+## 2. 多进程超时退出问题
+
+<https://stackoverflow.com/questions/29494001/how-can-i-abort-a-task-in-a-multiprocessing-pool-after-a-timeout#>
