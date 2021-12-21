@@ -1,4 +1,4 @@
-## Gmail的管理
+# Gmail的管理
 
 1. 归档
    1. 理解Inbox/Archive

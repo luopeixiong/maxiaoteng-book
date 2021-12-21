@@ -1,1 +1,77 @@
-# CRAWLER
+# Crawler 汇总
+
+1. 熟悉网页抓取原理和技术
+2. 设计爬虫策略和防屏蔽规则
+3. 提升网页抓取的效率和质量
+4. 分布式抓取架构设计和维护
+5. 数据清洗和入库
+6. 大数据处理（hadoop、Spark、Hive、HBase、Kaflka）
+7. 抓取协议设计与开发
+
+## 1. 抓包工具
+
+1. Web抓包工具
+    1. Chrome 开发者工具(**首选**)
+    2. Tamper Chrome(可以拦截请求，修改后继续请求)
+    3. Tamper Data(Firefox上的，和2类似)
+    4. Fiddler(chrome开发者工具无法实现的功能再用)
+2. 移动应用抓包
+    1. Charles抓包分析http和https请求(**首选**)
+    2. Fiddler抓包(优先使用上一个)
+    3. [Mitmproxy(使用python编写，是命令行程序)](/crawler/mitmproxy.md)
+    4. Wireshark和Tcpdump(不使用http协议的app)
+    5. [部分APP无法代理抓包的原因及解决方法](https://cloud.tencent.com/developer/article/1490033)
+
+## 2. HTTP请求库和爬虫框架
+
+1. [requests(可以代替python原生的请求库)](/crawler/requests.md)(**首选**)
+2. httpie(命令行库)
+3. curl
+4. aiohttp(支持异步io的库)
+5. hyper(支持http2的库)
+6. [scrapy和scrapy-redis](/crawler/Scrapy/scrapy_start_up.md)
+
+## 3. 页面解析
+
+1. [lxml(推荐lxml和xpath结合使用)](/crawler/xpath.md)(**首选**)
+2. [BeautifulSoup(bs4)(推荐配合lxml使用)](/crawler/beautifulsoup.md)
+3. pyquery(不推荐)
+4. html5lib(不常用)
+5. [json](/python-basics/built_in_module/json.md)
+6. [protobuf](/crawler/protobuf.md)
+7. [ocr](/python-basics/modules/tesserocr.md)
+8. [ocr调用百度接口](/crawler/ocr_baidu.md)
+
+## 4. 模拟请求
+
+1. Web
+   1. [Splash(支持异步)](/crawler/splash.md)(**首选**)
+   2. [chromedrier + Chrome + selenium (使用无界面模式降低资源占用)](/crawler/selenium/selenium.md)
+   3. Phantomjs(已被无界面的Chrome替代)
+2. 移动App
+   1. [UiAutomator](/crawler/uiautomator.md) + [mitmproxy](/crawler/mitmproxy.md)
+   2. Appium + mitmproxy
+   3. [逆向分析app](/crawler/android_decompile.md)
+   4. [Xposed](/crawler/xposed.md)
+
+## 5. 反反爬技巧
+
+防止被ban的技巧  
+
+1. [并发逐步增加，参考scrapy，大致了解对方网站对并发的限制情况](/crawler/Scrapy/scrapy_optimization.md)
+2. 伪装不同的请求，包括[使用代理ip](/crawler/proxy_server.md)和[user-agent随机](/crawler/random_user_agent.md)
+3. [验证码破解](/crawler/verification_code.md)
+4. [Cookie](/crawler/cookies.md)
+
+## 6. 反爬策略
+
+1. [反爬策略](/crawler/anti_spider_strategy.md)
+
+## 7. 爬虫优化
+
+* [爬虫优化](/crawler/crawler_optimization.md)
+
+## 8. 开发总结
+
+1. pipeline
+2. 爬虫任务如果依赖历史数据, 尽量生成新的数据源, 不要完全依赖ods数据(ods可能被归档)

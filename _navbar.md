@@ -1,7 +1,8 @@
-
-* [Configurations](/Configurations/README.md)
-* [Golang](/golang/README.md)
-* [Crawler](/crawler/README.md)
-* [Others](/others/README.md)
+* [Database](/database/README.md)
+<!-- * [Data_analysis](/data_analysis/README.md) -->
+* [Python](/python/README.md)
+<!-- * [Golang](/golang/README.md) -->
+<!-- * [Version-control](/version-control/README.md) -->
+* [Basic](/basic/README.md)
 * [Docsify](/docsify/README.md)
-* [Python-web](/python-web/README.md)
+<!-- * [Bigdata](/bigdata/README.md) -->

@@ -142,7 +142,7 @@ def children_to_sidebar(sidebar_item):
 def children_to_navbar(sidebar_item):
     # 只更新到二级分类
     with open('_navbar.md', 'w') as f:
-        f.write('# Navbar\n\n')
+        # f.write('# Navbar\n\n')
         for group_name, group_v in sidebar_item.items():
             for file in group_v:
                 # group也应该可以跳转, 也作为navbar item
@@ -155,7 +155,7 @@ sidebar_item = for_catalog(docs_dir)
 
 children_to_sidebar(sidebar_item)
 # 一般手动补充
-# children_to_navbar(sidebar_item)
+children_to_navbar(sidebar_item)
 
 # sub_dir = '/Users/maxiaoteng/xiaoteng_projects/maxiaoteng-book/crawler'
 # sub_dir = '/Users/maxiaoteng/xiaoteng_projects/maxiaoteng-book/crawler/selenium'
