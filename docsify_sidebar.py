@@ -155,7 +155,7 @@ sidebar_item = for_catalog(docs_dir)
 
 children_to_sidebar(sidebar_item)
 # 一般手动补充
-children_to_navbar(sidebar_item)
+# children_to_navbar(sidebar_item)
 
 # sub_dir = '/Users/maxiaoteng/xiaoteng_projects/maxiaoteng-book/crawler'
 # sub_dir = '/Users/maxiaoteng/xiaoteng_projects/maxiaoteng-book/crawler/selenium'
