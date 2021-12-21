@@ -7,4 +7,3 @@
 3. [Jupyter连接数据库](/DataAnalysis/mysql/jupyter_mysql.md)
 4. [Mysql优化](/DataAnalysis/mysql/mysql_optimization.md)
 5. [Tips](/DataAnalysis/mysql/tips.md)
-6. 

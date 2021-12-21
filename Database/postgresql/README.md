@@ -1,13 +1,17 @@
 # Postgresql
+
 [TOC]
 
 ## 1. 相关
+
 1. greenplum
 2. redshift
 
 ## 2. 常用语法
+
 1. 建表
    1. 去重和类型转换
+
         ```sql
         insert into dw_app_sku
         select distinct on (sku_id)
@@ -16,13 +20,17 @@
         from ods_mercari_app_sku
         order by sku_id, batch_id desc;
         ```
+
    2. 权限分配
+
         ```sql
         grant usage on schema aspex_mercari to data_loader;
         grant all on aspex_mercari.ods_mercari_app_sku to data_loader;
         grant select, insert on aspex_mercari.ods_mercari_app_user to data_loader;
         ```
+
    3. 创建语句
+
         ```sql
         CREATE TABLE public.final_buyer_txn (
         id serial8 NOT NULL , -- 自增id
@@ -31,13 +39,15 @@
         create_month text,
         create_quarter text,
         yearmonth text,
-        sku int8,				-- price float8,
+        sku int8,    -- price float8,
         value int8,
         update_date text
         )WITH (APPENDONLY=TRUE, ORIENTATION=column, compresstype=ZLIB)
         DISTRIBUTED BY (user_id);
         ```
+
    4. 分区表
+
         ```sql
         CREATE TABLE aspex_mercari.ods_mercari_app_sku
         (
@@ -57,7 +67,9 @@
         END (date '2021-01-01') EXCLUSIVE
         EVERY (INTERVAL '1 day'));
         ```
+
    5. 计算
+
         ```sql
         select 
         seller_id,ff.create_date::text, ff.create_month, ff.create_quarter,
@@ -75,16 +87,17 @@
         where tt1.batch_id='2019-11-01'
         group by seller_id, num_sell_items , ff.create_date, ff.create_month, ff.create_quarter;
         ```
+
    6. 类型判断
+
         ```sql
         set num_sell_items = decode(aaa.now_sell_items, '', '0', aaa.now_sell_items)::int - decode(bbb.now_sell_items, '', '0', bbb.now_sell_items)::int
         ```
-    
+
 ## 3. 权限管理
+
 information_schema.table_privileges表记录着所有用户的权限信息。
+
 1. 查看权限
-   ```
-    
-   ```
+
 2. 修改权限
-    

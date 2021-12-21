@@ -1,7 +1,9 @@
-# numpy 
+# numpy
+
 n维的数组对象
 
 1. 基本操作
+
     ```Python
     import numpy as np
     na = np.array([1, 2, 3])
@@ -17,4 +19,5 @@ n维的数组对象
     na[:-1]
     na[2] = 1
     ```
+
 2. reshape, T转置, ufunc、sort
