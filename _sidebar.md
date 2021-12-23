@@ -166,5 +166,5 @@
 * [大数据](/bigdata/README.md)
   * [消息队列kafka](/bigdata/kafka.md)
   * [Hdfs](/bigdata/hdfs.md)
-  * [Aws](/bigdata/AWS/README.md)
-  * [Hadoop](/bigdata/Hadoop.md)
+  * [Aws](/bigdata/aws/README.md)
+  * [Hadoop](/bigdata/hadoop.md)
