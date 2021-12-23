@@ -1,4 +1,5 @@
 # HDFS
+
 [TOC]
 
 Hadoop 分布式文件系统(HDFS)
@@ -8,8 +9,9 @@ Hadoop 分布式文件系统(HDFS)
 同时, Hadoop也集成了其他文件系统, 比如本地文件系统和Amazon S3
 
 ## 1. HDFS设计
+
 1. 流式数据访问
-    1. hdfs的构建思路是: 一次写入, 多次读取, 长时间在数据集上进行各种分析, 每次要用到大部分或者全部数据. 
+    1. hdfs的构建思路是: 一次写入, 多次读取, 长时间在数据集上进行各种分析, 每次要用到大部分或者全部数据.
     2. 读取整个数据集的耗时比读取第一条的耗时更重要
 2. 商用硬件: 因为部署在庞大的计算机集群上, 节点故障记录还是非常高的, HDFS设计成遇到故障继续运行, 不让用户察觉
 3. 适用高数据吞吐量应用, 不适用低延迟访问(低延迟访问考虑[Hbase](./hbase.md))
@@ -17,6 +19,7 @@ Hadoop 分布式文件系统(HDFS)
 5. HDFS只能有一个writer, 写操作总是将数据添加到末尾
 
 ## 2. 概念
+
 1. 数据块
     1. 文件系统块通常是硬盘块的整数倍
     2. HDFS的默认块(block)是64MB, HDFS上的文件被划分为块(block)大小的多个分块(chunk),  但是小于block的文件不会占据整个块的空间
@@ -28,33 +31,30 @@ Hadoop 分布式文件系统(HDFS)
         2. 简化存储子系统设计, 块只存储数据的一部分, 元数据(权限信息等)由其他系统管理
         3. 数据容错能力和可用性, 将块数据复制到几个独立的机器上(默认为3个), 如果一个块不可用, 可以从别处读取副本, 并修复丢失的块. 也可以提高块的复本数量, 分散集群中的读取负载
         4. 查看各个文件由哪些块构成
-            ```
+
+            ```bash
             hadoop fsck / -files -blocks
             ```
+
 2. namenode和datanode
-HDFS集群有两类节点以管理者(namenode)-工作者(datanode)模式运行, namenode管理文件系统的命名空间, 维护文件系统树及整棵树内所有的文件和目录(命名空间镜像文件和编辑日志文件), 但不保留块的位置信息, 因为这些信息会在系统启动时由datanode(数据节点)重建.
-
-客户端代表用户与namenode和datanode交互来访问整个文件系统, 因为提供了POSIX(可移植操作系统界面), 无需知道namenode和datanode, 用户也能实现功能
-
-datanode是文件系统的工作节点, 根据需要存储和检索数据块(受客户端或namenode调度), 并定期向namenode发送它们所存储的块的列表.
-
-没有namenode将无法使用文件系统, 容错机制: hadoop可以通过配置在多个文件系统上是namenode持久化, 通常是写入本地磁盘的同时, 写入一个NFS, 或者运行一个辅助namenode, 持续备份namenode(这个是定时备份, 并不是完全同步, 有可能丢失数据)
+    - HDFS集群有两类节点以管理者(namenode)-工作者(datanode)模式运行, namenode管理文件系统的命名空间, 维护文件系统树及整棵树内所有的文件和目录(命名空间镜像文件和编辑日志文件), 但不保留块的位置信息, 因为这些信息会在系统启动时由datanode(数据节点)重建.
+    - 客户端代表用户与namenode和datanode交互来访问整个文件系统, 因为提供了POSIX(可移植操作系统界面), 无需知道namenode和datanode, 用户也能实现功能
+    - datanode是文件系统的工作节点, 根据需要存储和检索数据块(受客户端或namenode调度), 并定期向namenode发送它们所存储的块的列表.
+    - 没有namenode将无法使用文件系统, 容错机制: hadoop可以通过配置在多个文件系统上是namenode持久化, 通常是写入本地磁盘的同时, 写入一个NFS, 或者运行一个辅助namenode, 持续备份namenode(这个是定时备份, 并不是完全同步, 有可能丢失数据)
 
 3. 联邦HDFS
 支持多个namenode, 每个负责独立的命名空间卷, 互补相同, 比如/user /share
 
 4. HDFS的高可用
 对于大型集群, namenode冷启动需要30分钟甚至更长, 如果namenode失效, 恢复会影响系统的持续使用, 也会影响到日常维护
-
-办法: 配置一对活动-备用(active-standby)namenode, 当活动namenode失效, 备用接管
+    办法: 配置一对活动-备用(active-standby)namenode, 当活动namenode失效, 备用接管
     - 需要高可用的共享存储实现编辑日志的共享, 如果备用namenode接管, 将通读共享编辑日志, 实现状态同步, 并继续读取活动namenode写入的新条目
     - datanode需要同时向两个namenode发送数据块处理报告
     - 客户端需要使用特定机制来处理namenode的失效
-...
 
 ## 3. 命令行接口
+
 1. hadoop fs -copyFromLocal local_path hdfs_path
 2. hadoop fs -copyToLocal hdfs_path local_path
 3. hadoop fs -mkdir dirs
 4. hadoop fs -ls
-5. 
