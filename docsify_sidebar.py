@@ -109,7 +109,7 @@ def for_sub_catalog(sub_dir, tab):
 
 
 def children_to_sidebar(sidebar_item):
-    # 只更新到二级分类
+    # 更新到三级目录
     with open('_sidebar.md', 'w') as f:
         # f.write('# Sidebar\n')
         for group_name, group_v in sidebar_item.items():
@@ -122,20 +122,34 @@ def children_to_sidebar(sidebar_item):
                     break
             
             for file in group_v:
+                # 文件夹
                 if file.get('fold_name'):
                     sub_files = file.get('children')
-                    for file in sub_files:
-                        if 'README.md' in file.get('link', ''):
-                            f.write('{}* [{}]({})\n'.format('  '*int(file.get('tab', 0)), file.get('text'), file.get('link').replace(docs_dir, '')))
+                    for sub_file in sub_files:
+                        if 'README.md' in sub_file.get('link', ''):
+                            f.write('{}* [{}]({})\n'.format('  '*int(sub_file.get('tab', 0)), sub_file.get('text'), sub_file.get('link').replace(docs_dir, '')))
                             break
-                    for file in sub_files:
-                        if file.get('link', '') and not 'README.md' in file.get('link', ''):
-                            f.write('{}* [{}]({})\n'.format('  '*int(file.get('tab', 0)), file.get('text'), file.get('link').replace(docs_dir, '')))
-                    
-                elif 'README.md' in file['link']:
+                    for sub_file in sub_files:
+                        # 文件
+                        if sub_file.get('link', '') and 'README.md' not in sub_file.get('link', ''):
+                            f.write('{}* [{}]({})\n'.format('  '*int(sub_file.get('tab', 0)), sub_file.get('text'), sub_file.get('link').replace(docs_dir, '')))
+                        
+                        # 三级文件夹
+                        elif sub_file.get('fold_name'):
+                            sub_sub_files = sub_file.get('children')
+                            for sub_sub_file in sub_sub_files:
+                                if 'README.md' in sub_sub_file.get('link', ''):
+                                    f.write('{}* [{}]({})\n'.format('  '*int(sub_sub_file.get('tab', 0)), sub_sub_file.get('text'), sub_sub_file.get('link').replace(docs_dir, '')))
+                                    break
+                            for sub_sub_file in sub_sub_files:
+                                if sub_sub_file.get('link', '') and 'README.md' not in sub_sub_file.get('link', ''):
+                                    f.write('{}* [{}]({})\n'.format('  '*int(sub_sub_file.get('tab', 0)), sub_sub_file.get('text'), sub_sub_file.get('link').replace(docs_dir, '')))
+                                elif sub_sub_file.get('fold_name'):
+                                    print('四级及更深目录不再展示, {}'.format(sub_sub_file))
+
+                # 文件
+                elif 'README.md' not in file['link']:
                     # 此处不再重复写文件夹对应的README
-                    continue
-                else:
                     f.write('{}* [{}]({})\n'.format('  '*int(file.get('tab', 0)), file.get('text'), file.get('link').replace(docs_dir, '')))
 
 
