@@ -46,6 +46,8 @@
     如果重启还是不行, 需要安装中文包, 扩展搜索: chinese / language
 - 设置tab 默认缩进4个空格
   - 文件 → 首选项 → 设置 → 用户设置 → 打开setting.json → tabsize
+- 虚拟环境
+- shift+command+P 打开设置搜索, Python: select Interpreter, 输入虚拟路径(`~/projects/venvs/venv_dev/bin/python`)
 
 - 设置启动的终端
 setting.json中  
