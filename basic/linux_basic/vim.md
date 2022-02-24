@@ -36,3 +36,12 @@
    4. ctrl + o  # 回到之前位置，可多次执行
 
 5. vim 中执行外部命令
+
+## 配置
+
+用户配置在`~/.vimrc`, 参考[Vim入门级基础配置](https://segmentfault.com/a/1190000016330314)
+
+    ```shell
+    # 粘贴是空格和tab的问题
+    set paste
+    ```
