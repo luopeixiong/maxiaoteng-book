@@ -1,9 +1,12 @@
 # JSON格式
+
 用于序列化, 内置包picking, 将变量序列化成bytes类型, 兼容差,仅适用Python
 
 ## 1. 序列化和反序列化
+
 - json默认支持序列化Python的数据类型: list, dict等
-    ```
+
+    ```python
     import json
     d = dict(name='Bob', age=20, score=88)
     # 序列化
@@ -18,8 +21,10 @@
     ```
 
 ## 2. 序列化其他
+
 - 序列化类
-    ```
+
+    ```python
     import json
 
     class Student(object):
@@ -51,12 +56,25 @@
     ```
 
 ## 第三方 demjson
-http://deron.meranda.us/python/demjson/
+
+<http://deron.meranda.us/python/demjson/>
+
 - 用于编码和解码json数据,
-```
+
+```python
 data = [ { 'a' : 1, 'b' : 2, 'c' : 3, 'd' : 4, 'e' : 5 } ]
 json = demjson.encode(data)
 >> data == [{"a":1,"b":2,"c":3,"d":4,"e":5}]
 text = demjson.decode(json)
 >> {'a': 1, 'c': 3, 'b': 2, 'e': 5, 'd': 4}
 ```
+
+- 问题修复 `Setuptools 58.0.0 has removed support for 2to3 during builds, breaks demjson for Python 3.x`
+替代方案: [demjson3](https://github.com/nielstron/demjson3)
+
+    ```python
+    # pip install demjson3
+    import demjson3
+
+    json = demjson3.encode(data)
+    ```
