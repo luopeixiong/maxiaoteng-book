@@ -118,6 +118,7 @@
         # https://stackoverflow.com/questions/30539798/zsh-no-matches-found-requestssecurity
         pip3 install 'httpx[http2]'
 
+        python setup.py install
     ```
 
     有的环境中, python3/2与pip没有绑定, 用pip/pip3 或python -m pip
