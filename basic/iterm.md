@@ -14,6 +14,7 @@ mac下使用iterm作为终端模拟工具
 8. ctrl + u # 删除整行
 9. ctrl + w # 删除前一个单词
 10. ctrl + c    # 直接下一行重新输入
+11. Command + shift + i # 多窗口同步输入
 
 ## 2. 使用mac进行ssh登陆linux服务器
 
