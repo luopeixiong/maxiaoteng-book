@@ -62,6 +62,7 @@ adb 操作手机
     3. -l 注入脚本
     4. 最后跟进程
     5. -f start模式, 最后加上 --no-pause
+    6. -UF hook前台app, 无需加包名
 4. frida-ps -D 872QEDUA2224U 查看哪些进程
 5. frida和Magisk冲突
     1. <https://stackoverflow.com/questions/56316329/frida-failed-to-spawn-unable-to-access-zygote64-while-preparing-for-app-launc>
